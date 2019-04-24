@@ -59,6 +59,49 @@ return [
             ]) : [],
         ],
 
+
+        'cloudrad' => [
+            'driver' => 'mysql',
+            'host' => '35.243.154.192',
+            'port' => '3306',
+            'database' => 'radius',
+            'username' => 'administrador',
+            'password' => 'S1tc@N15',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
+        'jamaicazq' => [
+            'driver' => 'mysql',
+            'host' => '209.236.43.3',
+            'port' => '3306',
+            'database' => 'radius',
+            'username' => 'admin',
+            'password' => 'W1f1s1t',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
+        'sunrisezq' => [
+            'driver' => 'mysql',
+            'host' => '187.130.75.3',
+            'port' => '3306',
+            'database' => 'radius',
+            'username' => 'admin',
+            'password' => 'W1f1s1t',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

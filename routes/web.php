@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('test_agent', 'TestController@testfunc');
+Route::get('test_xml', 'TestController@test_xml');
+
 Route::get('/clear-cache', function() {
     Artisan::call('view:clear');
     Artisan::call('config:cache');
@@ -18,16 +21,15 @@ Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {return view('welcome');});
 
 Route::get('/Jamaica', function () {
 	$site = 'ZCJG';
     return view('visitor.Palace.jamaica', compact('site'));
 });
-Route::get('test_agent', 'TestController@testfunc');
 Route::post('submit_palace', 'PalaceController@login_palace');
+
 
 Auth::routes();
 

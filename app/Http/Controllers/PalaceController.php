@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 use Session;
 use DB;
+use SoapClient;
 
 class PalaceController extends Controller
 {	
@@ -13,26 +14,40 @@ private $xmlreq=<<<XML
 <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><Post_ObtenerInfoRoomPorHabitacion xmlns="http://localhost/xmlschemas/postserviceinterface/16-07-2009/"><RmroomRequest xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/RmroomRequest.xsd"><Rmroom><hotel xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/Rmroom.xsd"></hotel><room xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/Rmroom.xsd"></room></Rmroom><rooms /></RmroomRequest></Post_ObtenerInfoRoomPorHabitacion></soap:Body></soap:Envelope>
 XML;
 
-    public function login_palace(Request $Request)
+    public function login_palace(Request $request)
     {
+    	//Agent
     	$agent = new Agent(); // datos del usuario.
-
         $bool = $agent->isDesktop();
+        if($bool){
+          $mobile = 0;
+        }else{
+          $mobile = 1;
+        }
         $device = $agent->device();
-
         $robot = $agent->isRobot();
-        $robot = $agent->robot();
-
-        // iPhone
-        // iOS
+        if ($robot) {
+          $robot_name = $agent->robot();  
+        }else{
+          $robot_name = '';
+        }
+        // $robot = $agent->robot();
         $languages = $agent->languages();
-
+        if (count($languages) > 0) {
+        	$lang = $languages[0];
+        }else{
+        	$lang = '';
+        }
         $browser = $agent->browser();
-        $version1 = $agent->version($browser);
-
+        $browser_version = $agent->version($browser);
         $platform = $agent->platform();
-        $version2 = $agent->version($platform);
-        
+        if ($agent->version($platform)) {
+          $platform_version = $agent->version($platform);
+        }else{
+          $platform_version = '';
+        }
+        //Fin Agent
+        // Parámetros de logeo
     	$url = $request->url;
     	$proxy = $request->proxy;
     	$sip = $request->sip;
@@ -47,8 +62,136 @@ XML;
     	$username = $request->username;
     	$username1 = $request->username1; // Room number.
     	$password = $request->password1; // Apellido.
+    	//Fin parámetros.
+        $lastname = $this->cleanString($password);
+        $lastname = mb_convert_case($lastname, MB_CASE_UPPER, "UTF-8");
+        $usuariojunto = $lastname . $username1;
+        $usuariojunto = $this->cleanString($usuariojunto);
+        $fechain = date("Y-m-d H:i:s");
+    	// database connection "sunrisezq".
+    	$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
+    	$site_name = $site_info[0]->nombre;
+		$db_user = DB::connection('sunrisezq')->table('authtoken')->select('username')->where('username', $usuariojunto)->count();
+		
+		if ($db_user > 0) {
+			$algo = 'existe';
+			//insercion de Agent.
+			DB::table('data_agents')->insert([
+				'mac_address' => $client_mac,
+				'browser' => $browser,
+				'browser_version' => $browser_version,
+				'platform' => $platform,
+				'platform_version' => $platform_version,
+				'wificode' => $usuariojunto,
+				'device' => $device,
+				'language' => $lang,
+				'robot' => $robot_name,
+				'site_id' => $site_info[0]->id,
+				'mobile' => $mobile,
+				'success' => 1
+			]);
+			return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+		}else{
+			$algo = 'no existe';
+	    	$XMLresponse = $this->getInfoxHab($username1);
+	        $XMLresponse = str_replace('xmlns=', 'ns=', $XMLresponse);
+	        $XMLsimple = simplexml_load_string($XMLresponse);
 
-    	return 'OK';
+			$xml_for = $XMLsimple->xpath('//RmFolio');
+			
+			if (empty($xml_for)) {
+				DB::table('data_agents')->insert([
+					'mac_address' => $client_mac,
+					'browser' => $browser,
+					'browser_version' => $browser_version,
+					'platform' => $platform,
+					'platform_version' => $platform_version,
+					'wificode' => $usuariojunto,
+					'device' => $device,
+					'language' => $lang,
+					'robot' => $robot_name,
+					'site_id' => $site_info[0]->id,
+					'mobile' => $mobile,
+					'success' => 0
+				]);
+				DB::table('data_sites')->insert([
+					'lastname' => $lastname,
+					'wificode' => $usuariojunto,
+					'site_id' => $site_info[0]->id
+				]);
+				$response = 'insertar en data_agents con logeo normal';
+				return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
+			}else{			
+				foreach ($xml_for as $RmFolio) {
+					// empty($RmFolio->Rmfolio->last_name) ? $ApeXML = '' : $ApeXML = $RmFolio->Rmfolio->last_name;
+					$ApeXML = $RmFolio->Rmfolio->last_name;
+					// empty($RmFolio->Rmfolio->first_name) ? $NombreXML = '' : $NombreXML = $RmFolio->Rmfolio->last_name;
+					$NombreXML = $RmFolio->Rmfolio->first_name;
+					// empty($RmFolio->Rmfolio->nights) ? $nochesXML = '' : $nochesXML = $RmFolio->Rmfolio->nights;
+					$nochesXML = $RmFolio->Rmfolio->nights;
+				}
+                $ApeXML = $this->cleanString($ApeXML);
+                $ApeXML = mb_convert_case($ApeXML, MB_CASE_UPPER, "UTF-8");
+
+                $NombreXML = $this->cleanString($NombreXML);
+                $NombreXML = mb_convert_case($NombreXML, MB_CASE_UPPER, "UTF-8");       
+
+                $nochesXML = $nochesXML +1;
+                $noches = "+" . $nochesXML . " day";
+                $fechaout = strtotime ( $noches , strtotime ( $fechain ) ) ;
+                $fechaout = date ( 'Y-m-d H:i:s' , $fechaout );
+                if($ApeXML === $lastname){
+                    // echo " _si existe en el PMS ";
+					DB::table('data_agents')->insert([
+						'mac_address' => $client_mac,
+						'browser' => $browser,
+						'browser_version' => $browser_version,
+						'platform' => $platform,
+						'platform_version' => $platform_version,
+						'wificode' => $usuariojunto,
+						'device' => $device,
+						'language' => $lang,
+						'robot' => $robot_name,
+						'site_id' => $site_info[0]->id,
+						'mobile' => $mobile,
+						'success' => 1
+					]);
+					DB::table('data_sites')->insert([
+						'lastname' => $lastname,
+						'wificode' => $usuariojunto,
+						'site_id' => $site_info[0]->id
+					]);
+                    // $this->insertRad($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
+                    $this->insertRadSunrise($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
+                    usleep(5000);
+                    $response = 'debio insertar en sunrise';
+                    return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
+                }else{
+                    // echo " _no existe en el PMS__?? raro  ";
+					DB::table('data_agents')->insert([
+						'mac_address' => $client_mac,
+						'browser' => $browser,
+						'browser_version' => $browser_version,
+						'platform' => $platform,
+						'platform_version' => $platform_version,
+						'wificode' => $usuariojunto,
+						'device' => $device,
+						'language' => $lang,
+						'robot' => $robot_name,
+						'site_id' => $site_info[0]->id,
+						'mobile' => $mobile,
+						'success' => 0
+					]);
+					DB::table('data_sites')->insert([
+						'lastname' => $lastname,
+						'wificode' => $usuariojunto,
+						'site_id' => $site_info[0]->id
+					]);
+                    $response = 'Nada de nada';
+                    return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
+                }
+			}
+		}
     }
     public function replaceXML($roominfo){
         //echo " _entre a replaceXML";
@@ -73,8 +216,9 @@ XML;
 
         return $XMLreq2;
     }
-    public function getInfoxHab($xml){
+    public function getInfoxHab($roominfo){
         //echo " _entre a getinforoom ";
+        $xml = $this->replaceXML($roominfo);
         $wsdlloc = "http://api.palaceresorts.com/TigiServiceInterface/ServiceInterface.asmx?wsdl";
         $accion = "http://localhost/xmlschemas/postserviceinterface/16-07-2009/Post_ObtenerInfoRoomPorHabitacion";
         $option=array('trace'=>1);
@@ -96,4 +240,69 @@ XML;
             return FALSE;
         }
     }
+    public function cleanString($str){
+        $str = str_replace("Ñ" ,"N", $str);
+        $str = str_replace("ñ" ,"n", $str);
+        return $str;
+    }
+
+    public function insertRadCloud($user, $name, $lastname,$fechaout, $site_code)
+    {
+		$atr1="Auth-Type";
+		$atr2="Cleartext-Password";
+		$atr3="Expiration";
+		$op ="+=";
+		$Tipo="Local";
+		$passglobal = "123";
+		$createby = "administrator";
+		// $codigo_sitio = "ZCJG";
+		$group = "default";
+		$fechain = date("Y-m-d H:i:s");
+		$fechamod = date ("d M Y H:i:s", strtotime($fechaout)); //Fecha out(expiration)
+            
+		DB::connection('cloudrad')->table('userinfo')->insert([
+			'username' => $user,
+			'firstname' => $name,
+			'lastname' => $lastname,
+			'email' => $site_code,
+			'creationdate' => $fechain,
+			'creationby' => $createby]);
+		DB::connection('cloudrad')->table('radcheck')->insert(
+			['username' => $user, 'attribute' => $atr1, 'op' => $op, 'value' => $Tipo],
+			['username' => $user, 'attribute' => $atr2, 'op' => $op, 'value' => $passglobal],
+			['username' => $user, 'attribute' => $atr3, 'op' => $op, 'value' => $fechamod]);
+		DB::connection('cloudrad')->table('radusergroup')->insert(
+			['username' => $user, 'groupname' => $group]);
+    }
+
+    public function insertRadSunrise($user, $name, $lastname,$fechaout, $site_code)
+    {
+		$atr1="Auth-Type";
+		$atr2="Cleartext-Password";
+		$atr3="Expiration";
+		$op ="+=";
+		$Tipo="Local";
+		$passglobal = "123";
+		$createby = "administrator";
+		// $codigo_sitio = "ZCJG";
+		$group = "default";
+		$fechain = date("Y-m-d H:i:s");
+		$fechamod = date ("d M Y H:i:s", strtotime($fechaout)); //Fecha out(expiration)
+        $fullname = $name.' '.$lastname;
+		DB::connection('sunrisezq')->table('authtoken')->insert([
+			'username' => $user,
+			'name' => $fullname,
+			'password' => $passglobal,
+			'createdate' => $fechain,
+			'createby' => $createby,
+			'description' => $site_code,
+			'expiration' => $fechaout,]);
+		DB::connection('sunrisezq')->table('radcheck')->insert(
+			['UserName' => $user, 'Attribute' => $atr1, 'op' => $op, 'Value' => $Tipo],
+			['UserName' => $user, 'Attribute' => $atr2, 'op' => $op, 'Value' => $passglobal],
+			['UserName' => $user, 'Attribute' => $atr3, 'op' => $op, 'Value' => $fechamod]);
+		DB::connection('sunrisezq')->table('usergroup')->insert(
+			['username' => $user, 'groupname' => $group]);
+    }
+    
 }
