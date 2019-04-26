@@ -7,7 +7,7 @@
 </head>
 <body>
 	<!-- <form id="loginform" name="loginform" method="POST" action="http://{{$sip}}:9997/login"> -->
-	<form id="loginform" name="loginform" method="POST" action="http://{{$sip}}:9998/SubscriberPortal/hotspotlogin">	
+	<form id="loginform" name="loginform" method="POST" action="https://{{$sip}}:9998/SubscriberPortal/hotspotlogin">	
 		{{ csrf_field() }}
 		<input class="form-control" type="hidden" id="username" name="username" value="{{$usuariojunto}}" />
 		<input class="form-control" type="hidden" id="password" name="password" value="123" />

@@ -71,10 +71,10 @@ XML;
     	// database connection "sunrisezq".
     	$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
     	$site_name = $site_info[0]->nombre;
-		$db_user = DB::connection('sunrisezq')->table('authtoken')->select('username')->where('username', $usuariojunto)->count();
+		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
 		
 		if ($db_user > 0) {
-			$algo = 'existe';
+			// Existe.
 			//insercion de Agent.
 			DB::table('data_agents')->insert([
 				'mac_address' => $client_mac,
@@ -92,14 +92,15 @@ XML;
 			]);
 			return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
 		}else{
-			$algo = 'no existe';
-	    	$XMLresponse = $this->getInfoxHab($username1);
+			// No existe.
+	    	$XMLresponse = $this->getInfoxHab($username1, $site);
 	        $XMLresponse = str_replace('xmlns=', 'ns=', $XMLresponse);
 	        $XMLsimple = simplexml_load_string($XMLresponse);
 
 			$xml_for = $XMLsimple->xpath('//RmFolio');
 			
 			if (empty($xml_for)) {
+				// No existe.
 				DB::table('data_agents')->insert([
 					'mac_address' => $client_mac,
 					'browser' => $browser,
@@ -112,16 +113,12 @@ XML;
 					'robot' => $robot_name,
 					'site_id' => $site_info[0]->id,
 					'mobile' => $mobile,
-					'success' => 0
-				]);
-				DB::table('data_sites')->insert([
-					'lastname' => $lastname,
-					'wificode' => $usuariojunto,
-					'site_id' => $site_info[0]->id
+					'success' => 0,
 				]);
 				$response = 'insertar en data_agents con logeo normal';
 				return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
-			}else{			
+			}else{
+				// Existe.
 				foreach ($xml_for as $RmFolio) {
 					// empty($RmFolio->Rmfolio->last_name) ? $ApeXML = '' : $ApeXML = $RmFolio->Rmfolio->last_name;
 					$ApeXML = $RmFolio->Rmfolio->last_name;
@@ -154,15 +151,17 @@ XML;
 						'robot' => $robot_name,
 						'site_id' => $site_info[0]->id,
 						'mobile' => $mobile,
-						'success' => 1
+						'success' => 1,
+						'expiration' => $fechaout
 					]);
 					DB::table('data_sites')->insert([
 						'lastname' => $lastname,
 						'wificode' => $usuariojunto,
-						'site_id' => $site_info[0]->id
+						'site_id' => $site_info[0]->id,
+						'expiration' => $fechaout
 					]);
-                    // $this->insertRad($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
-                    $this->insertRadSunrise($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
+                    $this->insertRadCloud($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
+                    //$this->insertRadSunrise($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
                     usleep(5000);
                     $response = 'debio insertar en sunrise';
                     return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
@@ -180,20 +179,20 @@ XML;
 						'robot' => $robot_name,
 						'site_id' => $site_info[0]->id,
 						'mobile' => $mobile,
-						'success' => 0
+						'success' => 0,
 					]);
-					DB::table('data_sites')->insert([
-						'lastname' => $lastname,
-						'wificode' => $usuariojunto,
-						'site_id' => $site_info[0]->id
-					]);
+					// DB::table('data_sites')->insert([
+					// 	'lastname' => $lastname,
+					// 	'wificode' => $usuariojunto,
+					// 	'site_id' => $site_info[0]->id
+					// ]);
                     $response = 'Nada de nada';
                     return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
                 }
 			}
 		}
     }
-    public function replaceXML($roominfo){
+    public function replaceXML($roominfo, $site_code){
         //echo " _entre a replaceXML";
         $xmlinfo = $this->xmlreq;
         //var_dump($xmlinfo);
@@ -206,7 +205,7 @@ XML;
         //echo " cargue el simplexml ";
 
         foreach ($xmltest->xpath('//Rmroom') as $Rmroom) {
-            $Rmroom->hotel = "ZCJG";// <---- Agregar la variable dinamica de Hoteles!
+            $Rmroom->hotel = $site_code;// <---- Agregar la variable dinamica de Hoteles!
             $Rmroom->room = $roominfo; // <---- Aqui es donde va la variable dinamica
         }
         //echo " pase de FOR__? ";
@@ -216,9 +215,9 @@ XML;
 
         return $XMLreq2;
     }
-    public function getInfoxHab($roominfo){
+    public function getInfoxHab($roominfo, $site_code){
         //echo " _entre a getinforoom ";
-        $xml = $this->replaceXML($roominfo);
+        $xml = $this->replaceXML($roominfo, $site_code);
         $wsdlloc = "http://api.palaceresorts.com/TigiServiceInterface/ServiceInterface.asmx?wsdl";
         $accion = "http://localhost/xmlschemas/postserviceinterface/16-07-2009/Post_ObtenerInfoRoomPorHabitacion";
         $option=array('trace'=>1);
@@ -245,13 +244,12 @@ XML;
         $str = str_replace("ñ" ,"n", $str);
         return $str;
     }
-
     public function insertRadCloud($user, $name, $lastname,$fechaout, $site_code)
     {
 		$atr1="Auth-Type";
 		$atr2="Cleartext-Password";
 		$atr3="Expiration";
-		$op ="+=";
+		$op =":=";
 		$Tipo="Local";
 		$passglobal = "123";
 		$createby = "administrator";
@@ -266,15 +264,14 @@ XML;
 			'lastname' => $lastname,
 			'email' => $site_code,
 			'creationdate' => $fechain,
-			'creationby' => $createby]);
-		DB::connection('cloudrad')->table('radcheck')->insert(
-			['username' => $user, 'attribute' => $atr1, 'op' => $op, 'value' => $Tipo],
+			'creationby' => $createby,
+			'expiration' => $fechaout]);
+		DB::connection('cloudrad')->table('radcheck')->insert([
 			['username' => $user, 'attribute' => $atr2, 'op' => $op, 'value' => $passglobal],
-			['username' => $user, 'attribute' => $atr3, 'op' => $op, 'value' => $fechamod]);
+			['username' => $user, 'attribute' => $atr3, 'op' => $op, 'value' => $fechamod]]);
 		DB::connection('cloudrad')->table('radusergroup')->insert(
 			['username' => $user, 'groupname' => $group]);
     }
-
     public function insertRadSunrise($user, $name, $lastname,$fechaout, $site_code)
     {
 		$atr1="Auth-Type";
@@ -304,5 +301,4 @@ XML;
 		DB::connection('sunrisezq')->table('usergroup')->insert(
 			['username' => $user, 'groupname' => $group]);
     }
-    
 }

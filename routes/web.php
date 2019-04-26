@@ -28,6 +28,14 @@ Route::get('/Jamaica', function () {
 	$site = 'ZCJG';
     return view('visitor.Palace.jamaica', compact('site'));
 });
+Route::get('/Cozumel', function () {
+	$site = 'CZ';
+    return view('visitor.Palace.cozumel', compact('site'));
+});
+Route::get('/Playacar', function () {
+	$site = 'PL';
+    return view('visitor.Palace.playacar', compact('site'));
+});
 Route::post('submit_palace', 'PalaceController@login_palace');
 
 
