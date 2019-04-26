@@ -58,7 +58,7 @@ XML;
   public function test_xml()
   {
     $usuariojunto = 'ZURFACE30734';
-    $username1 = '30931'; //30734 30931 - KING30931  SHAWNYA NICOLE
+    $username1 = '112'; //30734 30931 - KING30931  SHAWNYA NICOLE
 
     $XMLresponse = $this->getInfoxHab($username1);
     $XMLresponse = str_replace('xmlns=', 'ns=', $XMLresponse);
@@ -86,7 +86,7 @@ XML;
       //echo " cargue el simplexml ";
 
       foreach ($xmltest->xpath('//Rmroom') as $Rmroom) {
-          $Rmroom->hotel = "ZCJG";// <---- Agregar la variable dinamica de Hoteles!
+          $Rmroom->hotel = "CZ";// <---- Agregar la variable dinamica de Hoteles!
           $Rmroom->room = $roominfo; // <---- Aqui es donde va la variable dinamica
       }
       //echo " pase de FOR__? ";
