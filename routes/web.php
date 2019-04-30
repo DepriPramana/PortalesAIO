@@ -12,7 +12,7 @@
 */
 
 Route::get('/test_agent', 'TestController@testfunc');
-// Route::get('test_xml', 'TestController@test_xml');
+Route::get('test_xml', 'TestController@test');
 Route::get('/test_user/{room}/{site}', 'TestController@test_xml');
 Route::get('/testing', 'TestController@testing');
 
@@ -52,5 +52,5 @@ Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
-	
+
 });

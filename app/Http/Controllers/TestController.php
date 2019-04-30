@@ -15,7 +15,7 @@ private $xmlreq=<<<XML
 <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><Post_ObtenerInfoRoomPorHabitacion xmlns="http://localhost/xmlschemas/postserviceinterface/16-07-2009/"><RmroomRequest xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/RmroomRequest.xsd"><Rmroom><hotel xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/Rmroom.xsd"></hotel><room xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/Rmroom.xsd"></room></Rmroom><rooms /></RmroomRequest></Post_ObtenerInfoRoomPorHabitacion></soap:Body></soap:Envelope>
 XML;
 	public function testfunc()
-	{  
+	{
         $ip = '172.20.0.2';
         $zd = 'http://' . $ip . ':9997/login';
         $sz = 'https://'. $ip.':9998/SubscriberPortal/hotspotlogin';
@@ -31,11 +31,11 @@ XML;
 
         $robot = $agent->isRobot();
         if ($robot) {
-          $robot_name = $agent->robot();  
+          $robot_name = $agent->robot();
         }else{
           $robot_name = 'vacio';
         }
-        
+
         //$mobile = $agent->isPhone();
         // iPhone
         // iOS
@@ -55,10 +55,27 @@ XML;
 
     		dd($languages[0]);
 	}
+	public function test()
+	{
+		$usuariojunto = 'MAGA DANIELS207';
+		$username1 = '30816'; //30734 30931 - KING30931  SHAWNYA NICOLE
+		$site_code = 'ZCJG';
+		$XMLresponse = $this->getInfoxHab($username1, $site_code);
+		$XMLresponse = str_replace('xmlns=', 'ns=', $XMLresponse);
+		$XMLsimple = simplexml_load_string($XMLresponse);
+
+		$algo = $XMLsimple->xpath('//RmFolio');
+		if (empty($algo)) {
+			$algo2 = 'vacio';
+			dd($algo2);
+		}else{
+			dd($algo);
+		}
+	}
   public function test_xml($room, $site_code)
   {
     $usuariojunto = 'MAGA DANIELS207';
-    $username1 = '316'; //30734 30931 - KING30931  SHAWNYA NICOLE
+    $username1 = '30816'; //30734 30931 - KING30931  SHAWNYA NICOLE
 
     $XMLresponse = $this->getInfoxHab($room, $site_code);
     $XMLresponse = str_replace('xmlns=', 'ns=', $XMLresponse);
@@ -79,7 +96,7 @@ XML;
     $password = '307';
 
     $usuario_replace = str_replace(' ', '', $usuariojunto);
-    
+
     $usuario_trim = trim($usuariojunto);
     $db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
     $db_user_info = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->get();
@@ -112,7 +129,7 @@ XML;
       //echo " cargue el simplexml ";
 
       foreach ($xmltest->xpath('//Rmroom') as $Rmroom) {
-          $Rmroom->hotel = "CZ";// <---- Agregar la variable dinamica de Hoteles!
+          $Rmroom->hotel = $site_code;// <---- Agregar la variable dinamica de Hoteles!
           $Rmroom->room = $roominfo; // <---- Aqui es donde va la variable dinamica
       }
       //echo " pase de FOR__? ";

@@ -39,7 +39,7 @@
 				alert("Room Number or Last Name doesn't match the one given on the front desk");
 			}
 		}
-		
+
 		function mostrar(){
 			document.getElementById("loadingsection").style.display="block";
 			document.getElementById("formpr").style.display="none";
@@ -62,14 +62,14 @@
 		<!-- <form id="formpr" name="formpr" method="POST" action="http://{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}:9997/login" onsubmit="mostrar();"> -->
 		<form method="POST" action="{{url('/submit_palace_test')}}" id="formpr" role="login" onsubmit="mostrar();">
 			{{ csrf_field() }}
-			<input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
+			<input class="form-control" type="text" id="site_code" name="site_code" value="{{$site}}" />
 			<label>Room:</label>
 			<input type="number" onkeyup="generar()" name="username1" id="username1" required  autofocus class="form-control" />
 			<input type="hidden" id="username" name="username" >
-			
+
 			<label>Last name:</label>
 			<input type="text" onkeyup="generar()" name="password1" id="password1" style="text-transform:uppercase" onkeyup="javascript:this.value=this.value.toUpperCase();" required class="form-control" />
-			
+
 			<input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
 			<input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
 			<input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
@@ -80,7 +80,7 @@
 			<input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ isset($_GET['vlan']) ? $_GET['vlan'] : '' }}" />
 			<input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
 			<input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
-			
+
 			<button type="submit" name="go" value="Log In" class="btn btn-danger">Log in</button>
 			<!--<div>
 				No eres Miembro? <a href="#">Registrate ahora</a><br />
@@ -89,6 +89,6 @@
 		</form>
 		</section>
 	</section>
-	
+
 </body>
 </html>
