@@ -55,12 +55,12 @@ XML;
 
     		dd($languages[0]);
 	}
-  public function test_xml()
+  public function test_xml($room, $site_code)
   {
-    $usuariojunto = 'ZURFACE30734';
-    $username1 = '112'; //30734 30931 - KING30931  SHAWNYA NICOLE
+    $usuariojunto = 'MAGA DANIELS207';
+    $username1 = '316'; //30734 30931 - KING30931  SHAWNYA NICOLE
 
-    $XMLresponse = $this->getInfoxHab($username1);
+    $XMLresponse = $this->getInfoxHab($room, $site_code);
     $XMLresponse = str_replace('xmlns=', 'ns=', $XMLresponse);
     $XMLsimple = simplexml_load_string($XMLresponse);
 
@@ -71,9 +71,35 @@ XML;
     }else{
       dd($algo);
     }
-
   }
-  public function replaceXML($roominfo){
+  public function testing()
+  {
+    $usuariojunto = 'MAGA DANIELS207';
+    $usuario= 'MAGA DANIELS';
+    $password = '307';
+
+    $usuario_replace = str_replace(' ', '', $usuariojunto);
+    
+    $usuario_trim = trim($usuariojunto);
+    $db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
+    $db_user_info = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->get();
+    if (empty($db_user_info)) {
+      $user_db = '';
+    }else{
+      $user_db = $db_user_info[0]->username;
+    }
+    if ($db_user > 0) {
+      $var = ' > 0 si';
+    }else{
+      $var = ' ñooo';
+    }
+    if ($usuariojunto === $user_db) {
+      dd($usuario_replace,$db_user, $db_user_info, $var, 'Cierto');
+    }else{
+      dd($usuario_replace,$db_user, $db_user_info, $var, 'Nahhhh');
+    }
+  }
+  public function replaceXML($roominfo, $site_code){
       //echo " _entre a replaceXML";
       $xmlinfo = $this->xmlreq;
       //var_dump($xmlinfo);
@@ -96,9 +122,9 @@ XML;
 
       return $XMLreq2;
   }
-  public function getInfoxHab($roominfo){
+  public function getInfoxHab($roominfo, $site_code){
       //echo " _entre a getinforoom ";
-      $xml = $this->replaceXML($roominfo);
+      $xml = $this->replaceXML($roominfo, $site_code);
       $wsdlloc = "http://api.palaceresorts.com/TigiServiceInterface/ServiceInterface.asmx?wsdl";
       $accion = "http://localhost/xmlschemas/postserviceinterface/16-07-2009/Post_ObtenerInfoRoomPorHabitacion";
       $option=array('trace'=>1);

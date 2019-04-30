@@ -63,10 +63,7 @@ XML;
     	$username1 = $request->username1; // Room number.
     	$password = $request->password1; // Apellido.
     	//Fin parámetros.
-    	$lastname_clean = $this->cleanString($password);
-    	$lastname_clean = mb_convert_case($lastname_clean, MB_CASE_UPPER, "UTF-8");
         $lastname = $this->cleanString($password);
-        $lastname = str_replace(' ', '', $lastname);
         $lastname = mb_convert_case($lastname, MB_CASE_UPPER, "UTF-8");
         $usuariojunto = $lastname . $username1;
         $usuariojunto = $this->cleanString($usuariojunto);
@@ -140,7 +137,7 @@ XML;
                 $noches = "+" . $nochesXML . " day";
                 $fechaout = strtotime ( $noches , strtotime ( $fechain ) ) ;
                 $fechaout = date ( 'Y-m-d H:i:s' , $fechaout );
-                if($ApeXML === $lastname_clean){
+                if($ApeXML === $lastname){
                     // echo " _si existe en el PMS ";
 					DB::table('data_agents')->insert([
 						'mac_address' => $client_mac,
@@ -158,12 +155,12 @@ XML;
 						'expiration' => $fechaout
 					]);
 					DB::table('data_sites')->insert([
-						'lastname' => $lastname_clean,
+						'lastname' => $lastname,
 						'wificode' => $usuariojunto,
 						'site_id' => $site_info[0]->id,
 						'expiration' => $fechaout
 					]);
-                    $this->insertRadCloud($usuariojunto, $NombreXML, $lastname_clean, $fechaout, $site);
+                    $this->insertRadCloud($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
                     //$this->insertRadSunrise($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
                     usleep(5000);
                     $response = 'debio insertar en sunrise';
@@ -317,7 +314,7 @@ XML;
         $device = $agent->device();
         $robot = $agent->isRobot();
         if ($robot) {
-          $robot_name = $agent->robot();  
+          $robot_name = $agent->robot();
         }else{
           $robot_name = '';
         }
@@ -354,10 +351,9 @@ XML;
     	$password = $request->password1; // Apellido.
     	//Fin parámetros.
     	$lastname_clean = $this->cleanString($password);
-    	$lastname_clean = mb_convert_case($lastname_clean, MB_CASE_UPPER, "UTF-8");
-
+    	$lastname_clean = mb_convert_case($lastname, MB_CASE_UPPER, "UTF-8");
         $lastname = $this->cleanString($password);
-        $lastname = str_replace(' ', '', $lastname);
+        $lastname = str_replace(' ', '', $last_name);
         $lastname = mb_convert_case($lastname, MB_CASE_UPPER, "UTF-8");
         $usuariojunto = $lastname . $username1;
         $usuariojunto = $this->cleanString($usuariojunto);

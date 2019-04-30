@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('test_agent', 'TestController@testfunc');
-Route::get('test_xml', 'TestController@test_xml');
+Route::get('/test_agent', 'TestController@testfunc');
+// Route::get('test_xml', 'TestController@test_xml');
+Route::get('/test_user/{room}/{site}', 'TestController@test_xml');
+Route::get('/testing', 'TestController@testing');
 
 Route::get('/clear-cache', function() {
     Artisan::call('view:clear');
@@ -32,14 +34,20 @@ Route::get('/Cozumel', function () {
 	$site = 'CZ';
     return view('visitor.Palace.cozumel', compact('site'));
 });
+Route::get('/Cozumel_test', function () {
+    $site = 'CZ';
+    return view('visitor.Palace.cozumel_test', compact('site'));
+});
 Route::get('/Playacar', function () {
 	$site = 'PL';
     return view('visitor.Palace.playacar', compact('site'));
 });
 Route::post('submit_palace', 'PalaceController@login_palace');
 
+Route::post('/submit_palace_test', 'PalaceController@login_palace_test');
 
-Auth::routes();
+Auth::routes(['register' => false]);
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
