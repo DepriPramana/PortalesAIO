@@ -3,7 +3,7 @@
 <head>
 	<title>{{$site_name}}</title>
 	<!-- conseguir favicon de jamaicapalace. -->
-	<!-- <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicon.ico') }}"> -->
+	<!-- <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicon.ico') }}">  -->
 </head>
 <body>
 	<form id="loginform" name="loginform" method="POST" action="https://{{$sip}}:9998/SubscriberPortal/hotspotlogin">	
@@ -19,7 +19,7 @@
 		<input class="form-control" type="text" id="ssid" name="ssid" value="{{ $ssid }}" />
 		<input class="form-control" type="text" id="url" name="url" value="{{ $url }}" />
 		<input class="form-control" type="text" id="vlan" name="vlan" value="{{ $vlan }}" />
-		<button type="submit">submit</button>
+		<button type="button" id="btn_logeo" name="btn_logeo">submit</button>
 	</form>
 </body>
 @include('visitor.scripts')
@@ -28,6 +28,9 @@
 		setTimeout(function(){
 			// $('#loginform').submit();
 		}, 2000);
+	});
+	$('#btn_logeo').on('click', function(){
+		$('#loginform').submit();
 	});
 </script>
 </html>
