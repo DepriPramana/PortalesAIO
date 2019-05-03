@@ -75,7 +75,7 @@ XML;
     	$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
     	$site_name = $site_info[0]->nombre;
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
-      $temporal = 'GUEST9999';
+      	$temporal = 'GUEST9999';
   		if ($db_user > 0) {
   			// Existe.
   			//insercion de Agent.
