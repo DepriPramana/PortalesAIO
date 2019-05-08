@@ -21,7 +21,7 @@
 	<!-- jQuery Library -->
     <script src="{{asset('bluebay/js/jquery-1.11.2.min.js')}}"></script>
     <!-- Bootstrap Core JS -->
-	<script src="{{asset('js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('bluebay/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.min.js')}}"></script>
 	<link rel="stylesheet" type="text/css" href="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.css')}}">
 
@@ -32,19 +32,39 @@
             }else if(!$('#check').is(':checked')){
                 swal({title: "Error!", text:"Please Accept the terms and conditions to connect to the network.", type:"error", confirmButtonText: "Continue" });
             }else{
+            	var token = $('input[name="_token"]').val();
 				var correo = $('#email').val();
-			    var data = {email:  correo};
-			    $.post('php/validation.php', data, function(data2){
-			    	console.log(data2);
-			    	if(data2 == "TRUE"){
-			    		swal({   title: "Loggin in!",   text: "You are being redirected",   type: "success",   confirmButtonText: "Continue" }, function(){
-                    		$('#formpr').submit();
-                		});
-                		mostrar();
-			    	}else{
-			    		swal({title: "Error!", text:"Please type a valid email.", type:"error", confirmButtonText: "Continue" });
-			    	}
-	            });
+			    var data = {email:  correo, _token : token};
+			    $.ajax({
+			        type: "POST",
+			        url: "/validate_correo",
+			        data: data,
+			        success: function (data){
+			          console.log(data);
+				    	if(data == "TRUE"){
+				    		swal({   title: "Loggin in!",   text: "You are being redirected",   type: "success",   confirmButtonText: "Continue" }, function(){
+	                    		$('#formpr').submit();
+	                		});
+	                		mostrar();
+				    	}else{
+				    		swal({title: "Error!", text:"Please type a valid email.", type:"error", confirmButtonText: "Continue" });
+				    	}
+			        },
+			        error: function (data) {
+			          console.log('Error:', data);
+			        }
+			    });
+			    // $.post('/validate_correo', data, function(data2){
+			    // 	console.log(data2);
+			    // 	if(data2 == "TRUE"){
+			    // 		swal({   title: "Loggin in!",   text: "You are being redirected",   type: "success",   confirmButtonText: "Continue" }, function(){
+       //              		$('#formpr').submit();
+       //          		});
+       //          		mostrar();
+			    // 	}else{
+			    // 		swal({title: "Error!", text:"Please type a valid email.", type:"error", confirmButtonText: "Continue" });
+			    // 	}
+	      //       });
             }
 		}
 		function generar(){
@@ -87,6 +107,7 @@
 		<br>
 
 		<form method="POST" action="{{url('/submit_bluebay')}}" id="formpr" role="login">
+			{{ csrf_field() }}
 			<input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
 			<label>Clave/Internet Code:</label>
 			<input type="text" id="wificode" name="wificode" class="form-control" required/>

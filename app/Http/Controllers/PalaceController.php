@@ -71,6 +71,9 @@ XML;
         $usuariojunto = $lastname . $username1;
         $usuariojunto = $this->cleanString($usuariojunto);
         $fechain = date("Y-m-d H:i:s");
+      // if ($usuariojunto === 'GUEST9999' || $usuariojunto === 'GUEST8888') {
+      //     $this->loginZD('MALCODIGO', $sip, $mac, $client_mac, $uip, $ssid, $vlan);
+      // }
     	// database connection "sunrisezq".
     	$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
     	$site_name = $site_info[0]->nombre;
@@ -93,7 +96,7 @@ XML;
   				'mobile' => $mobile,
   				'success' => 1
   			]);
-  			return view('visitor.submitx', compact('site_name','temporal','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+  			return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
   		}else{
   			// No existe.
   	    	$XMLresponse = $this->getInfoxHab($username1, $site);
@@ -168,7 +171,7 @@ XML;
                       //$this->insertRadSunrise($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
                       usleep(5000);
                       $response = 'debio insertar en sunrise';
-                      return view('visitor.submitx', compact('site_name','temporal','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
+                      return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
                   }else{
                       // echo " _no existe en el PMS__?? raro  ";
   					DB::table('data_agents')->insert([

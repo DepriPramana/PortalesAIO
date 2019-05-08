@@ -10,7 +10,7 @@
 	<form id="loginform" name="loginform" method="POST" action="http://{{$sip}}:9997/login">
 		{{ csrf_field() }}
 		<!-- <input class="form-control" type="hidden" id="username" name="username" value="temporal/usuariojunto" /> -->
-		<input class="form-control" type="hidden" id="username" name="username" value="{{$temporal}}" />
+		<input class="form-control" type="hidden" id="username" name="username" value="{{$usuariojunto}}" />
 		<input class="form-control" type="hidden" id="password" name="password" value="123" />
 		<input class="form-control" type="hidden" id="sip" name="sip" value="{{ $sip }}" />
 		<input class="form-control" type="hidden" id="proxy" name="proxy" value="{{ $proxy }}" />

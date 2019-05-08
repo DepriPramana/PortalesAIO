@@ -43,9 +43,10 @@ Route::get('/Playacar', function () {
     return view('visitor.Palace.playacar', compact('site'));
 });
 Route::get('/Bluebay', function () {
-    $site = 'Blue';
+    $site = 'BGE';
     return view('visitor.Bluebay.bluebay', compact('site'));
 });
+Route::post('validate_correo', 'BlueController@validate_email');
 Route::post('submit_bluebay', 'BlueController@login_bluebay');
 Route::post('submit_palace', 'PalaceController@login_palace');
 
