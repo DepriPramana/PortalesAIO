@@ -71,20 +71,24 @@ class BlueController extends Controller
       	if ($db_user > 0) {
       		// Existe codigo.
             if ($this->checarEXP($wificode)) {
-				return view('visitor.submitx', compact('site_name','user_code','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+            	$usuariojunto = $this->user_code;
+				return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
             }else{
                 $this->checkProfile($wificode, $fechain);
-                
+
                 if ($this->user_code === 'MALCODIGO') {
-                	return view('visitor.submitx', compact('site_name','user_code','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));	
+                	$usuariojunto = $this->user_code;
+                	return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));	
                 }else{
+                	$usuariojunto = $this->user_code;
                 	$this->insertData($firstname, $lastname, $email);
-					return view('visitor.submitx', compact('site_name','user_code','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+					return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
                 }
             }
       	}else{
       		//no existe codigo.
-			return view('visitor.submitx', compact('site_name','user_code','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+      		$usuariojunto = $this->user_code;
+			return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
       	}
     }
     public function checarEXP($wificode){
