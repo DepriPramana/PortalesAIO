@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/test_agent', 'TestController@testfunc');
-Route::get('test_xml', 'TestController@test');
+// Route::get('/test_agent', 'TestController@testfunc');
+// Route::get('test_xml', 'TestController@test');
+
 Route::get('/test_user/{room}/{site}', 'TestController@test_xml');
 Route::get('/testing', 'TestController@testing');
 
@@ -46,6 +47,11 @@ Route::get('/Bluebay', function () {
     $site = 'BGE';
     return view('visitor.Bluebay.bluebay', compact('site'));
 });
+Route::get('/Unitec', function () {
+    $site = 'UTEC';
+    return view('visitor.Unitec.unitec', compact('site'));
+});
+Route::post('submit_unitec', 'UnitecController@login_unitec');
 Route::post('validate_correo', 'BlueController@validate_email');
 Route::post('submit_bluebay', 'BlueController@login_bluebay');
 Route::post('submit_palace', 'PalaceController@login_palace');
@@ -58,5 +64,5 @@ Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
-
+    // Rutas de sistema de control.
 });

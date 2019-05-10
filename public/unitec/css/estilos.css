@@ -1,0 +1,475 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:100,400,600,700);
+
+*
+{
+	border:0;
+	margin:0;
+	padding:0;
+}
+
+a
+{
+	text-decoration: none;
+	color: #666666;
+}
+
+a:hover
+{
+	color: #F68B1F;
+	 /* Firefox */
+    -moz-transition: all .5s ease-in;
+    /* WebKit */
+    -webkit-transition: all .5s ease-in;
+    /* Opera */
+    -o-transition: all .5s ease-in;
+    /* Standard */
+    transition: all .5s ease-in;
+}
+
+body
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 100;
+	font-size: 16px;
+	min-height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+h2
+{
+	color: #006FBA;
+	margin: 0 auto;
+	width: 90%;
+	font-size: 2em;
+	font-weight: 100;
+	border-bottom: .1em solid #CCC;
+}
+
+h3
+{
+	font-weight: 100;
+	font-size: 1.5em;
+	color: #006FBA;
+}
+
+h4
+{
+	font-weight: 100;
+	font-size: 2em;
+	color: #006FBA;
+}
+
+h5
+{
+	font-weight: 100;
+	font-size: .9em;
+	text-align: right;
+}
+
+h6
+{
+	color: #006FBA;
+	font-weight: 400;
+	font-size: 1.8em;
+	text-align: right;
+}
+
+header
+{
+	background-color: #FFF;
+	margin: 0 auto;
+	width: 90%;
+}
+
+footer
+{
+	background-color: #F4F4F4;
+	border-top: 3px solid #999999;
+	margin-top: .1em;
+	width: 100%;
+}
+
+nav
+{
+	font-size: 1.2em;	
+	text-align: center;
+	width: 100%;
+	background-color: #006FBA;
+}
+
+nav li
+{
+	display: inline-block;
+	list-style: none;
+	padding: .8em 1.7em;
+	vertical-align: top;
+}
+
+nav li a
+{
+	color: #FFF;
+	padding: .8em .5em;
+}
+
+nav li a:hover
+{
+	background-color: #FFFFFF;
+	border-bottom: 3px solid #F68B1F;
+	color: #006FBA;
+	cursor: pointer;
+}
+
+#buscador_redes_sociales
+{
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+	width: 77%;
+}
+
+#contenido
+{
+	margin-top: 20px;
+}
+
+#boton_entrar
+{
+	background: #F68B1F;
+	text-align: center;
+	font-size: 2em;
+	margin-top: 10px;
+}
+
+#boton_entrar a
+{
+	text-decoration: none;
+	color: white;
+}
+
+#boton_entrar a:hover
+{
+	cursor: pointer;
+	color: #006FBA;
+	 /* Firefox */
+    -moz-transition: all .5s ease-in;
+    /* WebKit */
+    -webkit-transition: all .5s ease-in;
+    /* Opera */
+    -o-transition: all .5s ease-in;
+    /* Standard */
+    transition: all .5s ease-in;
+}
+
+#logo_UNITEC
+{
+	display: inline-block;
+	min-width: 20%;
+}
+
+#ingresar
+{
+	background-color: #006FBA;
+	margin-top: 20px;
+}
+
+
+#ingresar h1
+{
+	color: white;
+	font-weight: 100;
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 12px;
+}
+
+#ingresar input
+{
+	margin: 5px 20px;
+}
+
+#ingresar span
+{
+	color: white;
+	font-size: 1.4em;
+}
+
+#informes
+{
+	display: inline-block;
+	font-size: 1.5em;
+	padding: 17px 0;
+	vertical-align: top;
+	width: 30%;
+}
+
+#informes p 
+{
+	color: #006FBA;
+	font-weight: 400;
+	font-size: 1.6em;
+	text-align: right;
+}
+
+#primer_contenido
+{
+	margin:0 auto;
+	width: 90%;
+}
+
+#primera_parte_footer
+{
+	border-bottom: 1px solid #999999;
+	color: #666666;
+	margin: 10px auto;
+	width: 90%;
+}
+
+#segunda_parte_footer
+{
+	margin: 10px auto;
+	width: 90%;
+}
+
+#segunda_parte_footer article
+{
+	display: inline-block;
+	width: 80%;
+}
+
+#segunda_parte_footer aside
+{
+	display: inline-block;
+	vertical-align: top;
+}
+
+#solicitud
+{
+	width: 100%;
+	margin: 0 auto;
+}
+
+#tercera_parte_footer
+{
+	background-color: #666666;
+	color: white;
+	font-size: .84em;
+	padding: 11px 0;
+}
+
+#tercera_parte_footer p
+{
+	margin: 0 auto;
+	text-align: center;
+	width: 90%;
+}
+
+#txtuser
+{
+	font-size: 1.2em;
+	width: 40%; 
+}
+#txtphone
+{
+    font-size: 1.2em !important;
+    width: 40%;
+}
+#txtpass
+{
+	font-size: 1.2em;
+	width: 90%; 
+}
+
+.boton_1
+{
+	background-color: #E6E6E6;
+	padding: 10px 0;
+	display: inline-block;
+}
+
+.boton_1 a
+{
+	text-decoration: none;
+	color: #808080;
+	padding: 10px;
+}
+
+.boton_1 a:hover
+{
+	background-color: #006FBA;
+	color: white;
+	 /* Firefox */
+    -moz-transition: all .5s ease-in;
+    /* WebKit */
+    -webkit-transition: all .5s ease-in;
+    /* Opera */
+    -o-transition: all .5s ease-in;
+    /* Standard */
+    transition: all .5s ease-in;
+}
+
+.contenido_introduccion
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 47%;
+	padding-top: 10px;
+}
+
+.contenido_introduccion ol
+{
+	margin: 10px 0 10px 30px;
+	color: #006FBA;
+}
+
+.cuadro_azul
+{
+	background-color: #006FBA;
+	color: #FFF;
+	display: block;
+	font-size: .2em;	
+	margin-left:5%; 
+	text-indent: 1000px;
+	width: 15%;
+}
+
+.iconos_seguridad
+{
+	display: block;
+	right: 0;
+}
+
+.seccion_ligas_footer
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 23%;
+}
+
+.seccion_ligas_footer h4
+{
+	font-weight: 200;
+	font-size: 1.5em;
+}
+
+.seccion_ligas_footer ul li
+{
+	list-style: none;
+}
+
+.seccion_ligas_footer_ultimo
+{
+	display: inline-block;
+	width: 14%;
+}
+
+.seccion_ligas_footer_ultimo h4
+{
+	font-weight: 200;
+	font-size: 1.5em;
+}
+
+.seccion_ligas_footer_ultimo ul li
+{
+	list-style: none;
+}
+
+.texto_solicita
+{
+	display: inline-block;
+	width: 100%;
+	border-left: 2px solid rgb(16, 117, 211);
+	background-color: rgb(240, 240, 240);
+	margin: 10px 0;
+}
+
+.texto_solicita h1
+{
+	font-weight: 100;
+	font-size: 1.4em;
+	text-align: center;
+}
+
+.solicita_informacion
+{
+	display: inline-block;
+	width: 100%;
+	background-color: #F68B1F;
+	text-align: center;
+}
+
+.solicita_informacion a
+{
+	text-decoration: none;
+	font-size: 1.6em;
+	color: white;
+}
+
+.solicita_informacion a:hover
+{
+	color: #006FBA;
+	 /* Firefox */
+    -moz-transition: all .5s ease-in;
+    /* WebKit */
+    -webkit-transition: all .5s ease-in;
+    /* Opera */
+    -o-transition: all .5s ease-in;
+    /* Standard */
+    transition: all .5s ease-in;
+}
+
+@media screen and (max-width: 1024px){
+
+}
+@media screen and (max-width: 768px){
+	h2{
+		text-align: center;
+	}
+
+	h5{
+		text-align: center;
+	}
+
+	h6{
+		text-align: center;
+	}
+
+	#informes p {
+		text-align: center;
+	}
+
+	#primer_contenido img{
+		width: 70%;
+		display: block;
+		margin: 0 auto;
+	}
+
+	#segunda_parte_footer {
+		text-align: center;
+	}
+
+	.contenido_introduccion{
+		text-align: center;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.seccion_ligas_footer {
+		display: inline-block;
+		width: 40%;
+	}
+
+	#informes
+	{
+	width: 90%;
+	}
+
+	.seccion_ligas_footer{
+		display: none;
+	}
+
+	.seccion_ligas_footer_ultimo{
+		display: none;
+	}
+
+}
