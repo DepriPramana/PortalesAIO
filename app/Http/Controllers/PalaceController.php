@@ -71,14 +71,17 @@ XML;
         $usuariojunto = $lastname . $username1;
         $usuariojunto = $this->cleanString($usuariojunto);
         $fechain = date("Y-m-d H:i:s");
-      // if ($usuariojunto === 'GUEST9999' || $usuariojunto === 'GUEST8888') {
-      //     $this->loginZD('MALCODIGO', $sip, $mac, $client_mac, $uip, $ssid, $vlan);
-      // }
     	// database connection "sunrisezq".
     	$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
     	$site_name = $site_info[0]->nombre;
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
-      	$temporal = 'GUEST9999';
+    	// $temporal = 'GUEST9999';
+      if ($site === 'ZCJG') {
+        if ($usuariojunto === 'GUEST9999' || $usuariojunto === 'GUEST8888') {
+          $usuariojunto = 'MALCODIGO';
+          return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+        }
+      }
   		if ($db_user > 0) {
   			// Existe.
   			//insercion de Agent.
