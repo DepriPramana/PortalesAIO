@@ -14,8 +14,7 @@ class TestController extends Controller
 private $xmlreq=<<<XML
 <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><Post_ObtenerInfoRoomPorHabitacion xmlns="http://localhost/xmlschemas/postserviceinterface/16-07-2009/"><RmroomRequest xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/RmroomRequest.xsd"><Rmroom><hotel xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/Rmroom.xsd"></hotel><room xmlns="http://localhost/pr_xmlschemas/hotel/01-03-2006/Rmroom.xsd"></room></Rmroom><rooms /></RmroomRequest></Post_ObtenerInfoRoomPorHabitacion></soap:Body></soap:Envelope>
 XML;
-	public function testfunc()
-	{
+	public function testfunc(){
         $ip = '172.20.0.2';
         $zd = 'http://' . $ip . ':9997/login';
         $sz = 'https://'. $ip.':9998/SubscriberPortal/hotspotlogin';
@@ -55,8 +54,7 @@ XML;
 
     		dd($languages[0]);
 	}
-	public function test()
-	{
+	public function test(){
 		$usuariojunto = 'MAGA DANIELS207';
 		$username1 = '30816'; //30734 30931 - KING30931  SHAWNYA NICOLE
 		$site_code = 'ZCJG';
@@ -72,8 +70,7 @@ XML;
 			dd($algo);
 		}
 	}
-  public function test_xml($room, $site_code)
-  {
+  public function test_xml($room, $site_code){
     $usuariojunto = 'MAGA DANIELS207';
     $username1 = '30816'; //30734 30931 - KING30931  SHAWNYA NICOLE
 
@@ -89,8 +86,7 @@ XML;
       dd($algo);
     }
   }
-  public function testing()
-  {
+  public function testing(){
     $usuariojunto = 'MAGA DANIELS207';
     $usuario= 'MAGA DANIELS';
     $password = '307';
@@ -163,9 +159,7 @@ XML;
           return FALSE;
       }
   }
-
-  public function creandosession(Request $request)
-  {
+  public function creandosession(Request $request){
 
     session(['sip' => $request->sip]);
     session(['mac' => $request->mac]);
@@ -178,4 +172,56 @@ XML;
     return 'OK';
   }
 
+  public function test_logeo(Request $request)
+  {
+    //Agent
+      $agent = new Agent(); // datos del usuario.
+      $bool = $agent->isDesktop();
+      if($bool){
+        $mobile = 0;
+      }else{
+        $mobile = 1;
+      }
+      $device = $agent->device();
+      $robot = $agent->isRobot();
+      if ($robot) {
+        $robot_name = $agent->robot();
+      }else{
+        $robot_name = '';
+      }
+      // $robot = $agent->robot();
+      $languages = $agent->languages();
+      if (count($languages) > 0) {
+        $lang = $languages[0];
+      }else{
+        $lang = '';
+      }
+      $browser = $agent->browser();
+      $browser_version = $agent->version($browser);
+      $platform = $agent->platform();
+      if ($agent->version($platform)) {
+        $platform_version = $agent->version($platform);
+      }else{
+        $platform_version = '';
+      }
+    //Fin Agent
+    // Parámetros de logeo
+      $url = $request->url;
+      $proxy = $request->proxy;
+      $sip = $request->sip;
+      $mac = $request->mac;
+      $client_mac = $request->client_mac;
+      $uip = $request->uip;
+      $ssid = $request->ssid;
+      $vlan = $request->vlan;
+      $res = $request->res;
+      $auth = $request->auth;
+      $site = $request->site_code;
+      $username = $request->username;
+      $username1 = $request->username1; // Room number.
+      $password = $request->password1; // Apellido.
+    // Fin parámetros.
+      dd('works');
+      // return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+  }
 }

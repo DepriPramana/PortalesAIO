@@ -51,6 +51,11 @@ Route::get('/Unitec', function () {
     $site = 'UTEC';
     return view('visitor.Unitec.unitec', compact('site'));
 });
+Route::get('/Fontan', function () {
+    $site = 'FONT';
+    return view('visitor.Fontan.fontan', compact('site'));
+});
+Route::post('submit_fontan_test', 'TestController@test_logeo');
 Route::post('submit_unitec', 'UnitecController@login_unitec');
 Route::post('validate_correo', 'BlueController@validate_email');
 Route::post('submit_bluebay', 'BlueController@login_bluebay');
