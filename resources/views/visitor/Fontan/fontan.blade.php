@@ -66,7 +66,7 @@
 			</div>
 			<input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
 			<!--<label>Code:</label>-->
-			<input type="hidden" id="username" name="username" value="123" />
+			<input type="hidden" id="username" name="username" value="FONTAN1337" />
 			<input type="hidden" id="password" name="password" value="123" />
 
 			<input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />

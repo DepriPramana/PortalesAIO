@@ -217,11 +217,12 @@ XML;
       $res = $request->res;
       $auth = $request->auth;
       $site = $request->site_code;
-      $username = $request->username;
-      $username1 = $request->username1; // Room number.
-      $password = $request->password1; // Apellido.
+      $usuariojunto = $request->username;
+      
+      $password = $request->password; // Apellido.
+      $site_name = 'Fontan hotspot';
     // Fin parámetros.
-      dd('works');
-      // return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+      // dd('works');
+      return view('visitor.submitx_fontan', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
   }
 }
