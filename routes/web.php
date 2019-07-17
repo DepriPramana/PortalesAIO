@@ -55,6 +55,15 @@ Route::get('/Fontan', function () {
     $site = 'FONT';
     return view('visitor.Fontan.fontan', compact('site'));
 });
+Route::get('/CentralNorte', function () {
+    $site = 'Central';
+    return view('visitor.CentralNorte.intro_central', compact('site'));
+});
+Route::get('/HaciendaEncantada', function(){
+    $site = 'Hacienda';
+    return view('visitor.Hacienda.hacienda', compact('site'));
+});
+
 Route::post('submit_fontan_test', 'TestController@test_logeo');
 Route::post('submit_unitec', 'UnitecController@login_unitec');
 Route::post('validate_correo', 'BlueController@validate_email');

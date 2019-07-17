@@ -151,7 +151,6 @@ XML;
           //echo "  -REQUEST:\n" . htmlentities($soapClient->__getLastRequest()) . "\n";
           unset($soapClient);
           return $resultRequest;
-
       } catch (SoapFault $exception) {
           echo "  -REQUEST:\n" . htmlentities($soapClient->__getLastRequest()) . "\n";
           echo $exception->getMessage();
