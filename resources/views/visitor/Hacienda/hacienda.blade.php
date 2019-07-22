@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Portal</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="hacienda/css/bootstrap.min.css">
     <style media="screen">
     .carousel-item {
       height: 100vh;
@@ -38,18 +38,18 @@
   <body>
 
     <header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div id="Indicadores" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#Indicadores" data-slide-to="0" class="active"></li>
+          <li data-target="#Indicadores" data-slide-to="1"></li>
+          <li data-target="#Indicadores" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
 
           <div class="carousel-item active" style="background:linear-gradient(
               rgba(255, 255, 255, 0.600),
               rgba(250, 250, 250, 0.600)
-            ),url('hacienda/haciendaencantada.jpg');">
+            ),url('hacienda/img/haciendaencantada.jpg');">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
@@ -57,7 +57,7 @@
           <div class="carousel-item" style="background:linear-gradient(
             rgba(255, 255, 255, 0.600),
             rgba(250, 250, 250, 0.600)
-            ),url('hacienda/haciendaencantada2.jpg');">
+            ),url('hacienda/img/haciendaencantada2.jpg');">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
@@ -65,16 +65,16 @@
           <div class="carousel-item" style="background:linear-gradient(
             rgba(255, 255, 255, 0.600),
             rgba(250, 250, 250, 0.600)
-            ),url('hacienda/haciendaencantada3.jpg');">
+            ),url('hacienda/img/haciendaencantada3.jpg');">
             <div class="carousel-caption d-none d-md-block">
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#Indicadores" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Siguiente</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#Indicadores" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Anterior</span>
         </a>
@@ -83,11 +83,11 @@
       <div id="conectar" class="">
         <div class="row" >
           <div class="col-lg-12 col-md-12 p-1" >
-            <img src="hacienda/logo/LOGO_HE_R&R-01.png"  class="mx-auto d-block rounded"alt="logo" width='90%'>
+            <img src="hacienda/img/logo/LOGO_HE_R&R-01.png"  class="mx-auto d-block rounded"alt="logo" width='90%'>
           </div>
         </div>
-      <form class="" action="http://{{ isset($_GET['sip']) ? $_GET['sip'] : ''}}:9997/login';" method="post">
-
+      <form action="http://{{ isset($_GET['sip']) ? $_GET['sip'] : ''}}:9997/login'" method="POST">
+      <!-- <form action="https://{{ isset($_GET['sip']) ? $_GET['sip'] : ''}}:9998/SubscriberPortal/hotspotlogin" method="POST" >  -->
         <input type="hidden" id="username" name="username" value="FONTAN1337" />
         <input type="hidden" id="password" name="password" value="123" />
 
@@ -101,6 +101,7 @@
         <input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ isset($_GET['vlan']) ? $_GET['vlan'] : '' }}" />
         <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
         <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
+
         <div class="row">
           <div class="col-lg-2">
 
@@ -115,15 +116,16 @@
 
           </div>
         </div>
+
       </form>
       </div>
     </header>
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="hacienda/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="hacienda/js/popper.min.js" ></script>
+    <script src="hacienda/js/bootstrap.min.js"></script> 
 
   </body>
 
