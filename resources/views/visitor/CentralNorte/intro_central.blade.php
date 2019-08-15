@@ -32,13 +32,13 @@
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 		<script>
 			$(document).ready(function(){
-				$("#vid")[0].load();
-				$("#vid")[0].play();
+				// $("#vid")[0].load();
+				// $("#vid")[0].play();
 
-				setTimeout(function(){
-					console.log('17 segundos');
-					// document.getElementById("loginform").submit();	
-				}, 17000);
+				// setTimeout(function(){
+				// 	console.log('17 segundos');
+				// 	// document.getElementById("loginform").submit();	
+				// }, 17000);
 
 				$("#vid").on('ended', function(){
 					// document.getElementById("loginform").submit();

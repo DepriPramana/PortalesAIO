@@ -17,7 +17,7 @@ XML;
     public function login_palace(Request $request)
     {
     	//Agent
-    	$agent = new Agent(); // datos del usuario.
+    	  $agent = new Agent(); // datos del usuario.
         $bool = $agent->isDesktop();
         if($bool){
           $mobile = 0;
@@ -46,25 +46,25 @@ XML;
         }else{
           $platform_version = '';
         }
-        //Fin Agent
-        // Parámetros de logeo
-    	$url = $request->url;
-    	$proxy = $request->proxy;
-    	$sip = $request->sip;
-    	$mac = $request->mac;
-    	$client_mac = $request->client_mac;
-    	$uip = $request->uip;
-    	$ssid = $request->ssid;
-    	$vlan = $request->vlan;
-    	$res = $request->res;
-    	$auth = $request->auth;
-    	$site = $request->site_code;
-    	$username = $request->username;
-    	$username1 = $request->username1; // Room number.
-    	$password = $request->password1; // Apellido.
+      //Fin Agent
+      //Parámetros de logeo
+      	$url = $request->url;
+      	$proxy = $request->proxy;
+      	$sip = $request->sip;
+      	$mac = $request->mac;
+      	$client_mac = $request->client_mac;
+      	$uip = $request->uip;
+      	$ssid = $request->ssid;
+      	$vlan = $request->vlan;
+      	$res = $request->res;
+      	$auth = $request->auth;
+      	$site = $request->site_code;
+      	$username = $request->username;
+      	$username1 = $request->username1; // Room number.
+      	$password = $request->password1; // Apellido.
     	//Fin parámetros.
-    	$lastname_clean = $this->cleanString($password);
-    	$lastname_clean = mb_convert_case($lastname_clean, MB_CASE_UPPER, "UTF-8");
+    	  $lastname_clean = $this->cleanString($password);
+    	  $lastname_clean = mb_convert_case($lastname_clean, MB_CASE_UPPER, "UTF-8");
         $lastname = $this->cleanString($password);
         $lastname = str_replace(' ', '', $lastname);
         $lastname = mb_convert_case($lastname, MB_CASE_UPPER, "UTF-8");
