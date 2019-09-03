@@ -61,7 +61,7 @@ Route::get('/CentralNorte', function () {
 });
 Route::get('/HaciendaEncantada', function(){
     $site = 'Hacienda';
-    return view('visitor.Hacienda.hacienda', compact('site'));
+    return view('visitor.Hacienda.hacienda_new', compact('site'));
 });
 
 Route::post('submit_fontan_test', 'TestController@test_logeo');
