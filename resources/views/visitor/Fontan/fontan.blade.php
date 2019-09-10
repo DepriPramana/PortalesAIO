@@ -98,9 +98,9 @@
 
 			var i = Math.random() * 10;
 
-			if(i < 3) document.body.style = "background: url('images/background.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
-			else if(i < 6) document.body.style = "background: url('images/background3.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
-			else document.body.style = "background: url('images/background4.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
+			if(i < 3) document.body.style = "background: url('fontan/images/background.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
+			else if(i < 6) document.body.style = "background: url('fontan/images/background3.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
+			else document.body.style = "background: url('fontan/images/background4.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
 
 	</script>
 
