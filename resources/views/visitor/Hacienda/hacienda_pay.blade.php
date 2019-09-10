@@ -74,7 +74,16 @@
                   </div>
                 </div>
 
+                <div id="back-btn" class="form-group text-center m-t-20" style="display: none;">
+                  <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button"><i class="fa fa-arrow-left"></i> Return to options</button>
+                  </div>
+                </div>
+
                 <form id="form-1" style="display: none;">
+
+
+
                   <div class="well well-sm">
                     <b>Premium Daily Non Member.</b>
                     <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
@@ -184,15 +193,9 @@
 
                   <label>Last name</label>
                   <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
-
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
 
-                </form>
-
-                <form style="display: none;">
-                  <label>Room number</label>
-                  <input type="number" name="room">
                 </form>
 
                 <br>
@@ -222,6 +225,7 @@
                 <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
                 <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
               </div>
+
             </div>
           </div>
 

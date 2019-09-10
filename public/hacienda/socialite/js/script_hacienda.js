@@ -13,14 +13,28 @@ $(function() {
   });*/
 });
 
+$('#back-btn').on('click', function(){
+  $('#form-1').css("display","none");
+  $('#form-2').css("display","none");
+  $('#form-3').css("display","none");
+  $('#form-4').css("display","none");
+  $('#opcion-1').css("display","block");
+  $('#opcion-2').css("display","block");
+  $('#opcion-3').css("display","block");
+  $('#opcion-4').css("display","block");
+  $('#back-btn').css("display","none");
+});
+
 $('#opcion-1').on('click', function() {
   $('#form-1').css("display","block");
   $('#form-2').css("display","none");
   $('#form-3').css("display","none");
   $('#form-4').css("display","none");
+  $('#opcion-1').css("display","none");
   $('#opcion-2').css("display","none");
   $('#opcion-3').css("display","none");
   $('#opcion-4').css("display","none");
+  $('#back-btn').css("display","block");
 });
 
 $('#opcion-2').on('click', function() {
@@ -29,8 +43,10 @@ $('#opcion-2').on('click', function() {
   $('#form-3').css("display","none");
   $('#form-4').css("display","none");
   $('#opcion-1').css("display","none");
+  $('#opcion-2').css("display","none");
   $('#opcion-3').css("display","none");
   $('#opcion-4').css("display","none");
+  $('#back-btn').css("display","block");
 });
 
 $('#opcion-3').on('click', function() {
@@ -40,7 +56,9 @@ $('#opcion-3').on('click', function() {
   $('#form-4').css("display","none");
   $('#opcion-1').css("display","none");
   $('#opcion-2').css("display","none");
+  $('#opcion-3').css("display","none");
   $('#opcion-4').css("display","none");
+  $('#back-btn').css("display","block");
 });
 
 $('#opcion-4').on('click', function() {
@@ -51,6 +69,8 @@ $('#opcion-4').on('click', function() {
   $('#opcion-1').css("display","none");
   $('#opcion-2').css("display","none");
   $('#opcion-3').css("display","none");
+  $('#opcion-4').css("display","none");
+  $('#back-btn').css("display","block");
 });
 
 $('#btnlogin').on('click', function(){
