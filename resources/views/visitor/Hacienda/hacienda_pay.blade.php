@@ -40,26 +40,88 @@
               <p class="box-title-two simbolos">*****</p></h2> -->
           </div>
 
-            <h3 class="box-title m-b-0 center-align">SIGN IN</h3>
-            <center>
-              <small>insert the information below</small>
-            </center>
-
-          <!-- <form class="form-horizontal" id="loginform" action="index.html"> -->
-          <form class="form-horizontal" id="loginform" name="loginform" method="POST" action="http://{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}:9997/login">
+          <h3 class="box-title m-b-0 center-align">SIGN IN</h3>
+          <center>
+            <small>insert the information below</small>
+          </center>
+          <div class="form-horizontal">
             <div class="form-group  m-t-20">
               <div class="col-xs-12">
                 <!-- <input type="text" name="sdasd" disabled placeholder="Rate: 1024 Kb"> -->
-                <div class="well well-sm"> Service features <b>Free Basic.</b></div>
-                <h6><b>Rate</b>: <i class="fa fa-download"></i> 1024 / <i class="fa fa-upload"></i> 1024 Kb.</h6>
-                <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
-                <h6><b>Cost</b>: Free</h6>
-                <hr>
-                <label>Email address:</label>
-                <input id="email_addess" name="email_addess" class="form-control" type="email" required="" placeholder="email address">
-                <label>Full name</label>
-                <input id="name" type="text" name="name" class="form-control" required placeholder="Full name">
+                <!-- <div class="well well-sm"> Service features <b>Premium Daily Non Member.</b></div>
+                <div class="well well-sm"> Service features <b>Premium Weekly Non Member.</b></div>
+                <div class="well well-sm"> Service features <b>Premium Daily Member.</b></div>
+                <div class="well well-sm"> Service features <b>Premium Weekly Member.</b></div> -->
+                <!-- Botones de servicios. -->
+                <div class="form-group text-center m-t-20">
+                  <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Daily Non Member</button>
+                  </div>
+                </div>
+                <div class="form-group text-center m-t-20">
+                  <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Weekly Non Member</button>
+                  </div>
+                </div>
+                <div class="form-group text-center m-t-20">
+                  <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Daily Member</button>
+                  </div>
+                </div>
+                <div class="form-group text-center m-t-20">
+                  <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Weekly Member</button>
+                  </div>
+                </div> 
+               
+                <form style="display: block;">
+                  <div class="well well-sm">
+                    <b>Premium Daily Non Member.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
+                    <h6><b>Cost</b>: 12 USD</h6>
+                  </div>
+                  <hr>
+                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="radio pull-left p-t-0">
+                        <input id="room_radio" name="room_or_acc" type="radio" value="room" checked>
+                        <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
+                          <br>
+                        <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
+                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label>Last name</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+                  
+                  <label>Room number</label>
+                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+
+                </form>
+
+                <form style="display: none;">
+                  <label>Room number</label>
+                  <input type="number" name="room">
+                </form>
+
+                <br>
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="checkbox checkbox-info pull-left p-t-0">
+                      <input id="checkbox-signup" name="checkbox-signup"type="checkbox">
+                      <label for="checkbox-signup"><p id='texto-terminos'> Accept terms and conditions</p></label>
+                    </div>
+                    <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-info-circle m-r-5"></i> Terms.</a>
+                  </div>
+                </div>
+              
+
               </div>
+
               <div class="information-hidden">
                 {{ csrf_field() }}
                 <input class="form-control" type="hidden" id="username" name="username" value="GUESTOMR" />
@@ -74,30 +136,13 @@
                 <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
               </div>
             </div>
+          </div>
 
-            <div class="form-group">
-              <div class="col-md-12">
-                <div class="checkbox checkbox-info pull-left p-t-0">
-                  <input id="checkbox-signup" name="checkbox-signup"type="checkbox">
-                  <label for="checkbox-signup"><p id='texto-terminos'> Accept terms and conditions</p></label>
-                </div>
-                <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-info-circle m-r-5"></i> Terms.</a>
-              </div>
-            </div>
 
-            <div class="form-group text-center m-t-20">
-              <div class="col-xs-12">
-                <button id="btnlogin" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
-              </div>
-            </div>
-       
-
-          </form>
 
         </div>
       </div>
 
-      <!-- Modal terminos y condiciones. -->
       <div class="row">
         <div class="col-md-4">
               <div class="white-box">
@@ -140,7 +185,6 @@
               </div>
         </div>
       </div>
-
     </section>
 
     <!-- section de pagos. -->
@@ -296,6 +340,6 @@
       <!-- Materialize JavaScript -->
       <!-- <script src="{{ asset('hacienda/socialite/plugins/materialize/js/materialize.js') }}"></script> -->
       <!-- Script JavaScript-->
-      <script src="{{ asset('hacienda/socialite/js/script_hacienda.js') }}"></script>
+      <!-- <script src="{{ asset('hacienda/socialite/js/script_hacienda.js') }}"></script> -->
   </body>
 </html>

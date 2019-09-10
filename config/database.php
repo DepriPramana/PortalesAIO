@@ -102,6 +102,18 @@ return [
             'engine' => null,
         ],
 
+        'hacienda_sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => '187.216.83.184',
+            'port' => '1433',
+            'database' => 'TSWDATA_ClientCustom',
+            'username' => 'sitwifi',
+            'password' => '1!inT730#/a*E',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

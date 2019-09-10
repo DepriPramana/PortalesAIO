@@ -63,6 +63,10 @@ Route::get('/HaciendaEncantada', function(){
     $site = 'Hacienda';
     return view('visitor.Hacienda.hacienda_new', compact('site'));
 });
+Route::get('HaciendaPremium', function(){
+    $site = 'Hacienda_pre';
+    return view('visitor.Hacienda.hacienda_pay', compact('site')); 
+});
 
 Route::post('submit_fontan_test', 'TestController@test_logeo');
 Route::post('submit_unitec', 'UnitecController@login_unitec');
