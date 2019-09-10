@@ -50,7 +50,7 @@
 	<section class="container">
 	    <section class="login-form">
 	    <section align="center">
-				
+
 		<!--<img src="images/logosit.png" alt="" class="logo-img" />-->
 		</section>
 		<section class="login-form" align="center" id="loadingsection" style="display:none" align="center">
@@ -59,7 +59,7 @@
 			</form>
 		</section>
 		<br>
-		<form method="POST" action="{{url('/submit_fontan_test')}}" id="formpr" role="login" onsubmit="mostrar();">			
+		<form method="POST" action="{{url('/submit_fontan_test')}}" id="formpr" role="login" onsubmit="mostrar();">
 			{{ csrf_field() }}
 			<div align="center">
 				<img src="{{asset('fontan/images/logo6.png')}}" style="width: 33vw" alt="Fontan Logo" class="logo-img">
@@ -79,7 +79,7 @@
 			<input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ isset($_GET['vlan']) ? $_GET['vlan'] : '' }}" />
 			<input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
 			<input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
-			
+
 			<div id="info">
 				<p>Estimado huésped,</p>
 				<p>Bienvenido al Hotel Fontan Ixtapa, le deseamos que su estancia sea agradable, nosotros generamos experiencias vacacionales geniales. Le recordamos que le llegará a su correo electrónico nuestra encuesta de satisfacción, por favor ayúdenos contestándola.</p>
@@ -93,14 +93,16 @@
 		</form>
 		</section>
 	</section>
-	
+
 	<script>
-		var i = Math.random() * 10;
-		
-		if(i < 3) document.body.style = "background: url('fontan/images/background.jpg') no-repeat center center fixed; background-size: cover;";
-		else if(i < 6) document.body.style = "background: url('fontan/images/background3.jpg') no-repeat center center fixed; background-size: cover;";
-		else document.body.style = "background: url('fontan/images/background4.jpg') no-repeat center center fixed; background-size: cover;";
+
+			var i = Math.random() * 10;
+
+			if(i < 3) document.body.style = "background: url('images/background.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
+			else if(i < 6) document.body.style = "background: url('images/background3.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
+			else document.body.style = "background: url('images/background4.jpg') no-repeat center center fixed; background-size: cover; height: 100vh; overflow-y: hidden;";
+
 	</script>
-	
+
 </body>
 </html>

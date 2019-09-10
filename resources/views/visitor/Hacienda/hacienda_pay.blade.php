@@ -30,7 +30,7 @@
     <link href="{{ asset('hacienda/socialite/plugins/supersized/css/supersized.css') }}" rel="stylesheet" type="text/css" />
 </head>
   <body>
-    
+
     <section id="wrapper" class="free_section" style="display: block;">
       <div class="login-box">
         <div class="white-box">
@@ -53,28 +53,28 @@
                 <div class="well well-sm"> Service features <b>Premium Daily Member.</b></div>
                 <div class="well well-sm"> Service features <b>Premium Weekly Member.</b></div> -->
                 <!-- Botones de servicios. -->
-                <div class="form-group text-center m-t-20">
+                <div id="opcion-1" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Daily Non Member</button>
                   </div>
                 </div>
-                <div class="form-group text-center m-t-20">
+                <div id="opcion-2" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Weekly Non Member</button>
                   </div>
                 </div>
-                <div class="form-group text-center m-t-20">
+                <div id="opcion-3" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Daily Member</button>
                   </div>
                 </div>
-                <div class="form-group text-center m-t-20">
+                <div id="opcion-4" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Weekly Member</button>
                   </div>
-                </div> 
-               
-                <form style="display: block;">
+                </div>
+
+                <form id="form-1" style="display: none;">
                   <div class="well well-sm">
                     <b>Premium Daily Non Member.</b>
                     <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
@@ -97,7 +97,94 @@
 
                   <label>Last name</label>
                   <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
-                  
+
+                  <label>Room number</label>
+                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+
+                </form>
+
+                <form id="form-2" style="display: none;">
+                  <div class="well well-sm">
+                    <b>Premium Daily Non Member.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
+                    <h6><b>Cost</b>: 12 USD</h6>
+                  </div>
+                  <hr>
+                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="radio pull-left p-t-0">
+                        <input id="room_radio" name="room_or_acc" type="radio" value="room" checked>
+                        <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
+                          <br>
+                        <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
+                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label>Last name</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+
+                  <label>Room number</label>
+                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+
+                </form>
+
+                <form id="form-3" style="display: none;">
+                  <div class="well well-sm">
+                    <b>Premium Daily Non Member.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
+                    <h6><b>Cost</b>: 12 USD</h6>
+                  </div>
+                  <hr>
+                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="radio pull-left p-t-0">
+                        <input id="room_radio" name="room_or_acc" type="radio" value="room" checked>
+                        <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
+                          <br>
+                        <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
+                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label>Last name</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+
+                  <label>Room number</label>
+                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+
+                </form>
+
+                <form id="form-4" style="display: none;">
+                  <div class="well well-sm">
+                    <b>Premium Daily Non Member.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
+                    <h6><b>Cost</b>: 12 USD</h6>
+                  </div>
+                  <hr>
+                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="radio pull-left p-t-0">
+                        <input id="room_radio" name="room_or_acc" type="radio" value="room" checked>
+                        <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
+                          <br>
+                        <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
+                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label>Last name</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
 
@@ -118,7 +205,7 @@
                     <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-info-circle m-r-5"></i> Terms.</a>
                   </div>
                 </div>
-              
+
 
               </div>
 
@@ -274,7 +361,7 @@
                   </p>
                 </div>
               </div>
-            </div>          
+            </div>
 
           </form>
 
@@ -340,6 +427,6 @@
       <!-- Materialize JavaScript -->
       <!-- <script src="{{ asset('hacienda/socialite/plugins/materialize/js/materialize.js') }}"></script> -->
       <!-- Script JavaScript-->
-      <!-- <script src="{{ asset('hacienda/socialite/js/script_hacienda.js') }}"></script> -->
+      <script src="{{ asset('hacienda/socialite/js/script_hacienda.js') }}"></script>
   </body>
 </html>

@@ -13,6 +13,46 @@ $(function() {
   });*/
 });
 
+$('#opcion-1').on('click', function() {
+  $('#form-1').css("display","block");
+  $('#form-2').css("display","none");
+  $('#form-3').css("display","none");
+  $('#form-4').css("display","none");
+  $('#opcion-2').css("display","none");
+  $('#opcion-3').css("display","none");
+  $('#opcion-4').css("display","none");
+});
+
+$('#opcion-2').on('click', function() {
+  $('#form-1').css("display","none");
+  $('#form-2').css("display","block");
+  $('#form-3').css("display","none");
+  $('#form-4').css("display","none");
+  $('#opcion-1').css("display","none");
+  $('#opcion-3').css("display","none");
+  $('#opcion-4').css("display","none");
+});
+
+$('#opcion-3').on('click', function() {
+  $('#form-1').css("display","none");
+  $('#form-2').css("display","none");
+  $('#form-3').css("display","block");
+  $('#form-4').css("display","none");
+  $('#opcion-1').css("display","none");
+  $('#opcion-2').css("display","none");
+  $('#opcion-4').css("display","none");
+});
+
+$('#opcion-4').on('click', function() {
+  $('#form-1').css("display","none");
+  $('#form-2').css("display","none");
+  $('#form-3').css("display","none");
+  $('#form-4').css("display","block");
+  $('#opcion-1').css("display","none");
+  $('#opcion-2').css("display","none");
+  $('#opcion-3').css("display","none");
+});
+
 $('#btnlogin').on('click', function(){
   var xa = validarEmail('email_addess');
   var xb = validarcheck('checkbox-signup');
