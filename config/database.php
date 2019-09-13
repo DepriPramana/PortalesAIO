@@ -114,6 +114,18 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'hacienda_sqlsrv_practice' => [
+            'driver' => 'sqlsrv',
+            'host' => '187.216.83.184',
+            'port' => '1433',
+            'database' => 'TSWPRACTICE_ClientCustom',
+            'username' => 'sitwifitest',
+            'password' => 'test&*P',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

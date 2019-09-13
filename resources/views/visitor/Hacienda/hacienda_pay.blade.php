@@ -53,6 +53,11 @@
                 <div class="well well-sm"> Service features <b>Premium Daily Member.</b></div>
                 <div class="well well-sm"> Service features <b>Premium Weekly Member.</b></div> -->
                 <!-- Botones de servicios. -->
+                <div id="opcion-free" class="form-group text-center m-t-20">
+                  <div class="col-xs-12">
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Free Basic</button>
+                  </div>
+                </div>
                 <div id="opcion-1" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Daily Non Member</button>
@@ -80,14 +85,48 @@
                   </div>
                 </div>
 
+                <form id="form-free" style="display: none;">
+                  {{ csrf_field() }}
+                  <div class="well well-sm">
+                    <b>Free Basic.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 1024 / <i class="fa fa-upload"></i> 1024 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
+                    <h6><b>Cost</b>: Free</h6>
+                  </div>
+                  <hr>
+                  <input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
+                  <input class="form-control" type="hidden" id="id_site_code" name="id_site_code" value="{{$id_site}}" />
+                  <label>Full name</label>
+                  <input type="text" name="fullname" id="fullname" placeholder="Enter your full name">
+                  <label>Email address:</label>
+                  <input id="email_address" name="email_address" class="form-control" type="email" required="" placeholder="email address">
+
+                  <div class="information-hidden">
+                    <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
+                    <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
+                    <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
+                    <input class="form-control" type="hidden" id="mac" name="mac" value="{{ isset($_GET['mac']) ? $_GET['mac'] : '' }}" />
+                    <input class="form-control" type="hidden" id="client_mac" name="client_mac" value="{{ isset($_GET['client_mac']) ? $_GET['client_mac'] : '' }}" />
+                    <input class="form-control" type="hidden" id="uip" name="uip" value="{{ isset($_GET['uip']) ? $_GET['uip'] : '' }}" />
+                    <input class="form-control" type="hidden" id="ssid" name="ssid" value="{{ isset($_GET['ssid']) ? $_GET['ssid'] : '' }}" />
+                    <input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ isset($_GET['vlan']) ? $_GET['vlan'] : '' }}" />
+                    <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
+                    <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
+                  </div>
+
+                  <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                      <button id="btnlogin-free" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                    </div>
+                  </div>
+                </form>
+
                 <form id="form-1" style="display: none;">
-
-
-
+                  {{ csrf_field() }}
                   <div class="well well-sm">
                     <b>Premium Daily Non Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 2000 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 24 Hour(s)</h6>
                     <h6><b>Cost</b>: 12 USD</h6>
                   </div>
                   <hr>
@@ -103,21 +142,28 @@
                       </div>
                     </div>
                   </div>
-
+                  <input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
+                  <input class="form-control" type="hidden" id="id_site_code" name="id_site_code" value="{{$id_site}}" />
                   <label>Last name</label>
-                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name(same as your reservation)">
 
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-
+                  
+                  <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                      <button id="btnlogin-1" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                    </div>
+                  </div>
                 </form>
 
                 <form id="form-2" style="display: none;">
+                  {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Premium Daily Non Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
-                    <h6><b>Cost</b>: 12 USD</h6>
+                    <b>Premium Weekly Non Member.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 2000 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 168 Hour(s)</h6>
+                    <h6><b>Cost</b>: 60 USD</h6>
                   </div>
                   <hr>
                   <div class="well well-sm">Select a browse option: </div>
@@ -132,21 +178,27 @@
                       </div>
                     </div>
                   </div>
-
+                  <input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
+                  <input class="form-control" type="hidden" id="id_site_code" name="id_site_code" value="{{$id_site}}" />
                   <label>Last name</label>
                   <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
 
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-
+                  <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                      <button id="btnlogin-2" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                    </div>
+                  </div>
                 </form>
 
                 <form id="form-3" style="display: none;">
+                  {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Premium Daily Non Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
-                    <h6><b>Cost</b>: 12 USD</h6>
+                    <b>Premium Daily Member.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 24 Hour(s)</h6>
+                    <h6><b>Cost</b>: 10 USD</h6>
                   </div>
                   <hr>
                   <div class="well well-sm">Select a browse option: </div>
@@ -161,21 +213,27 @@
                       </div>
                     </div>
                   </div>
-
+                  <input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
+                  <input class="form-control" type="hidden" id="id_site_code" name="id_site_code" value="{{$id_site}}" />
                   <label>Last name</label>
                   <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
 
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-
+                  <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                      <button id="btnlogin-3" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                    </div>
+                  </div>
                 </form>
 
                 <form id="form-4" style="display: none;">
+                  {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Premium Daily Non Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 3200 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
-                    <h6><b>Cost</b>: 12 USD</h6>
+                    <b>Premium Weekly Member.</b>
+                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
+                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 168 Hour(s)</h6>
+                    <h6><b>Cost</b>: 48 USD</h6>
                   </div>
                   <hr>
                   <div class="well well-sm">Select a browse option: </div>
@@ -190,15 +248,21 @@
                       </div>
                     </div>
                   </div>
-
+                  <input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
+                  <input class="form-control" type="hidden" id="id_site_code" name="id_site_code" value="{{$id_site}}" />
                   <label>Last name</label>
                   <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-
+                  <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                      <button id="btnlogin-4" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                    </div>
+                  </div>
                 </form>
 
                 <br>
+
                 <div class="form-group">
                   <div class="col-md-12">
                     <div class="checkbox checkbox-info pull-left p-t-0">
@@ -211,163 +275,10 @@
 
 
               </div>
-
-              <div class="information-hidden">
-                {{ csrf_field() }}
-                <input class="form-control" type="hidden" id="username" name="username" value="GUESTOMR" />
-                <input class="form-control" type="hidden" id="password" name="password" value="123" />
-                <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
-                <input class="form-control" type="hidden" id="mac" name="mac" value="{{ isset($_GET['mac']) ? $_GET['mac'] : '' }}" />
-                <input class="form-control" type="hidden" id="client_mac" name="client_mac" value="{{ isset($_GET['client_mac']) ? $_GET['client_mac'] : '' }}" />
-                <input class="form-control" type="hidden" id="uip" name="uip" value="{{ isset($_GET['uip']) ? $_GET['uip'] : '' }}" />
-                <input class="form-control" type="hidden" id="ssid" name="ssid" value="{{ isset($_GET['ssid']) ? $_GET['ssid'] : '' }}" />
-                <input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ isset($_GET['vlan']) ? $_GET['vlan'] : '' }}" />
-                <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
-                <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
-              </div>
-
             </div>
           </div>
 
 
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-              <div class="white-box">
-                  <!-- sample modal content -->
-                  <!-- /.modal -->
-                  <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                  <h4 class="modal-title">{{ trans('termsofuse.title') }}</h4> </div>
-                              <div class="modal-body">
-                                <ul class="list-unstyled">
-                                  <li>{{ trans('termsofuse.paragraph') }}
-                                    <ul>
-                                      <li>
-                                        {{ trans('termsofuse.paragraph_one') }}
-                                      </li>
-                                      <li>
-                                        {{ trans('termsofuse.paragraph_two') }}
-                                      </li>
-                                      <li>
-                                        {{ trans('termsofuse.paragraph_three') }}
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  <li>
-                                    {{ trans('termsofuse.paragraph_four') }}
-                                    <a href="{{ url('policies') }}" target="_blank">{{ trans('termsofuse.more') }}</a>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">{{ trans('termsofuse.close_modal') }}</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Button trigger modal -->
-              </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- section de pagos. -->
-    <section id="wrapper" class="payment_section" style="display: none;">
-      <div class="login-box">
-        <div class="white-box">
-          <div class="title_mod">
-              <!-- <h2 class="box-title-two"><p class="inline" >Ocean</p> <p class="inline subtitle">Maya Royale</p>
-              <br>
-              <p class="box-title-two simbolos">*****</p></h2> -->
-          </div>
-
-            <h3 class="box-title m-b-0 center-align">Titulo</h3>
-            <center>
-              <small>subtitulo</small>
-            </center>
-
-          <!-- <form class="form-horizontal" id="loginform" action="index.html"> -->
-          <form class="form-horizontal" id="loginform" name="loginform" method="POST" action="http://{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}:9997/login">
-            <div class="form-group  m-t-20">
-              <div class="col-xs-12">
-                <label>{{ trans('login.email_address') }}</label>
-                <input id="email_addess" name="email_addess" class="form-control" type="email" required="" placeholder="{{ trans('login.email_address') }}">
-              </div>
-              <div class="information-hidden">
-                {{ csrf_field() }}
-                <input class="form-control" type="hidden" id="username" name="username" value="GUESTOMR" />
-                <input class="form-control" type="hidden" id="password" name="password" value="123" />
-                <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
-                <input class="form-control" type="hidden" id="mac" name="mac" value="{{ isset($_GET['mac']) ? $_GET['mac'] : '' }}" />
-                <input class="form-control" type="hidden" id="client_mac" name="client_mac" value="{{ isset($_GET['client_mac']) ? $_GET['client_mac'] : '' }}" />
-                <input class="form-control" type="hidden" id="uip" name="uip" value="{{ isset($_GET['uip']) ? $_GET['uip'] : '' }}" />
-                <input class="form-control" type="hidden" id="ssid" name="ssid" value="{{ isset($_GET['ssid']) ? $_GET['ssid'] : '' }}" />
-                <input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ isset($_GET['vlan']) ? $_GET['vlan'] : '' }}" />
-                <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
-                <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-md-12">
-                <div class="checkbox checkbox-info pull-left p-t-0">
-                  <input id="checkbox-signup" name="checkbox-signup"type="checkbox">
-                  <label for="checkbox-signup"><p id='texto-terminos'> {{ trans('login.agree') }}</p></label>
-                </div>
-                <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-info-circle m-r-5"></i> {{ trans('login.terms') }}</a>
-              </div>
-            </div>
-
-            <div class="form-group text-center m-t-20">
-              <div class="col-xs-12">
-                <button id="btnlogin" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ trans('login.access') }}</button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                  <h3 class="box-title m-b-0 center-align"><b>-{{ trans('login.or') }}-</b></h3>
-              </div>
-            </div>
-
-            <div class="row">
-              <!-- <div class="col-xs-6 col-sm-6 col-md-6 m-t-10 text-center">
-                <div class="social">
-                  <a href="{{ url('/auth/facebook') }}" class="btn btn-block btn-facebook" data-toggle="tooltip"  title="Login with Facebook">
-                    <i aria-hidden="true" class="fa fa-facebook-official"> Facebook</i>
-                  </a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-6 m-t-10 text-center">
-                <div class="social">
-                  <a href="{{ url('/auth/google') }}" class="btn btn-block btn-googleplus" data-toggle="tooltip"  title="Login with Google">
-                    <i aria-hidden="true" class="fa fa-google-plus-official"> Google</i>
-                  </a>
-                </div>
-              </div> -->
-            </div>
-
-            <div class="row">
-              <div class="form-group m-b-0">
-                <div class="col-sm-12 text-center">
-                  <p>{{ trans('login.change_language') }}
-                    <!-- <a href="{{ url('lang/es') }}" class="text-dark m-l-5"><img src="./images/flags/es.png" class="img-circle" alt="User Image"><b> {{ trans('login.lang_one') }}</b></a>
-                    <a href="{{ url('lang/en') }}" class="text-dark m-l-5"><img src="./images/flags/en.png" class="img-circle" alt="User Image"><b> {{ trans('login.lang_two') }}</b></a> -->
-                    <a href="{{ url('lang/es') }}" class="text-dark m-l-5"><b> ES ({{ trans('login.lang_one') }})</b></a>
-                    <a href="{{ url('lang/en') }}" class="text-dark m-l-5"><b> EN ({{ trans('login.lang_two') }})</b></a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </form>
 
         </div>
       </div>

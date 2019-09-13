@@ -60,13 +60,21 @@ Route::get('/CentralNorte', function () {
     return view('visitor.CentralNorte.intro_central', compact('site'));
 });
 Route::get('/HaciendaEncantada', function(){
-    $site = 'Hacienda';
-    return view('visitor.Hacienda.hacienda_new', compact('site'));
+    $site = 'HE';
+    $id_site = '1';
+    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site'));
 });
-Route::get('HaciendaPremium', function(){
+Route::get('/MarinaFiesta', function(){
+    $site = 'MF';
+    $id_site = '2';
+    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site'));
+});
+/*Route::get('HaciendaPremium', function(){
     $site = 'Hacienda_pre';
     return view('visitor.Hacienda.hacienda_pay', compact('site')); 
-});
+});*/
+Route::post('/submit_hacienda_free', 'HaciendaController@login_premium_free');
+Route::post('/submit_hacienda_premium_1', 'HaciendaController@login_premium_1');
 
 Route::post('submit_fontan_test', 'TestController@test_logeo');
 Route::post('submit_unitec', 'UnitecController@login_unitec');
