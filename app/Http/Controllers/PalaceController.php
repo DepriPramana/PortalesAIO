@@ -173,7 +173,7 @@ XML;
                       $this->insertRadCloud($usuariojunto, $NombreXML, $lastname_clean, $fechaout, $site);
                       //$this->insertRadSunrise($usuariojunto, $NombreXML, $lastname, $fechaout, $site);
                       usleep(5000);
-                      $response = 'debio insertar en sunrise';
+                      $response = 'debio insertar en cloud';
                       return view('visitor.submitx', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'response'));
                   }else{
                       // echo " _no existe en el PMS__?? raro  ";

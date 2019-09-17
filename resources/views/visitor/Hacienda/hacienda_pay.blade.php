@@ -138,7 +138,7 @@
                         <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
                           <br>
                         <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                        <label for="existing_acc"><i class="fa fa-globe"> Browse with an existing account</i></label>
                       </div>
                     </div>
                   </div>
@@ -174,7 +174,7 @@
                         <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
                           <br>
                         <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                        <label for="existing_acc"><i class="fa fa-globe"> Browse with an existing account</i></label>
                       </div>
                     </div>
                   </div>
@@ -209,7 +209,7 @@
                         <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
                           <br>
                         <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                        <label for="existing_acc"><i class="fa fa-globe"> Browse with an existing account</i></label>
                       </div>
                     </div>
                   </div>
@@ -244,7 +244,7 @@
                         <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
                           <br>
                         <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc"><i class="fa fa-globe"> Existing</i></label>
+                        <label for="existing_acc"><i class="fa fa-globe"> Browse with an existing account</i></label>
                       </div>
                     </div>
                   </div>

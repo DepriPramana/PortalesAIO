@@ -155,6 +155,25 @@ $('#btnlogin-1').on('click', function(){
            // if (data === 'OK') {
            //   $('#loginform').submit();
            // }
+            /*switch(data) {
+              case '1':
+                // code block
+                break;
+              case '2':
+                // code block
+                break;
+              case '3':
+                // code block
+                break; 
+              case '4':
+                // code block
+                break;
+              case '5':
+                // code block
+                break;
+              default:
+               // code block
+            }*/
          },
          error: function (data) {
            console.log('Error:', data);
