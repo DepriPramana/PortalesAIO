@@ -102,8 +102,8 @@
                     <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
                   </div>
                 </form>
-
-                <form id="form-free" style="display: none;">
+                
+                <form id="form-free" method="POST" action="{{url('/submit_hacienda_free')}}" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
                     <b>Free Basic.</b>
@@ -134,7 +134,7 @@
 
                   <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                      <button id="btnlogin-free" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                      <button id="btnlogin-free" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">LOG IN</button>
                     </div>
                   </div>
                 </form>

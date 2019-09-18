@@ -98,38 +98,51 @@ $('#btnlogin-free').on('click', function(){
   var xc = validarcaptcha('fullname');
 
   if (xa == false) {
-     toast_error_check('Type a correct email.');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Type a correct email.',
+    });
   }
   if (xb == false) {
-     toast_error_check('Accept terms and conditions.');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Accept terms and conditions.',
+    });
   }
   if (xc == false) {
-    toast_error_check('Type your full name');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Type your full name.',
+    });
   }
 
   if (xa == true && xb == true && xc == true) {
-    var objData = $("#form-free").find("select,textarea, input").serialize();
+    $('#form-free').submit();
+    /*var objData = $("#form-free").find("select,textarea, input").serialize();
     $.ajax({
          url: "/submit_hacienda_free",
          type: "POST",
          data: objData,
          success: function (data) {
           console.log(data);
-           /*if (data === 'OK') {
-             $('#loginform').submit();
-           }*/
+           if (data === 'OK') {
+             $('#form-free').submit();
+           }
          },
          error: function (data) {
            console.log('Error:', data);
          }
-     });
+     });*/
   }
 });
 
 $('#btnlogin-1').on('click', function(){
   // var xa = validarEmail('email_address');
-  var xa = validarcaptcha('room')
-  var xb = validarcaptcha('lastname');
+  var xa = validarcaptcha('room', '#form-1')
+  var xb = validarcaptcha('lastname', '#form-1');
   var xc = validarcheck('checkbox-signup');
   //var xc= validarcaptcha('g-recaptcha-response');
   // $('#g-recaptcha-response').val();
@@ -265,9 +278,149 @@ $('#btnlogin-1').on('click', function(){
   }
 });
 
-function validarcaptcha(campo){
+$('#btnlogin-2').on('click', function(){
+  // var xa = validarEmail('email_address');
+  var xa = validarcaptcha('room', '#form-2')
+  var xb = validarcaptcha('lastname', '#form-2');
+  var xc = validarcheck('checkbox-signup');
+  //var xc= validarcaptcha('g-recaptcha-response');
+  // $('#g-recaptcha-response').val();
+  var check1 = $('input[name="room_or_acc"]:checked', '#form-2').val();
+  if (check1 === 'room') {
+      var text = "You are going to apply a charge to your room for internet access.";
+      var footer = "You will be logged in once the charge is done";
+      var confirmButtonText = 'Yes, apply!'
+  }else{
+      var text = "You will be redirected.";
+      var footer = "You will log in once you click continue, no charges apply.";
+      var confirmButtonText = 'Continue.'
+  }
+  if (xa == false) {
+    // toast_error_check('Type a room number');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Type a room number.',
+    });
+  }
+  if (xb == false) {
+    // toast_error_check('Type your last name');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Type a last name.',
+    });
+  }
+  if (xc == false) {
+    // toast_error_check('Accept terms and conditions.');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Accept terms and conditions.',
+    });
+  }
+  if ( xa == true &&  xb == true && xc == true) {
+    // var objData = $("#form-1").find("select,textarea, input").serialize();
+    var form = $('#form-1')[0];
+    var formData = new FormData(form);
+    var _token = $('input[name="_token"]').val();
+    const headers = new Headers({
+        "Accept": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRF-TOKEN": _token
+    })
+    var miInit = {
+      method: 'post',
+      headers: headers,
+      credentials: "same-origin",
+      body:formData,
+      cache: 'default'
+    };
+    Swal.fire({
+      type: 'warning',
+      title: 'Confirmation',
+      text: text,
+      footer: footer,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: confirmButtonText,
+      cancelButtonColor: '#d33',
+      showLoaderOnConfirm: true,
+      reverseButtons: true,
+      allowOutsideClick: false,
+      preConfirm: (login) => {
+        return fetch('/submit_hacienda_premium_2', miInit)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(response.statusText)
+            }
+            return response.json()
+          })
+          .catch(function(error){
+            Swal.showValidationMessage(
+              `Request failed: ${error}`
+            )
+          })
+        },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        // console.log(result.value.msg);
+        switch(result.value.status) {
+          case 1:
+            // console.log(result.value.user);
+            $('input[name="username"]', '#loginform').val(result.value.user);
+            Swal.fire({
+              title: 'Charge applied',
+              text: "Click continue to log in",
+              type: 'success',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Continue!',
+              allowOutsideClick: false,
+              footer: 'If you get the log in form page again, you can log in by checking the browse with an existing account if the period bought has not yet expired.'
+            }).then((result) => {
+              if (result.value) {
+                $('#loginform').submit();
+              }
+            });
+            break;
+          case 2:
+            Swal.fire({
+              type: 'error',
+              title: 'Error',
+              text: result.value.msg,
+            });
+            break;
+          case 3:
+            Swal.fire({
+              type: 'warning',
+              title: 'Warning',
+              text: result.value.msg,
+            });
+            break;
+          case 4:
+            Swal.fire({
+              type: 'warning',
+              title: 'Warning',
+              text: result.value.msg,
+            });
+            break;
+          default:
+            Swal.fire({
+              type: 'error',
+              title: 'Error',
+              text: 'Try again...',
+            });
+        }
+    })
+  }
+});
+
+function validarcaptcha(campo, formulario){
   var xca =$('#'+campo).val();
-  if (xca != ''){
+  var xcc = $('#'+campo, formulario).val();
+  if (xcc != ''){
     return true;
   }
   else {
@@ -275,8 +428,10 @@ function validarcaptcha(campo){
   }
 }
 
-function validarcheck(campo) {
-  if($('input[name='+campo+']').is(':checked')){
+function validarcheck(campo, formulario) {
+  // $('input[name="room_or_acc"]:checked', '#form-1').val();
+
+  if($('input[name='+campo+']', formulario).is(':checked')){
     return true;
   }
   else {
