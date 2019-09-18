@@ -96,7 +96,7 @@ $('#btnlogin-free').on('click', function(){
   var xa = validarEmail('email_addess');
   var xb = validarcheck('checkbox-signup');
   var xc = validarcaptcha('fullname');
-  
+
   if (xa == false) {
      toast_error_check('Type a correct email.');
   }
@@ -161,29 +161,59 @@ $('#btnlogin-1').on('click', function(){
 
   if ( xa == true &&  xb == true && xc == true) {
     var objData = $("#form-1").find("select,textarea, input").serialize();
-    // var objData2 = $("#login_form_1").find("select,textarea, input").serialize();
-    Swal.fire({
-      title: 'Confirmation',
-      text: "You are going to apply a charge to your room for internet access.",
-      footer: "You will be logged in once the charge is done",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, apply!',
-      cancelButtonColor: '#d33',
-      reverseButtons: true,
-      allowOutsideClick: false,
-      preConfirm: function(){
-        
-      },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      if (result.value) {
-
-      }
+    var form = $('#form-1')[0];
+    var formData = new FormData(form);
+    var _token = $('input[name="_token"]').val();
+    const headers = new Headers({
+        "Accept": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRF-TOKEN": _token
     })
-  }
-        /*$.ajax({
+    var miInit = {
+      method: 'post',
+      headers: headers,
+      credentials: "same-origin",
+      body:formData,
+      cache: 'default'
+    };
+    Swal.fire({
+        title: 'Confirmation',
+        text: "You are going to apply a charge to your room for internet access.",
+        footer: "You will be logged in once the charge is done",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, apply!',
+        cancelButtonColor: '#d33',
+        showLoaderOnConfirm: true,
+        reverseButtons: true,
+        allowOutsideClick: false,
+        preConfirm: (login) => {
+          return fetch('/submit_hacienda_premium_1', miInit)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(response.statusText)
+              }
+              return response.json()
+            })
+            .catch(function(error){
+              Swal.showValidationMessage(
+                `Request failed: ${error}`
+              )
+            })
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        console.log('then2');
+        console.log(result);
+        // if (result.value) {
+        //   Swal.fire({
+        //     title: `${result.value.login}'s avatar`,
+        //     imageUrl: result.value.avatar_url
+        //   })
+        // }
+      })
+
+         /*$.ajax({
              url: "/submit_hacienda_premium_1",
              type: "POST",
              data: objData,
@@ -218,7 +248,7 @@ $('#btnlogin-1').on('click', function(){
                       title: 'Warning',
                       text: data.msg,
                     });
-                    break;                
+                    break;
                   default:
                     Swal.fire({
                       type: 'error',
@@ -231,6 +261,7 @@ $('#btnlogin-1').on('click', function(){
                console.log('Error:', data);
              }
         });*/
+      }
 });
 
 function validarcaptcha(campo){

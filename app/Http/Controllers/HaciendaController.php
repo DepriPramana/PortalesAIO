@@ -77,7 +77,7 @@ class HaciendaController extends Controller
     	$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
     	$site_name = $site_info[0]->nombre;
     	$usuariojunto = 'HACIENDAFREE';
-        
+
 		DB::table('data_agents_hacienda')->insert([
 			'mac_address' => $client_mac,
 			'browser' => $browser,
@@ -97,7 +97,6 @@ class HaciendaController extends Controller
 
         return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
     }
-
     public function login_premium_1(Request $request)
     {
 		//Agent
@@ -220,7 +219,7 @@ class HaciendaController extends Controller
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
-			
+
 
 			if (empty($sql_good)) {
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname and room number']);
