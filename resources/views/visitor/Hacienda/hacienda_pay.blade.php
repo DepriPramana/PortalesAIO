@@ -28,6 +28,8 @@
     <link href="{{ asset('hacienda/socialite/css/style2.css') }}" rel="stylesheet" type="text/css" />
     <!--supersized CSS-->
     <link href="{{ asset('hacienda/socialite/plugins/supersized/css/supersized.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
   <body>
 
@@ -149,7 +151,7 @@
 
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-                  
+
                   <div class="information-hidden">
                     <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
                     <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
@@ -198,7 +200,7 @@
 
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-                  
+
                   <div class="information-hidden">
                     <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
                     <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
@@ -247,7 +249,7 @@
 
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-                  
+
                   <div class="information-hidden">
                     <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
                     <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
@@ -295,7 +297,7 @@
                   <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
-                  
+
                   <div class="information-hidden">
                     <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
                     <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
@@ -393,13 +395,13 @@
       <!--supersized JavaScript-->
       <script src="{{ asset('hacienda/socialite/plugins/supersized/js/supersized.3.2.7.min.js') }}"></script>
       <script src="{{ asset('hacienda/socialite/plugins/supersized/js/supersized-init.js') }}"></script>
-      
-      <script src="{{ asset('plugins/sweetalert2-master/src/sweetalert2.js') }}"></script>
-      <link rel="stylesheet" href="{{ asset('plugins/sweetalert2-master/src/sweetalert2.scss') }}">
+
       <!-- supersized-init.js aqui estan los backgrounds. -->
       <!-- Materialize JavaScript -->
       <!-- <script src="{{ asset('hacienda/socialite/plugins/materialize/js/materialize.js') }}"></script> -->
       <!-- Script JavaScript-->
       <script src="{{ asset('hacienda/socialite/js/script_hacienda.js') }}"></script>
+      <script src="{{ asset('js/app.js') }}"></script>
+
   </body>
 </html>
