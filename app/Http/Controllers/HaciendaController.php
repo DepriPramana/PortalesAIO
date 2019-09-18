@@ -96,8 +96,6 @@ class HaciendaController extends Controller
 		]);
 
         return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
-
-    	return $site_name;
     }
 
     public function login_premium_1(Request $request)
@@ -170,6 +168,7 @@ class HaciendaController extends Controller
 
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
     	//LEYVA3263
+
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
 			if ($db_user > 0) {
@@ -221,7 +220,7 @@ class HaciendaController extends Controller
 			
 
 			if (empty($sql_good)) {
-				return '2'; // nadie coincide con ese apellido y habitacion
+				return response()->json(['status' => 2, 'msg' => 'No match with that lastname and room number']);
 			}else{
 				if ($sql_good->owner == 'N') {
 					$check_pay_reservation = DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
@@ -275,7 +274,7 @@ class HaciendaController extends Controller
 						// insert en radius.
 						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site);
 						usleep(5000);
-						return '1'; // mandar mensaje correcto despues de insercion, logeo dentro del ajax.
+						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 					}else{
 						// ya tiene un cargo, checar si ya vencio.
 						$datenow = Carbon::now();
@@ -331,7 +330,7 @@ class HaciendaController extends Controller
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site);
 							usleep(5000);
-							// return response()->json(['error' => __('general.error_general')], 422);
+
 							return '1'; // mandar mensaje correcto despues de insercion, logeo dentro del ajax.
 						}else{
 							// todavia no expira, retornar mensaje.

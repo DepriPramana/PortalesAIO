@@ -146,34 +146,27 @@ $('#btnlogin-1').on('click', function(){
 
   if ( xa == true &&  xb == true && xc == true) {
     var objData = $("#form-1").find("select,textarea, input").serialize();
+
     $.ajax({
          url: "/submit_hacienda_premium_1",
          type: "POST",
          data: objData,
          success: function (data) {
           console.log(data);
+          console.log(data.status);
            // if (data === 'OK') {
            //   $('#loginform').submit();
            // }
-            /*switch(data) {
-              case '1':
-                // code block
+            switch(data.status) {
+              case 1:
+                
                 break;
-              case '2':
-                // code block
-                break;
-              case '3':
-                // code block
-                break; 
-              case '4':
-                // code block
-                break;
-              case '5':
-                // code block
+              case 2:
+                console.log('caso 2');
                 break;
               default:
                // code block
-            }*/
+            }
          },
          error: function (data) {
            console.log('Error:', data);
