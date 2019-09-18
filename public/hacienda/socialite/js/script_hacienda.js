@@ -93,7 +93,7 @@ $('#opcion-4').on('click', function() {
 });
 
 $('#btnlogin-free').on('click', function(){
-  var xa = validarEmail('email_addess');
+  var xa = validarEmail('email_address');
   var xb = validarcheck('checkbox-signup');
   var xc = validarcaptcha('fullname');
 
@@ -133,7 +133,16 @@ $('#btnlogin-1').on('click', function(){
   var xc = validarcheck('checkbox-signup');
   //var xc= validarcaptcha('g-recaptcha-response');
   // $('#g-recaptcha-response').val();
-
+  var check1 = $('input[name="room_or_acc"]:checked', '#form-1').val();
+  if (check1 === 'room') {
+      var text = "You are going to apply a charge to your room for internet access.";
+      var footer = "You will be logged in once the charge is done";
+      var confirmButtonText = 'Yes, apply!'
+  }else{
+      var text = "You will be redirected.";
+      var footer = "You will log in once you click continue, no charges apply.";
+      var confirmButtonText = 'Continue.'
+  }
   if (xa == false) {
     // toast_error_check('Type a room number');
     Swal.fire({
@@ -158,9 +167,8 @@ $('#btnlogin-1').on('click', function(){
       text: 'Accept terms and conditions.',
     });
   }
-
   if ( xa == true &&  xb == true && xc == true) {
-    var objData = $("#form-1").find("select,textarea, input").serialize();
+    // var objData = $("#form-1").find("select,textarea, input").serialize();
     var form = $('#form-1')[0];
     var formData = new FormData(form);
     var _token = $('input[name="_token"]').val();
@@ -177,91 +185,84 @@ $('#btnlogin-1').on('click', function(){
       cache: 'default'
     };
     Swal.fire({
-        title: 'Confirmation',
-        text: "You are going to apply a charge to your room for internet access.",
-        footer: "You will be logged in once the charge is done",
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, apply!',
-        cancelButtonColor: '#d33',
-        showLoaderOnConfirm: true,
-        reverseButtons: true,
-        allowOutsideClick: false,
-        preConfirm: (login) => {
-          return fetch('/submit_hacienda_premium_1', miInit)
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(response.statusText)
-              }
-              return response.json()
-            })
-            .catch(function(error){
-              Swal.showValidationMessage(
-                `Request failed: ${error}`
-              )
-            })
+      type: 'warning',
+      title: 'Confirmation',
+      text: text,
+      footer: footer,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: confirmButtonText,
+      cancelButtonColor: '#d33',
+      showLoaderOnConfirm: true,
+      reverseButtons: true,
+      allowOutsideClick: false,
+      preConfirm: (login) => {
+        return fetch('/submit_hacienda_premium_1', miInit)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(response.statusText)
+            }
+            return response.json()
+          })
+          .catch(function(error){
+            Swal.showValidationMessage(
+              `Request failed: ${error}`
+            )
+          })
         },
-        allowOutsideClick: () => !Swal.isLoading()
-      }).then((result) => {
-        console.log('then2');
-        console.log(result);
-        // if (result.value) {
-        //   Swal.fire({
-        //     title: `${result.value.login}'s avatar`,
-        //     imageUrl: result.value.avatar_url
-        //   })
-        // }
-      })
-
-         /*$.ajax({
-             url: "/submit_hacienda_premium_1",
-             type: "POST",
-             data: objData,
-             success: function (data) {
-                // $('#loginform').submit();
-                console.log(data);
-                switch(data.status) {
-                  case 1:
-                    Swal.fire({
-                      type: 'success',
-                      title: 'Charge applied',
-                      text: 'success',
-                    });
-                    break;
-                  case 2:
-                    Swal.fire({
-                      type: 'error',
-                      title: 'Error',
-                      text: data.msg,
-                    });
-                    break;
-                  case 3:
-                    Swal.fire({
-                      type: 'warning',
-                      title: 'Warning',
-                      text: data.msg,
-                    });
-                    break;
-                  case 4:
-                    Swal.fire({
-                      type: 'warning',
-                      title: 'Warning',
-                      text: data.msg,
-                    });
-                    break;
-                  default:
-                    Swal.fire({
-                      type: 'error',
-                      title: 'Error',
-                      text: 'Try again...',
-                    });
-                }
-             },
-             error: function (data) {
-               console.log('Error:', data);
-             }
-        });*/
-      }
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        // console.log(result.value.msg);
+        switch(result.value.status) {
+          case 1:
+            // console.log(result.value.user);
+            $('input[name="username"]', '#loginform').val(result.value.user);
+            Swal.fire({
+              title: 'Charge applied',
+              text: "Click continue to log in",
+              type: 'success',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Continue!',
+              allowOutsideClick: false,
+              footer: 'If you get the log in form page again, you can log in by checking the browse with an existing account if the period bought has not yet expired.'
+            }).then((result) => {
+              if (result.value) {
+                $('#loginform').submit();
+              }
+            });
+            break;
+          case 2:
+            Swal.fire({
+              type: 'error',
+              title: 'Error',
+              text: result.value.msg,
+            });
+            break;
+          case 3:
+            Swal.fire({
+              type: 'warning',
+              title: 'Warning',
+              text: result.value.msg,
+            });
+            break;
+          case 4:
+            Swal.fire({
+              type: 'warning',
+              title: 'Warning',
+              text: result.value.msg,
+            });
+            break;
+          default:
+            Swal.fire({
+              type: 'error',
+              title: 'Error',
+              text: 'Try again...',
+            });
+        }
+    })
+  }
 });
 
 function validarcaptcha(campo){

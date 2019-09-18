@@ -21,6 +21,25 @@ class HaciendaController extends Controller
 		$sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where('room', $room_numba)->orderBy('id', 'desc')->get()->first();
     }
 
+    public function try_login_hacienda(Request $request)
+    {
+    	return 'try log in';
+		//Parámetros de logeo
+			$usuariojunto = $request->username;
+			$url = $request->url;
+			$proxy = $request->proxy;
+			$sip = $request->sip;
+			$mac = $request->mac;
+			$client_mac = $request->client_mac;
+			$uip = $request->uip;
+			$ssid = $request->ssid;
+			$vlan = $request->vlan;
+		//Fin parámetros.
+    	$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
+    	$site_name = $site_info[0]->nombre;
+        return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+    }
+
 	public function login_premium_free(Request $request)
     {
     	//url testing http://localhost:8000/HaciendaEncantada?sip=172.200.1.117&client_mac=xcadgH0012aa&ssid=Hola
@@ -97,6 +116,7 @@ class HaciendaController extends Controller
 
         return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
     }
+
     public function login_premium_1(Request $request)
     {
 		//Agent
@@ -169,7 +189,9 @@ class HaciendaController extends Controller
     	//LEYVA3263
 
   		return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-  		// return response()->json(['status' => 2, 'msg' => 'No match with the lastname and room number provided']);
+  		// return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
+  		// return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
+  		// return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
 
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
@@ -222,7 +244,7 @@ class HaciendaController extends Controller
 
 
 			if (empty($sql_good)) {
-				return response()->json(['status' => 2, 'msg' => 'No match with that lastname and room number']);
+				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}else{
 				if ($sql_good->owner == 'N') {
 					$check_pay_reservation = DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
