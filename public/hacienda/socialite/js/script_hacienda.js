@@ -135,46 +135,102 @@ $('#btnlogin-1').on('click', function(){
   // $('#g-recaptcha-response').val();
 
   if (xa == false) {
-    toast_error_check('Type a room number');
+    // toast_error_check('Type a room number');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Type a room number.',
+    });
   }
   if (xb == false) {
-    toast_error_check('Type your last name');
+    // toast_error_check('Type your last name');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Type a last name.',
+    });
   }
   if (xc == false) {
-    toast_error_check('Accept terms and conditions.');
+    // toast_error_check('Accept terms and conditions.');
+    Swal.fire({
+      type: 'error',
+      title: 'Error',
+      text: 'Accept terms and conditions.',
+    });
   }
 
   if ( xa == true &&  xb == true && xc == true) {
     var objData = $("#form-1").find("select,textarea, input").serialize();
+    // var objData2 = $("#login_form_1").find("select,textarea, input").serialize();
+    Swal.fire({
+      title: 'Confirmation',
+      text: "You are going to apply a charge to your room for internet access.",
+      footer: "You will be logged in once the charge is done",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, apply!',
+      cancelButtonColor: '#d33',
+      reverseButtons: true,
+      allowOutsideClick: false,
+      preConfirm: function(){
+        
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.value) {
 
-    $.ajax({
-         url: "/submit_hacienda_premium_1",
-         type: "POST",
-         data: objData,
-         success: function (data) {
-          console.log(data);
-          console.log(data.status);
-           // if (data === 'OK') {
-           //   $('#loginform').submit();
-           // }
-            switch(data.status) {
-              case 1:
-                
-                break;
-              case 2:
-                console.log('caso 2');
-                break;
-              default:
-               // code block
-            }
-         },
-         error: function (data) {
-           console.log('Error:', data);
-         }
-     });
+      }
+    })
   }
-
-
+        /*$.ajax({
+             url: "/submit_hacienda_premium_1",
+             type: "POST",
+             data: objData,
+             success: function (data) {
+                // $('#loginform').submit();
+                console.log(data);
+                switch(data.status) {
+                  case 1:
+                    Swal.fire({
+                      type: 'success',
+                      title: 'Charge applied',
+                      text: 'success',
+                    });
+                    break;
+                  case 2:
+                    Swal.fire({
+                      type: 'error',
+                      title: 'Error',
+                      text: data.msg,
+                    });
+                    break;
+                  case 3:
+                    Swal.fire({
+                      type: 'warning',
+                      title: 'Warning',
+                      text: data.msg,
+                    });
+                    break;
+                  case 4:
+                    Swal.fire({
+                      type: 'warning',
+                      title: 'Warning',
+                      text: data.msg,
+                    });
+                    break;                
+                  default:
+                    Swal.fire({
+                      type: 'error',
+                      title: 'Error',
+                      text: 'Try again...',
+                    });
+                }
+             },
+             error: function (data) {
+               console.log('Error:', data);
+             }
+        });*/
 });
 
 function validarcaptcha(campo){

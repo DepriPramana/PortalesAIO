@@ -169,6 +169,9 @@ class HaciendaController extends Controller
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
     	//LEYVA3263
 
+  		return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
+  		// return response()->json(['status' => 2, 'msg' => 'No match with the lastname and room number provided']);
+
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
 			if ($db_user > 0) {
@@ -331,14 +334,14 @@ class HaciendaController extends Controller
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site);
 							usleep(5000);
 
-							return '1'; // mandar mensaje correcto despues de insercion, logeo dentro del ajax.
+							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 						}else{
 							// todavia no expira, retornar mensaje.
-							return '4';
+							return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
 						}
 					}
 				}else{
-					return '3'; // es miembro, selecciona un paquete para miembros.
+					return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
 				}
 			}
 		}

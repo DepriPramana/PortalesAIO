@@ -152,7 +152,8 @@
                   <label>Room number</label>
                   <input type="number" name="room" id="room" placeholder="Enter your room number">
 
-                  <div class="information-hidden">
+                  <div class="information-hidden" id="login_form_1">
+                    <input class="form-control" type="hidden" name="username">
                     <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
                     <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
                     <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
