@@ -270,6 +270,7 @@ class HaciendaController extends Controller
 	  						'expiration' => $fechaout
 	  					]);
 	  					DB::table('data_sites_hacienda')->insert([
+	  						'firstname' => $sql_good->name,
 	  						'lastname' => $lastname_upper,
 	  						'wificode' => $usuariojunto,
 	  						'site_id' => $site_info[0]->id,
@@ -326,6 +327,7 @@ class HaciendaController extends Controller
 		  						'expiration' => $fechaout
 		  					]);
 		  					DB::table('data_sites_hacienda')->insert([
+		  						'firstname' => $sql_good->name,
 		  						'lastname' => $lastname_upper,
 		  						'wificode' => $usuariojunto,
 		  						'site_id' => $site_info[0]->id,
@@ -523,6 +525,7 @@ class HaciendaController extends Controller
 	  						'expiration' => $fechaout
 	  					]);
 	  					DB::table('data_sites_hacienda')->insert([
+	  						'firstname' => $sql_good->name,
 	  						'lastname' => $lastname_upper,
 	  						'wificode' => $usuariojunto,
 	  						'site_id' => $site_info[0]->id,
@@ -579,6 +582,7 @@ class HaciendaController extends Controller
 		  						'expiration' => $fechaout
 		  					]);
 		  					DB::table('data_sites_hacienda')->insert([
+		  						'firstname' => $sql_good->name,
 		  						'lastname' => $lastname_upper,
 		  						'wificode' => $usuariojunto,
 		  						'site_id' => $site_info[0]->id,
@@ -776,6 +780,7 @@ class HaciendaController extends Controller
 	  						'expiration' => $fechaout
 	  					]);
 	  					DB::table('data_sites_hacienda')->insert([
+	  						'firstname' => $sql_good->name,
 	  						'lastname' => $lastname_upper,
 	  						'wificode' => $usuariojunto,
 	  						'site_id' => $site_info[0]->id,
@@ -832,6 +837,7 @@ class HaciendaController extends Controller
 		  						'expiration' => $fechaout
 		  					]);
 		  					DB::table('data_sites_hacienda')->insert([
+		  						'firstname' => $sql_good->name,
 		  						'lastname' => $lastname_upper,
 		  						'wificode' => $usuariojunto,
 		  						'site_id' => $site_info[0]->id,
@@ -1029,6 +1035,7 @@ class HaciendaController extends Controller
 	  						'expiration' => $fechaout
 	  					]);
 	  					DB::table('data_sites_hacienda')->insert([
+	  						'firstname' => $sql_good->name,
 	  						'lastname' => $lastname_upper,
 	  						'wificode' => $usuariojunto,
 	  						'site_id' => $site_info[0]->id,
@@ -1085,6 +1092,7 @@ class HaciendaController extends Controller
 		  						'expiration' => $fechaout
 		  					]);
 		  					DB::table('data_sites_hacienda')->insert([
+		  						'firstname' => $sql_good->name,
 		  						'lastname' => $lastname_upper,
 		  						'wificode' => $usuariojunto,
 		  						'site_id' => $site_info[0]->id,
