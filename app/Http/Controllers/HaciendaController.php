@@ -213,7 +213,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 1
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+  				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}else{
 				//insercion de Agent.
 				DB::table('data_agents_hacienda')->insert([
@@ -230,7 +230,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 0
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}
     	}
   		else{
@@ -466,7 +466,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 1
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}else{
 				//insercion de Agent.
 				DB::table('data_agents_hacienda')->insert([
@@ -483,7 +483,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 0
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}
     	}
   		else{
@@ -719,7 +719,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 1
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}else{
 				//insercion de Agent.
 				DB::table('data_agents_hacienda')->insert([
@@ -736,7 +736,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 0
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}
     	}
   		else{
@@ -972,7 +972,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 1
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}else{
 				//insercion de Agent.
 				DB::table('data_agents_hacienda')->insert([
@@ -989,7 +989,7 @@ class HaciendaController extends Controller
 					'mobile' => $mobile,
 					'success' => 0
 				]);
-				return view('visitor.submitx_hacienda', compact('site_name','usuariojunto','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+				return response()->json(['status' => 5, 'msg' => 'Execute log in.', 'user' => $usuariojunto]);
 	  		}
     	}
   		else{

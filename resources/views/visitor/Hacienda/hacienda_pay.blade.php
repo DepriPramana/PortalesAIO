@@ -89,9 +89,10 @@
 
                 <form id="loginform" name="loginform" method="POST" action="http://{{isset($_GET['sip']) ? $_GET['sip'] : '' }}:9997/login">
                   <div class="information-hidden" id="login_form_1">
-                    <input class="form-control" type="hidden" name="username">
-                    <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
-                    <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
+                    <input class="form-control" type="hidden" name="username" id="username">
+                    <input class="form-control" type="hidden" name="password" id="password" value="123">
+                    <input class="form-control" type="hidden" name="url" id="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
+                    <input class="form-control" type="hidden" name="proxy" id="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
                     <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
                     <input class="form-control" type="hidden" id="mac" name="mac" value="{{ isset($_GET['mac']) ? $_GET['mac'] : '' }}" />
                     <input class="form-control" type="hidden" id="client_mac" name="client_mac" value="{{ isset($_GET['client_mac']) ? $_GET['client_mac'] : '' }}" />
@@ -134,7 +135,7 @@
 
                   <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                      <button id="btnlogin-free" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">LOG IN</button>
+                      <button id="btnlogin-free" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
                     </div>
                   </div>
                 </form>

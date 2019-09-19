@@ -267,6 +267,10 @@ $('#btnlogin-1').on('click', function(){
               text: result.value.msg,
             });
             break;
+          case 5:
+            $('input[name="username"]', '#loginform').val(result.value.user);
+            $('#loginform').submit();
+            break;
           default:
             Swal.fire({
               type: 'error',
@@ -405,6 +409,10 @@ $('#btnlogin-2').on('click', function(){
               title: 'Warning',
               text: result.value.msg,
             });
+            break;
+          case 5:
+            $('input[name="username"]', '#loginform').val(result.value.user);
+            $('#loginform').submit();
             break;
           default:
             Swal.fire({
@@ -545,6 +553,10 @@ $('#btnlogin-3').on('click', function(){
               text: result.value.msg,
             });
             break;
+          case 5:
+            $('input[name="username"]', '#loginform').val(result.value.user);
+            $('#loginform').submit();
+            break;
           default:
             Swal.fire({
               type: 'error',
@@ -683,6 +695,10 @@ $('#btnlogin-4').on('click', function(){
               title: 'Warning',
               text: result.value.msg,
             });
+            break;
+          case 5:
+            $('input[name="username"]', '#loginform').val(result.value.user);
+            $('#loginform').submit();
             break;
           default:
             Swal.fire({
