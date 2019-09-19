@@ -65,8 +65,8 @@ h2 p.inline{
 }
 .white-box-two{
   padding: 25px;
-  background-color: rgb(195, 218, 237); /* Fallback for web browsers that don't support RGBa */
-  background-color: rgba(195, 218, 237, 0.9); /* RGBa with 0.6 opacity */
+  background-color: #fff; /* Fallback for web browsers that don't support RGBa */
+  /*background-color: rgba(195, 218, 237, 0.9); /* RGBa with 0.6 opacity */
 }
 /* Maquetado movil...........................................................*/
 @media (min-width:320px)  {
@@ -74,8 +74,8 @@ h2 p.inline{
   .login-box {
       border-radius: 25px;
       /*background: #fff;*/
-      background-color: rgb(195, 218, 237); /* Fallback for web browsers that don't support RGBa */
-      background-color: rgba(195, 218, 237, 0.5); /* RGBa with 0.6 opacity */
+      background-color: #fff; /* Fallback for web browsers that don't support RGBa */
+      /*background-color: rgba(195, 218, 237, 0.5); /* RGBa with 0.6 opacity */
       width: 360px;
       margin: 1% auto 0
   }
@@ -90,8 +90,8 @@ h2 p.inline{
   .login-box {
       border-radius: 25px;
       /*background: #fff;*/
-      background-color: rgb(195, 218, 237); /* Fallback for web browsers that don't support RGBa */
-      background-color: rgba(195, 218, 237, 0.5); /* RGBa with 0.6 opacity */
+      background-color: #fff; /* Fallback for web browsers that don't support RGBa */
+      /*background-color: rgba(195, 218, 237, 0.5); /* RGBa with 0.6 opacity */
       width: 360px;
       margin: 1% auto 0
   }
