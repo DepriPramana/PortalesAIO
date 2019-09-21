@@ -16,7 +16,7 @@ class HaciendaController extends Controller
 
     public function query_example()
     {
-    	// $sql = DB::connection('hacienda_sqlsrv')->table('imm_reister')->select()->where('lastname', 'BREWER')->where('room', 405)->orderBy('id', 'desc')->get()->first();
+    	// $sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_reister')->select()->where('lastname', 'BREWER')->where('room', 405)->orderBy('id', 'desc')->get()->first();
 
 		$sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where('room', $room_numba)->orderBy('id', 'desc')->get()->first();
     }
@@ -238,7 +238,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -295,7 +295,6 @@ class HaciendaController extends Controller
 							'mac' => $client_mac_new,
 							'device' => $platform,
 							'status' => 'active',
-							'transactiondate' => Carbon::now(),
 						]);
 						// insert en radius.
 						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
@@ -352,7 +351,6 @@ class HaciendaController extends Controller
 								'mac' => $client_mac_new,
 								'device' => $platform,
 								'status' => 'active',
-								'transactiondate' => Carbon::now(),
 							]);
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
@@ -427,7 +425,7 @@ class HaciendaController extends Controller
 		$room_numba = (string)$request->room;
 		$usuariojunto = $lastname_clean . $room_numba . $site;
 
-		$service_id = 2; // Premium Diario No Miembros|Premium Daily Non Member
+		$service_id = 2; // Premium Semanal No Miembros|Premium Weekly Non Member
 		$service_name = 'Premium Semanal No Miembros|Premium Weekly Non Member'; // Nombre del servicio.
 		$service_price = '60'; // Precio del servicio.
 		$service_drate = '2000';
@@ -493,7 +491,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -550,7 +548,6 @@ class HaciendaController extends Controller
 							'mac' => $client_mac_new,
 							'device' => $platform,
 							'status' => 'active',
-							'transactiondate' => Carbon::now(),
 						]);
 						// insert en radius.
 						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
@@ -607,7 +604,6 @@ class HaciendaController extends Controller
 								'mac' => $client_mac_new,
 								'device' => $platform,
 								'status' => 'active',
-								'transactiondate' => Carbon::now(),
 							]);
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
@@ -682,7 +678,7 @@ class HaciendaController extends Controller
 		$room_numba = (string)$request->room;
 		$usuariojunto = $lastname_clean . $room_numba . $site;
 
-		$service_id = 3; // Premium Diario No Miembros|Premium Daily Non Member
+		$service_id = 3; // Premium Diario Miembros|Premium Daily Member
 		$service_name = 'Premium Diario Miembros|Premium Daily Member'; // Nombre del servicio.
 		$service_price = '10'; // Precio del servicio.
 		$service_drate = '5000';
@@ -748,7 +744,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -805,7 +801,6 @@ class HaciendaController extends Controller
 							'mac' => $client_mac_new,
 							'device' => $platform,
 							'status' => 'active',
-							'transactiondate' => Carbon::now(),
 						]);
 						// insert en radius.
 						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
@@ -862,7 +857,6 @@ class HaciendaController extends Controller
 								'mac' => $client_mac_new,
 								'device' => $platform,
 								'status' => 'active',
-								'transactiondate' => Carbon::now(),
 							]);
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
@@ -937,7 +931,7 @@ class HaciendaController extends Controller
 		$room_numba = (string)$request->room;
 		$usuariojunto = $lastname_clean . $room_numba . $site;
 
-		$service_id = 4; // Premium Diario No Miembros|Premium Daily Non Member
+		$service_id = 4; // Premium Semanal Miembros|Premium Weekly Member
 		$service_name = 'Premium Semanal Miembros|Premium Weekly Member'; // Nombre del servicio.
 		$service_price = '48'; // Precio del servicio.
 		$service_drate = '5000';
@@ -1003,7 +997,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -1060,7 +1054,6 @@ class HaciendaController extends Controller
 							'mac' => $client_mac_new,
 							'device' => $platform,
 							'status' => 'active',
-							'transactiondate' => Carbon::now(),
 						]);
 						// insert en radius.
 						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
@@ -1117,7 +1110,6 @@ class HaciendaController extends Controller
 								'mac' => $client_mac_new,
 								'device' => $platform,
 								'status' => 'active',
-								'transactiondate' => Carbon::now(),
 							]);
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
