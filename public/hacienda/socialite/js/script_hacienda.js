@@ -11,6 +11,19 @@ $(function() {
       console.log('Error:', data);
     }
   });*/
+        
+  var currentURL = window.location.href;
+  var currentHost = window.location.hostname;
+  // console.log(currentHost);
+  var variables = currentURL.split("?");
+
+  if (variables.length > 1) {
+    $('#link_es').attr("href", "http://"+ currentHost + "/HaciendaEncantada/es" + '?'+ variables[1]);
+    $('#link_en').attr("href", "http://"+ currentHost + "/HaciendaEncantada/en" + '?'+ variables[1]);
+  }else{
+    $('#link_en').attr("href", "http://"+ currentHost + "/HaciendaEncantada/en");
+    $('#link_es').attr("href", "http://"+ currentHost + "/HaciendaEncantada/es");
+  }
 });
 
 $('#back-btn').on('click', function(){

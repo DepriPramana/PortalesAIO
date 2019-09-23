@@ -59,20 +59,29 @@ Route::get('/CentralNorte', function () {
     $site = 'Central';
     return view('visitor.CentralNorte.intro_central', compact('site'));
 });
-Route::get('/HaciendaEncantada', function(){
+Route::get('/HaciendaEncantada/{lang}', function($lang){
+    $html_title = 'Hacienda Encantada';
+    App::setLocale($lang);
     $site = 'HE';
     $id_site = '1';
-    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site'));
+    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
 });
-Route::get('/MarinaFiesta', function(){
+Route::get('/MarinaFiesta/{lang}', function($lang){
+    $html_title = 'Marina Fiesta';
+    App::setLocale($lang);
     $site = 'MF';
     $id_site = '2';
-    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site'));
+    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
 });
-/*Route::get('HaciendaPremium', function(){
-    $site = 'Hacienda_pre';
-    return view('visitor.Hacienda.hacienda_pay', compact('site')); 
-});*/
+//test locale.
+Route::get('/HaciendaPremium/{lang}', function($lang){
+    $html_title = 'Test Locale';
+    App::setLocale($lang);
+    $site = 'HE';
+    $id_site = '1';
+    return view('visitor.Hacienda.hacienda_pay', compact('site','id_site', 'html_title')); 
+});
+
 Route::post('/try_login_hacienda', 'HaciendaController@try_login_hacienda');
 Route::post('/submit_hacienda_free', 'HaciendaController@login_premium_free');
 Route::post('/submit_hacienda_premium_1', 'HaciendaController@login_premium_1');

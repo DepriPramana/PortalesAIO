@@ -20,14 +20,13 @@ jQuery(function($){
         // Components
         slide_links        : 'blank',    // Individual links for each slide (Options: false, 'num', 'name', 'blank')
         slides             : [    // Slideshow Im/ages
-                                 {image : 'hacienda/socialite/images/backgrounds/haciendaencantada.jpg'},
-                                 {image : 'hacienda/socialite/images/backgrounds/haciendaencantada2.jpg'},
-                                 {image : 'hacienda/socialite/images/backgrounds/haciendaencantada3.jpg'},
-                                 {image : 'hacienda/socialite/images/backgrounds/marinafiesta.jpg'},
-                                 {image : 'hacienda/socialite/images/backgrounds/marinafiesta2.jpg'},
-                                 {image : 'hacienda/socialite/images/backgrounds/marinafiesta3.jpg'},
-                                 {image : 'hacienda/socialite/images/backgrounds/marinafiesta4.jpg'},
+                                 {image : assetBaseUrl1},
+                                 {image : assetBaseUrl2},
+                                 {image : assetBaseUrl3},
+                                 {image : assetBaseUrl4},
+                                 {image : assetBaseUrl5},
+                                 {image : assetBaseUrl6},
+                                 {image : assetBaseUrl7},
                              ]
     });
-
 });

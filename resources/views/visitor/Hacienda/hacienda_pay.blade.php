@@ -7,7 +7,7 @@
     <meta name="description" content="{{ trans('meta.description') }}">
     <meta name="author" content="{{ trans('meta.author') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('hacienda/favicon.ico') }}">
-    <title>Hacienda</title>
+    <title>{{$html_title}}</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
@@ -42,10 +42,13 @@
               <p class="box-title-two simbolos">*****</p></h2> -->
           </div>
 
-          <h3 class="box-title m-b-0 center-align">SIGN IN</h3>
+          <h3 class="box-title m-b-0 center-align">{{ __('hacienda_msg.title')}}</h3>
           <center>
-            <small>insert the information below</small>
+            <small>{{ __('hacienda_msg.subtitle')}}</small>
           </center>
+          <div class="center"><a href="" id="link_es">ES</a> / <a href="" id="link_en">EN</a></div>
+            
+          
           <div class="form-horizontal">
             <div class="form-group  m-t-20">
               <div class="col-xs-12">
@@ -57,33 +60,33 @@
                 <!-- Botones de servicios. -->
                 <div id="opcion-free" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
-                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Free Basic</button>
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_free')}}</button>
                   </div>
                 </div>
                 <div id="opcion-1" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
-                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Daily Non Member</button>
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium1')}}</button>
                   </div>
                 </div>
                 <div id="opcion-2" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
-                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Weekly Non Member</button>
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium2')}}</button>
                   </div>
                 </div>
                 <div id="opcion-3" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
-                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Daily Member</button>
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium3')}}</button>
                   </div>
                 </div>
                 <div id="opcion-4" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
-                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">Premium Weekly Member</button>
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium4')}}</button>
                   </div>
                 </div>
 
                 <div id="back-btn" class="form-group text-center m-t-20" style="display: none;">
                   <div class="col-xs-12">
-                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button"><i class="fa fa-arrow-left"></i> Return to options</button>
+                    <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button"><i class="fa fa-arrow-left"></i> {{ __('hacienda_msg.btn_return')}}</button>
                   </div>
                 </div>
 
@@ -107,18 +110,18 @@
                 <form id="form-free" method="POST" action="{{url('/submit_hacienda_free')}}" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Free Basic.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 1024 / <i class="fa fa-upload"></i> 1024 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> Unlimited</h6>
-                    <h6><b>Cost</b>: Free</h6>
+                    <b>{{ __('hacienda_msg.boxfree_txt_title')}}</b>
+                    <h6><b>{{ __('hacienda_msg.boxfree_txt_subtitle')}}</b> <i class="fa fa-download"></i> 1024 / <i class="fa fa-upload"></i> 1024 Kb.</h6>
+                    <h6><b>{{ __('hacienda_msg.boxfree_txt_subtitle1')}}</b> <i class="fa fa-clock-o"></i> {{ __('hacienda_msg.boxfree_txt_subtitle2')}}</h6>
+                    <h6><b>{{ __('hacienda_msg.boxfree_txt_subtitle3')}}</b> {{ __('hacienda_msg.boxfree_txt_subtitle4')}}</h6>
                   </div>
                   <hr>
                   <input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
                   <input class="form-control" type="hidden" id="id_site_code" name="id_site_code" value="{{$id_site}}" />
-                  <label>Full name</label>
-                  <input type="text" name="fullname" id="fullname" placeholder="Enter your full name">
-                  <label>Email address:</label>
-                  <input id="email_address" name="email_address" class="form-control" type="email" required="" placeholder="email address">
+                  <label>{{ __('hacienda_msg.free_form_name')}}</label>
+                  <input type="text" name="fullname" id="fullname" placeholder="{{ __('hacienda_msg.free_form_name_placeholder')}}">
+                  <label>{{ __('hacienda_msg.free_form_email')}}</label>
+                  <input id="email_address" name="email_address" class="form-control" type="email" required="" placeholder="{{ __('hacienda_msg.free_form_email_placeholder')}}">
 
                   <div class="information-hidden">
                     <input class="form-control" type="hidden" name="url" id="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
@@ -135,7 +138,7 @@
 
                   <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                      <button id="btnlogin-free" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                      <button id="btnlogin-free" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_log')}}</button>
                     </div>
                   </div>
                 </form>
@@ -143,21 +146,21 @@
                 <form id="form-1" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Premium Daily Non Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 2000 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 24 Hour(s)</h6>
-                    <h6><b>Cost</b>: 12 USD</h6>
+                    <b>{{ __('hacienda_msg.boxpremium_title')}}</b>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 2000 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle1')}}</b> <i class="fa fa-clock-o"></i> 24 {{ __('hacienda_msg.boxpremium_subtitle2')}}</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle3')}}</b> 12 USD</h6>
                   </div>
                   <hr>
-                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="well well-sm">{{ __('hacienda_msg.boxpremium_browse')}}</div>
                   <div class="form-group" id="div-checks1">
                     <div class="col-md-12">
                       <div class="radio pull-left p-t-0">
                         <input id="room_radio" name="room_or_acc" type="radio" value="room" checked>
-                        <label for="room_radio"><i class="fa fa-bed"> Room charge</i></label>
+                        <label for="room_radio"><i class="fa fa-bed"> {{ __('hacienda_msg.boxpremium_charge')}}</i></label>
                           <br>
                         <input id="existing_acc" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc"><i class="fa fa-globe"> Browse with an existing account</i></label>
+                        <label for="existing_acc"><i class="fa fa-globe"> {{ __('hacienda_msg.boxpremium_existing')}}</i></label>
                       </div>
                     </div>
                   </div>
@@ -175,15 +178,15 @@
                     <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
                     <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
                   </div>
-                  <label>Last name</label>
-                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name(same as your reservation)">
+                  <label>{{ __('hacienda_msg.boxpremium_form_lastname')}}</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="{{ __('hacienda_msg.boxpremium_form_lastname_placeholder')}}">
 
-                  <label>Room number</label>
-                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+                  <label>{{ __('hacienda_msg.boxpremium_form_room')}}</label>
+                  <input type="number" name="room" id="room" placeholder="{{ __('hacienda_msg.boxpremium_form_room_placeholder')}}">
 
                   <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                      <button id="btnlogin-1" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                      <button id="btnlogin-1" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_log')}}</button>
                     </div>
                   </div>
                 </form>
@@ -191,21 +194,21 @@
                 <form id="form-2" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Premium Weekly Non Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 2000 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 168 Hour(s)</h6>
-                    <h6><b>Cost</b>: 60 USD</h6>
+                    <b>{{ __('hacienda_msg.btn_premium2')}}</b>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 2000 / <i class="fa fa-upload"></i> 2000 Kb.</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle1')}}</b> <i class="fa fa-clock-o"></i> 168 {{ __('hacienda_msg.boxpremium_subtitle2')}}</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle3')}}</b> 60 USD</h6>
                   </div>
                   <hr>
-                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="well well-sm">{{ __('hacienda_msg.boxpremium_browse')}} </div>
                   <div class="form-group">
                     <div class="col-md-12">
                       <div class="radio pull-left p-t-0">
                         <input id="room_radio2" name="room_or_acc" type="radio" value="room" checked>
-                        <label for="room_radio2"><i class="fa fa-bed"> Room charge</i></label>
+                        <label for="room_radio2"><i class="fa fa-bed"> {{ __('hacienda_msg.boxpremium_charge')}}</i></label>
                           <br>
                         <input id="existing_acc2" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc2"><i class="fa fa-globe"> Browse with an existing account</i></label>
+                        <label for="existing_acc2"><i class="fa fa-globe"> {{ __('hacienda_msg.boxpremium_existing')}}</i></label>
                       </div>
                     </div>
                   </div>
@@ -223,15 +226,15 @@
                     <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
                     <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
                   </div>
-                  <label>Last name</label>
-                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+                  <label>{{ __('hacienda_msg.boxpremium_form_lastname')}}</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="{{ __('hacienda_msg.boxpremium_form_lastname_placeholder')}}">
 
-                  <label>Room number</label>
-                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+                  <label>{{ __('hacienda_msg.boxpremium_form_room')}}</label>
+                  <input type="number" name="room" id="room" placeholder="{{ __('hacienda_msg.boxpremium_form_room_placeholder')}}">
 
                   <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                      <button id="btnlogin-2" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                      <button id="btnlogin-2" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_log')}}</button>
                     </div>
                   </div>
                 </form>
@@ -239,21 +242,21 @@
                 <form id="form-3" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Premium Daily Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 24 Hour(s)</h6>
-                    <h6><b>Cost</b>: 10 USD</h6>
+                    <b>{{ __('hacienda_msg.btn_premium3')}}</b>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle1')}}</b> <i class="fa fa-clock-o"></i> 24 {{ __('hacienda_msg.boxpremium_subtitle2')}}</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle3')}}</b> 10 USD</h6>
                   </div>
                   <hr>
-                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="well well-sm">{{ __('hacienda_msg.boxpremium_browse')}} </div>
                   <div class="form-group">
                     <div class="col-md-12">
                       <div class="radio pull-left p-t-0">
                         <input id="room_radio3" name="room_or_acc" type="radio" value="room" checked>
-                        <label for="room_radio3"><i class="fa fa-bed"> Room charge</i></label>
+                        <label for="room_radio3"><i class="fa fa-bed"> {{ __('hacienda_msg.boxpremium_charge')}}</i></label>
                           <br>
                         <input id="existing_acc3" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc3"><i class="fa fa-globe"> Browse with an existing account</i></label>
+                        <label for="existing_acc3"><i class="fa fa-globe"> {{ __('hacienda_msg.boxpremium_existing')}}</i></label>
                       </div>
                     </div>
                   </div>
@@ -271,15 +274,15 @@
                     <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
                     <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
                   </div>
-                  <label>Last name</label>
-                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
+                  <label>{{ __('hacienda_msg.boxpremium_form_lastname')}}</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="{{ __('hacienda_msg.boxpremium_form_lastname_placeholder')}}">
 
-                  <label>Room number</label>
-                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+                  <label>{{ __('hacienda_msg.boxpremium_form_room')}}</label>
+                  <input type="number" name="room" id="room" placeholder="{{ __('hacienda_msg.boxpremium_form_room_placeholder')}}">
 
                   <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                      <button id="btnlogin-3" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                      <button id="btnlogin-3" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_log')}}</button>
                     </div>
                   </div>
                 </form>
@@ -287,21 +290,21 @@
                 <form id="form-4" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
-                    <b>Premium Weekly Member.</b>
-                    <h6><b>Rate</b>: <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
-                    <h6><b>Duration</b>: <i class="fa fa-clock-o"></i> 168 Hour(s)</h6>
-                    <h6><b>Cost</b>: 48 USD</h6>
+                    <b>{{ __('hacienda_msg.boxpremium_title4')}}</b>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle1')}}</b> <i class="fa fa-clock-o"></i> 168 {{ __('hacienda_msg.boxpremium_subtitle2')}}</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle3')}}</b> 48 USD</h6>
                   </div>
                   <hr>
-                  <div class="well well-sm">Select a browse option: </div>
+                  <div class="well well-sm">{{ __('hacienda_msg.boxpremium_browse')}} </div>
                   <div class="form-group">
                     <div class="col-md-12">
                       <div class="radio pull-left p-t-0">
                         <input id="room_radio4" name="room_or_acc" type="radio" value="room" checked>
-                        <label for="room_radio4"><i class="fa fa-bed"> Room charge</i></label>
+                        <label for="room_radio4"><i class="fa fa-bed"> {{ __('hacienda_msg.boxpremium_charge')}}</i></label>
                           <br>
                         <input id="existing_acc4" name="room_or_acc" type="radio" value="existing">
-                        <label for="existing_acc4"><i class="fa fa-globe"> Browse with an existing account</i></label>
+                        <label for="existing_acc4"><i class="fa fa-globe"> {{ __('hacienda_msg.boxpremium_existing')}}</i></label>
                       </div>
                     </div>
                   </div>
@@ -319,14 +322,14 @@
                     <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
                     <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
                   </div>
-                  <label>Last name</label>
-                  <input type="text" name="lastname" id="lastname" placeholder="Enter your last name">
-                  <label>Room number</label>
-                  <input type="number" name="room" id="room" placeholder="Enter your room number">
+                  <label>{{ __('hacienda_msg.boxpremium_form_lastname')}}</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="{{ __('hacienda_msg.boxpremium_form_lastname_placeholder')}}">
+                  <label>{{ __('hacienda_msg.boxpremium_form_room')}}</label>
+                  <input type="number" name="room" id="room" placeholder="{{ __('hacienda_msg.boxpremium_form_room_placeholder')}}">
 
                   <div class="form-group text-center m-t-20">
                     <div class="col-xs-12">
-                      <button id="btnlogin-4" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">LOG IN</button>
+                      <button id="btnlogin-4" class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_log')}}</button>
                     </div>
                   </div>
                 </form>
@@ -337,18 +340,15 @@
                   <div class="col-md-12">
                     <div class="checkbox checkbox-info pull-left p-t-0">
                       <input id="checkbox-signup" name="checkbox-signup"type="checkbox">
-                      <label for="checkbox-signup"><p id='texto-terminos'> Accept terms and conditions</p></label>
+                      <label for="checkbox-signup"><p id='texto-terminos'> {{ __('hacienda_msg.terms')}}</p></label>
                     </div>
-                    <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-info-circle m-r-5"></i> Terms.</a>
+                    <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right" data-toggle="modal" data-target="#responsive-modal"><i class="fa fa-info-circle m-r-5"></i> {{ __('hacienda_msg.icon')}}.</a>
                   </div>
                 </div>
-
 
               </div>
             </div>
           </div>
-
-
 
         </div>
       </div>
@@ -398,6 +398,15 @@
     </section>
 
     <!-- All Jquery -->
+      <script>
+        var assetBaseUrl1 = "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada.jpg') }}";
+        var assetBaseUrl2 = "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada2.jpg') }}";
+        var assetBaseUrl3 = "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada3.jpg') }}";
+        var assetBaseUrl4 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta.jpg') }}";
+        var assetBaseUrl5 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta2.jpg') }}";
+        var assetBaseUrl6 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta3.jpg') }}";
+        var assetBaseUrl7 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta4.jpg') }}";
+      </script>
       <script src="{{ asset('hacienda/socialite/plugins/jquery/dist/jquery.min.js') }}"></script>
       <!-- Bootstrap Core JavaScript -->
       <script src="{{ asset('hacienda/socialite/plugins/bootstrap-3.3.7/dist/js/bootstrap.min.js') }}"></script>
