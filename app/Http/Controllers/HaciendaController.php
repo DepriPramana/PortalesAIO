@@ -180,6 +180,7 @@ class HaciendaController extends Controller
 		$service_expiration = '1 day'; // Tiempo del servicio.
 		$expiration_db = 1;
 		$service_devices = 4; // id del tipo de dispositivo(siempre se usa el id 4)
+		$group_rad = 'hacienda_premium1';
 
     	$client_mac_new = $this->AddSeparator($client_mac);
 		$fechain = date("Y-m-d H:i:s");
@@ -297,7 +298,7 @@ class HaciendaController extends Controller
 							'status' => 'active',
 						]);
 						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 						usleep(5000);
 						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 					}else{
@@ -353,7 +354,7 @@ class HaciendaController extends Controller
 								'status' => 'active',
 							]);
 							// insert en radius.
-							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
 
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
@@ -433,6 +434,7 @@ class HaciendaController extends Controller
 		$service_expiration = '7 day'; // Tiempo del servicio.
 		$expiration_db = 7;
 		$service_devices = 4; // id del tipo de dispositivo(siempre se usa el id 4)
+		$group_rad = 'hacienda_premium2';
 
     	$client_mac_new = $this->AddSeparator($client_mac);
 		$fechain = date("Y-m-d H:i:s");
@@ -550,7 +552,7 @@ class HaciendaController extends Controller
 							'status' => 'active',
 						]);
 						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 						usleep(5000);
 						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 					}else{
@@ -606,7 +608,7 @@ class HaciendaController extends Controller
 								'status' => 'active',
 							]);
 							// insert en radius.
-							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
 
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
@@ -686,6 +688,7 @@ class HaciendaController extends Controller
 		$service_expiration = '1 day'; // Tiempo del servicio.
 		$expiration_db = 1;
 		$service_devices = 4; // id del tipo de dispositivo(siempre se usa el id 4)
+		$group_rad = 'hacienda_premium3';
 
     	$client_mac_new = $this->AddSeparator($client_mac);
 		$fechain = date("Y-m-d H:i:s");
@@ -803,7 +806,7 @@ class HaciendaController extends Controller
 							'status' => 'active',
 						]);
 						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 						usleep(5000);
 						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 					}else{
@@ -859,7 +862,7 @@ class HaciendaController extends Controller
 								'status' => 'active',
 							]);
 							// insert en radius.
-							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
 
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
@@ -939,6 +942,7 @@ class HaciendaController extends Controller
 		$service_expiration = '7 day'; // Tiempo del servicio.
 		$expiration_db = 7;
 		$service_devices = 4; // id del tipo de dispositivo(siempre se usa el id 4)
+		$group_rad = 'hacienda_premium4';
 
     	$client_mac_new = $this->AddSeparator($client_mac);
 		$fechain = date("Y-m-d H:i:s");
@@ -1056,7 +1060,7 @@ class HaciendaController extends Controller
 							'status' => 'active',
 						]);
 						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 						usleep(5000);
 						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 					}else{
@@ -1112,7 +1116,7 @@ class HaciendaController extends Controller
 								'status' => 'active',
 							]);
 							// insert en radius.
-							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db);
+							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
 
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
@@ -1148,7 +1152,7 @@ class HaciendaController extends Controller
 		return join($separator, str_split($mac, 2));
 	}
 
-    public function insertRadCloud($user, $name, $lastname, $site_code, $exp)
+    public function insertRadCloud($user, $name, $lastname, $site_code, $exp, $group)
     {
 		$atr1="Auth-Type";
 		$atr2="Cleartext-Password";
@@ -1158,13 +1162,11 @@ class HaciendaController extends Controller
 		$passglobal = "123";
 		$createby = "administrator";
 		// $codigo_sitio = "ZCJG";
-		$group = "hacienda_premium1";
 
 		$fechain = Carbon::now();
 		$fechaout = $fechain->addDays($exp)->format('Y-m-d H:i:s');
 		$fechamod = Carbon::parse($fechaout)->format('d M Y H:i:s');
 		
-
 		/*$fechain = date("Y-m-d H:i:s");
         $fechaout = strtotime ( '+1 day' , strtotime ( $fechain ) ) ;
         $fechaout = date ( 'Y-m-d H:i:s' , $fechaout );
