@@ -243,7 +243,7 @@
                   {{ csrf_field() }}
                   <div class="well well-sm">
                     <b>{{ __('hacienda_msg.btn_premium3')}}</b>
-                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 4500 / <i class="fa fa-upload"></i> 3200 Kb.</h6>
                     <h6><b>{{ __('hacienda_msg.boxpremium_subtitle1')}}</b> <i class="fa fa-clock-o"></i> 24 {{ __('hacienda_msg.boxpremium_subtitle2')}}</h6>
                     <h6><b>{{ __('hacienda_msg.boxpremium_subtitle3')}}</b> 10 USD</h6>
                   </div>
@@ -291,7 +291,7 @@
                   {{ csrf_field() }}
                   <div class="well well-sm">
                     <b>{{ __('hacienda_msg.boxpremium_title4')}}</b>
-                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 5000 / <i class="fa fa-upload"></i> 3000 Kb.</h6>
+                    <h6><b>{{ __('hacienda_msg.boxpremium_subtitle')}}</b> <i class="fa fa-download"></i> 4500 / <i class="fa fa-upload"></i> 3200 Kb.</h6>
                     <h6><b>{{ __('hacienda_msg.boxpremium_subtitle1')}}</b> <i class="fa fa-clock-o"></i> 168 {{ __('hacienda_msg.boxpremium_subtitle2')}}</h6>
                     <h6><b>{{ __('hacienda_msg.boxpremium_subtitle3')}}</b> 48 USD</h6>
                   </div>
