@@ -243,11 +243,13 @@ class HaciendaController extends Controller
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
+			// validacion nueva. checo que el mismo room y lastname no tenga un registro de checkout, si tiene uno, significa que no esta inhouse. por lo tanto tenemos que mandar un msg de error.
+			$sql_good_checkout = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+				['room', $room_numba],
+				['lastname', $lastname]
+			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
-
-			if (empty($sql_good)) {
-				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-			}else{
+			if (empty($sql_good_checkout)) {
 				if ($sql_good->owner == 'N') {
 					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
@@ -365,7 +367,9 @@ class HaciendaController extends Controller
 					}
 				}else{
 					return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
-				}
+				}				
+			}else{
+				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}
 		}
     	return '0';
@@ -444,11 +448,6 @@ class HaciendaController extends Controller
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
     	//LEYVA3263
 
-  		// return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-  		// return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-  		// return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
-  		// return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
-
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
 			if ($db_user > 0) {
@@ -497,11 +496,13 @@ class HaciendaController extends Controller
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
+			// validacion nueva. checo que el mismo room y lastname no tenga un registro de checkout, si tiene uno, significa que no esta inhouse. por lo tanto tenemos que mandar un msg de error.
+			$sql_good_checkout = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+				['room', $room_numba],
+				['lastname', $lastname]
+			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
-
-			if (empty($sql_good)) {
-				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-			}else{
+			if (empty($sql_good_checkout)) {
 				if ($sql_good->owner == 'N') {
 					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
@@ -620,6 +621,8 @@ class HaciendaController extends Controller
 				}else{
 					return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
 				}
+			}else{
+				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}
 		}
     	return '0';
@@ -698,11 +701,6 @@ class HaciendaController extends Controller
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
     	//LEYVA3263
 
-  		// return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-  		// return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-  		// return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
-  		// return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
-
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
 			if ($db_user > 0) {
@@ -751,11 +749,14 @@ class HaciendaController extends Controller
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
+			// validacion nueva. checo que el mismo room y lastname no tenga un registro de checkout, si tiene uno, significa que no esta inhouse. por lo tanto tenemos que mandar un msg de error.
+			$sql_good_checkout = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+				['room', $room_numba],
+				['lastname', $lastname]
+			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
 
-			if (empty($sql_good)) {
-				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-			}else{
+			if (empty($sql_good_checkout)) {
 				if ($sql_good->owner == 'Y') {
 					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
@@ -874,6 +875,8 @@ class HaciendaController extends Controller
 				}else{
 					return response()->json(['status' => 3, 'msg' => 'You are not a member, use a non member option to have internet access.']);
 				}
+			}else{
+				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}
 		}
     	return '0';
@@ -952,11 +955,6 @@ class HaciendaController extends Controller
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
     	//LEYVA3263
 
-  		// return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-  		// return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-  		// return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
-  		// return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
-
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
 			if ($db_user > 0) {
@@ -1005,11 +1003,14 @@ class HaciendaController extends Controller
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
+			// validacion nueva. checo que el mismo room y lastname no tenga un registro de checkout, si tiene uno, significa que no esta inhouse. por lo tanto tenemos que mandar un msg de error.
+			$sql_good_checkout = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
+				['room', $room_numba],
+				['lastname', $lastname]
+			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
 
-			if (empty($sql_good)) {
-				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-			}else{
+			if (empty($sql_good_checkout)) {
 				if ($sql_good->owner == 'Y') {
 					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
@@ -1128,6 +1129,8 @@ class HaciendaController extends Controller
 				}else{
 					return response()->json(['status' => 3, 'msg' => 'You are not a member, use a non member option to have internet access.']);
 				}
+			}else{
+				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}
 		}
     	return '0';
