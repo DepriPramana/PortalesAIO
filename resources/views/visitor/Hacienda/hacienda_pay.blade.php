@@ -399,13 +399,22 @@
 
     <!-- All Jquery -->
       <script>
-        var assetBaseUrl1 = "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada.jpg') }}";
-        var assetBaseUrl2 = "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada2.jpg') }}";
-        var assetBaseUrl3 = "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada3.jpg') }}";
-        var assetBaseUrl4 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta.jpg') }}";
-        var assetBaseUrl5 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta2.jpg') }}";
-        var assetBaseUrl6 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta3.jpg') }}";
-        var assetBaseUrl7 = "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta4.jpg') }}";
+        var id_site = "{{$id_site}}";
+        if (id_site == 1) {
+          var images_supersized = [
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada2.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada3.jpg') }}"},
+          ];
+        }else{
+          var images_supersized = [
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta2.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta3.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta4.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta5.jpg') }}"},
+          ];
+        }
       </script>
       <script src="{{ asset('hacienda/socialite/plugins/jquery/dist/jquery.min.js') }}"></script>
       <!-- Bootstrap Core JavaScript -->

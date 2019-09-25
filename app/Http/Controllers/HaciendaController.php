@@ -239,7 +239,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -249,7 +249,7 @@ class HaciendaController extends Controller
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}else{
 				if ($sql_good->owner == 'N') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
 						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 						// insert
@@ -280,7 +280,7 @@ class HaciendaController extends Controller
 	  						'site_hacienda_id' => $request->id_site_code,
 	  						'expiration' => $fechaout
 	  					]);
-						DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 							'register_id' => $sql_good->id,
 							'reservation_id' => $sql_good->reservation_id,
 							'siteid' => $request->id_site_code,
@@ -336,7 +336,7 @@ class HaciendaController extends Controller
 		  						'site_hacienda_id' => $request->id_site_code,
 		  						'expiration' => $fechaout
 		  					]);
-							DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
 								'siteid' => $request->id_site_code,
@@ -493,7 +493,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -503,7 +503,7 @@ class HaciendaController extends Controller
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}else{
 				if ($sql_good->owner == 'N') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
 						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 						// insert
@@ -534,7 +534,7 @@ class HaciendaController extends Controller
 	  						'site_hacienda_id' => $request->id_site_code,
 	  						'expiration' => $fechaout
 	  					]);
-						DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 							'register_id' => $sql_good->id,
 							'reservation_id' => $sql_good->reservation_id,
 							'siteid' => $request->id_site_code,
@@ -590,7 +590,7 @@ class HaciendaController extends Controller
 		  						'site_hacienda_id' => $request->id_site_code,
 		  						'expiration' => $fechaout
 		  					]);
-							DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
 								'siteid' => $request->id_site_code,
@@ -747,7 +747,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -757,7 +757,7 @@ class HaciendaController extends Controller
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}else{
 				if ($sql_good->owner == 'Y') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
 						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 						// insert
@@ -788,7 +788,7 @@ class HaciendaController extends Controller
 	  						'site_hacienda_id' => $request->id_site_code,
 	  						'expiration' => $fechaout
 	  					]);
-						DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 							'register_id' => $sql_good->id,
 							'reservation_id' => $sql_good->reservation_id,
 							'siteid' => $request->id_site_code,
@@ -844,7 +844,7 @@ class HaciendaController extends Controller
 		  						'site_hacienda_id' => $request->id_site_code,
 		  						'expiration' => $fechaout
 		  					]);
-							DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
 								'siteid' => $request->id_site_code,
@@ -1001,7 +1001,7 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
-			$sql_good = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where([
+			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]
 			])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
@@ -1011,7 +1011,7 @@ class HaciendaController extends Controller
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}else{
 				if ($sql_good->owner == 'Y') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 					if (empty($check_pay_reservation)) {
 						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 						// insert
@@ -1042,7 +1042,7 @@ class HaciendaController extends Controller
 	  						'site_hacienda_id' => $request->id_site_code,
 	  						'expiration' => $fechaout
 	  					]);
-						DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 							'register_id' => $sql_good->id,
 							'reservation_id' => $sql_good->reservation_id,
 							'siteid' => $request->id_site_code,
@@ -1098,7 +1098,7 @@ class HaciendaController extends Controller
 		  						'site_hacienda_id' => $request->id_site_code,
 		  						'expiration' => $fechaout
 		  					]);
-							DB::connection('hacienda_sqlsrv_practice')->table('imm_accounts')->insert([
+							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
 								'siteid' => $request->id_site_code,

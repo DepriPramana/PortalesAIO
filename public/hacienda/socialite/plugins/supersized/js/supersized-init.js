@@ -19,14 +19,6 @@ jQuery(function($){
 
         // Components
         slide_links        : 'blank',    // Individual links for each slide (Options: false, 'num', 'name', 'blank')
-        slides             : [    // Slideshow Im/ages
-                                 {image : assetBaseUrl1},
-                                 {image : assetBaseUrl2},
-                                 {image : assetBaseUrl3},
-                                 {image : assetBaseUrl4},
-                                 {image : assetBaseUrl5},
-                                 {image : assetBaseUrl6},
-                                 {image : assetBaseUrl7},
-                             ]
+        slides             : images_supersized
     });
 });
