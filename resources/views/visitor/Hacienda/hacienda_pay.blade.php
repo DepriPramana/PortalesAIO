@@ -363,30 +363,78 @@
                           <div class="modal-content">
                               <div class="modal-header">
                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                  <h4 class="modal-title">{{ trans('termsofuse.title') }}</h4> </div>
+                                  <h4 class="modal-title">{{ __('hacienda_msg.title_term') }}</h4> </div>
                               <div class="modal-body">
                                 <ul class="list-unstyled">
-                                  <li>{{ trans('termsofuse.paragraph') }}
+                                  <li><b>{{ __('hacienda_msg.term_paragraph1') }}</b>
                                     <ul>
                                       <li>
-                                        {{ trans('termsofuse.paragraph_one') }}
+                                        <b>{{ __('hacienda_msg.term_paragraph2') }}</b>
                                       </li>
                                       <li>
-                                        {{ trans('termsofuse.paragraph_two') }}
+                                        {{ trans('hacienda_msg.term_paragraph3') }}
                                       </li>
                                       <li>
-                                        {{ trans('termsofuse.paragraph_three') }}
+                                        {{ trans('hacienda_msg.term_paragraph4') }}
+                                      </li>
+                                      <li>
+                                        <b>{{ trans('hacienda_msg.term_paragraph5') }}</b>
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph6') }}
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph7') }}
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph8') }}
+                                      </li>
+                                      <li>
+                                        <b>{{ trans('hacienda_msg.term_paragraph9') }}</b>
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph10') }}
+                                      </li>
+                                      <li>
+                                        <b>{{ trans('hacienda_msg.term_paragraph11') }}</b>
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph12') }}
+                                      </li>
+                                      <li>
+                                        <b>{{ trans('hacienda_msg.term_paragraph13') }}</b>
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph14') }}
+                                      </li>
+                                      <li>
+                                        <b>{{ trans('hacienda_msg.term_paragraph15') }}</b>
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph16') }}
+                                      </li>
+                                      <li>
+                                        <b>{{ trans('hacienda_msg.term_paragraph17') }}</b>
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph18') }}
+                                      </li>
+                                      <li>
+                                        <b>{{ trans('hacienda_msg.term_paragraph19') }}</b>
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph20') }}
+                                      </li>
+                                      <li>
+                                        {{ trans('hacienda_msg.term_paragraph21') }}
                                       </li>
                                     </ul>
                                   </li>
-                                  <li>
-                                    {{ trans('termsofuse.paragraph_four') }}
-                                    <a href="{{ url('policies') }}" target="_blank">{{ trans('termsofuse.more') }}</a>
-                                  </li>
+                                  
                                 </ul>
                               </div>
                               <div class="modal-footer">
-                                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">{{ trans('termsofuse.close_modal') }}</button>
+                                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">{{ trans('hacienda_msg.close_modal') }}</button>
                               </div>
                           </div>
                       </div>
