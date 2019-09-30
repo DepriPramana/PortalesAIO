@@ -355,92 +355,160 @@
 
       <div class="row">
         <div class="col-md-4">
-              <div class="white-box">
-                  <!-- sample modal content -->
-                  <!-- /.modal -->
-                  <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                  <h4 class="modal-title">{{ __('hacienda_msg.title_term') }}</h4> </div>
-                              <div class="modal-body">
-                                <ul class="list-unstyled">
-                                  <li><b>{{ __('hacienda_msg.term_paragraph1') }}</b>
-                                    <ul>
-                                      <li>
-                                        <b>{{ __('hacienda_msg.term_paragraph2') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph3') }}
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph4') }}
-                                      </li>
-                                      <li>
-                                        <b>{{ trans('hacienda_msg.term_paragraph5') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph6') }}
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph7') }}
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph8') }}
-                                      </li>
-                                      <li>
-                                        <b>{{ trans('hacienda_msg.term_paragraph9') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph10') }}
-                                      </li>
-                                      <li>
-                                        <b>{{ trans('hacienda_msg.term_paragraph11') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph12') }}
-                                      </li>
-                                      <li>
-                                        <b>{{ trans('hacienda_msg.term_paragraph13') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph14') }}
-                                      </li>
-                                      <li>
-                                        <b>{{ trans('hacienda_msg.term_paragraph15') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph16') }}
-                                      </li>
-                                      <li>
-                                        <b>{{ trans('hacienda_msg.term_paragraph17') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph18') }}
-                                      </li>
-                                      <li>
-                                        <b>{{ trans('hacienda_msg.term_paragraph19') }}</b>
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph20') }}
-                                      </li>
-                                      <li>
-                                        {{ trans('hacienda_msg.term_paragraph21') }}
-                                      </li>
-                                    </ul>
-                                  </li>
-                                  
-                                </ul>
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">{{ trans('hacienda_msg.close_modal') }}</button>
-                              </div>
+          <div class="white-box">
+              <!-- sample modal content -->
+              <!-- /.modal -->
+              <div id="responsive-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                              <h4 class="modal-title">{{ __('hacienda_msg.title_term') }}</h4> </div>
+                          <div class="modal-body">
+                            @if ($id_site == 1)
+                              <ul class="list-unstyled">
+                                <li><b>{{ __('hacienda_msg.term_paragraph1') }}</b>
+                                  <ul>
+                                    <li>
+                                      <b>{{ __('hacienda_msg.term_paragraph2') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph3') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph4') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph5') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph6') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph7') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph8') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph9') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph10') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph11') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph12') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph13') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph14') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph15') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph16') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph17') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph18') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph19') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph20') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph21') }}
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            @else
+                              <ul class="list-unstyled">
+                                <li><b>{{ __('hacienda_msg.term_paragraph1_marina') }}</b>
+                                  <ul>
+                                    <li>
+                                      <b>{{ __('hacienda_msg.term_paragraph2_marina') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph3') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph4') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph5') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph6') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph7') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph8_marina') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph9') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph10_marina') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph11') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph12_marina') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph13') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph14_marina') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph15') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph16_marina') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph17') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph18_marina') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph19') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph20_marina') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph21') }}
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            @endif
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">{{ trans('hacienda_msg.close_modal') }}</button>
                           </div>
                       </div>
                   </div>
-                  <!-- Button trigger modal -->
               </div>
+              <!-- Button trigger modal -->
+          </div>
         </div>
       </div>
     </section>
