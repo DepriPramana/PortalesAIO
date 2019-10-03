@@ -58,33 +58,33 @@
                 <div class="well well-sm"> Service features <b>Premium Daily Member.</b></div>
                 <div class="well well-sm"> Service features <b>Premium Weekly Member.</b></div> -->
                 <!-- Botones de servicios. -->
-                <div id="opcion-free" class="form-group text-center m-t-20">
+                <div id="opcion-free" style="cursor: pointer;" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_free')}}</button>
                   </div>
                 </div>
-                <div id="opcion-1" class="form-group text-center m-t-20">
+                <div id="opcion-1" style="cursor: pointer;" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium1')}}</button>
                   </div>
                 </div>
-                <div id="opcion-2" class="form-group text-center m-t-20">
+                <div id="opcion-2" style="cursor: pointer;" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium2')}}</button>
                   </div>
                 </div>
-                <div id="opcion-3" class="form-group text-center m-t-20">
+                <div id="opcion-3" style="cursor: pointer;" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium3')}}</button>
                   </div>
                 </div>
-                <div id="opcion-4" class="form-group text-center m-t-20">
+                <div id="opcion-4" style="cursor: pointer;" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_premium4')}}</button>
                   </div>
                 </div>
 
-                <div id="back-btn" class="form-group text-center m-t-20" style="display: none;">
+                <div id="back-btn" style="cursor: pointer;" class="form-group text-center m-t-20" style="display: none;">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button"><i class="fa fa-arrow-left"></i> {{ __('hacienda_msg.btn_return')}}</button>
                   </div>
