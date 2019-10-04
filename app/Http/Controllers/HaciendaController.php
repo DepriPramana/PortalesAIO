@@ -188,7 +188,6 @@ class HaciendaController extends Controller
     	$site_name = $site_info[0]->nombre;
 
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
-    	//LEYVA3263
 
   		// return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
   		// return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
@@ -280,6 +279,9 @@ class HaciendaController extends Controller
 	  						'reservation_id' => $sql_good->reservation_id,
 	  						'owner' => $sql_good->owner,
 	  						'site_hacienda_id' => $request->id_site_code,
+							'service_name' => $service_name,
+	  						'service_price' => $service_price,
+	  						'service_expiration' => $service_expiration,
 	  						'expiration' => $fechaout
 	  					]);
 						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -336,6 +338,9 @@ class HaciendaController extends Controller
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
+		  						'service_name' => $service_name,
+	  							'service_price' => $service_price,
+	  							'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -446,7 +451,6 @@ class HaciendaController extends Controller
     	$site_name = $site_info[0]->nombre;
 
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
-    	//LEYVA3263
 
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
@@ -533,6 +537,9 @@ class HaciendaController extends Controller
 	  						'reservation_id' => $sql_good->reservation_id,
 	  						'owner' => $sql_good->owner,
 	  						'site_hacienda_id' => $request->id_site_code,
+	  						'service_name' => $service_name,
+	  						'service_price' => $service_price,
+	  						'service_expiration' => $service_expiration,
 	  						'expiration' => $fechaout
 	  					]);
 						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -589,6 +596,9 @@ class HaciendaController extends Controller
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
+		  						'service_name' => $service_name,
+	  							'service_price' => $service_price,
+	  							'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -699,7 +709,6 @@ class HaciendaController extends Controller
     	$site_name = $site_info[0]->nombre;
 
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
-    	//LEYVA3263
 
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
@@ -787,6 +796,9 @@ class HaciendaController extends Controller
 	  						'reservation_id' => $sql_good->reservation_id,
 	  						'owner' => $sql_good->owner,
 	  						'site_hacienda_id' => $request->id_site_code,
+							'service_name' => $service_name,
+	  						'service_price' => $service_price,
+	  						'service_expiration' => $service_expiration,
 	  						'expiration' => $fechaout
 	  					]);
 						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -843,6 +855,9 @@ class HaciendaController extends Controller
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
+		  						'service_name' => $service_name,
+	  							'service_price' => $service_price,
+	  							'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -953,7 +968,6 @@ class HaciendaController extends Controller
     	$site_name = $site_info[0]->nombre;
 
   		$db_user = DB::connection('cloudrad')->table('userinfo')->select('username')->where('username', $usuariojunto)->count();
-    	//LEYVA3263
 
     	if ($request->room_or_acc == 'existing') {
 			// intentar logearlo.
@@ -1041,6 +1055,9 @@ class HaciendaController extends Controller
 	  						'reservation_id' => $sql_good->reservation_id,
 	  						'owner' => $sql_good->owner,
 	  						'site_hacienda_id' => $request->id_site_code,
+	  						'service_name' => $service_name,
+	  						'service_price' => $service_price,
+	  						'service_expiration' => $service_expiration,
 	  						'expiration' => $fechaout
 	  					]);
 						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -1097,6 +1114,9 @@ class HaciendaController extends Controller
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
+		  						'service_name' => $service_name,
+	  							'service_price' => $service_price,
+	  							'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
