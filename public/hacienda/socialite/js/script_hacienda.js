@@ -11,7 +11,7 @@ $(function() {
       console.log('Error:', data);
     }
   });*/
-        
+
   var currentURL = window.location.href;
   var currentHost = window.location.hostname;
   // console.log(currentHost);
@@ -33,7 +33,7 @@ $(function() {
       $('#link_es').attr("href", "http://"+ currentHost + "/MarinaFiesta/es");
     }
   }
-  
+
 });
 
 $('#back-btn').on('click', function(){
@@ -207,19 +207,6 @@ $('#btnlogin-1').on('click', function(){
     // var objData = $("#form-1").find("select,textarea, input").serialize();
     var form = $('#form-1')[0];
     var formData = new FormData(form);
-    var _token = $('input[name="_token"]').val();
-    const headers = new Headers({
-        "Accept": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-TOKEN": _token
-    })
-    var miInit = {
-      method: 'post',
-      headers: headers,
-      credentials: "same-origin",
-      body:formData,
-      cache: 'default'
-    };
     Swal.fire({
       type: 'warning',
       title: 'Confirmation',
@@ -232,23 +219,26 @@ $('#btnlogin-1').on('click', function(){
       showLoaderOnConfirm: true,
       reverseButtons: true,
       allowOutsideClick: false,
-      preConfirm: (login) => {
-        return fetch('/submit_hacienda_premium_1', miInit)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          })
-          .catch(function(error){
-            Swal.showValidationMessage(
-              `Request failed: ${error}`
-            )
-          })
+      preConfirm: function (login) {
+        return $.ajax({
+             url: "/submit_hacienda_premium_1",
+             type: "POST",
+             data: formData,
+             contentType: false,
+             processData: false
+         })
+         .done(function (response) {
+           return response;
+         })
+         .fail(function (error) {
+           Swal.showValidationMessage(
+             `Request failed: ${error}`
+           );
+         });
         },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-        // console.log(result.value.msg);
+      allowOutsideClick: function () { !Swal.isLoading(); }
+    }).then(function (result) {
+        console.log(result.value);
         switch(result.value.status) {
           case 1:
             // console.log(result.value.user);
@@ -263,7 +253,7 @@ $('#btnlogin-1').on('click', function(){
               confirmButtonText: 'Continue!',
               allowOutsideClick: false,
               footer: 'If you get the log in form page again, you can log in by checking the browse with an existing account if the period bought has not yet expired.'
-            }).then((result) => {
+            }).then(function (result) {
               if (result.value) {
                 $('#loginform').submit();
               }
@@ -301,7 +291,7 @@ $('#btnlogin-1').on('click', function(){
               text: 'Try again...',
             });
         }
-    })
+    });
   }
 });
 
@@ -350,19 +340,6 @@ $('#btnlogin-2').on('click', function(){
     // var objData = $("#form-1").find("select,textarea, input").serialize();
     var form = $('#form-2')[0];
     var formData = new FormData(form);
-    var _token = $('input[name="_token"]').val();
-    const headers = new Headers({
-        "Accept": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-TOKEN": _token
-    })
-    var miInit = {
-      method: 'post',
-      headers: headers,
-      credentials: "same-origin",
-      body:formData,
-      cache: 'default'
-    };
     Swal.fire({
       type: 'warning',
       title: 'Confirmation',
@@ -375,22 +352,25 @@ $('#btnlogin-2').on('click', function(){
       showLoaderOnConfirm: true,
       reverseButtons: true,
       allowOutsideClick: false,
-      preConfirm: (login) => {
-        return fetch('/submit_hacienda_premium_2', miInit)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          })
-          .catch(function(error){
-            Swal.showValidationMessage(
-              `Request failed: ${error}`
-            )
-          })
+      preConfirm: function (login) {
+        return $.ajax({
+             url: "/submit_hacienda_premium_2",
+             type: "POST",
+             data: formData,
+             contentType: false,
+             processData: false
+         })
+         .done(function (response) {
+           return response;
+         })
+         .fail(function (error) {
+           Swal.showValidationMessage(
+             `Request failed: ${error}`
+           );
+         });
         },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
+      allowOutsideClick: function () { !Swal.isLoading(); }
+    }).then(function (result) {
         // console.log(result.value.msg);
         switch(result.value.status) {
           case 1:
@@ -406,7 +386,7 @@ $('#btnlogin-2').on('click', function(){
               confirmButtonText: 'Continue!',
               allowOutsideClick: false,
               footer: 'If you get the log in form page again, you can log in by checking the browse with an existing account if the period bought has not yet expired.'
-            }).then((result) => {
+            }).then(function (result) {
               if (result.value) {
                 $('#loginform').submit();
               }
@@ -493,19 +473,6 @@ $('#btnlogin-3').on('click', function(){
     // var objData = $("#form-1").find("select,textarea, input").serialize();
     var form = $('#form-3')[0];
     var formData = new FormData(form);
-    var _token = $('input[name="_token"]').val();
-    const headers = new Headers({
-        "Accept": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-TOKEN": _token
-    })
-    var miInit = {
-      method: 'post',
-      headers: headers,
-      credentials: "same-origin",
-      body:formData,
-      cache: 'default'
-    };
     Swal.fire({
       type: 'warning',
       title: 'Confirmation',
@@ -518,22 +485,25 @@ $('#btnlogin-3').on('click', function(){
       showLoaderOnConfirm: true,
       reverseButtons: true,
       allowOutsideClick: false,
-      preConfirm: (login) => {
-        return fetch('/submit_hacienda_premium_3', miInit)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          })
-          .catch(function(error){
-            Swal.showValidationMessage(
-              `Request failed: ${error}`
-            )
-          })
+      preConfirm: function (login) {
+        return $.ajax({
+             url: "/submit_hacienda_premium_3",
+             type: "POST",
+             data: formData,
+             contentType: false,
+             processData: false
+         })
+         .done(function (response) {
+           return response;
+         })
+         .fail(function (error) {
+           Swal.showValidationMessage(
+             `Request failed: ${error}`
+           );
+         });
         },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
+      allowOutsideClick: function () { !Swal.isLoading(); }
+    }).then(function (result) {
         // console.log(result.value.msg);
         switch(result.value.status) {
           case 1:
@@ -549,7 +519,7 @@ $('#btnlogin-3').on('click', function(){
               confirmButtonText: 'Continue!',
               allowOutsideClick: false,
               footer: 'If you get the log in form page again, you can log in by checking the browse with an existing account if the period bought has not yet expired.'
-            }).then((result) => {
+            }).then(function(result) {
               if (result.value) {
                 $('#loginform').submit();
               }
@@ -636,19 +606,6 @@ $('#btnlogin-4').on('click', function(){
     // var objData = $("#form-1").find("select,textarea, input").serialize();
     var form = $('#form-4')[0];
     var formData = new FormData(form);
-    var _token = $('input[name="_token"]').val();
-    const headers = new Headers({
-        "Accept": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-TOKEN": _token
-    })
-    var miInit = {
-      method: 'post',
-      headers: headers,
-      credentials: "same-origin",
-      body:formData,
-      cache: 'default'
-    };
     Swal.fire({
       type: 'warning',
       title: 'Confirmation',
@@ -661,22 +618,25 @@ $('#btnlogin-4').on('click', function(){
       showLoaderOnConfirm: true,
       reverseButtons: true,
       allowOutsideClick: false,
-      preConfirm: (login) => {
-        return fetch('/submit_hacienda_premium_4', miInit)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          })
-          .catch(function(error){
-            Swal.showValidationMessage(
-              `Request failed: ${error}`
-            )
-          })
+      preConfirm: function (login) {
+        return $.ajax({
+             url: "/submit_hacienda_premium_4",
+             type: "POST",
+             data: formData,
+             contentType: false,
+             processData: false
+         })
+         .done(function (response) {
+           return response;
+         })
+         .fail(function (error) {
+           Swal.showValidationMessage(
+             `Request failed: ${error}`
+           );
+         });
         },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
+      allowOutsideClick: function () { !Swal.isLoading(); }
+    }).then(function (result) {
         // console.log(result.value.msg);
         switch(result.value.status) {
           case 1:
@@ -692,7 +652,7 @@ $('#btnlogin-4').on('click', function(){
               confirmButtonText: 'Continue!',
               allowOutsideClick: false,
               footer: 'If you get the log in form page again, you can log in by checking the browse with an existing account if the period bought has not yet expired.'
-            }).then((result) => {
+            }).then(function (result) {
               if (result.value) {
                 $('#loginform').submit();
               }

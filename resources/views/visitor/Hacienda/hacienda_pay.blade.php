@@ -47,8 +47,8 @@
             <small>{{ __('hacienda_msg.subtitle')}}</small>
           </center>
           <div class="center"><a href="" id="link_es">ES</a> / <a href="" id="link_en">EN</a></div>
-            
-          
+
+
           <div class="form-horizontal">
             <div class="form-group  m-t-20">
               <div class="col-xs-12">
@@ -84,7 +84,7 @@
                   </div>
                 </div>
 
-                <div id="back-btn" style="cursor: pointer;" class="form-group text-center m-t-20" style="display: none;">
+                <div id="back-btn" style="cursor: pointer; display: none;" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button"><i class="fa fa-arrow-left"></i> {{ __('hacienda_msg.btn_return')}}</button>
                   </div>
@@ -106,7 +106,7 @@
                     <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
                   </div>
                 </form>
-                
+
                 <form id="form-free" method="POST" action="{{url('/submit_hacienda_free')}}" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
@@ -547,7 +547,7 @@
       <!-- Materialize JavaScript -->
       <!-- <script src="{{ asset('hacienda/socialite/plugins/materialize/js/materialize.js') }}"></script> -->
       <!-- Script JavaScript-->
-      <script src="{{ asset('hacienda/socialite/js/script_hacienda.js') }}"></script>
+      <script src="{{ asset('hacienda/socialite/js/script_hacienda.js?2.0') }}"></script>
       <script src="{{ asset('js/app.js') }}"></script>
 
   </body>
