@@ -547,7 +547,8 @@
       <!-- Materialize JavaScript -->
       <!-- <script src="{{ asset('hacienda/socialite/plugins/materialize/js/materialize.js') }}"></script> -->
       <!-- Script JavaScript-->
-      <script src="{{ asset('hacienda/socialite/js/script_hacienda.js?2.0') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7.1.0/dist/promise.min.js"></script>
+      <script src="{{ asset('hacienda/socialite/js/script_hacienda.js?3.0') }}"></script>
       <script src="{{ asset('js/app.js') }}"></script>
 
   </body>

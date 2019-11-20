@@ -232,7 +232,7 @@ $('#btnlogin-1').on('click', function(){
          })
          .fail(function (error) {
            Swal.showValidationMessage(
-             `Request failed: ${error}`
+             "Error: " + error
            );
          });
         },
@@ -365,7 +365,7 @@ $('#btnlogin-2').on('click', function(){
          })
          .fail(function (error) {
            Swal.showValidationMessage(
-             `Request failed: ${error}`
+             "Error: " + error
            );
          });
         },
@@ -498,7 +498,7 @@ $('#btnlogin-3').on('click', function(){
          })
          .fail(function (error) {
            Swal.showValidationMessage(
-             `Request failed: ${error}`
+             "Error: " + error
            );
          });
         },
@@ -631,7 +631,7 @@ $('#btnlogin-4').on('click', function(){
          })
          .fail(function (error) {
            Swal.showValidationMessage(
-             `Request failed: ${error}`
+             "Error: " + error
            );
          });
         },
