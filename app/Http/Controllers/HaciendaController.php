@@ -249,69 +249,13 @@ class HaciendaController extends Controller
 			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
 			if (empty($sql_good_checkout)) {
-				if ($sql_good->owner == 'N') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
-					if (empty($check_pay_reservation)) {
-						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
-						// insert
-						$fechain = Carbon::now();
-						$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
-	  					DB::table('data_agents_hacienda')->insert([
-	  						'mac_address' => $client_mac,
-	  						'browser' => $browser,
-	  						'browser_version' => $browser_version,
-	  						'platform' => $platform,
-	  						'platform_version' => $platform_version,
-	  						'wificode' => $usuariojunto,
-	  						'device' => $device,
-	  						'language' => $lang,
-	  						'robot' => $robot_name,
-	  						'site_id' => $site_info[0]->id,
-	  						'mobile' => $mobile,
-	  						'success' => 1,
-	  						'expiration' => $fechaout
-	  					]);
-	  					DB::table('data_sites_hacienda')->insert([
-	  						'firstname' => $sql_good->name,
-	  						'lastname' => $lastname_upper,
-	  						'wificode' => $usuariojunto,
-	  						'site_id' => $site_info[0]->id,
-	  						'reservation_id' => $sql_good->reservation_id,
-	  						'owner' => $sql_good->owner,
-	  						'site_hacienda_id' => $request->id_site_code,
-							'service_name' => $service_name,
-	  						'service_price' => $service_price,
-	  						'service_expiration' => $service_expiration,
-	  						'expiration' => $fechaout
-	  					]);
-						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
-							'register_id' => $sql_good->id,
-							'reservation_id' => $sql_good->reservation_id,
-							'siteid' => $request->id_site_code,
-							'service_id' => $service_id,
-							'service_price' => $service_price,
-							'service_drate' => $service_drate,
-							'service_urate' => $service_urate,
-							'service_expiration' => $service_expiration,
-							'service_devices' => $service_devices,
-							'service_name' => $service_name,
-							'activation_datetime' => Carbon::now(),
-							'account' => $usuariojunto,
-							'mac' => $client_mac_new,
-							'device' => $platform,
-							'status' => 'active',
-						]);
-						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
-						usleep(5000);
-						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-					}else{
-						// ya tiene un cargo, checar si ya vencio.
-						$datenow = Carbon::now();
-						$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
-						if ($datenow->greaterThan($date_register)) {
-							// ya expiro, crear otro cargo.
-							// puede continuar con el cobro no es miembro.
+				if (empty($sql_good)) {
+					return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
+				}else{
+					if ($sql_good->owner == 'N') {
+						$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+						if (empty($check_pay_reservation)) {
+							// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 							// insert
 							$fechain = Carbon::now();
 							$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
@@ -338,9 +282,9 @@ class HaciendaController extends Controller
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
-		  						'service_name' => $service_name,
-	  							'service_price' => $service_price,
-	  							'service_expiration' => $service_expiration,
+								'service_name' => $service_name,
+		  						'service_price' => $service_price,
+		  						'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -363,16 +307,76 @@ class HaciendaController extends Controller
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
-
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 						}else{
-							// todavia no expira, retornar mensaje.
-							return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							// ya tiene un cargo, checar si ya vencio.
+							$datenow = Carbon::now();
+							$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
+							if ($datenow->greaterThan($date_register)) {
+								// ya expiro, crear otro cargo.
+								// puede continuar con el cobro no es miembro.
+								// insert
+								$fechain = Carbon::now();
+								$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
+			  					DB::table('data_agents_hacienda')->insert([
+			  						'mac_address' => $client_mac,
+			  						'browser' => $browser,
+			  						'browser_version' => $browser_version,
+			  						'platform' => $platform,
+			  						'platform_version' => $platform_version,
+			  						'wificode' => $usuariojunto,
+			  						'device' => $device,
+			  						'language' => $lang,
+			  						'robot' => $robot_name,
+			  						'site_id' => $site_info[0]->id,
+			  						'mobile' => $mobile,
+			  						'success' => 1,
+			  						'expiration' => $fechaout
+			  					]);
+			  					DB::table('data_sites_hacienda')->insert([
+			  						'firstname' => $sql_good->name,
+			  						'lastname' => $lastname_upper,
+			  						'wificode' => $usuariojunto,
+			  						'site_id' => $site_info[0]->id,
+			  						'reservation_id' => $sql_good->reservation_id,
+			  						'owner' => $sql_good->owner,
+			  						'site_hacienda_id' => $request->id_site_code,
+			  						'service_name' => $service_name,
+		  							'service_price' => $service_price,
+		  							'service_expiration' => $service_expiration,
+			  						'expiration' => $fechaout
+			  					]);
+								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
+									'register_id' => $sql_good->id,
+									'reservation_id' => $sql_good->reservation_id,
+									'siteid' => $request->id_site_code,
+									'service_id' => $service_id,
+									'service_price' => $service_price,
+									'service_drate' => $service_drate,
+									'service_urate' => $service_urate,
+									'service_expiration' => $service_expiration,
+									'service_devices' => $service_devices,
+									'service_name' => $service_name,
+									'activation_datetime' => Carbon::now(),
+									'account' => $usuariojunto,
+									'mac' => $client_mac_new,
+									'device' => $platform,
+									'status' => 'active',
+								]);
+								// insert en radius.
+								$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
+								usleep(5000);
+
+								return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
+							}else{
+								// todavia no expira, retornar mensaje.
+								return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							}
 						}
+					}else{
+						return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
 					}
-				}else{
-					return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
-				}				
+				}
 			}else{
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
 			}
@@ -507,69 +511,13 @@ class HaciendaController extends Controller
 			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
 			if (empty($sql_good_checkout)) {
-				if ($sql_good->owner == 'N') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
-					if (empty($check_pay_reservation)) {
-						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
-						// insert
-						$fechain = Carbon::now();
-						$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
-	  					DB::table('data_agents_hacienda')->insert([
-	  						'mac_address' => $client_mac,
-	  						'browser' => $browser,
-	  						'browser_version' => $browser_version,
-	  						'platform' => $platform,
-	  						'platform_version' => $platform_version,
-	  						'wificode' => $usuariojunto,
-	  						'device' => $device,
-	  						'language' => $lang,
-	  						'robot' => $robot_name,
-	  						'site_id' => $site_info[0]->id,
-	  						'mobile' => $mobile,
-	  						'success' => 1,
-	  						'expiration' => $fechaout
-	  					]);
-	  					DB::table('data_sites_hacienda')->insert([
-	  						'firstname' => $sql_good->name,
-	  						'lastname' => $lastname_upper,
-	  						'wificode' => $usuariojunto,
-	  						'site_id' => $site_info[0]->id,
-	  						'reservation_id' => $sql_good->reservation_id,
-	  						'owner' => $sql_good->owner,
-	  						'site_hacienda_id' => $request->id_site_code,
-	  						'service_name' => $service_name,
-	  						'service_price' => $service_price,
-	  						'service_expiration' => $service_expiration,
-	  						'expiration' => $fechaout
-	  					]);
-						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
-							'register_id' => $sql_good->id,
-							'reservation_id' => $sql_good->reservation_id,
-							'siteid' => $request->id_site_code,
-							'service_id' => $service_id,
-							'service_price' => $service_price,
-							'service_drate' => $service_drate,
-							'service_urate' => $service_urate,
-							'service_expiration' => $service_expiration,
-							'service_devices' => $service_devices,
-							'service_name' => $service_name,
-							'activation_datetime' => Carbon::now(),
-							'account' => $usuariojunto,
-							'mac' => $client_mac_new,
-							'device' => $platform,
-							'status' => 'active',
-						]);
-						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
-						usleep(5000);
-						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-					}else{
-						// ya tiene un cargo, checar si ya vencio.
-						$datenow = Carbon::now();
-						$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
-						if ($datenow->greaterThan($date_register)) {
-							// ya expiro, crear otro cargo.
-							// puede continuar con el cobro no es miembro.
+				if (empty($sql_good)) {
+					return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
+				}else{ 
+					if ($sql_good->owner == 'N') {
+						$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+						if (empty($check_pay_reservation)) {
+							// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 							// insert
 							$fechain = Carbon::now();
 							$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
@@ -597,8 +545,8 @@ class HaciendaController extends Controller
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
 		  						'service_name' => $service_name,
-	  							'service_price' => $service_price,
-	  							'service_expiration' => $service_expiration,
+		  						'service_price' => $service_price,
+		  						'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -621,15 +569,75 @@ class HaciendaController extends Controller
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
-
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 						}else{
-							// todavia no expira, retornar mensaje.
-							return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							// ya tiene un cargo, checar si ya vencio.
+							$datenow = Carbon::now();
+							$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
+							if ($datenow->greaterThan($date_register)) {
+								// ya expiro, crear otro cargo.
+								// puede continuar con el cobro no es miembro.
+								// insert
+								$fechain = Carbon::now();
+								$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
+			  					DB::table('data_agents_hacienda')->insert([
+			  						'mac_address' => $client_mac,
+			  						'browser' => $browser,
+			  						'browser_version' => $browser_version,
+			  						'platform' => $platform,
+			  						'platform_version' => $platform_version,
+			  						'wificode' => $usuariojunto,
+			  						'device' => $device,
+			  						'language' => $lang,
+			  						'robot' => $robot_name,
+			  						'site_id' => $site_info[0]->id,
+			  						'mobile' => $mobile,
+			  						'success' => 1,
+			  						'expiration' => $fechaout
+			  					]);
+			  					DB::table('data_sites_hacienda')->insert([
+			  						'firstname' => $sql_good->name,
+			  						'lastname' => $lastname_upper,
+			  						'wificode' => $usuariojunto,
+			  						'site_id' => $site_info[0]->id,
+			  						'reservation_id' => $sql_good->reservation_id,
+			  						'owner' => $sql_good->owner,
+			  						'site_hacienda_id' => $request->id_site_code,
+			  						'service_name' => $service_name,
+		  							'service_price' => $service_price,
+		  							'service_expiration' => $service_expiration,
+			  						'expiration' => $fechaout
+			  					]);
+								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
+									'register_id' => $sql_good->id,
+									'reservation_id' => $sql_good->reservation_id,
+									'siteid' => $request->id_site_code,
+									'service_id' => $service_id,
+									'service_price' => $service_price,
+									'service_drate' => $service_drate,
+									'service_urate' => $service_urate,
+									'service_expiration' => $service_expiration,
+									'service_devices' => $service_devices,
+									'service_name' => $service_name,
+									'activation_datetime' => Carbon::now(),
+									'account' => $usuariojunto,
+									'mac' => $client_mac_new,
+									'device' => $platform,
+									'status' => 'active',
+								]);
+								// insert en radius.
+								$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
+								usleep(5000);
+
+								return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
+							}else{
+								// todavia no expira, retornar mensaje.
+								return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							}
 						}
+					}else{
+						return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
 					}
-				}else{
-					return response()->json(['status' => 3, 'msg' => 'You are a member, use a member option to have internet access.']);
 				}
 			}else{
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
@@ -764,71 +772,14 @@ class HaciendaController extends Controller
 				['lastname', $lastname]
 			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
-
 			if (empty($sql_good_checkout)) {
-				if ($sql_good->owner == 'Y') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
-					if (empty($check_pay_reservation)) {
-						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
-						// insert
-						$fechain = Carbon::now();
-						$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
-	  					DB::table('data_agents_hacienda')->insert([
-	  						'mac_address' => $client_mac,
-	  						'browser' => $browser,
-	  						'browser_version' => $browser_version,
-	  						'platform' => $platform,
-	  						'platform_version' => $platform_version,
-	  						'wificode' => $usuariojunto,
-	  						'device' => $device,
-	  						'language' => $lang,
-	  						'robot' => $robot_name,
-	  						'site_id' => $site_info[0]->id,
-	  						'mobile' => $mobile,
-	  						'success' => 1,
-	  						'expiration' => $fechaout
-	  					]);
-	  					DB::table('data_sites_hacienda')->insert([
-	  						'firstname' => $sql_good->name,
-	  						'lastname' => $lastname_upper,
-	  						'wificode' => $usuariojunto,
-	  						'site_id' => $site_info[0]->id,
-	  						'reservation_id' => $sql_good->reservation_id,
-	  						'owner' => $sql_good->owner,
-	  						'site_hacienda_id' => $request->id_site_code,
-							'service_name' => $service_name,
-	  						'service_price' => $service_price,
-	  						'service_expiration' => $service_expiration,
-	  						'expiration' => $fechaout
-	  					]);
-						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
-							'register_id' => $sql_good->id,
-							'reservation_id' => $sql_good->reservation_id,
-							'siteid' => $request->id_site_code,
-							'service_id' => $service_id,
-							'service_price' => $service_price,
-							'service_drate' => $service_drate,
-							'service_urate' => $service_urate,
-							'service_expiration' => $service_expiration,
-							'service_devices' => $service_devices,
-							'service_name' => $service_name,
-							'activation_datetime' => Carbon::now(),
-							'account' => $usuariojunto,
-							'mac' => $client_mac_new,
-							'device' => $platform,
-							'status' => 'active',
-						]);
-						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
-						usleep(5000);
-						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-					}else{
-						// ya tiene un cargo, checar si ya vencio.
-						$datenow = Carbon::now();
-						$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
-						if ($datenow->greaterThan($date_register)) {
-							// ya expiro, crear otro cargo.
-							// puede continuar con el cobro no es miembro.
+				if (empty($sql_good)) {
+					return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
+				}else{
+					if ($sql_good->owner == 'Y') {
+						$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+						if (empty($check_pay_reservation)) {
+							// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 							// insert
 							$fechain = Carbon::now();
 							$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
@@ -855,9 +806,9 @@ class HaciendaController extends Controller
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
-		  						'service_name' => $service_name,
-	  							'service_price' => $service_price,
-	  							'service_expiration' => $service_expiration,
+								'service_name' => $service_name,
+		  						'service_price' => $service_price,
+		  						'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -880,15 +831,76 @@ class HaciendaController extends Controller
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
-
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 						}else{
-							// todavia no expira, retornar mensaje.
-							return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							// ya tiene un cargo, checar si ya vencio.
+							$datenow = Carbon::now();
+							$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
+							if ($datenow->greaterThan($date_register)) {
+								// ya expiro, crear otro cargo.
+								// puede continuar con el cobro no es miembro.
+								// insert
+								$fechain = Carbon::now();
+								$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
+			  					DB::table('data_agents_hacienda')->insert([
+			  						'mac_address' => $client_mac,
+			  						'browser' => $browser,
+			  						'browser_version' => $browser_version,
+			  						'platform' => $platform,
+			  						'platform_version' => $platform_version,
+			  						'wificode' => $usuariojunto,
+			  						'device' => $device,
+			  						'language' => $lang,
+			  						'robot' => $robot_name,
+			  						'site_id' => $site_info[0]->id,
+			  						'mobile' => $mobile,
+			  						'success' => 1,
+			  						'expiration' => $fechaout
+			  					]);
+			  					DB::table('data_sites_hacienda')->insert([
+			  						'firstname' => $sql_good->name,
+			  						'lastname' => $lastname_upper,
+			  						'wificode' => $usuariojunto,
+			  						'site_id' => $site_info[0]->id,
+			  						'reservation_id' => $sql_good->reservation_id,
+			  						'owner' => $sql_good->owner,
+			  						'site_hacienda_id' => $request->id_site_code,
+			  						'service_name' => $service_name,
+		  							'service_price' => $service_price,
+		  							'service_expiration' => $service_expiration,
+			  						'expiration' => $fechaout
+			  					]);
+								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
+									'register_id' => $sql_good->id,
+									'reservation_id' => $sql_good->reservation_id,
+									'siteid' => $request->id_site_code,
+									'service_id' => $service_id,
+									'service_price' => $service_price,
+									'service_drate' => $service_drate,
+									'service_urate' => $service_urate,
+									'service_expiration' => $service_expiration,
+									'service_devices' => $service_devices,
+									'service_name' => $service_name,
+									'activation_datetime' => Carbon::now(),
+									'account' => $usuariojunto,
+									'mac' => $client_mac_new,
+									'device' => $platform,
+									'status' => 'active',
+								]);
+								// insert en radius.
+								$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
+								usleep(5000);
+
+								return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
+							}else{
+								// todavia no expira, retornar mensaje.
+								return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							}
 						}
+					}else{
+						return response()->json(['status' => 3, 'msg' => 'You are not a member, use a non member option to have internet access.']);
 					}
-				}else{
-					return response()->json(['status' => 3, 'msg' => 'You are not a member, use a non member option to have internet access.']);
+
 				}
 			}else{
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
@@ -1023,71 +1035,14 @@ class HaciendaController extends Controller
 				['lastname', $lastname]
 			])->whereNotNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
 
-
 			if (empty($sql_good_checkout)) {
-				if ($sql_good->owner == 'Y') {
-					$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
-					if (empty($check_pay_reservation)) {
-						// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
-						// insert
-						$fechain = Carbon::now();
-						$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
-	  					DB::table('data_agents_hacienda')->insert([
-	  						'mac_address' => $client_mac,
-	  						'browser' => $browser,
-	  						'browser_version' => $browser_version,
-	  						'platform' => $platform,
-	  						'platform_version' => $platform_version,
-	  						'wificode' => $usuariojunto,
-	  						'device' => $device,
-	  						'language' => $lang,
-	  						'robot' => $robot_name,
-	  						'site_id' => $site_info[0]->id,
-	  						'mobile' => $mobile,
-	  						'success' => 1,
-	  						'expiration' => $fechaout
-	  					]);
-	  					DB::table('data_sites_hacienda')->insert([
-	  						'firstname' => $sql_good->name,
-	  						'lastname' => $lastname_upper,
-	  						'wificode' => $usuariojunto,
-	  						'site_id' => $site_info[0]->id,
-	  						'reservation_id' => $sql_good->reservation_id,
-	  						'owner' => $sql_good->owner,
-	  						'site_hacienda_id' => $request->id_site_code,
-	  						'service_name' => $service_name,
-	  						'service_price' => $service_price,
-	  						'service_expiration' => $service_expiration,
-	  						'expiration' => $fechaout
-	  					]);
-						DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
-							'register_id' => $sql_good->id,
-							'reservation_id' => $sql_good->reservation_id,
-							'siteid' => $request->id_site_code,
-							'service_id' => $service_id,
-							'service_price' => $service_price,
-							'service_drate' => $service_drate,
-							'service_urate' => $service_urate,
-							'service_expiration' => $service_expiration,
-							'service_devices' => $service_devices,
-							'service_name' => $service_name,
-							'activation_datetime' => Carbon::now(),
-							'account' => $usuariojunto,
-							'mac' => $client_mac_new,
-							'device' => $platform,
-							'status' => 'active',
-						]);
-						// insert en radius.
-						$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
-						usleep(5000);
-						return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
-					}else{
-						// ya tiene un cargo, checar si ya vencio.
-						$datenow = Carbon::now();
-						$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
-						if ($datenow->greaterThan($date_register)) {
-							// ya expiro, crear otro cargo.
-							// puede continuar con el cobro no es miembro.
+				if (empty($sql_good)) {
+					return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
+				}else{
+					if ($sql_good->owner == 'Y') {
+						$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
+						if (empty($check_pay_reservation)) {
+							// puede continuar con el cobro no es miembro y no tiene ningun registro de cargo.
 							// insert
 							$fechain = Carbon::now();
 							$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
@@ -1115,8 +1070,8 @@ class HaciendaController extends Controller
 		  						'owner' => $sql_good->owner,
 		  						'site_hacienda_id' => $request->id_site_code,
 		  						'service_name' => $service_name,
-	  							'service_price' => $service_price,
-	  							'service_expiration' => $service_expiration,
+		  						'service_price' => $service_price,
+		  						'service_expiration' => $service_expiration,
 		  						'expiration' => $fechaout
 		  					]);
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
@@ -1139,15 +1094,75 @@ class HaciendaController extends Controller
 							// insert en radius.
 							$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
 							usleep(5000);
-
 							return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
 						}else{
-							// todavia no expira, retornar mensaje.
-							return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							// ya tiene un cargo, checar si ya vencio.
+							$datenow = Carbon::now();
+							$date_register = Carbon::parse($check_pay_reservation->activation_datetime)->addDays($check_pay_reservation->service_expiration[0]);
+							if ($datenow->greaterThan($date_register)) {
+								// ya expiro, crear otro cargo.
+								// puede continuar con el cobro no es miembro.
+								// insert
+								$fechain = Carbon::now();
+								$fechaout = $fechain->addDays($expiration_db)->format('Y-m-d H:i:s');
+			  					DB::table('data_agents_hacienda')->insert([
+			  						'mac_address' => $client_mac,
+			  						'browser' => $browser,
+			  						'browser_version' => $browser_version,
+			  						'platform' => $platform,
+			  						'platform_version' => $platform_version,
+			  						'wificode' => $usuariojunto,
+			  						'device' => $device,
+			  						'language' => $lang,
+			  						'robot' => $robot_name,
+			  						'site_id' => $site_info[0]->id,
+			  						'mobile' => $mobile,
+			  						'success' => 1,
+			  						'expiration' => $fechaout
+			  					]);
+			  					DB::table('data_sites_hacienda')->insert([
+			  						'firstname' => $sql_good->name,
+			  						'lastname' => $lastname_upper,
+			  						'wificode' => $usuariojunto,
+			  						'site_id' => $site_info[0]->id,
+			  						'reservation_id' => $sql_good->reservation_id,
+			  						'owner' => $sql_good->owner,
+			  						'site_hacienda_id' => $request->id_site_code,
+			  						'service_name' => $service_name,
+		  							'service_price' => $service_price,
+		  							'service_expiration' => $service_expiration,
+			  						'expiration' => $fechaout
+			  					]);
+								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
+									'register_id' => $sql_good->id,
+									'reservation_id' => $sql_good->reservation_id,
+									'siteid' => $request->id_site_code,
+									'service_id' => $service_id,
+									'service_price' => $service_price,
+									'service_drate' => $service_drate,
+									'service_urate' => $service_urate,
+									'service_expiration' => $service_expiration,
+									'service_devices' => $service_devices,
+									'service_name' => $service_name,
+									'activation_datetime' => Carbon::now(),
+									'account' => $usuariojunto,
+									'mac' => $client_mac_new,
+									'device' => $platform,
+									'status' => 'active',
+								]);
+								// insert en radius.
+								$this->insertRadCloud($usuariojunto, $sql_good->name, $sql_good->lastname, $site, $expiration_db, $group_rad);
+								usleep(5000);
+
+								return response()->json(['status' => 1, 'msg' => 'The charge was applied correctly. Logging in.', 'user' => $usuariojunto]);
+							}else{
+								// todavia no expira, retornar mensaje.
+								return response()->json(['status' => 4, 'msg' => 'You still have internet access, check browse with existing account option']);
+							}
 						}
+					}else{
+						return response()->json(['status' => 3, 'msg' => 'You are not a member, use a non member option to have internet access.']);
 					}
-				}else{
-					return response()->json(['status' => 3, 'msg' => 'You are not a member, use a non member option to have internet access.']);
 				}
 			}else{
 				return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
