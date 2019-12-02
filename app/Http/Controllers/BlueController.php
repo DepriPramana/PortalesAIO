@@ -13,58 +13,58 @@ class BlueController extends Controller
     public function login_bluebay(Request $request)
     {
 		//Agent
-		$agent = new Agent(); // datos del usuario.
-		$bool = $agent->isDesktop();
-		if($bool){
-		  $mobile = 0;
-		}else{
-		  $mobile = 1;
-		}
-		$device = $agent->device();
-		$robot = $agent->isRobot();
-		if ($robot) {
-		  $robot_name = $agent->robot();
-		}else{
-		  $robot_name = '';
-		}
-		// $robot = $agent->robot();
-		$languages = $agent->languages();
-		if (count($languages) > 0) {
-			$lang = $languages[0];
-		}else{
-			$lang = '';
-		}
-		$browser = $agent->browser();
-		$browser_version = $agent->version($browser);
-		$platform = $agent->platform();
-		if ($agent->version($platform)) {
-		  $platform_version = $agent->version($platform);
-		}else{
-		  $platform_version = '';
-		}
+    		$agent = new Agent(); // datos del usuario.
+    		$bool = $agent->isDesktop();
+    		if($bool){
+    		  $mobile = 0;
+    		}else{
+    		  $mobile = 1;
+    		}
+    		$device = $agent->device();
+    		$robot = $agent->isRobot();
+    		if ($robot) {
+    		  $robot_name = $agent->robot();
+    		}else{
+    		  $robot_name = '';
+    		}
+    		// $robot = $agent->robot();
+    		$languages = $agent->languages();
+    		if (count($languages) > 0) {
+    			$lang = $languages[0];
+    		}else{
+    			$lang = '';
+    		}
+    		$browser = $agent->browser();
+    		$browser_version = $agent->version($browser);
+    		$platform = $agent->platform();
+    		if ($agent->version($platform)) {
+    		  $platform_version = $agent->version($platform);
+    		}else{
+    		  $platform_version = '';
+    		}
 		//Fin Agent
 		// Parámetros de logeo
-		$url = $request->url;
-		$proxy = $request->proxy;
-		$sip = $request->sip;
-		$mac = $request->mac;
-		$client_mac = $request->client_mac;
-		$uip = $request->uip;
-		$ssid = $request->ssid;
-		$vlan = $request->vlan;
-		$res = $request->res;
-		$auth = $request->auth;
-		$site = $request->site_code;
-		$email = $request->email;
-		$wificode = $request->wificode; // Wificode.
-		$firstname = $request->apellido; // Nombre.
-		$lastname = $request->nombre; // Apellido.
-		$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
-		$site_name = $site_info[0]->nombre;
-		$db_user = DB::connection('sunrisezq')->table('authtoken')->select('username')->where('username', $wificode)->count();
-		$fechain = date("Y-m-d H:i:s");
-		$this->user_code = $wificode;
-
+    		$url = $request->url;
+    		$proxy = $request->proxy;
+    		$sip = $request->sip;
+    		$mac = $request->mac;
+    		$client_mac = $request->client_mac;
+    		$uip = $request->uip;
+    		$ssid = $request->ssid;
+    		$vlan = $request->vlan;
+    		$res = $request->res;
+    		$auth = $request->auth;
+    		$site = $request->site_code;
+    		$email = $request->email;
+    		$wificode = $request->wificode; // Wificode.
+    		$firstname = $request->apellido; // Nombre.
+    		$lastname = $request->nombre; // Apellido.
+    		$site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
+    		$site_name = $site_info[0]->nombre;
+    		$db_user = DB::connection('sunrisezq')->table('authtoken')->select('username')->where('username', $wificode)->count();
+    		$fechain = date("Y-m-d H:i:s");
+    		$this->user_code = $wificode;
+        // End parametros.    
     	// $db_check = DB::connection('sunrisezq')->table('authtoken')->select('profile')->where('username', $wificode)->value('profile');
     	// dd($db_check);
 

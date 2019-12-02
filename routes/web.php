@@ -47,6 +47,14 @@ Route::get('/Bluebay', function () {
     $site = 'BGE';
     return view('visitor.Bluebay.bluebay', compact('site'));
 });
+Route::get('/Mahekal', function () {
+    $site = 'MHK';
+    return view('visitor.Mahekal.mahekal', compact('site'));
+});
+Route::get('/Mahekal_vip', function () {
+    $site = 'MHKVIP';
+    return view('visitor.Mahekal.mahekal_vip', compact('site'));
+});
 Route::get('/Unitec', function () {
     $site = 'UTEC';
     return view('visitor.Unitec.unitec', compact('site'));
@@ -94,6 +102,9 @@ Route::post('submit_unitec', 'UnitecController@login_unitec');
 Route::post('validate_correo', 'BlueController@validate_email');
 Route::post('submit_bluebay', 'BlueController@login_bluebay');
 Route::post('submit_palace', 'PalaceController@login_palace');
+Route::post('submit_mahekal', 'MahekalController@login_mahekal');
+Route::post('submit_mahekal_vip', 'MahekalController@login_mahekal_vip');
+
 
 Route::post('/submit_palace_test', 'PalaceController@login_palace_test');
 
