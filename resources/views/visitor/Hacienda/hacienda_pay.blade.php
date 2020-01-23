@@ -432,7 +432,7 @@
                                   </ul>
                                 </li>
                               </ul>
-                            @else
+                            @elseif ($id_site == 2)
                               <ul class="list-unstyled">
                                 <li><b>{{ __('hacienda_msg.term_paragraph1_marina') }}</b>
                                   <ul>
@@ -499,6 +499,73 @@
                                   </ul>
                                 </li>
                               </ul>
+                            @else
+                              <ul class="list-unstyled">
+                                <li><b>{{ __('hacienda_msg.term_paragraph1_vista') }}</b>
+                                  <ul>
+                                    <li>
+                                      <b>{{ __('hacienda_msg.term_paragraph2_vista') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph3') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph4') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph5') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph6') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph7') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph8_vista') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph9') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph10_vista') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph11') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph12_vista') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph13') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph14_vista') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph15') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph16_vista') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph17') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph18_vista') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph19') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph20_vista') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph21') }}
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
                             @endif
                           </div>
                           <div class="modal-footer">
@@ -522,13 +589,19 @@
             {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada2.jpg') }}"},
             {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada3.jpg') }}"},
           ];
-        }else{
+        }else if (id_site == 2){
           var images_supersized = [
             {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta.jpg') }}"},
             {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta2.jpg') }}"},
             {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta3.jpg') }}"},
             {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta4.jpg') }}"},
             {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta5.jpg') }}"},
+          ];
+        }else{
+          var images_supersized = [
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada2.jpg') }}"},
+            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada3.jpg') }}"},
           ];
         }
       </script>

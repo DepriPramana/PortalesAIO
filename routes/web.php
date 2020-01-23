@@ -70,22 +70,29 @@ Route::get('/CentralNorte', function () {
 Route::get('/HaciendaEncantada/{lang}', function($lang){
     $html_title = 'Hacienda Encantada';
     App::setLocale($lang);
-    $site = 'HE';
-    $id_site = '1';
+    $site = 'HE'; // Variable para extraer id de base de datos.
+    $id_site = '1'; // Variable para cambio de imagenes.
     return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
 });
 Route::get('/MarinaFiesta/{lang}', function($lang){
     $html_title = 'Marina Fiesta';
     App::setLocale($lang);
-    $site = 'MF';
-    $id_site = '2';
+    $site = 'MF'; // Variable para extraer id de base de datos.
+    $id_site = '2'; // Variable para cambio de imagenes.
+    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
+});
+Route::get('/VistaEncantada/{lang}', function($lang){
+    $html_title = 'Vista Encantada';
+    App::setLocale($lang);
+    $site = 'VE'; // Variable para extraer id de base de datos.
+    $id_site = '4'; // Variable para cambio de imagenes.
     return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
 });
 //test locale.
 Route::get('/HaciendaPremium/{lang}', function($lang){
     $html_title = 'Test Locale';
     App::setLocale($lang);
-    $site = 'HE';
+    $site = 'HE'; 
     $id_site = '1';
     return view('visitor.Hacienda.hacienda_pay', compact('site','id_site', 'html_title')); 
 });

@@ -24,7 +24,7 @@ $(function() {
       $('#link_en').attr("href", "http://"+ currentHost + "/HaciendaEncantada/en");
       $('#link_es').attr("href", "http://"+ currentHost + "/HaciendaEncantada/es");
     }
-  }else{
+  }else if (id_site == 2) {
     if (variables.length > 1) {
       $('#link_es').attr("href", "http://"+ currentHost + "/MarinaFiesta/es" + '?'+ variables[1]);
       $('#link_en').attr("href", "http://"+ currentHost + "/MarinaFiesta/en" + '?'+ variables[1]);
@@ -32,8 +32,15 @@ $(function() {
       $('#link_en').attr("href", "http://"+ currentHost + "/MarinaFiesta/en");
       $('#link_es').attr("href", "http://"+ currentHost + "/MarinaFiesta/es");
     }
+  }else{
+    if (variables.length > 1) {
+      $('#link_es').attr("href", "http://"+ currentHost + "/VistaEncantada/es" + '?'+ variables[1]);
+      $('#link_en').attr("href", "http://"+ currentHost + "/VistaEncantada/en" + '?'+ variables[1]);
+    }else{
+      $('#link_en').attr("href", "http://"+ currentHost + "/VistaEncantada/en");
+      $('#link_es').attr("href", "http://"+ currentHost + "/VistaEncantada/es");
+    }
   }
-
 });
 
 $('#back-btn').on('click', function(){
