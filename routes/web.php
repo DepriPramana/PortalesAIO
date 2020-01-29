@@ -110,6 +110,7 @@ Route::post('/submit_hacienda_premium_4', 'HaciendaController@login_premium_4');
 
 Route::post('submit_fontan_test', 'TestController@test_logeo');
 Route::post('submit_unitec', 'UnitecController@login_unitec');
+Route::post('submit_uvm', 'UnitecController@login_uvm');
 Route::post('validate_correo', 'BlueController@validate_email');
 Route::post('submit_bluebay', 'BlueController@login_bluebay');
 Route::post('submit_palace', 'PalaceController@login_palace');

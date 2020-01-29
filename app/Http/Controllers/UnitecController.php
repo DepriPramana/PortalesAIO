@@ -45,7 +45,7 @@ class UnitecController extends Controller
         // Parámetros de logeo
 
     }
-    public function testings(Request $request)
+    public function login_uvm(Request $request)
     {
       $url = $request->url;
       $proxy = $request->proxy;
