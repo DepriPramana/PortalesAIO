@@ -59,6 +59,10 @@ Route::get('/Unitec', function () {
     $site = 'UTEC';
     return view('visitor.Unitec.unitec', compact('site'));
 });
+Route::get('/Portal_UVM', function () {
+    $site = 'UVM';
+    return view('visitor.Unitec.uvm_view', compact('site'));
+});
 Route::get('/Fontan', function () {
     $site = 'FONT';
     return view('visitor.Fontan.fontan', compact('site'));
