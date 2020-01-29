@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" href="favicon.ico">
-	<title>Inicio</title>
+	<title>{{$site}}</title>
 	<!-- Custom CSS -->
 	<!-- <link rel="stylesheet" type="text/css" href="{{asset('palace/cozumel/style.css')}}" /> !>
 	<!-- Google Font -->
