@@ -113,7 +113,7 @@ Route::post('submit_mahekal', 'MahekalController@login_mahekal');
 Route::post('submit_mahekal_vip', 'MahekalController@login_mahekal_vip');
 
 
-Route::post('/submit_palace_test', 'PalaceController@login_palace_test');
+Route::post('/submit_palace_test', 'PalaceController@testings');
 
 Auth::routes(['register' => false]);
 // Auth::routes();

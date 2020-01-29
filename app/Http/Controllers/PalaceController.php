@@ -493,5 +493,26 @@ XML;
   			}
   		}
     }
+    public function testings(Request $request)
+    {
+      $url = $request->url;
+      $proxy = $request->proxy;
+      $sip = $request->sip;
+      $mac = $request->mac;
+      $client_mac = $request->client_mac;
+      $uip = $request->uip;
+      $ssid = $request->ssid;
+      $vlan = $request->vlan;
+      $res = $request->res;
+      $auth = $request->auth;
+      $site = $request->site_code;
+      $username = $request->username;
+      $password = $request->password; // Apellido.
 
+      $site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
+      $site_name = $site_info[0]->nombre;
+
+      return view('visitor.submitx_test', compact('site_name','username', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+
+    }
 }

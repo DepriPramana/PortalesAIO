@@ -63,12 +63,19 @@
 		<form method="POST" action="{{url('/submit_palace_test')}}" id="formpr" role="login" onsubmit="mostrar();">
 			{{ csrf_field() }}
 			<input class="form-control" type="text" id="site_code" name="site_code" value="{{$site}}" />
-			<label>Room:</label>
+			<!-- <label>Room:</label>
 			<input type="number" onkeyup="generar()" name="username1" id="username1" required  autofocus class="form-control" />
 			<input type="hidden" id="username" name="username" >
 
 			<label>Last name:</label>
-			<input type="text" onkeyup="generar()" name="password1" id="password1" style="text-transform:uppercase" onkeyup="javascript:this.value=this.value.toUpperCase();" required class="form-control" />
+			<input type="text" onkeyup="generar()" name="password1" id="password1" style="text-transform:uppercase" onkeyup="javascript:this.value=this.value.toUpperCase();" required class="form-control" /> -->
+
+			<label>Usuario:</label>
+			<input type="text" name="username" id="username" required  autofocus class="form-control" />
+			<br>
+			<label>Password:</label>
+			<input type="text" name="password" id="password" required class="form-control" />
+
 
 			<input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
 			<input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />

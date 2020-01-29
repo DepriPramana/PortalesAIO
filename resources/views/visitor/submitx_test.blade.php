@@ -9,8 +9,8 @@
 	<form id="loginform" name="loginform" method="POST" action="https://{{$sip}}:9998/SubscriberPortal/hotspotlogin">	
 	<!-- <form id="loginform" name="loginform" method="POST" action="http://{{$sip}}:9997/login"> -->
 		{{ csrf_field() }}
-		<input class="form-control" type="text" id="username" name="username" value="{{$usuariojunto}}" />
-		<input class="form-control" type="text" id="password" name="password" value="123" />
+		<input class="form-control" type="text" id="username" name="username" value="{{$username}}" />
+		<input class="form-control" type="text" id="password" name="password" value="{{$password}}" />
 		<input class="form-control" type="text" id="sip" name="sip" value="{{ $sip }}" />
 		<input class="form-control" type="text" id="proxy" name="proxy" value="{{ $proxy }}" />
 		<input class="form-control" type="text" id="mac" name="mac" value="{{ $mac}}" />
