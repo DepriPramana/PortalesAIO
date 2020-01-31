@@ -123,7 +123,7 @@
 				<div class="col-sm-6 image-bg">
 					<img class="" src="{{asset('palace/cozumel/images/bg_uvm.png')}}" alt="">
 				</div>
-				<div class="col-sm-6">
+				<div style="display: flex;justify-content:center;margin-top:7rem;margin-bottom:5rem;"class="col-sm-6">
 					{{ csrf_field() }}
 					<input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
 					<!-- <label>Room:</label>
@@ -133,11 +133,11 @@
 					<label>Last name:</label>
 					<input type="text" onkeyup="generar()" name="password1" id="password1" style="text-transform:uppercase" onkeyup="javascript:this.value=this.value.toUpperCase();" required class="form-control" /> -->
 
-					<label>Usuario:</label>
-					<input type="text" name="username" id="username" required  autofocus class="form-control" />
+					<label></label>
+					<input type="hidden" name="username" id="username" required  autofocus class="form-control" />
 					<br>
-					<label>Password:</label>
-					<input type="text" name="password" id="password" required class="form-control" />
+					<label></label>
+					<input type="hidden" name="password" id="password" required class="form-control" />
 
 
 					<input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
@@ -151,7 +151,7 @@
 					<input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
 					<input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
 
-					<button type="submit" name="go" value="Log In" class="btn btn-danger mt-5">Entrar</button>
+					<button type="submit" name="go" value="Log In" class="btn btn-danger mt-5">NAVEGAR</button>
 					<!--<div>
 						No eres Miembro? <a href="#">Registrate ahora</a><br />
 						<a href="#">Olvidaste tu contraseñaS?</a>
