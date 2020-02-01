@@ -123,7 +123,19 @@
 				<div class="col-sm-6 image-bg">
 					<img class="" src="{{asset('palace/cozumel/images/bg_uvm.png')}}" alt="">
 				</div>
-				<div style="display: flex;justify-content:center;margin-top:7rem;margin-bottom:5rem;"class="col-sm-6">
+				<div class="col-sm-6 text-center" style="margin-top:7rem;">
+					<p>
+						Bienvenido a tu nuevo servicio de red inalámbrica UVM.
+						Estamos trabajando para mejorar tu experiencia.
+					</p>
+					<p>
+						A partir del 2 de marzo te pediremos autenticarte con tu usuario y contraseña de Conexión UVM.
+					</p>
+					<p>
+						¡Prepárate!
+					</p>
+				</div>
+				<div style="display: flex;justify-content:center;margin-bottom:5rem;"class="col-sm-6">
 					{{ csrf_field() }}
 					<input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
 					<!-- <label>Room:</label>
