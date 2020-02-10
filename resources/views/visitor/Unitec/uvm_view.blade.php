@@ -36,7 +36,7 @@
 			c2 = document.getElementById('auth').value;
 
 			if(c2 === "failed"){
-				alert("Room Number or Last Name doesn't match the one given on the front desk");
+				alert("Se detecto un error contacte a su administrador");
 			}
 		}
 

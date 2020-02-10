@@ -60,8 +60,8 @@ class UnitecController extends Controller
       $site = $request->site_code;
       // $username = $request->username;
       // $password = $request->password; // Apellido.
-      $username = "020168604";
-      $password = "202015";
+      $username = "840111496"; // antiguo 020168604
+      $password = "300301"; // antiguo 202015
       $site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
       $site_name = $site_info[0]->nombre;
 
