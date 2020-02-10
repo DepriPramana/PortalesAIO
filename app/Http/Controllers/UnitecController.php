@@ -59,7 +59,7 @@ class UnitecController extends Controller
         $username = $request->username;
         $password = $request->password;
 
-        return view('visitor.submitx_uvm', compact('site_name','username', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+        return view('visitor.submitx_unitec', compact('site_name','username', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
 
     }
     public function login_uvm(Request $request)
