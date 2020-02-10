@@ -42,8 +42,8 @@
                 });
     }*/
     function fnsso() {
-        var txtuser = document.getElementById("txtuser");
-        var txtpass = document.getElementById("txtpass");
+        var txtuser = document.getElementById("username");
+        var txtpass = document.getElementById("password");
 
         setCookie("ssusername", txtuser.value, 1);
 
@@ -133,9 +133,10 @@
                     <input class="form-control" type="hidden" id="site_code" name="site_code" value="{{$site}}" />
                     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" EnablePartialRendering="true" />
 
-                    <input type="text" id="txtuser" name="username" value="Cuenta MyUnitec" onblur="setValue(this);" onkeypress="return SinEspacios(event);" onfocus="limpiar(this);" onchange="this.value=this.value.toLowerCase();" /><span></span>
-                    <input type="number" maxlength="10" id="txtphone" name="txtphone" placeholder="Telefono" />
-                    <input type="password" id="txtpass" name="password" value="password" onblur="setValue(this);" onkeypress="return SinEspacios(event);" onfocus="limpiar(this);" />
+                    <input type="text" id="username" name="username" value="Cuenta MyUnitec" onblur="setValue(this);" onkeypress="return SinEspacios(event);" onfocus="limpiar(this);" onchange="this.value=this.value.toLowerCase();" /><span></span>
+                    <!-- <input type="number" maxlength="10" id="txtphone" name="txtphone" placeholder="Telefono" /> -->
+                    <span>@my.unitec.edu.mx</span>
+                    <input type="password" id="password" name="password" value="password" onblur="setValue(this);" onkeypress="return SinEspacios(event);" onfocus="limpiar(this);" />
                     <input class="form-control" type="hidden" id="res" name="res" value=" <?php isset($_GET['res']) ? $_GET['res'] : '' ?>" />
                     <input class="form-control" type="hidden" id="auth" name="auth" value="<?php isset($_GET['auth']) ? $_GET['auth'] : '' ?>">
                     <div id="boton_entrar"><a onclick="fnsso();">Entrar</a></div>

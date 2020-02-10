@@ -11,7 +11,7 @@ class UnitecController extends Controller
     public function login_unitec(Request $request)
     {
     	//Agent
-    	$agent = new Agent(); // datos del usuario.
+    	  /*$agent = new Agent(); // datos del usuario.
         $bool = $agent->isDesktop();
         if($bool){
           $mobile = 0;
@@ -39,10 +39,27 @@ class UnitecController extends Controller
           $platform_version = $agent->version($platform);
         }else{
           $platform_version = '';
-        }
-        dd('algo');
-        //Fin Agent
+        }*/
+      //Fin Agent
+
         // Parámetros de logeo
+        $url = $request->url;
+        $proxy = $request->proxy;
+        $sip = $request->sip;
+        $mac = $request->mac;
+        $client_mac = $request->client_mac;
+        $uip = $request->uip;
+        $ssid = $request->ssid;
+        $vlan = $request->vlan;
+        $res = $request->res;
+        $auth = $request->auth;
+        $site = $request->site_code;
+        $site_info = DB::table('sites')->select('id','nombre')->where('code', $site)->get();
+        $site_name = $site_info[0]->nombre;
+        $username = $request->username;
+        $password = $request->password;
+
+        return view('visitor.submitx_uvm', compact('site_name','username', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
 
     }
     public function login_uvm(Request $request)
