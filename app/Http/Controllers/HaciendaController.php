@@ -16,7 +16,7 @@ class HaciendaController extends Controller
 
     public function query_example()
     {
-    	// $sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_reister')->select()->where('lastname', 'BREWER')->where('room', 405)->orderBy('id', 'desc')->get()->first();
+    	// $sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where('lastname', 'BREWER')->where('room', 405)->orderBy('id', 'desc')->get()->first();
 
 		$sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where('room', $room_numba)->orderBy('id', 'desc')->get()->first();
     }

@@ -85,6 +85,15 @@ Route::get('/MarinaFiesta/{lang}', function($lang){
     $id_site = '2'; // Variable para cambio de imagenes.
     return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
 });
+
+Route::get('/TheResidence/{lang}', function($lang){
+    $html_title = 'The Residences';
+    App::setLocale($lang);
+    $site = 'RESI'; // Variable para extraer id de base de datos.
+    $id_site = '3'; // Variable para cambio de imagenes.
+    return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
+});
+
 Route::get('/VistaEncantada/{lang}', function($lang){
     $html_title = 'Vista Encantada';
     App::setLocale($lang);
