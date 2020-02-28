@@ -57,8 +57,8 @@
 		display: inline;
 		margin-right: 2em;
 	}
-	
-	nav ul li a{	
+
+	nav ul li a{
 		color: white !important;
 	}
 
@@ -104,11 +104,11 @@
 			</ul>
 		</nav>
 	</header>
-	
+
 	<section class="container">
 	    <section class="login-form">
 	    <section align="center">
-				
+
 				<!--<img src="images/logosit.png" alt="" class="logo-img" />-->
 		</section>
 		<section class="login-form" align="center" id="loadingsection" style="display:none" align="center">
@@ -123,17 +123,20 @@
 				<div class="col-sm-6 image-bg">
 					<img class="" src="{{asset('palace/cozumel/images/bg_uvm.png')}}" alt="">
 				</div>
-				<div class="col-sm-6 text-center" style="margin-top:7rem;">
+				<div class="col-sm-6 text-center" style="margin-top:3rem;">
 					<p>
-						Bienvenido a tu nuevo servicio de red inalámbrica UVM.
-						Estamos trabajando para mejorar tu experiencia.
+						Bienvenido a la red wifi de estudiantes UVM
 					</p>
 					<p>
-						A partir del 2 de marzo te pediremos autenticarte con tu usuario y contraseña de Conexión UVM.
+						Te compartimos que pronto iniciará la encuesta anual de satisfacción estudiantil
 					</p>
 					<p>
-						¡Prepárate!
+						Del 9 de marzo al 4 de abril
 					</p>
+					<p style="color:red; font-weight:bold; font-size:1.2em;">
+						¡Exprésate, queremos escuchar tu opinión!
+					</p>
+					<img class="" src="{{asset('palace/cozumel/images/uvm_encuesta_anual.jpg')}}" alt="">
 				</div>
 				<div style="display: flex;justify-content:center;margin-bottom:5rem;"class="col-sm-6">
 					{{ csrf_field() }}
