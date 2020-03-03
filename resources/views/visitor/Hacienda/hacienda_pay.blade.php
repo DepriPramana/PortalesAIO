@@ -499,7 +499,7 @@
                                   </ul>
                                 </li>
                               </ul>
-                            @else
+                            @elseif ($id_site == 4)
                               <ul class="list-unstyled">
                                 <li><b>{{ __('hacienda_msg.term_paragraph1_vista') }}</b>
                                   <ul>
@@ -559,6 +559,73 @@
                                     </li>
                                     <li>
                                       {{ trans('hacienda_msg.term_paragraph20_vista') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph21') }}
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            @else
+                              <ul class="list-unstyled">
+                                <li><b>{{ __('hacienda_msg.term_paragraph1_residence') }}</b>
+                                  <ul>
+                                    <li>
+                                      <b>{{ __('hacienda_msg.term_paragraph2_residence') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph3') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph4') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph5') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph6') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph7') }}
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph8_residence') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph9') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph10_residence') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph11') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph12_residence') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph13') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph14_residence') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph15') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph16_residence') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph17') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph18_residence') }}
+                                    </li>
+                                    <li>
+                                      <b>{{ trans('hacienda_msg.term_paragraph19') }}</b>
+                                    </li>
+                                    <li>
+                                      {{ trans('hacienda_msg.term_paragraph20_residence') }}
                                     </li>
                                     <li>
                                       {{ trans('hacienda_msg.term_paragraph21') }}

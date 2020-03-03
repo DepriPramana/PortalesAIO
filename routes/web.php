@@ -86,7 +86,7 @@ Route::get('/MarinaFiesta/{lang}', function($lang){
     return view('visitor.Hacienda.hacienda_pay', compact('site', 'id_site', 'html_title'));
 });
 
-Route::get('/TheResidence/{lang}', function($lang){
+Route::get('/TheResidences/{lang}', function($lang){
     $html_title = 'The Residences';
     App::setLocale($lang);
     $site = 'RESI'; // Variable para extraer id de base de datos.

@@ -163,6 +163,8 @@ class HaciendaController extends Controller
 			$auth = $request->auth;
 			$site = $request->site_code;
 		//Fin parámetros.
+		// $request->id_site_code;
+
 		$lastname = $request->lastname;
 		$lastname_upper = mb_convert_case($lastname, MB_CASE_UPPER, "UTF-8");
 
@@ -238,6 +240,8 @@ class HaciendaController extends Controller
   			// checar pms
 			//5272 && CASTILLO / campbell
 			// query correcto.
+			// $sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([['room', $room_numba],['lastname', $lastname]])->whereNull('checkout')->orderBy('checkin', 'desc')->orderBy('id', 'desc')->get()->first();
+
 			$sql_good = DB::connection('hacienda_sqlsrv')->table('imm_register')->select()->where([
 				['room', $room_numba],
 				['lastname', $lastname]

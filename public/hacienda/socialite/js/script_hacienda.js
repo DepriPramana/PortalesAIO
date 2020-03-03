@@ -32,13 +32,21 @@ $(function() {
       $('#link_en').attr("href", "http://"+ currentHost + "/MarinaFiesta/en");
       $('#link_es').attr("href", "http://"+ currentHost + "/MarinaFiesta/es");
     }
-  }else{
+  }else if (id_site == 4){
     if (variables.length > 1) {
       $('#link_es').attr("href", "http://"+ currentHost + "/VistaEncantada/es" + '?'+ variables[1]);
       $('#link_en').attr("href", "http://"+ currentHost + "/VistaEncantada/en" + '?'+ variables[1]);
     }else{
       $('#link_en').attr("href", "http://"+ currentHost + "/VistaEncantada/en");
       $('#link_es').attr("href", "http://"+ currentHost + "/VistaEncantada/es");
+    }
+  }else{
+    if (variables.length > 1) {
+      $('#link_es').attr("href", "http://"+ currentHost + "/TheResidences/es" + '?'+ variables[1]);
+      $('#link_en').attr("href", "http://"+ currentHost + "/TheResidences/en" + '?'+ variables[1]);
+    }else{
+      $('#link_en').attr("href", "http://"+ currentHost + "/TheResidences/en");
+      $('#link_es').attr("href", "http://"+ currentHost + "/TheResidences/es");
     }
   }
 });
