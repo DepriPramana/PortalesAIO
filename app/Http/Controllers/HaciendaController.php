@@ -163,7 +163,7 @@ class HaciendaController extends Controller
 			$auth = $request->auth;
 			$site = $request->site_code;
 		//Fin parámetros.
-		// $request->id_site_code;
+		// $sql_good->siteid;
 
 		$lastname = $request->lastname;
 		$lastname_upper = mb_convert_case($lastname, MB_CASE_UPPER, "UTF-8");
@@ -273,7 +273,7 @@ class HaciendaController extends Controller
 		  						'device' => $device,
 		  						'language' => $lang,
 		  						'robot' => $robot_name,
-		  						'site_id' => $site_info[0]->id,
+		  						'site_id' => $site_info[0]->id, // agregar aqui el site id del usuario para que se le haga el cargo.
 		  						'mobile' => $mobile,
 		  						'success' => 1,
 		  						'expiration' => $fechaout
@@ -285,7 +285,7 @@ class HaciendaController extends Controller
 		  						'site_id' => $site_info[0]->id,
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
-		  						'site_hacienda_id' => $request->id_site_code,
+		  						'site_hacienda_id' => $sql_good->siteid,
 								'service_name' => $service_name,
 		  						'service_price' => $service_price,
 		  						'service_expiration' => $service_expiration,
@@ -294,7 +294,7 @@ class HaciendaController extends Controller
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
-								'siteid' => $request->id_site_code,
+								'siteid' => $sql_good->siteid,
 								'service_id' => $service_id,
 								'service_price' => $service_price,
 								'service_drate' => $service_drate,
@@ -344,7 +344,7 @@ class HaciendaController extends Controller
 			  						'site_id' => $site_info[0]->id,
 			  						'reservation_id' => $sql_good->reservation_id,
 			  						'owner' => $sql_good->owner,
-			  						'site_hacienda_id' => $request->id_site_code,
+			  						'site_hacienda_id' => $sql_good->siteid,
 			  						'service_name' => $service_name,
 		  							'service_price' => $service_price,
 		  							'service_expiration' => $service_expiration,
@@ -353,7 +353,7 @@ class HaciendaController extends Controller
 								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 									'register_id' => $sql_good->id,
 									'reservation_id' => $sql_good->reservation_id,
-									'siteid' => $request->id_site_code,
+									'siteid' => $sql_good->siteid,
 									'service_id' => $service_id,
 									'service_price' => $service_price,
 									'service_drate' => $service_drate,
@@ -547,7 +547,7 @@ class HaciendaController extends Controller
 		  						'site_id' => $site_info[0]->id,
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
-		  						'site_hacienda_id' => $request->id_site_code,
+		  						'site_hacienda_id' => $sql_good->siteid,
 		  						'service_name' => $service_name,
 		  						'service_price' => $service_price,
 		  						'service_expiration' => $service_expiration,
@@ -556,7 +556,7 @@ class HaciendaController extends Controller
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
-								'siteid' => $request->id_site_code,
+								'siteid' => $sql_good->siteid,
 								'service_id' => $service_id,
 								'service_price' => $service_price,
 								'service_drate' => $service_drate,
@@ -606,7 +606,7 @@ class HaciendaController extends Controller
 			  						'site_id' => $site_info[0]->id,
 			  						'reservation_id' => $sql_good->reservation_id,
 			  						'owner' => $sql_good->owner,
-			  						'site_hacienda_id' => $request->id_site_code,
+			  						'site_hacienda_id' => $sql_good->siteid,
 			  						'service_name' => $service_name,
 		  							'service_price' => $service_price,
 		  							'service_expiration' => $service_expiration,
@@ -615,7 +615,7 @@ class HaciendaController extends Controller
 								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 									'register_id' => $sql_good->id,
 									'reservation_id' => $sql_good->reservation_id,
-									'siteid' => $request->id_site_code,
+									'siteid' => $sql_good->siteid,
 									'service_id' => $service_id,
 									'service_price' => $service_price,
 									'service_drate' => $service_drate,
@@ -809,7 +809,7 @@ class HaciendaController extends Controller
 		  						'site_id' => $site_info[0]->id,
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
-		  						'site_hacienda_id' => $request->id_site_code,
+		  						'site_hacienda_id' => $sql_good->siteid,
 								'service_name' => $service_name,
 		  						'service_price' => $service_price,
 		  						'service_expiration' => $service_expiration,
@@ -818,7 +818,7 @@ class HaciendaController extends Controller
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
-								'siteid' => $request->id_site_code,
+								'siteid' => $sql_good->siteid,
 								'service_id' => $service_id,
 								'service_price' => $service_price,
 								'service_drate' => $service_drate,
@@ -868,7 +868,7 @@ class HaciendaController extends Controller
 			  						'site_id' => $site_info[0]->id,
 			  						'reservation_id' => $sql_good->reservation_id,
 			  						'owner' => $sql_good->owner,
-			  						'site_hacienda_id' => $request->id_site_code,
+			  						'site_hacienda_id' => $sql_good->siteid,
 			  						'service_name' => $service_name,
 		  							'service_price' => $service_price,
 		  							'service_expiration' => $service_expiration,
@@ -877,7 +877,7 @@ class HaciendaController extends Controller
 								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 									'register_id' => $sql_good->id,
 									'reservation_id' => $sql_good->reservation_id,
-									'siteid' => $request->id_site_code,
+									'siteid' => $sql_good->siteid,
 									'service_id' => $service_id,
 									'service_price' => $service_price,
 									'service_drate' => $service_drate,
@@ -1072,7 +1072,7 @@ class HaciendaController extends Controller
 		  						'site_id' => $site_info[0]->id,
 		  						'reservation_id' => $sql_good->reservation_id,
 		  						'owner' => $sql_good->owner,
-		  						'site_hacienda_id' => $request->id_site_code,
+		  						'site_hacienda_id' => $sql_good->siteid,
 		  						'service_name' => $service_name,
 		  						'service_price' => $service_price,
 		  						'service_expiration' => $service_expiration,
@@ -1081,7 +1081,7 @@ class HaciendaController extends Controller
 							DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 								'register_id' => $sql_good->id,
 								'reservation_id' => $sql_good->reservation_id,
-								'siteid' => $request->id_site_code,
+								'siteid' => $sql_good->siteid,
 								'service_id' => $service_id,
 								'service_price' => $service_price,
 								'service_drate' => $service_drate,
@@ -1131,7 +1131,7 @@ class HaciendaController extends Controller
 			  						'site_id' => $site_info[0]->id,
 			  						'reservation_id' => $sql_good->reservation_id,
 			  						'owner' => $sql_good->owner,
-			  						'site_hacienda_id' => $request->id_site_code,
+			  						'site_hacienda_id' => $sql_good->siteid,
 			  						'service_name' => $service_name,
 		  							'service_price' => $service_price,
 		  							'service_expiration' => $service_expiration,
@@ -1140,7 +1140,7 @@ class HaciendaController extends Controller
 								DB::connection('hacienda_sqlsrv')->table('imm_accounts')->insert([
 									'register_id' => $sql_good->id,
 									'reservation_id' => $sql_good->reservation_id,
-									'siteid' => $request->id_site_code,
+									'siteid' => $sql_good->siteid,
 									'service_id' => $service_id,
 									'service_price' => $service_price,
 									'service_drate' => $service_drate,
