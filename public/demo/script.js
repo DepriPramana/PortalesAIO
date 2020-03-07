@@ -45,6 +45,6 @@ function modal() {
     background: "transparent"
   });
   document.querySelector("#vid").onended = function() {
-    window.location.href = "http://www.google.com";
+    window.location.href = "https://fidelismarketinggroup.com/";
   };
 }
