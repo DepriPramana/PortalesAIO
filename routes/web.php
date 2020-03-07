@@ -110,6 +110,10 @@ Route::get('/HaciendaPremium/{lang}', function($lang){
     return view('visitor.Hacienda.hacienda_pay', compact('site','id_site', 'html_title')); 
 });
 
+Route::get('/demo_xtech', function(){
+    return view('visitor.Demo.xtech');
+});
+
 Route::post('/try_login_hacienda', 'HaciendaController@try_login_hacienda');
 Route::post('/submit_hacienda_free', 'HaciendaController@login_premium_free');
 Route::post('/submit_hacienda_premium_1', 'HaciendaController@login_premium_1');

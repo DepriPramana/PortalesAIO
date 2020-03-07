@@ -1,0 +1,161 @@
+body {
+  /*background-image: url('XTC_6.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;*/
+  font-family: 'Acme', sans-serif;
+  background-color: rgba(100,200,250,0.1);
+}
+
+#fondo {
+  margin-top: -20vh;
+  position: fixed;
+  opacity: 0.3;
+  z-index: -1000;
+}
+
+#modal-video {
+  display: none;
+}
+
+#main_div {
+  border-radius: 25px;
+  background-color: rgba(100,200,250,0.3);
+  margin: auto;
+}
+
+#title {
+  text-align: center;
+  padding: 50px auto;
+}
+
+#subtitle {
+  text-align: center;
+  margin-top: -30px;
+  font-size: 24px;
+}
+
+#icons_div {
+  text-align: center;
+}
+
+#icons_div img {
+  cursor: pointer;
+}
+
+#form {
+  text-align: center;
+  margin: 15px;
+}
+
+#icon_text {
+  font-size: 24px;
+}
+
+#form div {
+  margin-top: 5px;
+}
+
+#submit {
+  cursor: pointer;
+  background-color: rgb(50,200,250);
+  color: white;
+  width: 40%;
+  height: 30px;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  border: 0;
+  font-family: 'Acme', sans-serif;
+}
+
+.icon_selected {
+  border-top: 3px dotted black;
+  border-left: 3px dotted black;
+  border-right: 3px dotted black;
+  background-color: rgba(255,255,255,0.2);
+}
+
+input {
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.6);
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  #fondo div {
+    display: inline-block;
+    width: 32.65vw;
+  }
+  #fondo div img {
+    width: 32.65vw;
+    height: 100%;
+  }
+  #main_div {
+    width: 40%;
+    height: 30%;
+  }
+  #title {
+    font-size: 32px;
+  }
+  #despegar {
+    margin-right: 50px;
+    width: 110px;
+    height: 110px;
+  }
+  #aterrizar {
+    width: 110px;
+    height: 110px;
+  }
+  .swal2-modal {
+    width: 70vw !important;
+    height: 70vh !important;
+  }
+  footer {
+    position: fixed;
+    z-index: -10;
+  }
+}
+
+/*Mobile*/
+@media only screen and (max-width: 767px) {
+  #fondo div {
+    display: inline-block;
+    width: 47vw;
+  }
+  #fondo div img {
+    width: 47vw;
+  }
+  #main_div {
+    width: 85%;
+    height: 70%;
+  }
+  #title {
+    font-size: 24px;
+  }
+  #despegar {
+    margin-right: 11px;
+    width: 80px;
+    height: 80px;
+  }
+  #aterrizar {
+    width: 80px;
+    height: 80px;
+  }
+  #icon_text {
+    font-size: 20px;
+  }
+  #form div label:not(.ignore) {
+    display: block;
+  }
+  #submit {
+    width: 60%;
+  }
+}
