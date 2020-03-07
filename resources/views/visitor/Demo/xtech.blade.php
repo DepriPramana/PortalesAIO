@@ -57,16 +57,16 @@
 		</div>
 		<form id="form">
 			<p id="icon_text">- S A L I D A -</p>
-			<div>
+			<div class="fields">
 				<label>Nombre: </label>
 				<input type="text" />
 			</div>
-			<div>
-				<label>Teléfono: </label>
+			<div class="fields">
+				<label>Teléfono:</label>
 				<input type="number" />
 			</div>
-			<div>
-				<label>País: </label>
+			<div class="fields">
+				<label>País: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				<select name="pais">
 					<option value="Elegir" id="AF">Elegir opción</option>
 					<option value="Afganistán" id="AF">Afganistán</option>
@@ -309,8 +309,8 @@
 				</select>
 
 			</div>
-			<div>
-				<label>Correo: </label>
+			<div class="fields">
+				<label>Correo: &nbsp;&nbsp;</label>
 				<input type="email" />
 			</div>
 			<div>

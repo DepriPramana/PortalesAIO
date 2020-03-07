@@ -57,6 +57,22 @@ body {
   margin-top: 5px;
 }
 
+#fields {
+  text-align: left;
+}
+
+#fields label {
+  width: 100px;
+}
+
+#fields input {
+  width: 100px;
+}
+
+select {
+  width: 185px;
+}
+
 #submit {
   cursor: pointer;
   background-color: rgb(50,200,250);
