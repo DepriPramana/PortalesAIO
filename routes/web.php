@@ -110,7 +110,7 @@ Route::get('/HaciendaPremium/{lang}', function($lang){
     return view('visitor.Hacienda.hacienda_pay', compact('site','id_site', 'html_title')); 
 });
 
-Route::get('/demo_xtech', function(){
+Route::get('/fidelis', function(){
     return view('visitor.Demo.xtech');
 });
 
