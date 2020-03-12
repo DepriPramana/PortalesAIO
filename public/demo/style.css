@@ -1,9 +1,8 @@
+video::-webkit-media-controls-timeline {
+  display: none;
+}
+
 body {
-  /*background-image: url('XTC_6.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;*/
   font-family: 'Roboto', sans-serif;
   background-color: rgba(100,200,250,0.1);
 }
@@ -15,11 +14,43 @@ body {
   z-index: -1000;
 }
 
-#modal-video {
+.hidden {
   display: none;
 }
 
-#main_div {
+#header {
+  width: 105vw;
+  /*margin-top: -10px;*/
+  margin-left: -5vw;
+  background-color: white;
+}
+
+#continuar {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(50,100,250);
+}
+
+#img_div {
+  display: inline-block;
+  width: 49.4%;
+  height: 100%;
+  text-align: center;
+}
+
+#button_div {
+  display: inline-block;
+  width: 49.4%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: -20px;
+}
+
+#initial_div, #main_div {
   border-radius: 25px;
   background-color: rgba(100,200,250,0.3);
   margin: auto;
@@ -105,6 +136,10 @@ footer {
   text-align: center;
 }
 
+.swal2-container {
+  background-color: rgba(0,0,0,0) !important;
+}
+
 @media only screen and (min-width: 768px) {
   #fondo div {
     display: inline-block;
@@ -113,6 +148,14 @@ footer {
   #fondo div img {
     width: 32.65vw;
     height: 100%;
+  }
+  #header {
+    height: 10vh;
+  }
+  #continuar {
+    font-size: 18px;
+    width: 40%;
+    height: 40%;
   }
   #main_div {
     width: 40%;
@@ -149,6 +192,13 @@ footer {
   #fondo div img {
     width: 47vw;
   }
+  #header {
+    height: 13vh;
+  }
+  #continuar {
+    width: 70%;
+    height: 40%;
+  }
   #main_div {
     width: 85%;
     height: 70%;
@@ -173,5 +223,11 @@ footer {
   }
   #submit {
     width: 60%;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 850px) {
+  #header {
+    display: none;
   }
 }

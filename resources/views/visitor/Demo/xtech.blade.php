@@ -4,9 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
-	<title>X Tech Company</title>
+	<title>Fidelis</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-
 	<link rel="stylesheet" type="text/css" href="{{ asset('demo/style.css') }}" >
 </head>
 <body>
@@ -48,7 +47,21 @@
 			<img src="{{ asset('demo/XTC_1.jpg')}}" />
 		</div>
 	</div>
-	<div id="main_div">
+	<div id="header">
+		<div id="img_div">
+			<img style="height: 100%;" src='demo/logo.jpeg' />
+		</div>
+		<div id="button_div">
+			<button type="button" id="continuar">
+				Continuar en 20
+			</button>
+		</div>
+	</div>
+	<div id="initial_div" class="hidden" style="text-align: center;">
+		<p>FREE WIFI</p>
+		<p>WIFI PREMIUM</p>
+	</div>
+	<div id="main_div" class="hidden">
 		<p id="title">Free Wifi X Tech Company</p>
 		<p id="subtitle">! Bienvenido a Cancún !</p>
 		<div id="icons_div">
@@ -326,7 +339,7 @@
 			</div>
 		</form>
 	</div>
-	<footer>
+	<footer class="hidden">
 		<p>&copy; Todos los derechos reservados. info@xtech.com</p>
 	</footer>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
