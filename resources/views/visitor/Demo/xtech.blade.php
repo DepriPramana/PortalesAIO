@@ -53,17 +53,19 @@
 		</div>
 		<div id="button_div">
 			<button type="button" id="continuar">
-				Continuar en 20
+				Continuar en 10
 			</button>
 		</div>
 	</div>
 	<div id="initial_div" class="hidden" style="text-align: center;">
-		<p>FREE WIFI</p>
-		<p>WIFI PREMIUM</p>
+		<p class="title">Free Wifi X Tech Company</p>
+		<p class="subtitle">! Bienvenido a Cancún !</p>
+		<p id="free_button" class="initial_buttons">FREE WIFI</p>
+		<p id="premium_button" class="initial_buttons">WIFI PREMIUM</p>
 	</div>
 	<div id="main_div" class="hidden">
-		<p id="title">Free Wifi X Tech Company</p>
-		<p id="subtitle">! Bienvenido a Cancún !</p>
+		<p class="title">Free Wifi X Tech Company</p>
+		<p class="subtitle">! Bienvenido a Cancún !</p>
 		<div id="icons_div">
 			<img id="despegar" class="icon_selected" src="{{asset('demo/despegar2.png')}}" />
 			<img id="aterrizar" src="{{asset('demo/aterrizar.png')}}" />
@@ -320,7 +322,6 @@
 					<option value="Zambia" id="ZM">Zambia</option>
 					<option value="Zimbabue" id="ZW">Zimbabue</option>
 				</select>
-
 			</div>
 			<div class="fields">
 				<label>Correo: &nbsp;&nbsp;</label>
@@ -335,6 +336,7 @@
 				<label for="terminos" class="ignore"> Términos y condiciones.</label>
 			</div>
 			<div>
+				<span id="back">&#8617;</span>
 				<input id="submit" type="submit" value="I N G R E S A R" />
 			</div>
 		</form>
@@ -343,6 +345,6 @@
 		<p>&copy; Todos los derechos reservados. info@xtech.com</p>
 	</footer>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script src="{{asset ('demo/script.js')}}"></script>
+	<script src="{{asset ('demo/script.js?v=1.0')}}"></script>
 </body>
 </html>

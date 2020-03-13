@@ -1,26 +1,67 @@
 const header = document.querySelector("#header");
 const continuar = document.querySelector("#continuar");
 const initial_div = document.querySelector("#initial_div");
+const free_button = document.querySelector("#free_button");
+const premium_button = document.querySelector("#premium_button");
 const main_div = document.querySelector("#main_div");
 const footer = document.querySelector("footer");
 const despegue = document.querySelector("#despegar");
 const aterrizaje = document.querySelector("#aterrizar");
 const icon_text = document.querySelector("#icon_text");
 const edad = document.querySelector("#edad");
+const back = document.querySelector("#back");
 const submit = document.querySelector("#submit");
 
 continuar.addEventListener("click", function() { nextPage(); });
+
+free_button.addEventListener("click", function() { mostrarFree(); });
+
+premium_button.addEventListener("click", function() { mostrarPremium(); });
 
 despegue.addEventListener("click", function() { alternar(1); });
 
 aterrizaje.addEventListener("click", function() { alternar(2); });
 
+back.addEventListener("click", function() { backtoinit(); });
+
 submit.addEventListener("click", function(e) {
   e.preventDefault();
-  //modal();
+  loading("Por favor espere...");
 });
 
 modal();
+
+function loading(warning) {
+  Swal.fire({
+    title: 'Conectando...',
+    html: warning,
+    timer: 1000,
+    timerProgressBar: false,
+    allowOutsideClick: false,
+    onBeforeOpen: () => {
+      Swal.showLoading();
+      Swal.stopTimer();
+    }
+  });
+  document.querySelector(".swal2-container").classList.add("ignore");
+  document.querySelector(".swal2-modal").classList.add("ignore");
+}
+
+function mostrarFree() {
+  loading("Internet de 512 Kbps...");
+}
+
+function mostrarPremium() {
+  initial_div.classList.add("hidden");
+  main_div.classList.remove("hidden");
+  footer.classList.remove("fix_footer");
+}
+
+function backtoinit() {
+  main_div.classList.add("hidden");
+  initial_div.classList.remove("hidden");
+  footer.classList.add("fix_footer");
+}
 
 function alternar(avion) {
   if(avion == 1) {
@@ -59,7 +100,7 @@ function modal() {
   vid.onended = function() {
     nextPage();
   };
-  var esperar = 20;
+  var esperar = 10;
   vid.addEventListener("timeupdate", function() {
     if(this.currentTime > esperar) {
       continuar.textContent = "Continuar";
@@ -72,6 +113,7 @@ function modal() {
 function nextPage() {
   header.classList.add("hidden");
   Swal.close();
-  main_div.classList.remove("hidden");
+  initial_div.classList.remove("hidden");
+  footer.classList.add("fix_footer");
   footer.classList.remove("hidden");
 }

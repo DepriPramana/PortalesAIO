@@ -20,7 +20,6 @@ body {
 
 #header {
   width: 105vw;
-  /*margin-top: -10px;*/
   margin-left: -5vw;
   background-color: white;
 }
@@ -56,15 +55,31 @@ body {
   margin: auto;
 }
 
-#title {
+.title {
   text-align: center;
   padding: 50px auto;
 }
 
-#subtitle {
+.subtitle {
   text-align: center;
   margin-top: -30px;
   font-size: 24px;
+}
+
+.initial_buttons {
+  margin: 30px auto;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#free_button {
+  background-color: rgb(50,100,250);
+  color: white;
+}
+
+#premium_button {
+  background-color: rgb(50,200,250);
+  color: white;
 }
 
 #icons_div {
@@ -104,6 +119,17 @@ select {
   width: 185px;
 }
 
+#back {
+  font-size: 24px;
+  border-radius: 5px;
+  background-color: rgb(100,100,250);
+  vertical-align: middle;
+  margin-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+}
+
 #submit {
   cursor: pointer;
   background-color: rgb(50,200,250);
@@ -136,17 +162,22 @@ footer {
   text-align: center;
 }
 
-.swal2-container {
+.fix_footer {
+  position: fixed;
+  z-index: -10;
+}
+
+.swal2-container:not(.ignore) {
   background-color: rgba(0,0,0,0) !important;
 }
 
 @media only screen and (min-width: 768px) {
   #fondo div {
     display: inline-block;
-    width: 32.65vw;
+    width: 32.64vw;
   }
   #fondo div img {
-    width: 32.65vw;
+    width: 32.64vw;
     height: 100%;
   }
   #header {
@@ -157,12 +188,15 @@ footer {
     width: 40%;
     height: 40%;
   }
-  #main_div {
+  #main_div, #initial_div {
     width: 40%;
     height: 30%;
   }
-  #title {
+  .title {
     font-size: 32px;
+  }
+  .initial_buttons {
+    width: 50%;
   }
   #despegar {
     margin-right: 50px;
@@ -173,7 +207,7 @@ footer {
     width: 110px;
     height: 110px;
   }
-  .swal2-modal {
+  .swal2-modal:not(.ignore) {
     width: 70vw !important;
     height: 70vh !important;
   }
@@ -199,12 +233,16 @@ footer {
     width: 70%;
     height: 40%;
   }
-  #main_div {
+  #main_div, #initial_div {
     width: 85%;
     height: 70%;
   }
-  #title {
+
+  .title {
     font-size: 24px;
+  }
+  .initial_buttons {
+    width: 60%;
   }
   #despegar {
     margin-right: 11px;
