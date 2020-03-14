@@ -26,12 +26,13 @@ back.addEventListener("click", function() { backtoinit(); });
 
 submit.addEventListener("click", function(e) {
   e.preventDefault();
-  loading("Por favor espere...");
+  //loading("Por favor espere...");
+  modal2("premium");
 });
 
 modal();
 
-function loading(warning) {
+/*function loading(warning) {
   Swal.fire({
     title: 'Conectando...',
     html: warning,
@@ -45,10 +46,11 @@ function loading(warning) {
   });
   document.querySelector(".swal2-container").classList.add("ignore");
   document.querySelector(".swal2-modal").classList.add("ignore");
-}
+}*/
 
 function mostrarFree() {
-  loading("Internet de 512 Kbps...");
+  //loading("Internet de 512 Kbps...");
+  modal2("free");
 }
 
 function mostrarPremium() {
@@ -76,27 +78,18 @@ function alternar(avion) {
 }
 
 function modal() {
-  const random = Math.random();
-  let video = "";
-  if(random < 0.33) {
-    video = "<video id='vid' style='width: 100%; height: 100%;' autoplay muted controls playsinline><source src='demo/vidanta.mp4' type='video/mp4' /></video>";
-  } else if(random < 0.66) {
-    video = "<video id='vid' style='width: 100%; height: 100%;' autoplay muted controls playsinline><source src='demo/cirque.mp4' type='video/mp4' /></video>";
-  } else {
-    video = "<video id='vid' style='width: 100%; height: 100%;' autoplay muted controls playsinline><source src='demo/jungala.mp4' type='video/mp4' /></video>";
-  }
   Swal.fire({
-    html: video,
+    html: "<img id='logo-splash' src='demo/logo.jpeg' />",
     showCancelButton: false,
     showConfirmButton: false,
     allowOutsideClick: () => {
-      if(continuar.textContent == "Continuar") {
+      //if(continuar.textContent == "Continuar") {
         nextPage();
-      }
+      //}
     },
     background: "transparent"
   });
-  const vid = document.querySelector("#vid");
+  /*const vid = document.querySelector("#vid");
   vid.onended = function() {
     nextPage();
   };
@@ -107,7 +100,53 @@ function modal() {
     } else {
       continuar.textContent = "Continuar en " + parseInt(esperar - this.currentTime + 1);
     }
+  });*/
+}
+
+function modal2(button) {
+  let video = "";
+  if(edad.checked) {
+    video = "<video id='vid' style='width: 100%; height: 100%;' autoplay controls playsinline><source src='demo/vidanta.mp4' type='video/mp4' /></video>";
+  } else {
+    const random = Math.random();
+    if(random < 0.5) {
+      video = "<video id='vid' style='width: 100%; height: 100%;' autoplay controls playsinline><source src='demo/cirque.mp4' type='video/mp4' /></video>";
+    } else {
+      video = "<video id='vid' style='width: 100%; height: 100%;' autoplay controls playsinline><source src='demo/jungala.mp4' type='video/mp4' /></video>";
+    }
+  }
+  Swal.fire({
+    title: '<label id="restan">Conectando en 10</label>',
+    html: '<p style="margin-top: 0;" class="free_text hidden">Internet de 512 Kbps</p>' + video,
+    timer: 100,
+    timerProgressBar: false,
+    allowOutsideClick: false,
+    onBeforeOpen: () => {
+      Swal.showLoading();
+      Swal.stopTimer();
+      document.querySelector(".swal2-styled").style.backgroundColor = "rgb(50, 150, 50)";
+      document.querySelector(".swal2-styled").textContent = "Navegar";
+      var esperar = 10;
+      vid.addEventListener("timeupdate", function() {
+        if(this.currentTime > esperar) {
+          try {
+            document.querySelector("#restan").textContent = "Ya estás en línea!";
+          } catch(e) { /*Nothing to do...*/ }
+          Swal.hideLoading();
+        } else {
+          document.querySelector("#restan").textContent = "Conectando en " + parseInt(esperar - this.currentTime + 1);
+        }
+      });
+    },
+    onClose: () => {
+      alert("Submit");
+    }
   });
+  if(button == "free") {
+    document.querySelector(".free_text").classList.remove("hidden");
+  }
+  document.querySelector(".swal2-container").classList.add("ignore");
+  document.querySelector(".swal2-modal").classList.add("ignore");
 }
 
 function nextPage() {

@@ -183,6 +183,9 @@ footer {
   #header {
     height: 10vh;
   }
+  #logo-splash {
+    width: 50vw;
+  }
   #continuar {
     font-size: 18px;
     width: 40%;
@@ -228,6 +231,9 @@ footer {
   }
   #header {
     height: 13vh;
+  }
+  #logo-splash {
+    width: 70vw;
   }
   #continuar {
     width: 70%;

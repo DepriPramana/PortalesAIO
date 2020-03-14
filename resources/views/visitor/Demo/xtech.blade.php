@@ -53,7 +53,7 @@
 		</div>
 		<div id="button_div">
 			<button type="button" id="continuar">
-				Continuar en 10
+				Continuar
 			</button>
 		</div>
 	</div>
@@ -345,6 +345,6 @@
 		<p>&copy; Todos los derechos reservados. info@xtech.com</p>
 	</footer>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script src="{{asset ('demo/script.js?v=1.0')}}"></script>
+	<script src="{{asset ('demo/script.js?v=1.1')}}"></script>
 </body>
 </html>
