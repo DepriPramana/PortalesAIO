@@ -114,6 +114,10 @@ Route::get('/fidelis', function(){
     return view('visitor.Demo.xtech');
 });
 
+Route::get('/Isec', function(){
+   return view('visitor.Isec.isec'); 
+});
+
 Route::post('/try_login_hacienda', 'HaciendaController@try_login_hacienda');
 Route::post('/submit_hacienda_free', 'HaciendaController@login_premium_free');
 Route::post('/submit_hacienda_premium_1', 'HaciendaController@login_premium_1');
