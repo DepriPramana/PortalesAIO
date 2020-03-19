@@ -1,0 +1,409 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* IMPORTS CSS -----------------------------------------*/
+@import url('reset.css');
+
+
+
+/* ------------------- ETIQUETAS HTML ------------------------------------*/
+body {
+  background:#FFF;
+  margin:0px;
+  line-height: 1;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+}
+
+
+
+a{
+  color:#31859C;
+  text-decoration:none;
+}
+
+a img { border: none; }  
+
+h2{ margin-top:5px; }
+
+
+
+
+/* ------------------- ESTRUCTURA PRINCIPAL ------------------------------------*/
+#contenido{
+  background:none;
+  width: 966px;
+  width:1024px;
+  min-height:450px;
+  //height:auto;
+  margin: 0px auto;
+  padding-bottom:5px;
+  position: relative;
+  overflow:auto;
+  //overflow:visible;
+}
+
+
+#box_login{
+  background:none;
+  float:left;
+  width:350px;
+  min-height:430px;
+  //height:auto;
+  left:50%;
+  margin-top:12px;
+  margin-left:-175px;
+  position:relative;
+  overflow:auto;
+  overflow:visible;
+}
+
+
+
+
+#div_img_box{
+  background:none;
+  float:left;
+  width:300px;
+  height:100px;
+  margin-left:25px;
+  position:relative;
+}
+
+
+
+#box_form{
+  background:none;
+  float:left;
+  width:300px;
+  min-height:230px;
+  //height:auto;
+  margin-left:25px;
+  padding-bottom:10px;
+  position:relative;
+  overflow:auto;
+  //overflow:visible;
+}
+
+
+#box_ayuda{
+  background:none;
+  float:left;
+  width:300px;
+  height:80px;
+  margin-left:25px;
+  position:relative;
+}
+
+
+
+/* IMGANES -------------------------*/
+
+#img_logo{
+  background:none;
+  float:left;
+  margin-top:10px;
+  margin-left:15px;
+  position:relative;
+}
+
+#img_antena{
+  background:none;
+  float:right;
+  margin-top:25px;
+  margin-right:30px;
+  position:relative;
+}
+
+
+
+/* FORM ------------------------------*/
+#form_cont{
+  background:#b7bcb6;
+  float:left;
+  width:270px;
+  min-height:230px;
+  //height:auto;
+  margin-top:5px;
+  margin-left:13px;
+  border:#b7bcb6 solid 1px;
+  position:relative;
+  overflow:auto;
+  //overflow:visible;
+  
+  border-radius:         13px; 
+  -webkit-border-radius: 13px;
+  -moz-border-radius:    13px; 
+}
+
+#form_encabezado{
+  background:#4675ab;
+  float:left;
+  width:100%;
+  height:25px;
+  border-bottom:#32475a solid 1px;
+  border-bottom:#b7bcb6 solid 1px;
+  position:relative;
+  
+  background-color:#5284c1; 
+  background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #5284c1), color-stop(1, #3a6598));    
+  background-image:-webkit-linear-gradient(#5284c1, #3a6598);    
+  background-image:-moz-linear-gradient(top, #5284c1, #3a6598);  
+  background-image:-o-linear-gradient(top, #5284c1, #3a6598);    
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#5284c1', EndColorStr='#3a6598');  
+   
+  border-radius:         13px 13px 0px 0px;
+  -webkit-border-radius: 13px 13px 0px 0px;
+  -moz-border-radius:    13px 13px 0px 0px; 
+}
+
+#form_encabezado span{
+  background:none;
+  float:left;
+  width:100%;
+  height:18px;
+  font-family:Tahoma, Geneva, sans-serif;
+  font-size:14px;
+  font-weight:bold;
+  color:#FFF;
+  text-align:center;
+  margin-top:4px;
+  position:relative;
+}
+
+#form_wrapper{
+  background:#f3f3f3;
+  float:left;
+  width:100%;
+  min-height:214px;
+  //height:auto;
+  position:relative;
+  overflow:auto;
+  //overflow:visible;
+  
+  background-color:#f5f5f5; 
+  background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fcfcfc), color-stop(1, #f1f1f1));    
+  background-image:-webkit-linear-gradient(#fcfcfc, #f1f1f1);    
+  background-image:-moz-linear-gradient(top, #fcfcfc, #f1f1f1);  
+  background-image:-o-linear-gradient(top, #fcfcfc, #f1f1f1);    
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#fcfcfc', EndColorStr='#f1f1f1');  
+   
+  border-radius:         0px 0px 13px 13px;
+  -webkit-border-radius: 0px 0px 13px 13px;
+  -moz-border-radius:    0px 0px 13px 13px; 
+
+}
+
+.form_inst{
+  background:none;
+  float:left;
+  width:243px;
+  min-height:30px;
+  //height:auto;
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size:12px;
+  text-align:justify;
+  line-height:18px;
+  margin-top:1px;
+  margin-left:15px;
+  position:relative;
+  overflow:auto;
+  //overflow:visible;
+}
+
+
+#inst_1{ margin-top:15px; }
+
+
+.form_label{
+  background:none;
+  float:left;
+  width:240px;
+  height:15px;
+  font-family:Tahoma, Geneva, sans-serif;
+  font-family:Verdana,helvetica,arial,sans-serif;
+  color:#000;
+  font-size:12px;
+  margin-top:10px;
+  margin-left:15px;
+  margin-bottom:-10px;
+  position:relative;
+}
+
+
+#label_clave{ margin-top:15px; }
+
+
+.form_input{
+  float:left;
+  width:213px;
+  height:26px;
+  font-size:14px;
+  color:#707070;
+  margin-top:12px;
+  margin-left:15px;
+  padding-top:3px;
+  padding-left:27px;
+  border:#979692 solid 1px;
+  position:relative;
+  
+  -webkit-transition: all 0.5s ease;
+  -moz-transition:    all 0.5s ease;
+  -ms-transition:     all 0.5s ease;
+  -o-transition:      all 0.5s ease;
+  transition:         all 0.5s ease;
+  background-color: #eae7e7;
+  background-color: #F4F8E9;
+  background-color: #F6F4F0;
+  background-position: 3px 7px !important;
+}
+
+#pass:focus,
+#username:focus,
+#password:focus{ 
+  background-color: #fff; 
+}
+
+#pass{     background:url(../imagenes/user.png)         #EAE7E7 no-repeat; }
+#username{ background:url(../imagenes/contactcard2.png) #EAE7E7 no-repeat; }
+#password{ background:url(../imagenes/lock2.png)        #EAE7E7 no-repeat; }
+
+#form_msj{
+  background:none;
+  float:left;
+  width:240px;
+  min-height:28px;
+  //height:auto;
+  margin-top:7px;
+  margin-left:15px;
+  position:relative;
+  overflow:auto;
+  //overflow:visible;
+}
+
+#form_error{
+  background:none;
+  float:left;
+  width:100%;
+  min-height:28px;
+  //height:auto;
+  font-family:Tahoma, Geneva, sans-serif;
+  font-family:Verdana,helvetica,arial,sans-serif;
+  color:#E24F00;
+  font-size:11px;
+  font-weight:bold;
+  line-height:13px;
+  text-align:center;
+  position:relative;
+  overflow:auto;
+  //overflow:visible;  
+}
+
+#form_boton{
+  background:blue;
+  float:right;
+  width:101px;
+  height:28px;
+  border:#b2b2b4 solid 1px;
+  border:#4f6c8a solid 1px;
+  margin-top:10px;
+  margin-right:13px;
+  position:relative;
+  cursor:pointer;	
+  
+  border-radius:         7px; 
+  -webkit-border-radius: 7px;
+  -moz-border-radius:    7px; 
+  
+  background-color:#3f6b9c; 
+  background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #4c86c5), color-stop(1, #2c517b));    
+  background-image:-webkit-linear-gradient(#4c86c5, #2c517b);    
+  background-image:-moz-linear-gradient(top, #4c86c5, #2c517b);  
+  background-image:-o-linear-gradient(top, #4c86c5, #2c517b);    
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#4c86c5', EndColorStr='#2c517b');  
+}
+
+#form_boton:hover{
+  background-color:#375383; 
+  background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #2c517b), color-stop(1, #3c6eab));    
+  background-image:-webkit-linear-gradient(#2c517b, #3c6eab);    
+  background-image:-moz-linear-gradient(top, #2c517b, #3c6eab);  
+  background-image:-o-linear-gradient(top, #2c517b, #3c6eab);    
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#2c517b', EndColorStr='#3c6eab');
+}
+
+#form_btn_txt{
+  background:none;
+  float:left;
+  width:65px;
+  height:18px;
+  font-family:Arial, Helvetica, sans-serif;
+  color:#FFF;
+  font-size:14px;
+  text-align:center;
+  margin-top:7px;
+  margin-left:5px;
+  position:relative;
+}
+
+#form_btn_linea{
+  background:#9ac0e7;
+  float:left;
+  width:1px;
+  height:22px;
+  margin-top:3px;
+  margin-left:2px;
+  position:relative;
+}
+
+#form_btn_img{
+  background:none;
+  float:left;
+  width:18px;
+  height:18px;
+  margin-top:5px;
+  margin-left:5px;
+  position:relative;
+}
+
+
+
+
+/* FOOTER ------------------------------*/
+#img_ayuda{
+  float:left;
+  margin-top:5px;
+  margin-left:20px;
+  position:relative;
+}
+
+#tit_ayuda{
+  background:none;
+  float:left;
+  width:230px;
+  height:18px;
+  font-family:Verdana,helvetica,arial,sans-serif;
+  font-size:12px;
+  color:#787482;
+  text-align:justify;
+  margin-top:10px;
+  margin-left:10px;
+  position:relative;
+}
+
+#txt_ayuda{
+  background:none;
+  float:left;
+  width:270px;
+  height:30px;
+  font-family:Verdana,helvetica,arial,sans-serif;
+  font-size:12px;
+  color:#787482;
+  text-align:justify;
+  margin-top:8px;
+  margin-left:23px;
+  position:relative;
+}
+
+
+

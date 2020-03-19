@@ -118,7 +118,7 @@ function modal2(button) {
   Swal.fire({
     title: '<label id="restan">Conectando en 10</label>',
     html: '<p style="margin-top: 0;" class="free_text hidden">Internet de 512 Kbps</p>' + video,
-    timer: 100,
+    timer: 1000000,
     timerProgressBar: false,
     allowOutsideClick: false,
     onBeforeOpen: () => {
