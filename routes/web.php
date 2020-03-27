@@ -105,9 +105,9 @@ Route::get('/VistaEncantada/{lang}', function($lang){
 Route::get('/HaciendaPremium/{lang}', function($lang){
     $html_title = 'Test Locale';
     App::setLocale($lang);
-    $site = 'HE'; 
+    $site = 'HE';
     $id_site = '1';
-    return view('visitor.Hacienda.hacienda_pay', compact('site','id_site', 'html_title')); 
+    return view('visitor.Hacienda.hacienda_pay', compact('site','id_site', 'html_title'));
 });
 
 Route::get('/fidelis', function(){
@@ -115,7 +115,11 @@ Route::get('/fidelis', function(){
 });
 
 Route::get('/Isec', function(){
-   return view('visitor.Isec.isec'); 
+   return view('visitor.Isec.isec');
+});
+
+Route::get('/FreeWifi', function(){
+  return view('visitor.Demo.free_wifi'); 
 });
 
 Route::post('/try_login_hacienda', 'HaciendaController@try_login_hacienda');
