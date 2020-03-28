@@ -9,24 +9,24 @@
 	<form id="loginform" name="loginform" method="POST" action="https://{{$sip}}:9998/SubscriberPortal/hotspotlogin">
 	<!-- <form id="loginform" name="loginform" method="POST" action="http://{{$sip}}:9997/login"> -->
 		{{ csrf_field() }}
-		<input class="form-control" type="text" id="username" name="username" value="TEST" />
-		<input class="form-control" type="text" id="password" name="password" value="TEST" />
-		<input class="form-control" type="text" id="sip" name="sip" value="{{ $sip }}" />
-		<input class="form-control" type="text" id="proxy" name="proxy" value="{{ $proxy }}" />
-		<input class="form-control" type="text" id="mac" name="mac" value="{{ $mac}}" />
-		<input class="form-control" type="text" id="client_mac" name="client_mac" value="{{$client_mac}}" />
-		<input class="form-control" type="text" id="uip" name="uip" value="{{ $uip }}" />
-		<input class="form-control" type="text" id="ssid" name="ssid" value="{{ $ssid }}" />
-		<input class="form-control" type="text" id="url" name="url" value="{{ $url }}" />
-		<input class="form-control" type="text" id="vlan" name="vlan" value="{{ $vlan }}" />
-		<button type="button" id="btn_logeo" name="btn_logeo">submit</button>
+		<input class="form-control" type="hidden" id="username" name="username" value="TEST" />
+		<input class="form-control" type="hidden" id="password" name="password" value="TEST" />
+		<input class="form-control" type="hidden" id="sip" name="sip" value="{{ $sip }}" />
+		<input class="form-control" type="hidden" id="proxy" name="proxy" value="{{ $proxy }}" />
+		<input class="form-control" type="hidden" id="mac" name="mac" value="{{ $mac}}" />
+		<input class="form-control" type="hidden" id="client_mac" name="client_mac" value="{{$client_mac}}" />
+		<input class="form-control" type="hidden" id="uip" name="uip" value="{{ $uip }}" />
+		<input class="form-control" type="hidden" id="ssid" name="ssid" value="{{ $ssid }}" />
+		<input class="form-control" type="hidden" id="url" name="url" value="{{ $url }}" />
+		<input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ $vlan }}" />
+		<!--  <button type="button" id="btn_logeo" name="btn_logeo">submit</button> -->
 	</form>
 </body>
 @include('visitor.scripts')
 <script>
 	$(function() {
 		setTimeout(function(){
-			// $('#loginform').submit();
+			$('#loginform').submit();
 		}, 2000);
 	});
 	$('#btn_logeo').on('click', function(){

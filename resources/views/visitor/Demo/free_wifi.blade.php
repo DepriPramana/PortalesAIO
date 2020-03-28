@@ -16,7 +16,8 @@
 <body>
 
   <header>
-    <h2><a href="#">Free wifi</a></h2>
+    <h2> <img src="{{asset('free_wifi/logo sitwifi.png')}}" alt="logo" height="42" width="auto"> </h2>
+    <!-- <h2><a href="#">Free wifi</a></h2>-->
   </header>
 
 
