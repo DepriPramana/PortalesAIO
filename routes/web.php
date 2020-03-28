@@ -119,7 +119,11 @@ Route::get('/Isec', function(){
 });
 
 Route::get('/FreeWifi', function(){
-  return view('visitor.Demo.free_wifi'); 
+  return view('visitor.Demo.free_wifi');
+});
+
+Route::get('/Aeris_CR', function(){
+  return view('visitor.Aeris.aeris');
 });
 
 Route::post('/try_login_hacienda', 'HaciendaController@try_login_hacienda');
@@ -129,6 +133,7 @@ Route::post('/submit_hacienda_premium_2', 'HaciendaController@login_premium_2');
 Route::post('/submit_hacienda_premium_3', 'HaciendaController@login_premium_3');
 Route::post('/submit_hacienda_premium_4', 'HaciendaController@login_premium_4');
 
+Route::post('submit_freewifi', 'FreeWifiController@login_freewifi');
 Route::post('submit_fontan_test', 'TestController@test_logeo');
 Route::post('submit_unitec', 'UnitecController@login_unitec');
 Route::post('submit_uvm', 'UnitecController@login_uvm');
