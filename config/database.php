@@ -59,7 +59,6 @@ return [
             ]) : [],
         ],
 
-
         'cloudrad' => [
             'driver' => 'mysql',
             'host' => '35.243.154.192',
@@ -67,6 +66,20 @@ return [
             'database' => 'radius',
             'username' => 'administrador',
             'password' => 'S1tc@N15',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
+        'rad_freewifi' => [
+            'driver' => 'mysql',
+            'host' => '35.229.125.72',
+            'port' => '3306',
+            'database' => 'radius',
+            'username' => 'administrador',
+            'password' => 'T3_4m0_bb',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

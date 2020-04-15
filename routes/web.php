@@ -119,7 +119,7 @@ Route::get('/Isec', function(){
 });
 
 Route::get('/FreeWifi', function(){
-  return view('visitor.Demo.free_wifi');
+  return view('visitor.SitwifiFree.free_wifi');
 });
 
 Route::get('/Aeris_CR', function(){

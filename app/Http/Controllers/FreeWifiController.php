@@ -57,15 +57,40 @@ class FreeWifiController extends Controller
         $pais = $request->select_pais;
         $email = $request->email;
       //
-      DB::table('FreeWifiTest')->insert(
-        [
-          'name' => $name,
-          'country' => $pais,
-          'email' => $email,
-          'mac_address' => $client_mac,
-        ]
-      );
-      return view('visitor.submitx_freewifi', compact('url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
-      return $request;
+      //user test radius
+      $user = 'comodin';
+      $password = 'S1tc@N15';
+
+      //DB::table('FreeWifiTest')->insert(['name' => $name,'country' => $pais,'email' => $email,'mac_address' => $client_mac]);
+      return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+      //return $request;
+    }
+    public function insertRadCloud($user, $name, $lastname,$fechaout, $site_code)
+    {
+        $atr1="Auth-Type";
+        $atr2="Cleartext-Password";
+        $atr3="Expiration";
+        $op =":=";
+        $Tipo="Local";
+        $passglobal = "123";
+        $createby = "administrator";
+        // $codigo_sitio = "ZCJG";
+        $group = "default";
+        $fechain = date("Y-m-d H:i:s");
+        $fechamod = date ("d M Y H:i:s", strtotime($fechaout)); //Fecha out(expiration)
+
+          DB::connection('rad_freewifi')->table('userinfo')->insert([
+            'username' => $user,
+            'firstname' => $name,
+            'lastname' => $lastname,
+            'email' => $site_code,
+            'creationdate' => $fechain,
+            'creationby' => $createby,
+            'expiration' => $fechaout]);
+          DB::connection('rad_freewifi')->table('radcheck')->insert([
+            ['username' => $user, 'attribute' => $atr2, 'op' => $op, 'value' => $passglobal],
+            ['username' => $user, 'attribute' => $atr3, 'op' => $op, 'value' => $fechamod]]);
+          DB::connection('rad_freewifi')->table('radusergroup')->insert(
+            ['username' => $user, 'groupname' => $group]);
     }
 }
