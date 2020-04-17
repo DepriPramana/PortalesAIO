@@ -63,16 +63,19 @@ class FreeWifiController extends Controller
       //user test radius
       $site_info = DB::connection('freewifi_data')->table('sites')->select('id','nombre')->where('code', $site)->first();
       $site_name = $site_info->nombre;
-      $date_carbon = Carbon::now()->format('M-d-h:m:s');
+      $date_carbon = Carbon::now()->format('M-d-h-i-s');
+      //return $date_carbon;
       $uniqid = uniqid();
       $uuid = $date_carbon .'-'.$uniqid;
       $fecha = Carbon::now();
-      $fechaout = $fecha->addMinutes(30);
+      $fechaout = $fecha->addDays(1);
 
-      $user = 'comodin';
-      $password = 'S1tc@N15';
+      //$user = 'comodin';
+      //$password = 'S1tc@N15';
+      $user = $uuid;
+      $password = '123';
       //Carbon::parse();
-      $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_code);
+      $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info->id);
 
       DB::connection('freewifi_data')->table('data_agents')->insert([
         'mac_address' => $client_mac,
@@ -114,7 +117,6 @@ class FreeWifiController extends Controller
         $Tipo="Local";
         $passglobal = "123";
         $createby = "administrator";
-        // $codigo_sitio = "ZCJG";
         $group = "default";
         $fechain = date("Y-m-d H:i:s");
         $fechamod = $fechaout->format('d M Y H:i:s');
@@ -124,8 +126,7 @@ class FreeWifiController extends Controller
             'firstname' => $name,
             'email' => $site_code,
             'creationdate' => $fechain,
-            'creationby' => $createby,
-            'expiration' => $fechaout]);
+            'creationby' => $createby]);
           DB::connection('rad_freewifi')->table('radcheck')->insert([
             ['username' => $user, 'attribute' => $atr2, 'op' => $op, 'value' => $passglobal],
             ['username' => $user, 'attribute' => $atr3, 'op' => $op, 'value' => $fechamod]]);
