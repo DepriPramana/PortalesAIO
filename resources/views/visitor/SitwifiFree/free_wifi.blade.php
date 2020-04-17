@@ -25,7 +25,7 @@
     <div class="background-image" style="background-image: url(free_wifi/images/cancun_playa.jpg);width:100%;height:100%;"></div>
     <form class="" action="{{url('/submit_freewifi')}}" method="post">
       {{ csrf_field() }}
-      <input class="form-control" type="text" id="site_code" name="site_code" value="{{$site}}" />
+      <input class="form-control" type="text" id="site_code" name="site_code" value="test" />
       <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
       <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
       <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />

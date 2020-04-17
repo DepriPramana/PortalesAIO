@@ -75,10 +75,14 @@ class FreeWifiController extends Controller
       $user = $uuid;
       $password = '123';
       //Carbon::parse();
+
+      // antes de insertar revisar la mac de la antena para sacar el id de sitio a que corresponde.
+
       $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info->id);
 
       DB::connection('freewifi_data')->table('data_agents')->insert([
         'mac_address' => $client_mac,
+        'station_mac' => $mac,
         'browser' => $browser,
         'browser_version' => $browser_version,
         'platform' => $platform,
