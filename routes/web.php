@@ -118,11 +118,15 @@ Route::get('/Isec', function(){
    return view('visitor.Isec.isec');
 });
 
-Route::get('/FreeWifi', function(){
+Route::get('/FreeWifi2', function(){
   $site = 'test';
-  return view('visitor.SitwifiFree.free_wifi');
+  return view('visitor.SitwifiFree.free_wifi', compact('site'));
+  //return view('visitor.SitwifiFree.free_wifi', compact('site'));
 });
-
+Route::get('/FreeWifi/{site_code}', function($site_code){
+  $site = $site_code;
+  return view('visitor.SitwifiFree.free_wifi', compact('site'));
+});
 Route::get('/Aeris_CR', function(){
   return view('visitor.Aeris.aeris');
 });
