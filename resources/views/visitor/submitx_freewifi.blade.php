@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Free Wifi</title>
-	<!-- conseguir favicon de jamaicapalace. -->
+	<!--  Agregar nombre dinamico de sitio <title>Free Wifi</title> -->
+
 	<!-- <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicon.ico') }}">  -->
 </head>
 <body>

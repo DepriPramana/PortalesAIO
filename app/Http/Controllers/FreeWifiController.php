@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use Carbon\Carbon;
 use DB;
 
 class FreeWifiController extends Controller
 {
+
     public function login_freewifi(Request $request)
     {
       // Agent
@@ -52,20 +54,58 @@ class FreeWifiController extends Controller
         $vlan = $request->vlan;
         $res = $request->res;
         $auth = $request->auth;
-        //$site = $request->site_code;
+        $site = $request->site_code;
+
         $name = $request->name;
         $pais = $request->select_pais;
         $email = $request->email;
       //
       //user test radius
+      $site_info = DB::connection('freewifi_data')->table('sites')->select('id','nombre')->where('code', $site)->first();
+      $site_name = $site_info->nombre;
+      $date_carbon = Carbon::now()->format('M-d-h:m:s');
+      $uniqid = uniqid();
+      $uuid = $date_carbon .'-'.$uniqid;
+      $fecha = Carbon::now();
+      $fechaout = $fecha->addMinutes(30);
+
       $user = 'comodin';
       $password = 'S1tc@N15';
+      //Carbon::parse();
+      $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_code);
+
+      DB::connection('freewifi_data')->table('data_agents')->insert([
+        'mac_address' => $client_mac,
+        'browser' => $browser,
+        'browser_version' => $browser_version,
+        'platform' => $platform,
+        'platform_version' => $platform_version,
+        'wificode' => $uuid,
+        'device' => $device,
+        'language' => $lang,
+        'robot' => $robot_name,
+        'site_id' => $site_info->id,
+        'mobile' => $mobile,
+        'name' => $name,
+        'country_code' => $pais,
+        'email' => $email,
+        'expiration' => $fechaout,
+        'success' => 1
+      ]);
+      DB::connection('freewifi_data')->table('data_sites')->insert([
+        'lastname' => $name,
+        'email' => $email,
+        'wificode' => $uuid,
+        'site_id' => $site_info->id,
+        'expiration' => $fechaout
+      ]);
 
       //DB::table('FreeWifiTest')->insert(['name' => $name,'country' => $pais,'email' => $email,'mac_address' => $client_mac]);
-      return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan'));
+
+      return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'site_name'));
       //return $request;
     }
-    public function insertRadCloud($user, $name, $lastname,$fechaout, $site_code)
+    public function insertRadCloudFreeWifi($user, $name,$fechaout, $site_code)
     {
         $atr1="Auth-Type";
         $atr2="Cleartext-Password";
@@ -77,12 +117,11 @@ class FreeWifiController extends Controller
         // $codigo_sitio = "ZCJG";
         $group = "default";
         $fechain = date("Y-m-d H:i:s");
-        $fechamod = date ("d M Y H:i:s", strtotime($fechaout)); //Fecha out(expiration)
+        $fechamod = $fechaout->format('d M Y H:i:s');
 
           DB::connection('rad_freewifi')->table('userinfo')->insert([
             'username' => $user,
             'firstname' => $name,
-            'lastname' => $lastname,
             'email' => $site_code,
             'creationdate' => $fechain,
             'creationby' => $createby,

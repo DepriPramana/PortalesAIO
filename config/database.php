@@ -87,6 +87,20 @@ return [
             'engine' => null,
         ],
 
+        'freewifi_data' => [
+            'driver' => 'mysql',
+            'host' => '35.229.125.72',
+            'port' => '3306',
+            'database' => 'FreeWifi',
+            'username' => 'administrador',
+            'password' => 'T3_4m0_bb',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'jamaicazq' => [
             'driver' => 'mysql',
             'host' => '209.236.43.3',
