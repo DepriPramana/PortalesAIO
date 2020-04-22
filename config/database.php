@@ -73,6 +73,20 @@ return [
             'engine' => null,
         ],
 
+        'cloudalice' => [
+            'driver' => 'mysql',
+            'host' => '35.231.90.64',
+            'port' => '3306',
+            'database' => 'AliceDB',
+            'username' => 'userweb',
+            'password' => 'W3bs1t@2018',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'rad_freewifi' => [
             'driver' => 'mysql',
             'host' => '35.229.125.72',

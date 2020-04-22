@@ -25,7 +25,7 @@ a:hover{
 	opacity: 1;
 }
 
-input[type=text],input[type=email] {
+input[type=text],input[type=email],input[type=number] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

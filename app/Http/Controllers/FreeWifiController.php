@@ -59,10 +59,17 @@ class FreeWifiController extends Controller
         $name = $request->name;
         $pais = $request->select_pais;
         $email = $request->email;
+        $edad = $request->edad;
+        $genero = $request->genero;
       //
       //user test radius
-      $site_info = DB::connection('freewifi_data')->table('sites')->select('id','nombre')->where('code', $site)->first();
-      $site_name = $site_info->nombre;
+      // procedure para obtener site_id
+      //$mac = '84:18:3a:1e:4c:70';
+      $site_info = DB::connection('cloudalice')->select('CALL get_venue_id_with_MAC(?)', array($mac));
+      //$site_info[0]->ID_VENUE == 0; Hacer validacion de 0
+      //$site_info = DB::connection('freewifi_data')->table('sites')->select('id','nombre')->where('code', $site)->first();
+      //$site_name = $site_info[0]->NAME_VENUE;
+      //$chain_name = $site_info[0]->NAME_CHAIN;
       $date_carbon = Carbon::now()->format('M-d-h-i-s');
       //return $date_carbon;
       $uniqid = uniqid();
@@ -77,8 +84,11 @@ class FreeWifiController extends Controller
       //Carbon::parse();
 
       // antes de insertar revisar la mac de la antena para sacar el id de sitio a que corresponde.
+      // get_venue_id_with_MAC('MAC')
+      // grafica de download get_mb_download_chain_venue(?,?,?,?) (cadena,venue, fechaini, fechafin) //FreeWifi DB
+      // grafica de upload  get_mb_upload_chain_venue(?,?,?,?) (cadena,venue, fechaini, fechafin) // FreeWifiDB
 
-      $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info->id);
+      $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info[0]->ID_VENUE);
 
       DB::connection('freewifi_data')->table('data_agents')->insert([
         'mac_address' => $client_mac,
@@ -91,11 +101,14 @@ class FreeWifiController extends Controller
         'device' => $device,
         'language' => $lang,
         'robot' => $robot_name,
-        'site_id' => $site_info->id,
+        'site_id' => $site_info[0]->ID_VENUE,
+        'cadena_id' => $site_info[0]->ID_CHAIN,
         'mobile' => $mobile,
         'name' => $name,
         'country_code' => $pais,
         'email' => $email,
+        'age' => $edad,
+        'gender' => $genero,
         'expiration' => $fechaout,
         'success' => 1
       ]);
@@ -103,7 +116,7 @@ class FreeWifiController extends Controller
         'lastname' => $name,
         'email' => $email,
         'wificode' => $uuid,
-        'site_id' => $site_info->id,
+        'site_id' => $site_info[0]->ID_VENUE,
         'expiration' => $fechaout
       ]);
 

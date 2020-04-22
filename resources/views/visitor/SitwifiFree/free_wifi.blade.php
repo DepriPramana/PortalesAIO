@@ -25,7 +25,7 @@
     <div class="background-image" style="background-image: url(free_wifi/images/cancun_playa.jpg);width:100%;height:100%;"></div>
     <form class="" action="{{url('/submit_freewifi')}}" method="post">
       {{ csrf_field() }}
-      <input class="form-control" type="text" id="site_code" name="site_code" value="test" />
+      <input class="form-control" type="hidden" id="site_code" name="site_code" value="test" />
       <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
       <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
       <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
@@ -45,6 +45,16 @@
       <p>País</p>
       <select id="select_pais" name="select_pais" class="select2" required>
         <option value="">Seleccione una opcion</option>
+      </select>
+      <br>
+      <br>
+      <input type="number" id="edad" name="edad" placeholder="Edad" required>
+      <br>
+      <p>Género</p>
+      <select id="genero" name="genero" class="select2" required>
+        <option value="">Seleccione una opcion</option>
+        <option value="1">Masculino</option>
+        <option value="2">Femenino</option>
       </select>
       <br>
       <br>
