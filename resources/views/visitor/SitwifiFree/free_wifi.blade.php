@@ -16,14 +16,14 @@
 <body>
 
   <header>
-    <h2> <img src="{{asset('free_wifi/logo sitwifi.png')}}" alt="logo" height="42" width="auto"> </h2>
+    <h2> <img src="{{asset('free_wifi/images/logo_station.jpeg')}}" alt="logo" width="auto" height="148"> </h2>
     <!-- <h2><a href="#">Free wifi</a></h2>-->
   </header>
 
   <section class="bienvenida" style="width:100%; ">
-    <div class="background-image" style="background-image: url(free_wifi/images/cancun_playa.jpg);width:100%;height:100%;"></div>
+    <div class="background-image" style="background-image: url(free_wifi/images/plain-white-background.jpg);width:100%;height:100%;"></div>
 
-    <div class="choice_btn" style="display: block;">
+    <div class="choice_btn" style="display: none;">
       <h1>Free wifi</h1>
       <h3>Bienvenido a free wifi</h3>
       <br>
@@ -31,7 +31,12 @@
       <button type="button" name="button" class="btn btn_roaming">Roaming</button>
     </div>
 
-    <div class="form_div" style="display: none;">
+
+    <div class="img_form" style="">
+      <img src="{{ asset('free_wifi/images/portal1.jpeg')}}" alt="logo freewifi sitwifi_station" width="auto" height="auto">
+    </div>
+
+    <div class="form_div" style="display: block;">
       <form class="" action="{{url('/submit_freewifi')}}" method="post">
         {{ csrf_field() }}
         <input class="form-control" type="hidden" id="site_code" name="site_code" value="test" />
@@ -46,8 +51,9 @@
         <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
         <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
 
-        <h1>Free wifi</h1>
-        <h3>Bienvenido a free wifi</h3>
+        <!-- <h1>Free wifi</h1>
+        <h3>Bienvenido a free wifi</h3> -->
+
         <div class="">
           <input type="text" id="name" name="name" value="" placeholder="Nombre completo" required>
           <br>

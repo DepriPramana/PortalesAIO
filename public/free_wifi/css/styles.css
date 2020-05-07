@@ -189,18 +189,24 @@ header nav li:last-child{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #414a4f;
-	opacity: 0.70;
+	//background-color: #414a4f;
+	//opacity: 0.70;
+}
+
+.img_form {
+	
 }
 
 .bienvenida h1{
 	font: bold 60px 'Open Sans', sans-serif;
+	color: black;
 	margin-bottom: 15px;
 }
 
 .bienvenida h3{
 	font: normal 28px 'Open Sans', sans-serif;
 	margin-bottom: 40px;
+	color: black;
 }
 
 .bienvenida button.btn{
