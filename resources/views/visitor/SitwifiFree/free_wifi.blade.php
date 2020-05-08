@@ -2,9 +2,9 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
   <title>Free wifi</title>
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -15,28 +15,29 @@
 
 <body>
 
-  <header>
-    <h2> <img src="{{asset('free_wifi/images/logo_station.jpeg')}}" alt="logo" width="auto" height="148"> </h2>
+  <header style="text-align: center;">
+    <img id="logo" src="{{asset('free_wifi/images/logo_station.jpeg')}}" alt="logo">
     <!-- <h2><a href="#">Free wifi</a></h2>-->
   </header>
 
-  <section class="bienvenida" style="width:100%; ">
-    <div class="background-image" style="background-image: url(free_wifi/images/plain-white-background.jpg);width:100%;height:100%;"></div>
+  <section class="bienvenida">
 
-    <div class="choice_btn" style="display: none;">
-      <h1>Free wifi</h1>
-      <h3>Bienvenido a free wifi</h3>
-      <br>
-      <button type="button" name="button" class="btn btn_freewifi">FreeWifi</button>
-      <button type="button" name="button" class="btn btn_roaming">Roaming</button>
+    <div style="text-align: center;">
+      <img id="portal_img" alt="Cargando...">
     </div>
 
 
-    <div class="img_form" style="">
-      <img src="{{ asset('free_wifi/images/portal1.jpeg')}}" alt="logo freewifi sitwifi_station" width="auto" height="auto">
-    </div>
+        <div class="choice_btn">
+          <button type="button" name="button" class="btn btn_freewifi">FreeWifi</button>
+          <button type="button" name="button" class="btn btn_roaming" disabled>Premium</button>
+          <div id="div_check">
+            <input type="checkbox" id="terms" name="terms" value="">
+            <label for="terms">He leído y acepto <a href="#">aviso de privacidad, términos y condiciones.</a></label>
+          </div>
+        </div>
 
-    <div class="form_div" style="display: block;">
+
+    <div class="form_div" style="display: none; text-align: center;">
       <form class="" action="{{url('/submit_freewifi')}}" method="post">
         {{ csrf_field() }}
         <input class="form-control" type="hidden" id="site_code" name="site_code" value="test" />
@@ -54,34 +55,38 @@
         <!-- <h1>Free wifi</h1>
         <h3>Bienvenido a free wifi</h3> -->
 
-        <div class="">
+        <div class="inputs">
+          <label>Nombre</label>
           <input type="text" id="name" name="name" value="" placeholder="Nombre completo" required>
           <br>
-          <p>País</p>
-          <select id="select_pais" name="select_pais" class="select2" style="width:100%;" required>
+          <label>País</label>
+          <select id="select_pais" name="select_pais" class="select2" required>
             <option value="">Seleccione una opcion</option>
           </select>
           <br>
-          <br>
+          <label>Edad</label>
           <input type="number" id="edad" name="edad" placeholder="Edad" required>
           <br>
-          <p>Género</p>
-          <select id="genero" name="genero" class="select2" style="width:100%;" required>
+          <label>Género</label>
+          <select id="genero" name="genero" class="select2" required>
             <option value="">Seleccione una opcion</option>
             <option value="1">Masculino</option>
             <option value="2">Femenino</option>
           </select>
           <br>
-          <br>
+          <label>Correo</label>
           <input type="email" id="email" name="email" value="" placeholder="Correo" required>
+          <br>
+          <button id="free_submit" type="submit" name="button">Continuar</button>
         </div>
-        <br>
-        <button type="submit" name="button" class="btn">Continuar</button>
       </form>
     </div>
 
   </section>
 
+  <footer>
+		<p>Ayuda telefónica <strong>800 112 1122</strong></p>
+	</footer>
 
 </body>
 <script src="{{ asset('free_wifi/js/jquery/dist/jquery.min.js')}}" type="text/javascript"></script>
@@ -90,6 +95,17 @@
 
 <script src="{{ asset('free_wifi/js/countries.js')}}" type="text/javascript"></script>
 <script>
+
+  var imagen = Math.random();
+
+  if(imagen < 0.33) {
+    document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal1.jpeg')}}';
+  } else if(imagen < 0.66) {
+    document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal2.jpeg')}}';
+  } else {
+    document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal3.jpeg')}}';
+  }
+
   var currentURL = window.location.href;
   var currentHost = window.location.hostname;
   var variables = currentURL.split("?");
