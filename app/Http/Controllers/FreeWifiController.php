@@ -7,13 +7,15 @@ use Jenssegers\Agent\Agent;
 use Carbon\Carbon;
 use DB;
 
+
 class FreeWifiController extends Controller
 {
-
     public function login_freewifi(Request $request)
     {
       // Agent
+
     		$agent = new Agent(); // datos del usuario.
+
     		$bool = $agent->isDesktop();
     		if($bool){
     		  $mobile = 0;
@@ -42,6 +44,14 @@ class FreeWifiController extends Controller
     		}else{
     		  $platform_version = '';
     		}
+
+        $vendor = $request->vendor;
+        $model = $request->model;
+        $type = $request->type;
+        $os_name = $request->os_name;
+        $os_version = $request->os_version;
+
+        //dd($device, $browser, $browser_version, $platform, $platform_version, $vendor, $model, $type, $os_name, $os_version);
   		// Fin Agent
       // Parametros de logeo
         $url = $request->url;

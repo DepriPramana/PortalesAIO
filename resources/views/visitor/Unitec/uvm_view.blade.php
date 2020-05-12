@@ -93,7 +93,7 @@
 <body onload="mensaje();">
 	<header>
 		<div class="header_logo mb-5">
-			<img src="{{asset('palace/cozumel/images/logo_uvm.jpg')}}" width="207" height="100" alt="Playacar Logo" class="logo-img">
+			<img src="{{asset('palace/cozumel/images/logo_uvm.jpg')}}" width="207" height="100" alt="UVM Logo" class="logo-img">
 		</div>
 		<nav>
 			<ul>

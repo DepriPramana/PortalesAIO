@@ -30,17 +30,19 @@
         <div class="choice_btn">
           <button type="button" name="button" class="btn btn_freewifi">FreeWifi</button>
           <button type="button" name="button" class="btn btn_roaming" disabled>Premium</button>
-          <div id="div_check">
-            <input type="checkbox" id="terms" name="terms" value="">
-            <label for="terms">He leído y acepto <a href="#">aviso de privacidad, términos y condiciones.</a></label>
-          </div>
+
         </div>
 
 
     <div class="form_div" style="display: none; text-align: center;">
-      <form class="" action="{{url('/submit_freewifi')}}" method="post">
+      <form id="myForm" class="" action="{{url('/submit_freewifi')}}" method="post">
         {{ csrf_field() }}
-        <input class="form-control" type="hidden" id="site_code" name="site_code" value="test" />
+        <input class="form-control" type="hidden" id="site_code" name="site_code" />
+        <input class="form-control" type="hidden" id="vendor" name="vendor" />
+        <input class="form-control" type="hidden" id="model" name="model" />
+        <input class="form-control" type="hidden" id="type" name="type" />
+        <input class="form-control" type="hidden" id="os_name" name="os_name" />
+        <input class="form-control" type="hidden" id="os_version" name="os_version" />
         <input class="form-control" type="hidden" name="url" value="{{ isset($_GET['url']) ? $_GET['url'] : '' }}" />
         <input class="form-control" type="hidden" name="proxy" value="{{ isset($_GET['proxy']) ? $_GET['proxy'] : '' }}" />
         <input class="form-control" type="hidden" id="sip" name="sip" value="{{ isset($_GET['sip']) ? $_GET['sip'] : '' }}" />
@@ -76,9 +78,16 @@
           <br>
           <label>Correo</label>
           <input type="email" id="email" name="email" value="" placeholder="Correo" required>
+
+          <div id="div_check">
+            <input type="checkbox" id="terms" name="terms" value="">
+            <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+          </div>
           <br>
           <button id="free_submit" type="submit" name="button">Continuar</button>
         </div>
+
+
       </form>
     </div>
 
@@ -94,6 +103,10 @@
 <script src="{{ asset('free_wifi/js/select2/dist/js/select2.full.min.js')}}" type="text/javascript"></script>
 
 <script src="{{ asset('free_wifi/js/countries.js')}}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.19/ua-parser.min.js"></script>
+<script src="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.css')}}">
+
 <script>
 
   var imagen = Math.random();
@@ -109,8 +122,20 @@
   var currentURL = window.location.href;
   var currentHost = window.location.hostname;
   var variables = currentURL.split("?");
-  $(function() {
 
+  $(function() {
+      var ua = new UAParser();
+    	var result = ua.getResult();
+    	//console.log(result);
+    	//console.log(result.browser);
+    	//console.log(result.device);
+    	//console.log(result.os);
+
+      $('#vendor').val(result.device.vendor);
+      $('#model').val(result.device.model);
+      $('#type').val(result.device.type);
+      $('#os_name').val(result.os.name);
+      $('#os_version').val(result.os.version);
   });
 
   $('.btn_freewifi').on('click', function(){
@@ -124,6 +149,14 @@
     var url_roaming = "http://wifimedia.mx/rmg/";
     //console.log(url_full);
     window.location.href = url_roaming;
+  });
+  $('#myForm').submit(function() {
+    if(!$('#terms').is(':checked')){
+        swal({title: "Error!", text:"Acepte los términos y condiciones para conectarse a la red.", type:"error", confirmButtonText: "Continuar" });
+        return false;
+    }else{
+      return true;
+    }
   });
 </script>
 </html>
