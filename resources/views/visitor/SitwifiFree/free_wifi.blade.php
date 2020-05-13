@@ -29,7 +29,7 @@
 
         <div class="choice_btn">
           <button type="button" name="button" class="btn btn_freewifi">FreeWifi</button>
-          <button type="button" name="button" class="btn btn_roaming" disabled>Premium</button>
+          <button type="button" name="button" class="btn btn_roaming" style="display: none;" disabled>Premium</button>
 
         </div>
 
