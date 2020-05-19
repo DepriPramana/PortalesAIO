@@ -28,6 +28,8 @@
                         <span class="sr-only">Cargando...</span>
                     </div>
                 </div>
+                <form>
+                  {{ csrf_field() }}
                 <div class="col-md-12 filter-panel">
                     <label for="select-hotspots" style="color:#99938e;">Hotspot:</label>
                     <select id="select-hotspots" class="form-control" name="hotspots" multiple="multiple" style="width: 100%;"></select>
@@ -39,6 +41,7 @@
                     </div>
 
                 </div>
+              </form>
             </div>
         </div >
 

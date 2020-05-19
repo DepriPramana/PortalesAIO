@@ -15,6 +15,7 @@
 // Route::get('test_xml', 'TestController@test');
 
 Route::get('dashboard_freewifi', 'DashboardFreeWifiController@index');
+Route::get('test_echart','DashboardFreeWifiController@index2');
 
 Route::get('/test_user/{room}/{site}', 'TestController@test_xml');
 Route::get('/testing', 'TestController@testing');

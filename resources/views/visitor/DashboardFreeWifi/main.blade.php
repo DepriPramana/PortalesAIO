@@ -6,6 +6,7 @@
 
 <html class="no-js" lang=""> <!--<![endif]-->
 @include('visitor.DashboardFreeWifi.head')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <body>
     @include('visitor.DashboardFreeWifi.navbar')
 
