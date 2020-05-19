@@ -8,6 +8,7 @@ class DashboardFreeWifiController extends Controller
 {
     public function Index()
     {
-        return response("Dashboard", 200);
+        return view('visitor.DashboardFreeWifi.index');
+
     }
 }
