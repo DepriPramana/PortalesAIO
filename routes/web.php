@@ -14,7 +14,12 @@
 // Route::get('/test_agent', 'TestController@testfunc');
 // Route::get('test_xml', 'TestController@test');
 
-Route::get('dashboard_freewifi', 'DashboardFreeWifiController@index');
+Route::prefix('dashboard_freewifi')->group(function() {
+    Route::get('', 'DashboardFreeWifiController@index');
+    Route::get('hotspot/realms', 'DashboardFreeWifi\GoogleStationController@getRealms');
+    Route::get('hotspot/realm_sites','DashboardFreeWifi\GoogleStationController@getRealmSites');
+    Route::get('hotspot/chartsInfo', 'DashboardFreeWifi\GoogleStationController@getChartsInfo');
+});
 Route::get('test_echart','DashboardFreeWifiController@index2');
 
 Route::get('/test_user/{room}/{site}', 'TestController@test_xml');

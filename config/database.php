@@ -86,7 +86,7 @@ return [
             'strict' => false,
             'engine' => null,
         ],
-
+    
         'rad_freewifi' => [
             'driver' => 'mysql',
             'host' => '35.229.125.72',
@@ -206,6 +206,34 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
+
+        'LocalAlice' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'port' => '3306',
+            'database' => 'AliceDB',
+            'username' => 'alice',
+            'password' => '123456789',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+        
+        'LocalFreeWifi' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'port' =>  '3306',
+            'database' =>  'FreeWifi',
+            'username' =>  'freewifi',
+            'password' =>  '123456',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ]
 
     ],
 

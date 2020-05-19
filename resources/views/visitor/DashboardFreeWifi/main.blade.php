@@ -7,6 +7,7 @@
 <html class="no-js" lang=""> <!--<![endif]-->
 @include('visitor.DashboardFreeWifi.head')
 <meta name="csrf-token" content="{{ csrf_token() }}">
+@yield('aditional-styles')
 <body>
     @include('visitor.DashboardFreeWifi.navbar')
 
@@ -21,5 +22,7 @@
     @include('visitor.DashboardFreeWifi.footer')
 <script src="{{ asset('js/app.js') }}"></script>
 @include('visitor.DashboardFreeWifi.scripts')
+
+@yield('aditional-scripts')
 </body>
 </html>

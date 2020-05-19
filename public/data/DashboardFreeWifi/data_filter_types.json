@@ -1,0 +1,30 @@
+[
+    {
+        "id": 0,
+        "name": "User logins"
+    },
+    {
+        "id": 1,
+        "name": "Unique users"
+    },
+    {
+        "id": 2,
+        "name": "New users"
+    },
+    {
+        "id": 3,
+        "name": "Downloads bytes"
+    },
+    {
+        "id": 4,
+        "name": "Upload bytes"
+    },
+    {
+        "id": 5,
+        "name": "Avg session duration"
+    },
+    {
+        "id": 6,
+        "name": "Daily revenue estitame"
+    }
+]
