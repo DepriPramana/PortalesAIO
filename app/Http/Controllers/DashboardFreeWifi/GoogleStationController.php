@@ -49,7 +49,7 @@ class GoogleStationController extends Controller
                 foreach( $data->sites as $id) {
                     $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_user_login_day_chain_venue(?, ?, ?,?)',[intval($data->chain), intval($id), $data->dateStart, $data->dateEnd]);
                     array_push($dataset, [
-                        'site' => DB::select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
+                        'site' => DB::connection($this->aliceConnection)->select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
                         'data' => $resultSet
                     ]);
                 }
@@ -58,7 +58,7 @@ class GoogleStationController extends Controller
                 foreach( $data->sites as $id) {
                     $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_unique_user_day_chain_venue(?, ?, ?,?)',[intval($data->chain), intval($id), $data->dateStart, $data->dateEnd]);
                     array_push($dataset, [
-                        'site' => DB::select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
+                        'site' => DB::connection($this->aliceConnection)->select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
                         'data' => $resultSet
                     ]);
                 }
@@ -67,7 +67,7 @@ class GoogleStationController extends Controller
                 foreach( $data->sites as $id) {
                     $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_new_user_day_chain_venue(?, ?, ?,?)',[intval($data->chain), intval($id), $data->dateStart, $data->dateEnd]);
                     array_push($dataset, [
-                        'site' => DB::select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
+                        'site' => DB::connection($this->aliceConnection)->select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
                         'data' => $resultSet
                     ]);
                 }
@@ -77,7 +77,7 @@ class GoogleStationController extends Controller
                 foreach( $data->sites as $id) {
                     $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_mb_download_chain_venue(?, ?, ?,?)',[intval($data->chain), intval($id), $data->dateStart, $data->dateEnd]);
                     array_push($dataset, [
-                        'site' => DB::select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
+                        'site' => DB::connection($this->aliceConnection)->select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
                         'data' => $resultSet
                     ]);
                 }
@@ -87,7 +87,7 @@ class GoogleStationController extends Controller
                 foreach( $data->sites as $id) {
                     $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_mb_upload_chain_venue(?, ?, ?,?)',[intval($data->chain), intval($id), $data->dateStart, $data->dateEnd]);
                     array_push($dataset, [
-                        'site' => DB::select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
+                        'site' => DB::connection($this->aliceConnection)->select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
                         'data' => $resultSet
                     ]);
                 }
@@ -96,7 +96,7 @@ class GoogleStationController extends Controller
                 foreach( $data->sites as $id) {
                     $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_avg_min_session_chain_venue(?, ?, ?,?)',[intval($data->chain), intval($id), $data->dateStart, $data->dateEnd]);
                     array_push($dataset, [
-                        'site' => DB::select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
+                        'site' => DB::connection($this->aliceConnection)->select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
                         'data' => $resultSet
                     ]);
                 }
@@ -106,7 +106,7 @@ class GoogleStationController extends Controller
                     $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_revenue_total_session_chain_venue(?, ?, ?,?)',[intval($data->chain), intval($id), $data->dateStart, $data->dateEnd]);
                     // $resultSet = DB::connection($this->freeWifiConnection)->select('CALL get_revenue_total_session_chain_venue(?, ?, ?,?)',[112,68,'2019-03-17','2020-04-27']);
                     array_push($dataset, [
-                        'site' => DB::select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
+                        'site' => DB::connection($this->aliceConnection)->select("SELECT Nombre_hotel as nombre FROM hotels WHERE id = ?", [$id])[0]->nombre,
                         'data' => $resultSet
                     ]);
                 }
