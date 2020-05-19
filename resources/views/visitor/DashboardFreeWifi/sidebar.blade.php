@@ -3,7 +3,7 @@
 
     <aside>
 
-        <div class="sidebar left " style="height: 100%; position:fixed;">
+        <div class="sidebar left" style="height: 100%; position:fixed;">
             <div class="user-panel">
                 <div class="pull-left image">
                     <img src="https://cdn.iconscout.com/icon/free/png-512/avatar-380-456332.png" class="rounded-circle" alt="User Image">
