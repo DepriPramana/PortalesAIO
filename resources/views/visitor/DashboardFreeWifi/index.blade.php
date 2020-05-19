@@ -5,7 +5,7 @@
 @endsection
 
 @section('aditional-styles')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="col-md-12" id="graphic-content">
-                            <div class="grafica" style="margin-left:100px !important; display: none; width: 100%; min-height: 400px;">
+                            <div class="grafica" style="display: none; width: 100%; min-height: 400px;">
                             </div>
                         </div>
                     </div>
@@ -115,5 +115,6 @@
 @endsection
 
 @section('aditional-scripts')
+    <!--<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>-->
     <script src="{{ asset('/js/DashboardFreeWifi/gs.js') }}"></script>
 @endsection

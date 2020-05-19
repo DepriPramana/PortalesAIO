@@ -15,7 +15,7 @@
 // Route::get('test_xml', 'TestController@test');
 
 Route::prefix('dashboard_freewifi')->group(function() {
-    Route::get('', 'DashboardFreeWifiController@index');
+    Route::get('gs', 'DashboardFreeWifiController@index');
     Route::get('hotspot/realms', 'DashboardFreeWifi\GoogleStationController@getRealms');
     Route::get('hotspot/realm_sites','DashboardFreeWifi\GoogleStationController@getRealmSites');
     Route::get('hotspot/chartsInfo', 'DashboardFreeWifi\GoogleStationController@getChartsInfo');
