@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 use DB;
 
 class GoogleStationController extends Controller
-{   
-    private $production = false; // <--- Environment
-    
+{
+    private $production = true; // <--- Environment
+
     private $aliceConnection = "";
     private $freeWifiConnection = "";
-    
+
     public function __construct() {
         $this->aliceConnection = $this->production ? 'cloudalice' : 'LocalAlice';
         $this->freeWifiConnection = $this->production ? 'freewifi_data' : 'LocalFreeWifi';
@@ -28,7 +28,7 @@ class GoogleStationController extends Controller
         $resultSet = DB::connection($this->aliceConnection)->select("SELECT id, name as nombre FROM cadenas");
         return response()->json($resultSet);
     }
-    
+
     public function getRealmSites( Request $request )
     {
         $realmID = $request->realmID;
@@ -117,4 +117,3 @@ class GoogleStationController extends Controller
     }
 
 }
-

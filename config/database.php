@@ -86,7 +86,21 @@ return [
             'strict' => false,
             'engine' => null,
         ],
-    
+
+        'cloudalice_local' => [
+            'driver' => 'mysql',
+            'host' => '192.168.1.66',
+            'port' => '3306',
+            'database' => 'AliceDB',
+            'username' => 'administrador',
+            'password' => 'root@777',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'rad_freewifi' => [
             'driver' => 'mysql',
             'host' => '35.229.125.72',
@@ -220,7 +234,7 @@ return [
             'strict' => false,
             'engine' => null,
         ],
-        
+
         'LocalFreeWifi' => [
             'driver' => 'mysql',
             'host' => 'localhost',
