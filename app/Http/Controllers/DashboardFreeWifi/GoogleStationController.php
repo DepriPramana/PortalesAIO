@@ -25,7 +25,7 @@ class GoogleStationController extends Controller
 
     public function getRealms()
     {
-        $resultSet = DB::connection($this->aliceConnection)->select("SELECT id, name as nombre FROM cadenas");
+        $resultSet = DB::connection($this->aliceConnection)->select("SELECT id, name as nombre FROM cadenas ".(($this->production)?'WHERE hotspot = 1':''));
         return response()->json($resultSet);
     }
 
@@ -33,9 +33,9 @@ class GoogleStationController extends Controller
     {
         $realmID = $request->realmID;
         if( $realmID == 0 ) {
-            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels");
+            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels ".(($this->production)?'WHERE hotspot = 1':''));
         } else {
-            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels WHERE cadena_id = ?", [$realmID]);
+            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels WHERE cadena_id = ? ".(($this->production)?'AND hotspot = 1':''), [$realmID]);
         }
         return response()->json( $resultSet );
     }

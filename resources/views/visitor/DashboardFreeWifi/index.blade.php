@@ -78,29 +78,15 @@
             <div class="panel-hs">
                 <div class="content-filters ml-1 row mb-3">
 
-                    <div class="col-md-5" style="width:100%;">
+                    <div class="col-md-6" style="width:100%;">
                         <select id="filter-data-select" class="form-control" style="outline:0; !important;"></select>
                     </div>
-                    <div class="col-md-3 text-right" id="filterBySelect">
+                    <div class="col-md-3" style="width:100%;">
                         <select class="form-control" name="fechaInicio" id="fechaInicio">
                             <option value="<?= date("Y-m-d", strtotime("-7 days")) ?>">7 days</option>
                             <option value="<?= date("Y-m-d", strtotime("-30 days")) ?>">30 days</option>
                             <option value="<?= date("Y-m-d", strtotime("-90 days")) ?>">90 days</option>
                         </select>
-                    </div>
-                    <div class="col-md-5 row" id="filterByDate" style="display: none;">
-                        <div class="col-md-6">
-                            <input type="date" name="fechaInicioDate" class="form-control">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="date" name="" id="fechaFinalDate" class="form-control" id="fechaInicioDate">
-                        </div>
-                    </div>
-                    <div class="col-md-2" style="display: none;">
-                        <label for="filter-by-date" style="font-size: 14px;">
-                            <input type="checkbox" id="filter-by-date">
-                            Rango de fechas
-                        </label>
                     </div>
                     <div class="col-md-3">
                         <input type="hidden" class="form-control" value="<?= date("Y-m-d") ?>" name="fechaFinal">
