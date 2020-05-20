@@ -8,7 +8,7 @@ use DB;
 
 class GoogleStationController extends Controller
 {
-    private $production = false; // <--- Environment
+    private $production = true; // <--- Environment
 
     private $aliceConnection = "";
     private $freeWifiConnection = "";
@@ -25,7 +25,7 @@ class GoogleStationController extends Controller
 
     public function getRealms()
     {
-        $resultSet = DB::connection($this->aliceConnection)->select("SELECT id, name as nombre FROM cadenas WHERE hotspot = 1");
+        $resultSet = DB::connection($this->aliceConnection)->select("SELECT id, name as nombre FROM cadenas");
         return response()->json($resultSet);
     }
 
@@ -33,9 +33,9 @@ class GoogleStationController extends Controller
     {
         $realmID = $request->realmID;
         if( $realmID == 0 ) {
-            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels WHERE hotspot = 1");
+            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels");
         } else {
-            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels WHERE cadena_id = ? AND hotspot = 1", [$realmID]);
+            $resultSet = DB::connection($this->aliceConnection)->select("SELECT id,Nombre_hotel as nombre FROM hotels WHERE cadena_id = ?", [$realmID]);
         }
         return response()->json( $resultSet );
     }
