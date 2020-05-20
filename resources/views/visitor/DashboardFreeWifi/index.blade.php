@@ -125,4 +125,78 @@
 @section('aditional-scripts')
     <!--<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>-->
     <script src="{{ asset('/js/DashboardFreeWifi/gs.js') }}"></script>
+    <script>
+    $( document ).ready(function()
+    {
+        get_dates();
+    });
+
+    function get_dates(start = null)
+    {
+        let monthNames = getMonthNames();
+
+        let d = new Date();
+
+        let month_current = monthNames[d.getMonth()]
+        var day_current = d.getDate();
+        var day_current = day_current<10 ? '0' : '' + day_current;
+        let year_current = d.getFullYear()
+
+        let current_date = day_current+" "+month_current+" "+year_current;
+
+        $('#current_date').text(current_date);
+
+        if(!start)
+        {
+            let df = d.setDate( d.getDate() - 7)
+            let dfilter = new Date(df);
+
+            let month_filter = monthNames[dfilter.getMonth()]
+            var day_filter = dfilter.getDate();
+            var day_filter= dfilter<10 ? '0' : '' + "0"+day_filter;
+            let year_filter = dfilter.getFullYear()
+
+
+            let filter_date = day_filter+" "+month_filter+" "+year_filter;
+            $('#filter_date').text(filter_date);
+
+        }
+
+
+    }
+
+    function getMonthNames()
+    {
+            return ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    }
+
+    $('#fechaInicio').on('change', function() {
+
+
+        let monthNames = getMonthNames();
+        let fecha_inicio_pre = $('#fechaInicio').val();
+        let fecha_inicio_array = fecha_inicio_pre.split("-");
+
+
+        if(fecha_inicio_array[1].charAt(0) == "0")
+        {
+            fecha_inicio_array[1] = fecha_inicio_array[1].substr(1,2) - 1;
+        }
+
+        if(fecha_inicio_array[2].length === 1)
+        {
+            fecha_inicio_array[2] = "0"+fecha_inicio_array[2];
+        }
+
+        let filter_day = fecha_inicio_array[2];
+        let filter_month = monthNames[fecha_inicio_array[1]];
+        let filter_year = fecha_inicio_array[0];
+
+        let filter_date = filter_day +" "+filter_month+" "+filter_year;
+
+        $('#filter_date').text(filter_date);
+
+    });
+    </script>
 @endsection
