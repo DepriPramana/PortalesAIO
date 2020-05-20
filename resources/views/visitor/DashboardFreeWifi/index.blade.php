@@ -104,6 +104,14 @@
                             <div class="grafica" style="display: none; width: 100%; min-height: 400px;">
                             </div>
                         </div>
+                        <div class="col-md-12 row">
+                            <div class="col-md-6 text-center" id="panle-total-chart" style="display: none;">
+                                <strong>Total: </strong> <span></span>
+                            </div>
+                            <div class="col-md-6 text-center" id="panle-promedio-chart" style="display: none;">
+                                <strong>Promedio: </strong> <span></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
