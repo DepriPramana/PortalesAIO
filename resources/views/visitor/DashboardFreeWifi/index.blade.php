@@ -50,8 +50,8 @@
 
 
                     <div class=" mt-3 float-right" style="margin-top: 5% !important;">
-                        <button class="btn btn-primary mr-2"> <i class="fas fa-search"></i> Buscar</button>
-                        <button id="reset-form" type="button" class="btn btn-info" ><i class="fas fa-redo-alt"></i> Limpiar</button>
+                        <button id="find" class="btn btn-primary mr-2"> <i class="fas fa-search"></i> Buscar</button>
+                        <button id="find-all" class="btn btn-primary" >Buscar todos</button>
                     </div>
 
                 </div>
