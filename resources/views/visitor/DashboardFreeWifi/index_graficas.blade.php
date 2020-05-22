@@ -1,4 +1,4 @@
-@extends('visitor.DashboardFreeWifi.main')
+@extends('visitor.DashboardFreeWifi.layout.main')
 
 @section('headtitle')
     Reportes

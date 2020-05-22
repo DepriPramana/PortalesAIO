@@ -5,23 +5,24 @@
 <!--[if gt IE 8]><!-->
 
 <html class="no-js" lang=""> <!--<![endif]-->
-@include('visitor.DashboardFreeWifi.head')
+@include('visitor.DashboardFreeWifi.layout.head')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('aditional-styles')
 <body>
-    @include('visitor.DashboardFreeWifi.navbar')
+    @include('visitor.DashboardFreeWifi.layout.navbar')
 
     <div class="main" style="position: absolute; left: 0px;" >
-    @include('visitor.DashboardFreeWifi.sidebar')
+    @include('visitor.DashboardFreeWifi.layout.sidebar')
 
     </div>
     <div class="right" style="  margin-left:19%; margin-top: 2%;padding-right: 5%; ">
-            @yield('content')
+        <br><br><br>
+        @yield('content')
     </div>
 
-    @include('visitor.DashboardFreeWifi.footer')
+    @include('visitor.DashboardFreeWifi.layout.footer')
 <script src="{{ asset('js/app.js') }}"></script>
-@include('visitor.DashboardFreeWifi.scripts')
+@include('visitor.DashboardFreeWifi.layout.scripts')
 
 @yield('aditional-scripts')
 </body>

@@ -19,19 +19,26 @@ Route::prefix('dashboard_freewifi')->group(function() {
     Route::get('hotspot/realms', 'DashboardFreeWifi\GoogleStationController@getRealms');
     Route::get('hotspot/realm_sites','DashboardFreeWifi\GoogleStationController@getRealmSites');
     Route::get('hotspot/chartsInfo', 'DashboardFreeWifi\GoogleStationController@getChartsInfo');
+
+    Route::get('sessions','DashboardFreeWifiController@sessions');
+    Route::get('users','DashboardFreeWifiController@users');
+    Route::get('devices','DashboardFreeWifiController@devices');
+
+    Route::get('test_echart','DashboardFreeWifiController@index2');
 });
-Route::get('test_echart','DashboardFreeWifiController@index2');
+//Route::get('test_echart','DashboardFreeWifiController@index2');
 Route::post('hotels_by_cadena', 'DashboardFreeWifiController@get_hotelsbycadena');
 Route::post('get_graph_browsers', 'DashboardFreeWifiController@get_browsers');
 Route::post('get_graph_platforms', 'DashboardFreeWifiController@get_platforms');
 Route::post('get_graph_devices', 'DashboardFreeWifiController@get_devices');
 
-//Route::post('get_graph_ages', 'DashboardFreeWifiController@get_ages');
-//Route::post('get_graph_domains', 'DashboardFreeWifiController@get_domains');
+Route::post('get_graph_ages', 'DashboardFreeWifiController@get_ages');
+Route::post('get_graph_domains', 'DashboardFreeWifiController@get_domains');
 Route::post('get_graph_genders', 'DashboardFreeWifiController@get_genders');
 //Route::post('get_graph_mobiles', 'DashboardFreeWifiController@get_mobiles');
 Route::post('get_graph_languages', 'DashboardFreeWifiController@get_languages');
 Route::post('get_graph_sessions', 'DashboardFreeWifiController@get_sessions');
+
 
 Route::get('/test_user/{room}/{site}', 'TestController@test_xml');
 Route::get('/testing', 'TestController@testing');
