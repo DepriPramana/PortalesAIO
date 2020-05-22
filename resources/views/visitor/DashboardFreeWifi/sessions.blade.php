@@ -35,10 +35,10 @@
                     <div class="col-md-12 filter-panel">
 
                         <label for="select-hotspots" style="color:#99938e;">Hotspot:</label>
-                        <select id="select_hotspots" class="form-control select2" name="select_hotspots" style="width: 100%;">
-                        </select>
-                        <!--<select id="select_hotspots" class="form-control select2" name="select_hotspots[]" multiple="multiple" style="width: 100%;">
+                        <!--<select id="select_hotspots" class="form-control select2" name="select_hotspots" style="width: 100%;">
                         </select>-->
+                        <select id="select_hotspots" class="form-control select2" name="select_hotspots[]" multiple="multiple" style="width: 100%;">
+                        </select>
 
                         <div class=" mt-3 float-right" style="margin-top: 5% !important;">
                             <button type="button" id="btn_search_sessions" class="btn btn-primary mr-2 ml-2"> <i class="fas fa-search"></i> Buscar</button>

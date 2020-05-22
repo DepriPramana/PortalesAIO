@@ -11,7 +11,7 @@ class DashboardFreeWifiController extends Controller
 
     public function __construct()
     {
-        $this->chains = DB::connection('LocalAlice')->table('cadenas')->where('hotspot', 1)->get();
+        $this->chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
     }
 
     public function index()
@@ -37,7 +37,7 @@ class DashboardFreeWifiController extends Controller
 
     public function index2()
     {
-        $chains = DB::connection('LocalAlice')->table('cadenas')->where('hotspot', 1)->get();
+        $chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
 
         //$chains = 0;
         return view('visitor.DashboardFreeWifi.index_graficas', compact('chains'));
@@ -46,7 +46,7 @@ class DashboardFreeWifiController extends Controller
     public function get_hotelsbycadena(Request $request)
     {
       $chain = $request->scope;
-      $hotels = DB::connection('LocalAlice')->table('hotels')->select('id', 'Nombre_hotel')->where('hotspot', 1)->where('cadena_id', $chain)->get();
+      $hotels = DB::connection('cloudalice')->table('hotels')->select('id', 'Nombre_hotel')->where('hotspot', 1)->where('cadena_id', $chain)->get();
 
       return $hotels;
     }
@@ -58,15 +58,20 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $dataset = array();
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_browser_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      $res = DB::connection('freewifi_data')->select('CALL get_browser_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       return $res;
 
       /*for ($i=0; $i < count($venue); $i++) {
-        $res = DB::connection('LocalFreeWifi')->select('CALL get_browser_chain_venue(?,?,?,?)', array($chain,$venue[$i],$fecha_ini,$fecha_fin));
+        $res = DB::connection('freewifi_data')->select('CALL get_browser_chain_venue(?,?,?,?)', array($chain,$venue[$i],$fecha_ini,$fecha_fin));
         array_push($dataset, $res);
       }
       return $dataset;*/
@@ -80,14 +85,20 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $dataset = array();
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_platform_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      $res = DB::connection('freewifi_data')->select('CALL get_platform_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       return $res;
 
       /*for ($i=0; $i < count($venue); $i++) {
-        $res = DB::connection('LocalFreeWifi')->select('CALL get_platform_chain_venue(?,?,?,?)', array($chain,$venue[$i],$fecha_ini,$fecha_fin));
+        $res = DB::connection('freewifi_data')->select('CALL get_platform_chain_venue(?,?,?,?)', array($chain,$venue[$i],$fecha_ini,$fecha_fin));
         array_push($dataset, $res);
       }
       return $dataset;*/
@@ -100,14 +111,20 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $dataset = array();
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_device_chain(?,?,?)', array($chain, $fecha_ini,$fecha_fin));
+      $res = DB::connection('freewifi_data')->select('CALL get_device_chain(?,?,?)', array($chain, $fecha_ini,$fecha_fin));
 
       return $res;
 
       /*for ($i=0; $i < count($venue); $i++) {
-        $res = DB::connection('LocalFreeWifi')->select('CALL get_platform_chain_venue(?,?,?,?)', array($chain,$venue[$i],$fecha_ini,$fecha_fin));
+        $res = DB::connection('freewifi_data')->select('CALL get_platform_chain_venue(?,?,?,?)', array($chain,$venue[$i],$fecha_ini,$fecha_fin));
         array_push($dataset, $res);
       }
       return $dataset;*/
@@ -121,11 +138,17 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $dataset = array();
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-        $all_ages = [];
+      $all_ages = [];
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_age_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      $res = DB::connection('freewifi_data')->select('CALL get_age_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       $categories =
           [
@@ -164,9 +187,15 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_domain_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
-
+      $res = DB::connection('freewifi_data')->select('CALL get_domain_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       $categories["gmail"] = ["name" => "Gmail", "color" => "#e66363", "total" => 0];
       $categories["hotmail"] = ["name" => "Hotmail", "color" => "#60ace6", "total" => 0];
@@ -205,7 +234,15 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_gender_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
+
+      $res = DB::connection('freewifi_data')->select('CALL get_gender_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       return $res;
     }
@@ -216,9 +253,16 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $dataset = array();
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_mobile_chain_venue(?,?,?,?)', array($chain,$venue,$fecha_ini,$fecha_fin));
+
+      $res = DB::connection('freewifi_data')->select('CALL get_mobile_chain_venue(?,?,?,?)', array($chain,$venue,$fecha_ini,$fecha_fin));
 
       return $res;
     }
@@ -229,10 +273,15 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $dataset = array();
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_language_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
-
+      $res = DB::connection('freewifi_data')->select('CALL get_language_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       return $res;
     }
@@ -243,9 +292,15 @@ class DashboardFreeWifiController extends Controller
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
 
-      $dataset = array();
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
 
-      $res = DB::connection('LocalFreeWifi')->select('CALL get_sessions24h_chain_venue(?,?,?,?)', array($chain,$venue,$fecha_ini,$fecha_fin));
+      $res = DB::connection('freewifi_data')->select('CALL get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       return $res;
     }
