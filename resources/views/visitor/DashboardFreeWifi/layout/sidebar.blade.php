@@ -17,9 +17,11 @@
             <ul class="list-sidebar bg-defoult">
                 <li> <a href="#" data-toggle="collapse" data-target="#dashboard"  aria-expanded="true" > <i class="fa fa-bar-chart-o"></i> <span class="nav-label"> Anal&iacute;ticas </span> <span class="fa fa-chevron-left pull-right"></span> </a>
                     <ul class="sub-menu collapse show" id="dashboard">
-                        <li class="active"><a href="sessions"><i class="fas fa-wifi"></i> Sesiones</a></li>
+                        <li class="active"><a href="sessions_report"><i class="fas fa-wifi"></i> Sesiones</a></li>
+                        <!--<li class="active"><a href="sessions"><i class="fas fa-wifi"></i> Sesiones</a></li>
                         <li><a href="users"><i class="fas fa-users"></i>  Usuarios</a></li>
-                        <li><a href="devices"><i class="fas fa-laptop"></i> Dispositivos</a></li>
+                        <li><a href="devices"><i class="fas fa-laptop"></i> Dispositivos</a></li> -->
+
                     </ul>
                 </li>
 

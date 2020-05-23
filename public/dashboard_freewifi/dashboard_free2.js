@@ -79,6 +79,141 @@ $( "#pl_language" ).click(function() {
 });
 
 
+/* ---- sessions report ----- */
+
+$('#rep_session').click(function(){
+
+    $('#panelSession').css("opacity", 1).removeClass("d-none");
+    $('#panelAges').addClass("d-none");
+    $('#panelGenders').addClass("d-none");
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+$('#rep_age').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').css("opacity", 1).removeClass("d-none");
+    $('#panelGenders').addClass("d-none");
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+
+$('#rep_gender').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').css("opacity", 1).removeClass("d-none");
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+$('#rep_domains').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').addClass("d-none")
+    $('#panelDomains').css("opacity", 1).removeClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+$('#rep_device').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').addClass("d-none")
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').css("opacity", 1).removeClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+
+$('#rep_browser').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').addClass("d-none")
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').css("opacity", 1).removeClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+
+$('#rep_plataform').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').addClass("d-none")
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').css("opacity", 1).removeClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+
+$('#rep_language').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').addClass("d-none")
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').css("opacity", 1).removeClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+
+$('#rep_hotspot').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').addClass("d-none")
+    $('#panelDomains').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').css("opacity", 1).removeClass("d-none");
+
+});
+
+
+
 
 
 $(".select2").select2({
@@ -158,6 +293,18 @@ $('#btn_search_devices').on('click', function(){
     graph_languagues();
 });
 
+$('#btn_search_sessions_report').on('click', function()
+{
+    get_sessions();
+    graph_genders();
+    graph_ages();
+    graph_domains();
+    graph_devices();
+    graph_platforms();
+    graph_browsers();
+    graph_languagues();
+
+});
 
 function graph_browsers() {
   var objData = $('#generate_graphs').find("select,textarea, input").serialize();

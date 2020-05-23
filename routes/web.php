@@ -25,6 +25,8 @@ Route::prefix('dashboard_freewifi')->group(function() {
     Route::get('devices','DashboardFreeWifiController@devices');
 
     Route::get('test_echart','DashboardFreeWifiController@index2');
+
+    Route::get('sessions_report','DashboardFreeWifiController@sessions_report');
 });
 //Route::get('test_echart','DashboardFreeWifiController@index2');
 Route::post('hotels_by_cadena', 'DashboardFreeWifiController@get_hotelsbycadena');

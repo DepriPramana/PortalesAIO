@@ -43,6 +43,12 @@ class DashboardFreeWifiController extends Controller
         return view('visitor.DashboardFreeWifi.index_graficas', compact('chains'));
     }
 
+    public function sessions_report()
+    {
+        return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $this->chains);
+    }
+
+
     public function get_hotelsbycadena(Request $request)
     {
       $chain = $request->scope;
