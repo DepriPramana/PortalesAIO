@@ -156,22 +156,72 @@
 
                 <!--Panel Graphs Devices-->
                 <div class="row mb-3" id="panelDevices" style="opacity: 0 !important;">
-                    <div class="col-md-12">
-                        <div id="maingraphicDevices" class="mt-4" style="width: 100%; min-height: 300px;"></div>
+                    <div id="maingraphicDevices" class="mt-4" style="width: 100%; min-height: 300px;">
+                        <div class="col-md-4 offset-md-4">
+                            <table class="table table-bordered">
+                                <thead class="bg-info">
+                                <tr>
+                                    <th>Total</th>
+                                    <th id="device_total"></th>
+                                </tr>
+                                <tr>
+                                    <th>Fabricante</th>
+                                    <th>%</th>
+                                </tr>
+                                </thead>
+                                <thead id="table_devices">
+                                <!-- filling data -->
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!--Panel Graphs Browsers-->
                 <div class="row mb-3" id="panelBrowsers" style="opacity: 0 !important;">
-                    <div class="col-md-12">
-                        <div id="maingraphicBrowser" class="mt-4" style="width: 100%; min-height: 300px;"></div>
-                    </div>
+                        <div id="maingraphicBrowser" class="mt-4" style="width: 100%; min-height: 300px;">
+                            <div class="col-md-4 offset-md-4">
+
+                                <table class="table table-bordered">
+                                    <thead class="bg-info">
+                                    <tr>
+                                        <th>Total</th>
+                                        <th id="browser_total"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-md-10">Navegador</th>
+                                        <th>%</th>
+                                    </tr>
+                                    </thead>
+                                    <thead id="table_browsers">
+                                    <!-- filling data -->
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                 </div>
 
                 <!--Panel Graphs Platform-->
                 <div class="row mb-3" id="panelPlataform" style="opacity: 0 !important;">
-                    <div class="col-md-12">
-                        <div id="maingraphicPlatform" class="mt-4" style="width: 100%; min-height: 300px;"></div>
-                    </div>
+                        <div id="maingraphicPlatform" class="mt-4" style="width: 100%; min-height: 300px;">
+                            <div class="col-md-4 offset-md-4">
+
+                                <table class="table table-bordered table-striped">
+                                    <thead class="bg-info">
+                                    <tr>
+                                        <th>Total</th>
+                                        <th id="platform_total"></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Sistema Operativo</th>
+                                        <th>%</th>
+                                    </tr>
+                                    </thead>
+                                    <thead id="table_platforms">
+                                    <!-- filling data -->
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                 </div>
 
                 <!--Panel Graphs languages-->
@@ -193,6 +243,8 @@
 
             </form>
         </div>
+
+
 
     </div>
 

@@ -299,9 +299,9 @@ $('#btn_search_sessions_report').on('click', function()
     graph_genders();
     graph_ages();
     graph_domains();
-    graph_devices();
-    graph_platforms();
-    graph_browsers();
+    table_devices();
+    table_browsers();
+    table_platforms();
     graph_languagues();
 
 });
@@ -414,6 +414,7 @@ function graph_devices() {
           //});
         });
 
+
         graph_pie_default_four_with_porcent('maingraphicDevices', data_name1, data_count1, 'Dispositivos', 'Nombres');
 
       },
@@ -421,6 +422,165 @@ function graph_devices() {
         console.log('Error:', data);
       }
   });
+}
+
+function table_devices()
+{
+    var objData = $('#generate_graphs').find("select,textarea, input").serialize();
+    var total = 0;
+
+    var device_list = [];
+
+    $.ajax({
+        type: "POST",
+        url: "/get_graph_devices",
+        data: objData,
+        //contentType: false,
+        //processData: false,
+        success: function (data){
+            //console.log(data);
+            //console.log(data[0][0].Cantidad);
+            //Cantidad
+            //browser
+            $("#table_devices").empty();
+
+            $.each(data,function(index, objdata){
+
+                total += objdata.Cantidad;
+            });
+
+            $('#device_total').text(total);
+
+            $.each(data, function(index, objdata)
+            {
+                var percent = 0;
+                var porcentaje = 0;
+
+                percent = objdata.Cantidad * 100 / total;
+                porcentaje = percent.toFixed(1);
+                device_list.push({device: objdata.device, cantidad : objdata.Cantidad, porcentraje : porcentaje});
+            });
+
+
+            $.each(device_list,function(index, objdata){
+
+                $("#table_devices").append("<tr itle='Total: "+objdata.cantidad+"'><td>"+objdata.device+"</td><td>"+objdata.cantidad+"</td></tr>");
+            });
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+
+
+}
+
+function table_browsers() {
+    var objData = $('#generate_graphs').find("select,textarea, input").serialize();
+
+    var total = 0;
+
+    var browser_list = [];
+
+    $.ajax({
+        type: "POST",
+        url: "/get_graph_browsers",
+        data: objData,
+        //contentType: false,
+        //processData: false,
+        success: function (data){
+            console.log(data);
+            //console.log(data[0][0].Cantidad);
+            //Cantidad
+            //browser
+
+            $("#table_browsers").empty();
+            $.each(data,function(index, objdata){
+
+                total += objdata.Cantidad;
+
+            });
+
+            $('#browser_total').text(total);
+
+            $.each(data, function(index, objdata)
+            {
+                var percent = 0;
+                var porcentaje = 0;
+
+                percent = objdata.Cantidad * 100 / total;
+                porcentaje = percent.toFixed(1);
+                browser_list.push({browser: objdata.browser, cantidad : objdata.Cantidad, porcentraje : porcentaje});
+            });
+
+
+            $('#browser_total').text(total);
+
+
+            $.each(browser_list, function(index, objdata)
+            {
+                $("#table_browsers").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.browser+"</td><td>"+objdata.cantidad+"</td></tr>");
+            });
+
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+}
+
+function table_platforms() {
+    var objData = $('#generate_graphs').find("select,textarea, input").serialize();
+    var total = 0;
+
+    var platform_list = [];
+
+    $.ajax({
+        type: "POST",
+        url: "/get_graph_platforms",
+        data: objData,
+        //contentType: false,
+        //processData: false,
+        success: function (data){
+            //console.log(data);
+            //console.log(data[0][0].Cantidad);
+            //Cantidad
+            //browser
+
+            $("#table_platforms").empty();
+            $.each(data,function(index, objdata){
+
+                 total += objdata.Cantidad;
+            });
+
+            $('#platform_total').text(total);
+
+            $.each(data, function(index, objdata)
+            {
+                var percent = 0;
+                var porcentaje = 0;
+
+                percent = objdata.Cantidad * 100 / total;
+                porcentaje = percent.toFixed(1);
+                platform_list.push({platform: objdata.platform, cantidad : objdata.Cantidad, porcentraje : porcentaje});
+            });
+
+            $.each(platform_list, function(index, objdata)
+            {
+                $("#table_platforms").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.platform+"</td><td>"+objdata.porcentraje+"</td></tr>");
+            });
+
+
+
+            //console.log(total);
+            //console.log(platform_list);
+
+
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
 }
 
 function graph_ages() {
@@ -585,7 +745,7 @@ function graph_domains() {
                 //});
             });
 
-            console.log(total);
+            //console.log(total);
 
 
             graph_bar_domains('maingraphicDomains', categorias, total, 'Dominios Correo', 'registrados');
