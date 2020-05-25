@@ -223,7 +223,7 @@ return [
 
         'LocalAlice' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
+            'host' => '0.0.0.0',
             'port' => '3306',
             'database' => 'AliceDB',
             'username' => 'alice',
@@ -237,7 +237,7 @@ return [
 
         'LocalFreeWifi' => [
             'driver' => 'mysql',
-            'host' => 'localhost',
+            'host' => '0.0.0.0',
             'port' =>  '3306',
             'database' =>  'FreeWifi',
             'username' =>  'freewifi',
