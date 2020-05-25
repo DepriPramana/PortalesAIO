@@ -10,7 +10,7 @@
                 </div>
                 <div class="pull-left info">
 
-                    <p>Sitwifi Estadistics</p>
+                    <p>Sitwifi statistics</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>

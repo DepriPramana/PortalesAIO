@@ -152,7 +152,7 @@ class DashboardFreeWifiController extends Controller
         }
       }
 
-      $all_ages = [];
+      $todos= [];
 
       $res = DB::connection('freewifi_data')->select('CALL get_age_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
@@ -176,12 +176,15 @@ class DashboardFreeWifiController extends Controller
 
               if(( $categories[$key]["min"] <= $val->age ) && ($val->age <= $categories[$key]["max"]))
               {
-                  $categories[$key]["total"] ++ ;
+                  $categories[$key]["total"] = $categories[$key]["total"] + $val->Cantidad;
+                  //$categories[$key]["total"] ++ ;
               }
           }
       }
+      array_push($todos, $res);
+      array_push($todos, $categories);
 
-      return $categories;
+      return $todos;
 
 
 
