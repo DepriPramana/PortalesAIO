@@ -109,14 +109,24 @@
 
                 <!--Panel Graphs sessions-->
                 <div class="row mb-3">
-                    <div id="panelSession"  class="col-md-12">
+                    <div id="panelSession"  class="col-md-12 mt-4">
+                        <div class="container text-right">
+                            <span class="badge badge-pill badge-primary">Minimo: <span id="session_minimo"></span></span>
+                            <span class="badge badge-pill badge-danger">Maximo: <span id="session_maximo"></span></span>
+                            <span class="badge badge-pill badge-success">Total: <span id="session_total"></span></span>
+                        </div>
                         <div id="maingraphicSessions" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
                 </div>
 
                 <!--Panel Graphs Ages-->
                 <div class="row mb-3" >
-                    <div id="panelAges" class="col-md-12" style="opacity: 0 !important;">
+                    <div id="panelAges" class="col-md-12 mt-4" style="opacity: 0 !important;">
+                        <div class="container text-right">
+                            <span class="badge badge-pill badge-primary">Minimo: <span id="ages_minimo"></span></span>
+                            <span class="badge badge-pill badge-danger">Maximo: <span id="ages_maximo"></span></span>
+                            <span class="badge badge-pill badge-success">Total: <span id="ages_total"></span></span>
+                        </div>
                         <div id="maingraphicAges" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
                 </div>
@@ -150,12 +160,25 @@
                 <!--Panel Graphs Domains-->
                 <div id="panelDomains" class="row mb-3" style="opacity: 0 !important;">
                     <div class="col-md-12">
-                        <div id="maingraphicDomains" class="mt-4" style="width: 100%; min-height: 300px;"></div>
+                        <div class="container text-right">
+                            <span class="badge badge-pill badge-primary">Minimo: <span id="domain_minimo"></span></span>
+                            <span class="badge badge-pill badge-danger">Maximo: <span id="domain_maximo"></span></span>
+                            <span class="badge badge-pill badge-success">Total: <span id="domain_total"></span></span>
+                        </div>
+                        <div id="maingraphicDomains" class="mt-4" style="width: 100%; min-height: 300px;">
+
+                        </div>
                     </div>
                 </div>
 
                 <!--Panel Graphs Devices-->
                 <div class="row mb-3" id="panelDevices" style="opacity: 0 !important;">
+                    <div class="container text-right">
+                        <span class="badge badge-pill badge-primary">Minimo: <span id="devices_minimo"></span></span>
+                        <span class="badge badge-pill badge-danger">Maximo: <span id="devices_maximo"></span></span>
+                        <span class="badge badge-pill badge-success">Total: <span id="devices_total"></span></span>
+                    </div>
+
                     <div id="maingraphicDevices" class="mt-4" style="width: 100%; min-height: 300px;">
                         <div class="col-md-4 offset-md-4">
                             <table class="table table-bordered">
