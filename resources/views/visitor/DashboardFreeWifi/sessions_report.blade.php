@@ -265,8 +265,13 @@
                 </div>
 
                 <!--Panel Graphs languages-->
-                <div id="panelLanguages" class="row mb-3" style="opacity: 0 !important;">
-                    <div class="col-md-12">
+                <div  class="row mb-3" >
+                    <div class="col-md-12" id="panelLanguages" style="opacity: 0 !important;">
+                        <div class="container text-right">
+                            <span class="badge badge-pill badge-primary">Minimo: <span id="language_minimo"></span></span>
+                            <span class="badge badge-pill badge-danger">Maximo: <span id="language_maximo"></span></span>
+                            <span class="badge badge-pill badge-success">Total: <span id="language_total"></span></span>
+                        </div>
                         <div id="maingraphicLanguages" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
                 </div>
@@ -284,9 +289,10 @@
             </form>
         </div>
 
-
-
     </div>
+
+
+
 
 @endsection
 
