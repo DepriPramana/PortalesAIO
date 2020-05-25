@@ -617,7 +617,6 @@ function table_platforms() {
             //console.log(total);
             //console.log(platform_list);
 
-
         },
         error: function (data) {
             console.log('Error:', data);

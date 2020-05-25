@@ -39,7 +39,6 @@
                         </select>
                         <!--<select id="select_hotspots" class="form-control select2" name="select_hotspots[]" multiple="multiple" style="width: 100%;">
                         </select>-->
-
                     </div>
                 </div>
 
