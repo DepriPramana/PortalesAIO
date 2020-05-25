@@ -636,8 +636,10 @@ function graph_ages() {
     var min_cantidad = 0;
     var max_cantidad = 0;
 
+    var division = 0;
     var total = 0;
-
+    var totaldata = 0;
+    var promedio = 0;
     // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
     // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
     $.ajax({
@@ -647,22 +649,34 @@ function graph_ages() {
         //contentType: false,
         //processData: false,
         success: function (data){
-            //console.log(data); return false;
+            //console.log(data);
             //Cantidad
             //browser
-            /*$.each(data,function(index, objdata){
-                //console.log(objdata);
-                data_name1.push(objdata.age + ' = ' + objdata.Cantidad);
-                data_count1.push({ value: objdata.Cantidad, name: objdata.age + ' = ' + objdata.Cantidad},);
-                data_group.push({ages : objdata.age, totals: objdata.Cantidad});
-                //$.each(objdata, function(index, objdata1){
-                //console.log(objdata1);
-                //});
-            });*/
+            // Arreglar procedure antes de generar el promedio...
+            division = data[0].length;
 
+            $.each(data[0],function(index, objdata){
+                //console.log(parseInt(objdata.age));
+
+                if (parseInt(objdata.age) > 89 || parseInt(objdata.age) < 10) {
+                  division = division - 1;
+                }else{
+                  totaldata = totaldata + parseInt(objdata.age);
+                  //console.log('entre al if: ' + parseInt(objdata.age));
+                  console.log(totaldata);
+                }
+                //data_name1.push(objdata.age + ' = ' + objdata.Cantidad);
+                //data_count1.push({ value: objdata.Cantidad, name: objdata.age + ' = ' + objdata.Cantidad},);
+                //data_group.push({ages : objdata.age, totals: objdata.Cantidad});
+            });
+            //console.log(division);
+            //console.log(totaldata);
+
+            promedio = (totaldata / (division)).toFixed(2);
+            console.log(promedio);
             var group = {categorias: [], total: []};
 
-            $.each(data, function(key, obj){
+            $.each(data[1], function(key, obj){
 
                 group.categorias.push(obj.label);
                 group.total.push(obj.total);
@@ -689,6 +703,10 @@ function graph_ages() {
 
             var min = min_percent+"% - "+group.categorias[min_age];
             var max = max_percent+"% - "+group.categorias[max_age];
+            //console.log(total);
+            //console.log(group.categorias.length);
+            // hay que arreglar el procedure...
+            //promedio = (total / (group.categorias.length - 1)).toFixed(2);
 
             /*console.log("max cantidad");
             console.log(max_cantidad);
@@ -696,10 +714,12 @@ function graph_ages() {
             console.log(group.categorias[max_age]);*/
 
             $('#ages_total').empty();
+            $('#ages_promedio').empty();
             $('#ages_minimo').empty();
             $('#ages_maximo').empty();
 
             $('#ages_total').text(total);
+            $('#ages_promedio').text(promedio);
             $('#ages_minimo').text(min);
             $('#ages_maximo').text(max);
 
@@ -922,13 +942,17 @@ function get_sessions() {
       var min = min_percent+"% - "+min_hour+" hrs.";
       var max = max_percent+"% - "+max_hour+" hrs.";
 
+      promedio = (total / (dataHorario.length - 1)).toFixed(2);
+      console.log(promedio);
       //var promedio = total / dataTickets.length;
 
         $('#session_total').empty();
+        $('#session_prom').empty();
         $('#session_minimo').empty();
         $('#session_maximo').empty();
 
         $('#session_total').text(total);
+        $('#session_prom').text(promedio);
         $('#session_minimo').text(min);
         $('#session_maximo').text(max);
 

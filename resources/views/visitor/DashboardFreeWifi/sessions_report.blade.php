@@ -113,6 +113,7 @@
                         <div class="container text-right">
                             <span class="badge badge-pill badge-primary">Minimo: <span id="session_minimo"></span></span>
                             <span class="badge badge-pill badge-danger">Maximo: <span id="session_maximo"></span></span>
+                            <span class="badge badge-pill badge-warning">Promedio: <span id="session_prom"></span></span>
                             <span class="badge badge-pill badge-success">Total: <span id="session_total"></span></span>
                         </div>
                         <div id="maingraphicSessions" class="mt-4" style="width: 100%; min-height: 300px;"></div>
@@ -125,6 +126,7 @@
                         <div class="container text-right">
                             <span class="badge badge-pill badge-primary">Minimo: <span id="ages_minimo"></span></span>
                             <span class="badge badge-pill badge-danger">Maximo: <span id="ages_maximo"></span></span>
+                            <span class="badge badge-pill badge-warning">promedio: <span id="ages_promedio"></span></span>
                             <span class="badge badge-pill badge-success">Total: <span id="ages_total"></span></span>
                         </div>
                         <div id="maingraphicAges" class="mt-4" style="width: 100%; min-height: 300px;"></div>
