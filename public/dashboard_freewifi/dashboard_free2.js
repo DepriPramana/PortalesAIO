@@ -454,7 +454,10 @@ function table_devices()
 
             $('#device_total').text(total);
 
-           /* $.each(data, function(index, objdata)
+            var device_total = [];
+            var device_cat = [];
+
+           $.each(data, function(index, objdata)
             {
                 var percent = 0;
                 var porcentaje = 0;
@@ -463,19 +466,14 @@ function table_devices()
                 porcentaje = percent.toFixed(1);
                 device_list.push({device: objdata.device, cantidad : objdata.Cantidad, porcentaje : porcentaje});
 
-                device_total
+                device_total.push(objdata.Cantidad);
+                device_cat.push(objdata.device);
             });
 
-            console.log('lllll');
-            console.log(device_list);
 
-            max_cantidad = Math.max.apply(null, device_list.cantidad);
-            min_cantidad = Math.min.apply(null, device_list.cantidad);
+            max_cantidad = Math.max.apply(null, device_total);
+            min_cantidad = Math.min.apply(null, device_total);
 
-            console.log('......');
-            console.log(max_cantidad);
-            console.log(device_list.cantidad);
-            return false;
 
 
             let max_percent = 0;
@@ -487,11 +485,11 @@ function table_devices()
             min_percent = min_per.toFixed(1);
             max_percent = max_per.toFixed(1);
 
-            let max_age = device_list.cantidad.indexOf(Math.max(...device_list.cantidad));
-            let min_age = device_list.cantidad.indexOf(Math.min(...device_list.cantidad));
+            let max_age = device_total.indexOf(Math.max(...device_total));
+            let min_age = device_total.indexOf(Math.min(...device_total));
 
-            var min = min_percent+"% - "+device_list.categorias[min_age];
-            var max = max_percent+"% - "+device_list.categorias[max_age];
+            var min = min_percent+"% - "+device_cat[min_age];
+            var max = max_percent+"% - "+device_cat[max_age];
 
 
 
@@ -503,7 +501,6 @@ function table_devices()
             $('#devices_minimo').text(min);
             $('#devices_maximo').text(max);
 
-        */
 
             $.each(device_list,function(index, objdata){
 
@@ -682,8 +679,7 @@ function graph_ages() {
             min_percent = min_per.toFixed(1);
             max_percent = max_per.toFixed(1);
 
-            console.log('hhhhh');
-            console.log(group.total);
+
 
             let max_age = group.total.indexOf(Math.max(...group.total));
             let min_age = group.total.indexOf(Math.min(...group.total));
