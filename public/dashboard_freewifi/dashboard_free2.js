@@ -33,6 +33,7 @@ $(function() {
   });
   $('#datepickerWeek').val(startofmonth);
   $('#datepickerWeek2').val(endofmonth);
+
 });
 
 /* ------- Users ----- */
@@ -812,8 +813,8 @@ function graph_genders() {
   var objData = $('#generate_graphs').find("select,textarea, input").serialize();
   //var form = $('#generate_graphs')[0];
   //var formData = new FormData(form);
-  var data_count1 = [];
-  var data_name1 = [];
+  var data_count = [];
+
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -823,21 +824,48 @@ function graph_genders() {
       //contentType: false,
       //processData: false,
 
-
       success: function (data){
+        console.log(data);
         //console.log(data[0][0].Cantidad);
         //Cantidad
         //browser
         $.each(data,function(index, objdata){
+
+            data_count.push(objdata);
+
           //console.log(objdata);
-          data_name1.push(objdata.gender + ' = ' + objdata.Cantidad);
-          data_count1.push({ value: objdata.Cantidad, name: objdata.gender, label: objdata.gender + ' = ' + objdata.Cantidad},);
+          //data_name1.push(objdata.gender + ' = ' + objdata.Cantidad);
+          //data_count1.push({ value: objdata.Cantidad, name: objdata.gender, label: objdata.gender + ' = ' + objdata.Cantidad},);
           //$.each(objdata, function(index, objdata1){
             //console.log(objdata1);
           //});
         });
 
-        graph_table_gender(data_count1);
+        var femenino = [];
+        var masculino = [];
+        var no_definido = [];
+
+        $.each(data_count, function(index, obj)
+        {
+            if(obj.gender === "Femenino")
+            {
+                femenino.push(obj);
+            }
+            if(obj.gender === "Masculino")
+            {
+                masculino.push(obj);
+            }
+
+            if(obj.gender === "NoDefinido")
+            {
+                no_definido.push(obj);
+            }
+
+        });
+
+
+        graph_table_gender(femenino, masculino, no_definido);
+
 
         //graph_pie_default_four_with_porcent('maingraphicGenders', data_name1, data_count1, 'Generos', '');
 
@@ -1082,16 +1110,26 @@ function get_sessions() {
   });
 }
 
-function graph_table_gender(data)
+function graph_table_gender(femenino, masculino, no_definido)
 {
-    var total_num = data[0].value+data[1].value;
-    var women_num = data[1].value;
-    var men_num   = data[0].value;
+    var fem = femenino[0];
+    var mas = masculino[0];
+    var nod = no_definido[0];
+
+    var women_num = fem.Cantidad;
+    var men_num   = mas.Cantidad;
+    var nod_num   = nod.Cantidad;
+
+    var total_num = women_num + men_num + nod_num;
 
     var women_p   = (women_num * 100) / total_num ;
     var women_per = women_p.toFixed(1);
+
     var men_p     = (men_num * 100) / total_num  ;
     var men_per   = men_p.toFixed(1);
+
+    var nod_p     = (nod_num * 100) / total_num;
+    var nod_per   = nod_p.toFixed(1);
 
     $('#maingraphicGender').removeClass('d-none');
 

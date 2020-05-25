@@ -7,12 +7,12 @@ use DB;
 
 class DashboardFreeWifiController extends Controller
 {
-    protected $chains;
+    /*protected $chains;
 
     public function __construct()
     {
         $this->chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
-    }
+    }*/
 
     public function index()
     {
@@ -45,7 +45,9 @@ class DashboardFreeWifiController extends Controller
 
     public function sessions_report()
     {
-        return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $this->chains);
+        $chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
+
+        return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $chains);
     }
 
 
@@ -253,7 +255,55 @@ class DashboardFreeWifiController extends Controller
 
       $res = DB::connection('freewifi_data')->select('CALL get_gender_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
-      return $res;
+      $result['Masculino']  = [];
+      $result['Femenino']   = [];
+      $result['NoDefinido'] = [];
+
+      foreach ($res as $value)
+      {
+          if($value->gender == "Masculino")
+          {
+              $result["Masculino"] = $value;
+          }
+
+          else if($value->gender == "Femenino")
+          {
+              $result["Femenino"] = $value;
+          }
+
+          else
+          {
+              $result["NoDefinido"]['gender'] = "NoDefinido";
+              $result["NoDefinido"]['Cantidad'] = $value->Cantidad;
+          }
+
+      }
+
+      foreach ($result as $key => $value)
+      {
+          if($key == "Masculino" && !$value)
+          {
+              $result["Masculino"]['gender'] = "Masculino";
+              $result["Masculino"]['Cantidad'] = 0;
+          }
+
+          if($key == "Femenino" && !$value)
+          {
+              $result["Femenino"]['gender'] = "Femenino";
+              $result["Femenino"]['Cantidad'] = 0;
+          }
+
+          if($key == "NoDefinido" && !$value)
+          {
+              $result["NoDefinido"]['gender'] = "NoDefinido";
+              $result["NoDefinido"]['Cantidad'] = 0;
+          }
+
+      }
+
+
+      return $result;
+
     }
     public function get_mobiles(Request $request)
     {

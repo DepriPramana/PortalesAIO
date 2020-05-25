@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="col-12">
-            <h1 id="main-title"> <i class="fas fa-wifi"></i>Registro de Sesiones</h1>
+            <h1 id="main-title"> <i class="fas fa-wifi"></i> Registro de Sesiones</h1>
         </div>
 
         <div class="panel-hs" >
@@ -238,7 +238,7 @@
                     <div class="container text-right">
                         <span class="badge badge-pill badge-primary">Minimo: <span id="platform_minimo"></span></span>
                         <span class="badge badge-pill badge-danger">Maximo: <span id="platform_maximo"></span></span>
-                        <span class="badge badge-pill badge-success">Total: <span id="platforms_total"></span></span>
+                        <span class="badge badge-pill badge-success">Total: <span id="platform_total"></span></span>
                     </div>
 
                         <div id="maingraphicPlatform" class="mt-4" style="width: 100%; min-height: 300px;">
@@ -265,13 +265,8 @@
                 </div>
 
                 <!--Panel Graphs languages-->
-                <div class="row mb-3">
-                    <div class="col-md-12" id="panelLanguages" style="opacity: 0 !important;">
-                        <div class="container text-right">
-                            <span class="badge badge-pill badge-primary">Minimo: <span id="language_minimo"></span></span>
-                            <span class="badge badge-pill badge-danger">Maximo: <span id="language_maximo"></span></span>
-                            <span class="badge badge-pill badge-success">Total: <span id="language_total"></span></span>
-                        </div>
+                <div id="panelLanguages" class="row mb-3" style="opacity: 0 !important;">
+                    <div class="col-md-12">
                         <div id="maingraphicLanguages" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
                 </div>
