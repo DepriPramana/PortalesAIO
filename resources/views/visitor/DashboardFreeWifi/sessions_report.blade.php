@@ -131,6 +131,7 @@
                     </div>
                 </div>
 
+
                 <!--Panel Graphs genders-->
                 <div id="panelGenders" class="row mb-3 d-none">
                     <div class="col-md-12" id="maingraphicGender">

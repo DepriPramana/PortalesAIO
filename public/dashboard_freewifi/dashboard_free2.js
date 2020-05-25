@@ -502,6 +502,7 @@ function table_devices()
             $('#devices_total').text(total);
             $('#devices_minimo').text(min);
             $('#devices_maximo').text(max);
+
         */
 
             $.each(device_list,function(index, objdata){
