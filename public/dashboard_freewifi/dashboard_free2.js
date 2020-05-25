@@ -553,6 +553,9 @@ function table_browsers() {
 
             $('#browser_total').text(total);
 
+            var browser_total = [];
+            var browser_cat = [];
+
             $.each(data, function(index, objdata)
             {
                 var percent = 0;
@@ -561,10 +564,38 @@ function table_browsers() {
                 percent = objdata.Cantidad * 100 / total;
                 porcentaje = percent.toFixed(1);
                 browser_list.push({browser: objdata.browser, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+
+                browser_total.push(objdata.Cantidad);
+                browser_cat.push(objdata.browser);
+
             });
 
+            max_cantidad = Math.max.apply(null, browser_total);
+            min_cantidad = Math.min.apply(null, browser_total);
 
-            $('#browser_total').text(total);
+            let max_percent = 0;
+            let min_percent = 0;
+
+            var min_per = min_cantidad * 100 / total;
+            var max_per = max_cantidad * 100 / total;
+
+            min_percent = min_per.toFixed(1);
+            max_percent = max_per.toFixed(1);
+
+            let max_browser = browser_total.indexOf(Math.max(...browser_total));
+            let min_browser = browser_total.indexOf(Math.min(...browser_total));
+
+            var min = min_percent+"% - "+browser_cat[min_browser];
+            var max = max_percent+"% - "+browser_cat[max_browser];
+
+
+            $('#browser_total').empty();
+            $('#browser_minimo').empty();
+            $('#browser_maximo').empty();
+
+            $('#browsers_total').text(total);
+            $('#browser_minimo').text(min);
+            $('#browser_maximo').text(max);
 
 
             $.each(browser_list, function(index, objdata)
@@ -585,6 +616,9 @@ function table_platforms() {
 
     var platform_list = [];
 
+    var max_cantidad = 0;
+    var min_cantidad = 0;
+
     $.ajax({
         type: "POST",
         url: "/get_graph_platforms",
@@ -598,12 +632,16 @@ function table_platforms() {
             //browser
 
             $("#table_platforms").empty();
+
             $.each(data,function(index, objdata){
 
                  total += objdata.Cantidad;
             });
 
             $('#platform_total').text(total);
+
+            var platform_total = [];
+            var platform_cat   = [];
 
             $.each(data, function(index, objdata)
             {
@@ -613,7 +651,37 @@ function table_platforms() {
                 percent = objdata.Cantidad * 100 / total;
                 porcentaje = percent.toFixed(1);
                 platform_list.push({platform: objdata.platform, cantidad : objdata.Cantidad, porcentraje : porcentaje});
+
+                platform_total.push(objdata.Cantidad);
+                platform_cat.push(objdata.platform);
+
             });
+
+            max_cantidad = Math.max.apply(null, platform_total);
+            min_cantidad = Math.min.apply(null, platform_total);
+
+            let max_percent = 0;
+            let min_percent = 0;
+
+            var min_per = min_cantidad * 100 / total;
+            var max_per = max_cantidad * 100 / total;
+
+            min_percent = min_per.toFixed(1);
+            max_percent = max_per.toFixed(1);
+
+            let min_plat = platform_total.indexOf(Math.min(...platform_total));
+            let max_plat = platform_total.indexOf(Math.max(...platform_total));
+
+            var min = min_percent+"% - "+platform_cat[min_plat];
+            var max = max_percent+"% - "+platform_cat[max_plat];
+
+            $('#platform_minimo').empty();
+            $('#platform_maximo').empty();
+            $('#platforms_total').empty();
+
+            $('#platforms_total').text(total);
+            $('#platform_minimo').text(min);
+            $('#platform_maximo').text(max);
 
             $.each(platform_list, function(index, objdata)
             {
@@ -670,7 +738,7 @@ function graph_ages() {
                 }else{
                   totaldata = totaldata + parseInt(objdata.age);
                   //console.log('entre al if: ' + parseInt(objdata.age));
-                  console.log(totaldata);
+                  //console.log(totaldata);
                 }
                 //data_name1.push(objdata.age + ' = ' + objdata.Cantidad);
                 //data_count1.push({ value: objdata.Cantidad, name: objdata.age + ' = ' + objdata.Cantidad},);
@@ -680,7 +748,7 @@ function graph_ages() {
             //console.log(totaldata);
 
             promedio = (totaldata / (division)).toFixed(2);
-            console.log(promedio);
+            //console.log(promedio);
             var group = {categorias: [], total: []};
 
             $.each(data[1], function(key, obj){
@@ -786,6 +854,16 @@ function graph_languagues() {
   //var formData = new FormData(form);
   var data_count1 = [];
   var data_name1 = [];
+
+  var total = 0;
+
+  var language_list = [];
+
+  var language_total = [];
+  var language_cat   = [];
+
+  var max_cantidad = 0;
+  var min_cantidad = 0;
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -804,12 +882,44 @@ function graph_languagues() {
           data_name1.push(objdata.language + ' = ' + objdata.Cantidad);
           data_count1.push({ value: objdata.Cantidad, name: objdata.language + ' = ' + objdata.Cantidad},);
 
-          //$.each(objdata, function(index, objdata1){
-            //console.log(objdata1);
-          //});
+          total += objdata.Cantidad;
+
+          language_list.push({language: objdata.language, cantidad : objdata.Cantidad});
+
+          language_total.push(objdata.Cantidad);
+          language_cat.push(objdata.language);
+
         });
 
-        graph_pie_default_four_with_porcent('maingraphicLanguages', data_name1, data_count1, 'Idiomas', 'registrados');
+          max_cantidad = Math.max.apply(null, language_total);
+          min_cantidad = Math.min.apply(null, language_total);
+
+          let max_percent = 0;
+          let min_percent = 0;
+
+          var min_per = min_cantidad * 100 / total;
+          var max_per = max_cantidad * 100 / total;
+
+          min_percent = min_per.toFixed(1);
+          max_percent = max_per.toFixed(1);
+
+          let min_lan = language_total.indexOf(Math.min(...language_total));
+          let max_lan = language_total.indexOf(Math.max(...language_total));
+
+          var min = min_percent+"% - "+language_cat[min_lan];
+          var max = max_percent+"% - "+language_cat[max_lan];
+
+
+          $('#language_total').empty();
+          $('#language_minimo').empty();
+          $('#language_maximo').empty();
+
+          $('#language_total').text(total);
+          $('#language_minimo').text(min);
+          $('#language_maximo').text(max);
+
+
+          graph_pie_default_four_with_porcent('maingraphicLanguages', data_name1, data_count1, 'Idiomas', 'registrados');
 
       },
       error: function (data) {
@@ -878,8 +988,8 @@ function graph_domains() {
 
 
 
-            var min = min_percent+"% - "+list_domains[max_domain];
-            var max = max_percent+"% - "+list_domains[min_domain];
+            var min = min_percent+"% - "+list_domains[min_domain];
+            var max = max_percent+"% - "+list_domains[max_domain];
 
 
             $('#domain_total').empty();
@@ -950,7 +1060,7 @@ function get_sessions() {
       var max = max_percent+"% - "+max_hour+" hrs.";
 
       promedio = (total / (dataHorario.length - 1)).toFixed(2);
-      console.log(promedio);
+      //console.log(promedio);
       //var promedio = total / dataTickets.length;
 
         $('#session_total').empty();
