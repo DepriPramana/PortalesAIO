@@ -6,6 +6,12 @@ var mesdaynow = moment().format("YYYY-MM-DD");
 var mesdayminus = moment().subtract(2, 'months').format("YYYY-MM-DD");
 var mesdayminus2 = moment().subtract(1, 'days').format("YYYY-MM-DD");
 
+var startofmonth = moment().startOf('month').format("YYYY-MM-DD");
+var endofmonth = moment(startofmonth).endOf('month').format("YYYY-MM-DD");
+
+//console.log(startofmonth);
+//console.log(endofmotnth);
+
 $(function() {
   moment.locale('es');
 
@@ -25,6 +31,8 @@ $(function() {
     startDate: "2013-01-01",
     endDate: yearnow
   });
+  $('#datepickerWeek').val(startofmonth);
+  $('#datepickerWeek2').val(endofmonth);
 });
 
 /* ------- Users ----- */
