@@ -67,40 +67,40 @@
                 </div>
 
                 <!-- Nav tabs -->
-                <div style="background-color: #ebf3ff !important;" >
+                <div class="panel_results" >
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#session" id="rep_session"  aria-selected="true" role="tab">Sesiones</a>
+                            <a class="nav-link active panel_sessions" data-toggle="tab" href="#session" id="rep_session"  aria-selected="true" role="tab">Sesiones</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#age" id="rep_age"  aria-selected="true" role="tab">Edades</a>
+                            <a class="nav-link panel_users" data-toggle="tab" href="#age" id="rep_age"  aria-selected="true" role="tab">Edades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#gender" id="rep_gender" role="tab">G&eacute;nero</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#domain" id="rep_domains" role="tab">Correo</a>
+                            <a class="nav-link panel_users" data-toggle="tab" href="#gender" id="rep_gender" role="tab">G&eacute;nero</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#device" id="rep_device"  aria-selected="true" role="tab">Dispositivos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#browser" id="rep_browser" role="tab">Navegadores</a>
+                            <a class="nav-link panel_users" data-toggle="tab" href="#domain" id="rep_domains" role="tab">Correo</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#plataform" id="rep_plataform" role="tab">Plataformas</a>
+                            <a class="nav-link panel_devices" data-toggle="tab" href="#device" id="rep_device"  aria-selected="true" role="tab">Dispositivos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link panel_devices" data-toggle="tab" href="#browser" id="rep_browser" role="tab">Navegadores</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#language" id="rep_language" role="tab">Idiomas</a>
+                            <a class="nav-link panel_devices" data-toggle="tab" href="#plataform" id="rep_plataform" role="tab">Plataformas</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#hotspot" id="rep_hotspot" role="tab">Hotspot</a>
+                            <a class="nav-link panel_devices" data-toggle="tab" href="#language" id="rep_language" role="tab">Idiomas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link panel_hotspot" data-toggle="tab" href="#hotspot" id="rep_hotspot" role="tab">Hotspot</a>
                         </li>
 
                     </ul>
@@ -110,7 +110,7 @@
                 <!--Panel Graphs sessions-->
                 <div class="row mb-3">
                     <div id="panelSession"  class="col-md-12 mt-4">
-                        <div class="container text-right">
+                        <div class="container text-right panel_results">
                             <span class="badge badge-pill badge-primary">Minimo: <span id="session_minimo"></span></span>
                             <span class="badge badge-pill badge-danger">Maximo: <span id="session_maximo"></span></span>
                             <span class="badge badge-pill badge-warning">Promedio: <span id="session_prom"></span></span>
@@ -123,7 +123,7 @@
                 <!--Panel Graphs Ages-->
                 <div class="row mb-3" >
                     <div id="panelAges" class="col-md-12 mt-4" style="opacity: 0 !important;">
-                        <div class="container text-right">
+                        <div class="container text-right panel_results">
                             <span class="badge badge-pill badge-primary">Minimo: <span id="ages_minimo"></span></span>
                             <span class="badge badge-pill badge-danger">Maximo: <span id="ages_maximo"></span></span>
                             <span class="badge badge-pill badge-warning">promedio: <span id="ages_promedio"></span></span>
@@ -176,7 +176,7 @@
 
                 <!--Panel Graphs Devices-->
                 <div class="row mb-3" id="panelDevices" style="opacity: 0 !important;">
-                    <div class="container text-right">
+                    <div class="container text-right panel_results">
                         <span class="badge badge-pill badge-primary">Minimo: <span id="devices_minimo"></span></span>
                         <span class="badge badge-pill badge-danger">Maximo: <span id="devices_maximo"></span></span>
                         <span class="badge badge-pill badge-success">Total: <span id="devices_total"></span></span>
@@ -205,7 +205,7 @@
                 <!--Panel Graphs Browsers-->
                 <div class="row mb-3">
                     <div id="panelBrowsers" class="col-md-12" style="opacity: 0 !important;">
-                    <div class="container text-right">
+                    <div class="container text-right panel_results">
                         <span class="badge badge-pill badge-primary">Minimo: <span id="browser_minimo"></span></span>
                         <span class="badge badge-pill badge-danger">Maximo: <span id="browser_maximo"></span></span>
                         <span class="badge badge-pill badge-success">Total: <span id="browsers_total"></span></span>
@@ -235,7 +235,7 @@
                 <!--Panel Graphs Platform-->
                 <div class="row mb-3">
                     <div  id="panelPlataform" class="col-md-12" style="opacity: 0 !important;">
-                    <div class="container text-right">
+                    <div class="container text-right panel_results">
                         <span class="badge badge-pill badge-primary">Minimo: <span id="platform_minimo"></span></span>
                         <span class="badge badge-pill badge-danger">Maximo: <span id="platform_maximo"></span></span>
                         <span class="badge badge-pill badge-success">Total: <span id="platform_total"></span></span>
@@ -267,7 +267,7 @@
                 <!--Panel Graphs languages-->
                 <div  class="row mb-3" >
                     <div class="col-md-12" id="panelLanguages" style="opacity: 0 !important;">
-                        <div class="container text-right">
+                        <div class="container text-right panel_results">
                             <span class="badge badge-pill badge-primary">Minimo: <span id="language_minimo"></span></span>
                             <span class="badge badge-pill badge-danger">Maximo: <span id="language_maximo"></span></span>
                             <span class="badge badge-pill badge-success">Total: <span id="language_total"></span></span>

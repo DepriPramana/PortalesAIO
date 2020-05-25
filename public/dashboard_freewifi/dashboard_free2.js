@@ -34,6 +34,8 @@ $(function() {
   $('#datepickerWeek').val(startofmonth);
   $('#datepickerWeek2').val(endofmonth);
 
+    $('.panel_results').hide();
+
 });
 
 /* ------- Users ----- */
@@ -307,6 +309,8 @@ $('#btn_search_devices').on('click', function(){
 
 $('#btn_search_sessions_report').on('click', function()
 {
+    $('.panel_results').show();
+
     get_sessions();
     graph_genders();
     graph_ages();
@@ -453,7 +457,6 @@ function table_devices()
         //contentType: false,
         //processData: false,
         success: function (data){
-            //console.log(data);
             //console.log(data[0][0].Cantidad);
             //Cantidad
             //browser
