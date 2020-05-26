@@ -1664,7 +1664,9 @@ function getDataChartBySelection( response, chartOptions, option ) {
     const dataset = [];
     let filterCamp = "";
     //console.log("Option selected", option);
-    
+    let total = 0;
+    let promedio = 0;
+
     switch(Number(option)) {
         case 0:
             filterCamp = "Logins";
@@ -1699,7 +1701,9 @@ function getDataChartBySelection( response, chartOptions, option ) {
     for( let data of response ) {
         dataset.push(data[filterCamp]);
         labels.push(data.fecha2);
+        total += Number(data[filterCamp]);
     }
+    promedio = (response.length > 0) ? total / response.length : 0;
 
     chartOptions.xAxis.data = labels;
     chartOptions.series = [
@@ -1708,6 +1712,10 @@ function getDataChartBySelection( response, chartOptions, option ) {
             type: 'line'
         }
     ];
+    $("#hotspot_total").text(new Intl.NumberFormat('en-MX').format(total));
+    $("#hotspot_promedio").text(new Intl.NumberFormat('en-MX').format(promedio.toFixed(2)));
+    /*console.log("Total", total);
+    console.log("Promedio", promedio);*/
     
     return chartOptions;
 
