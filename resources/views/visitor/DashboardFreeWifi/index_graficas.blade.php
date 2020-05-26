@@ -74,11 +74,13 @@
 
                 </div>
 
-                <div class="row">
+                <div class="row" >
                     <!--Panel Graphs Browsers-->
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="border-right: solid 1px #d1d1d1;">
                         <div id="maingraphicBrowser" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
+
+                    <hr>
 
                     <!--Panel Graphs platform-->
                     <div class="col-md-6">
@@ -86,18 +88,21 @@
                     </div>
                 </div>
 
+                <hr>
 
                 <!--Panel Graphs devices-->
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row" >
+                    <div class="col-md-6" style="border-right: solid 1px #d1d1d1;">
                         <div id="maingraphicDevices" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
                     <!--Panel Graphs languages-->
-                    <div class="col-md-6">
+                    <div class="col-md-6" >
                         <div id="maingraphicLanguages" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
 
                 </div>
+
+                <hr>
 
                 <!--Panel Graphs Ages-->
 
@@ -106,6 +111,7 @@
                     <div id="maingraphicAges" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                 </div>
 
+                <hr class="mt-3">
                 <!--Panel Graphs sessions-->
                 <div class="row mb-3">
                     <div class="col-md-12">

@@ -74,6 +74,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link panel_sessions" data-toggle="tab" href="#hotspot" id="rep_hotspot" role="tab">Hotspot</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link panel_users" data-toggle="tab" href="#age" id="rep_age"  aria-selected="true" role="tab">Edades</a>
                         </li>
                         <li class="nav-item">
@@ -99,10 +103,6 @@
                             <a class="nav-link panel_devices" data-toggle="tab" href="#language" id="rep_language" role="tab">Idiomas</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link panel_hotspot" data-toggle="tab" href="#hotspot" id="rep_hotspot" role="tab">Hotspot</a>
-                        </li>
-
                     </ul>
                 </div>
 
@@ -111,11 +111,12 @@
                 <div class="row mb-3">
                     <div id="panelSession"  class="col-md-12 mt-4">
                         <div class="container text-right panel_results">
-                            <span class="badge badge-pill badge-primary">Minimo: <span id="session_minimo"></span></span>
-                            <span class="badge badge-pill badge-danger">Maximo: <span id="session_maximo"></span></span>
-                            <span class="badge badge-pill badge-warning">Promedio: <span id="session_prom"></span></span>
-                            <span class="badge badge-pill badge-success">Total: <span id="session_total"></span></span>
-                        </div>
+                            <h5>
+                                <span class="badge badge-pill badge-primary">Min: <span id="session_minimo"></span></span>
+                                <span class="badge badge-pill badge-danger">Max: <span id="session_maximo"></span></span>
+                                <span class="badge badge-pill badge-warning">Promedio: <span id="session_prom"></span></span>
+                                <span class="badge badge-pill badge-success">Total: <span id="session_total"></span></span>
+                            </h5>                        </div>
                         <div id="maingraphicSessions" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
                 </div>
@@ -124,10 +125,12 @@
                 <div class="row mb-3" >
                     <div id="panelAges" class="col-md-12 mt-4" style="opacity: 0 !important;">
                         <div class="container text-right panel_results">
-                            <span class="badge badge-pill badge-primary">Minimo: <span id="ages_minimo"></span></span>
-                            <span class="badge badge-pill badge-danger">Maximo: <span id="ages_maximo"></span></span>
-                            <span class="badge badge-pill badge-warning">promedio: <span id="ages_promedio"></span></span>
-                            <span class="badge badge-pill badge-success">Total: <span id="ages_total"></span></span>
+                            <h5>
+                                <span class="badge badge-pill badge-primary">Min: <span id="ages_minimo"></span></span>
+                                <span class="badge badge-pill badge-danger">Max: <span id="ages_maximo"></span></span>
+                                <span class="badge badge-pill badge-warning">Promedio: <span id="ages_promedio"></span></span>
+                                <span class="badge badge-pill badge-success">Total: <span id="ages_total"></span></span>
+                            </h5>
                         </div>
                         <div id="maingraphicAges" class="mt-4" style="width: 100%; min-height: 300px;"></div>
                     </div>
@@ -140,7 +143,9 @@
 
 
                         <h5 class="text-success mt-2">G&eacute;nero</h5>
-                        <h6 class="text-justify text-secondary">Personas totales: <span id="total_people"></span></h6>
+                        <h3 class="text-right">
+                            <span class="badge badge-pill badge-danger">Total: <span id="total_people"></span> Personas</span>
+                        </h3>
 
                         <div class="d-flex align-items-center">
 
@@ -164,10 +169,12 @@
                 <div id="panelDomains" class="row mb-3" style="opacity: 0 !important;">
                     <div class="col-md-12">
                         <div class="container text-right">
-                            <span class="badge badge-pill badge-primary">Minimo: <span id="domain_minimo"></span></span>
-                            <span class="badge badge-pill badge-danger">Maximo: <span id="domain_maximo"></span></span>
-                            <span class="badge badge-pill badge-success">Total: <span id="domain_total"></span></span>
-                        </div>
+                            <h5>
+                                <span class="badge badge-pill badge-primary">Min: <span id="domain_minimo"></span></span>
+                                <span class="badge badge-pill badge-danger">Max: <span id="domain_maximo"></span></span>
+                                <span class="badge badge-pill badge-success">Total: <span id="domain_total"></span></span>
+                            </h5>
+                                                   </div>
                         <div id="maingraphicDomains" class="mt-4" style="width: 100%; min-height: 300px;">
 
                         </div>
@@ -177,11 +184,12 @@
                 <!--Panel Graphs Devices-->
                 <div class="row mb-3" id="panelDevices" style="opacity: 0 !important;">
                     <div class="container text-right panel_results">
-                        <span class="badge badge-pill badge-primary">Minimo: <span id="devices_minimo"></span></span>
-                        <span class="badge badge-pill badge-danger">Maximo: <span id="devices_maximo"></span></span>
-                        <span class="badge badge-pill badge-success">Total: <span id="devices_total"></span></span>
-                    </div>
-
+                        <h5>
+                            <span class="badge badge-pill badge-primary">Min: <span id="devices_minimo"></span></span>
+                            <span class="badge badge-pill badge-danger">Max: <span id="devices_maximo"></span></span>
+                            <span class="badge badge-pill badge-success">Total: <span id="devices_total"></span></span>
+                        </h5>
+                   </div>
                     <div id="maingraphicDevices" class="mt-4" style="width: 100%; min-height: 300px;">
                         <div class="col-md-4 offset-md-4">
                             <table class="table table-bordered">
@@ -206,9 +214,11 @@
                 <div class="row mb-3">
                     <div id="panelBrowsers" class="col-md-12" style="opacity: 0 !important;">
                     <div class="container text-right panel_results">
-                        <span class="badge badge-pill badge-primary">Minimo: <span id="browser_minimo"></span></span>
-                        <span class="badge badge-pill badge-danger">Maximo: <span id="browser_maximo"></span></span>
-                        <span class="badge badge-pill badge-success">Total: <span id="browsers_total"></span></span>
+                        <h5>
+                            <span class="badge badge-pill badge-primary">Min: <span id="browser_minimo"></span></span>
+                            <span class="badge badge-pill badge-danger">Max: <span id="browser_maximo"></span></span>
+                            <span class="badge badge-pill badge-success">Total: <span id="browsers_total"></span></span>
+                        </h5>
                     </div>
                         <div id="maingraphicBrowser" class="mt-4" style="width: 100%; min-height: 300px;">
                             <div class="col-md-4 offset-md-4">
@@ -236,11 +246,12 @@
                 <div class="row mb-3">
                     <div  id="panelPlataform" class="col-md-12" style="opacity: 0 !important;">
                     <div class="container text-right panel_results">
-                        <span class="badge badge-pill badge-primary">Minimo: <span id="platform_minimo"></span></span>
-                        <span class="badge badge-pill badge-danger">Maximo: <span id="platform_maximo"></span></span>
-                        <span class="badge badge-pill badge-success">Total: <span id="platform_total"></span></span>
+                        <h5>
+                            <span class="badge badge-pill badge-primary">Min: <span id="platform_minimo"></span></span>
+                            <span class="badge badge-pill badge-danger">Max: <span id="platform_maximo"></span></span>
+                            <span class="badge badge-pill badge-success">Total: <span id="platform_total"></span></span>
+                        </h5>
                     </div>
-
                         <div id="maingraphicPlatform" class="mt-4" style="width: 100%; min-height: 300px;">
                             <div class="col-md-4 offset-md-4">
 
@@ -248,7 +259,7 @@
                                     <thead class="bg-info">
                                     <tr>
                                         <th>Total</th>
-                                        <th id="platform_total"></th>
+                                        <th id="platforms_total"></th>
                                     </tr>
                                     <tr>
                                         <th>Sistema Operativo</th>
@@ -268,11 +279,32 @@
                 <div  class="row mb-3" >
                     <div class="col-md-12" id="panelLanguages" style="opacity: 0 !important;">
                         <div class="container text-right panel_results">
-                            <span class="badge badge-pill badge-primary">Minimo: <span id="language_minimo"></span></span>
-                            <span class="badge badge-pill badge-danger">Maximo: <span id="language_maximo"></span></span>
-                            <span class="badge badge-pill badge-success">Total: <span id="language_total"></span></span>
+                            <h5>
+                                <span class="badge badge-pill badge-primary">Min: <span id="language_minimo"></span></span>
+                                <span class="badge badge-pill badge-danger">Max: <span id="language_maximo"></span></span>
+                                <span class="badge badge-pill badge-success">Total: <span id="language_total"></span></span>
+                            </h5>
                         </div>
-                        <div id="maingraphicLanguages" class="mt-4" style="width: 100%; min-height: 300px;"></div>
+                        <div id="maingraphicLanguages" class="mt-4" style="width: 100%; min-height: 300px;">
+                            <div class="col-md-4 offset-md-4">
+
+                                <table class="table table-bordered">
+                                    <thead class="bg-info">
+                                    <tr>
+                                        <th>Total</th>
+                                        <th id="languages_total"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-md-10">Idioma</th>
+                                        <th>%</th>
+                                    </tr>
+                                    </thead>
+                                    <thead id="table_languages">
+                                    <!-- filling data -->
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

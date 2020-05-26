@@ -331,6 +331,62 @@ h6.site-subtitle:before, h6.site-subtitle:after
     padding: 2%;
 }
 
+.panel_users
+{
+    color: #5c8c96 !important;
+    background-color: #dcf2f7;
+    border: solid 1px #b2cbd1 !important;
+}
+
+li.nav-item a.nav-link.panel_users.active
+{
+    color: #5c8c96 !important;
+    background-color: #badfe8;
+    border: solid 1px #b2cbd1 !important;
+}
+
+.panel_devices
+{
+    color: #99a65a !important;
+    background-color: #f4fccc;
+    border: solid 1px #bcc97d !important;
+}
+
+li.nav-item a.nav-link.panel_devices.active
+{
+    color: #99a65a !important;
+    background-color: #e8f5a6;
+    border: solid 1px #bcc97d !important;
+}
+
+.panel_sessions
+{
+    color: #706d9e !important;
+    background-color: #e0defa;
+    border: solid 1px #b5b1e3 !important;
+}
+
+li.nav-item a.nav-link.panel_sessions.active
+{
+    color: #706d9e !important;
+    background-color: #ccc9f0;
+    border: solid 1px #b5b1e3 !important;
+}
+
+.panel_hotspot
+{
+    color: #969654 !important;
+    background-color: #f5f5d3;
+    border: solid 1px #c7c783 !important;
+}
+
+li.nav-item a.nav-link.panel_hotspot.active
+{
+    color: #969654 !important;
+    background-color: #f0f0af;
+    border: solid 1px #c7c783 !important;
+}
+
 
 .nav-item
 {

@@ -318,7 +318,7 @@ $('#btn_search_sessions_report').on('click', function()
     table_devices();
     table_browsers();
     table_platforms();
-    graph_languagues();
+    table_languages();
 
 });
 
@@ -593,7 +593,7 @@ function table_browsers() {
             var max = max_percent+"% - "+browser_cat[max_browser];
 
 
-            $('#browser_total').empty();
+            $('#browsers_total').empty();
             $('#browser_minimo').empty();
             $('#browser_maximo').empty();
 
@@ -642,7 +642,7 @@ function table_platforms() {
                  total += objdata.Cantidad;
             });
 
-            $('#platform_total').text(total);
+            $('#platform_totals').text(total);
 
             var platform_total = [];
             var platform_cat   = [];
@@ -696,6 +696,101 @@ function table_platforms() {
 
             //console.log(total);
             //console.log(platform_list);
+
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+}
+
+function table_languages() {
+    var objData = $('#generate_graphs').find("select,textarea, input").serialize();
+    //var form = $('#generate_graphs')[0];
+    //var formData = new FormData(form);
+    var data_count1 = [];
+    var data_name1 = [];
+
+    var total = 0;
+
+    var language_list = [];
+
+    var language_total = [];
+    var language_cat   = [];
+
+    var max_cantidad = 0;
+    var min_cantidad = 0;
+    // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
+    // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
+    $.ajax({
+        type: "POST",
+        url: "/get_graph_languages",
+        data: objData,
+        //contentType: false,
+        //processData: false,
+        success: function (data){
+            //console.log(data);
+            //console.log(data[0][0].Cantidad);
+            //Cantidad
+            //browser
+            $.each(data,function(index, objdata){
+
+                total += objdata.Cantidad;
+
+            });
+
+            $.each(data,function(index, objdata){
+                //console.log(objdata);
+                data_name1.push(objdata.language + ' = ' + objdata.Cantidad);
+                data_count1.push({ value: objdata.Cantidad, name: objdata.language + ' = ' + objdata.Cantidad},);
+
+                var percent = 0;
+                var porcentaje = 0;
+
+                percent = objdata.Cantidad * 100 / total;
+                porcentaje = percent.toFixed(1);
+
+                language_list.push({language: objdata.language, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+
+                language_total.push(objdata.Cantidad);
+                language_cat.push(objdata.language);
+
+            });
+
+
+
+            max_cantidad = Math.max.apply(null, language_total);
+            min_cantidad = Math.min.apply(null, language_total);
+
+            let max_percent = 0;
+            let min_percent = 0;
+
+            var min_per = min_cantidad * 100 / total;
+            var max_per = max_cantidad * 100 / total;
+
+            min_percent = min_per.toFixed(1);
+            max_percent = max_per.toFixed(1);
+
+            let min_lan = language_total.indexOf(Math.min(...language_total));
+            let max_lan = language_total.indexOf(Math.max(...language_total));
+
+            var min = min_percent+"% - "+language_cat[min_lan];
+            var max = max_percent+"% - "+language_cat[max_lan];
+
+
+            $('#language_total').empty();
+            $('#language_minimo').empty();
+            $('#language_maximo').empty();
+
+            $('#language_total').text(total);
+            $('#languages_total').text(total);
+            $('#language_minimo').text(min);
+            $('#language_maximo').text(max);
+
+            $.each(language_list, function(index, objdata)
+            {
+                $("#table_languages").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.language+"</td><td>"+objdata.porcentaje+"</td></tr>");
+            });
 
         },
         error: function (data) {
@@ -828,7 +923,7 @@ function graph_genders() {
       //processData: false,
 
       success: function (data){
-        console.log(data);
+        //console.log(data);
         //console.log(data[0][0].Cantidad);
         //Cantidad
         //browser
