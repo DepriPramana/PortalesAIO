@@ -45,9 +45,9 @@ class DashboardFreeWifiController extends Controller
 
     public function sessions_report()
     {
-        $chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
+      $chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
 
-        return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $chains);
+      return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $chains);
     }
 
 
@@ -254,7 +254,7 @@ class DashboardFreeWifiController extends Controller
       }
 
       $res = DB::connection('freewifi_data')->select('CALL get_gender_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
-
+      
       $result['Masculino']  = [];
       $result['Femenino']   = [];
       $result['NoDefinido'] = [];
@@ -384,6 +384,37 @@ class DashboardFreeWifiController extends Controller
         //$res = DB::connection('rad_freewifi')->select('CALL get_gender_chain_venue(?,?,?,?)', array($chain,$venue,$fecha_ini,$fecha_fin));
 
         //return $res;
+    }
+
+    public function hotspotGraphicData( Request $request )
+    {
+
+      $chain = $request->select_scope;
+      $venue = $request->select_hotspots;
+      $fecha_ini = $request->datepickerWeek;
+      $fecha_fin = $request->datepickerWeek2;
+      $resultSet = [];
+      $procedure = "";
+
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('freewifi_data')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
+      switch($request->option) {
+        case 0: $procedure = "CALL get_user_login_day_chain(?,?,?)"; break;
+        case 1: $procedure = "CALL get_unique_user_day_chain(?,?,?)"; break;
+        case 2: $procedure = "CALL get_new_user_day_chain(?,?,?)"; break;
+        case 3: $procedure = "CALL get_mb_download_chain(?,?,?)"; break;
+        case 4: $procedure = "CALL get_mb_upload_chain(?,?,?)"; break;
+        case 5: $procedure = "CALL get_avg_min_session_chain(?,?,?)"; break;
+        case 6: $procedure = "CALL get_revenue_total_session_chain(?,?,?)"; break;
+      }
+      $resultSet = DB::connection('freewifi_data')->select($procedure, array($chain,$fecha_ini,$fecha_fin));
+      return response()->json($resultSet);
+
     }
 
 }

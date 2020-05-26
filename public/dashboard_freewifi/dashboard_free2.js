@@ -34,7 +34,7 @@ $(function() {
   $('#datepickerWeek').val(startofmonth);
   $('#datepickerWeek2').val(endofmonth);
 
-    $('.panel_results').hide();
+  $('.panel_results').hide();
 
 });
 
@@ -319,6 +319,7 @@ $('#btn_search_sessions_report').on('click', function()
     table_browsers();
     table_platforms();
     table_languages();
+    get_chart_hotspots();
 
 });
 
@@ -1017,35 +1018,35 @@ function graph_languagues() {
 
         });
 
-          max_cantidad = Math.max.apply(null, language_total);
-          min_cantidad = Math.min.apply(null, language_total);
+        max_cantidad = Math.max.apply(null, language_total);
+        min_cantidad = Math.min.apply(null, language_total);
 
-          let max_percent = 0;
-          let min_percent = 0;
+        let max_percent = 0;
+        let min_percent = 0;
 
-          var min_per = min_cantidad * 100 / total;
-          var max_per = max_cantidad * 100 / total;
+        var min_per = min_cantidad * 100 / total;
+        var max_per = max_cantidad * 100 / total;
 
-          min_percent = min_per.toFixed(1);
-          max_percent = max_per.toFixed(1);
+        min_percent = min_per.toFixed(1);
+        max_percent = max_per.toFixed(1);
 
-          let min_lan = language_total.indexOf(Math.min(...language_total));
-          let max_lan = language_total.indexOf(Math.max(...language_total));
+        let min_lan = language_total.indexOf(Math.min(...language_total));
+        let max_lan = language_total.indexOf(Math.max(...language_total));
 
-          var min = min_percent+"% - "+language_cat[min_lan];
-          var max = max_percent+"% - "+language_cat[max_lan];
-
-
-          $('#language_total').empty();
-          $('#language_minimo').empty();
-          $('#language_maximo').empty();
-
-          $('#language_total').text(total);
-          $('#language_minimo').text(min);
-          $('#language_maximo').text(max);
+        var min = min_percent+"% - "+language_cat[min_lan];
+        var max = max_percent+"% - "+language_cat[max_lan];
 
 
-          graph_pie_default_four_with_porcent('maingraphicLanguages', data_name1, data_count1, 'Idiomas', 'registrados');
+        $('#language_total').empty();
+        $('#language_minimo').empty();
+        $('#language_maximo').empty();
+
+        $('#language_total').text(total);
+        $('#language_minimo').text(min);
+        $('#language_maximo').text(max);
+
+
+        graph_pie_default_four_with_porcent('maingraphicLanguages', data_name1, data_count1, 'Idiomas', 'registrados');
 
       },
       error: function (data) {
@@ -1219,7 +1220,7 @@ function graph_table_gender(femenino, masculino, no_definido)
     var nod_num   = nod.Cantidad;
 
     var total_num = women_num + men_num + nod_num;
-
+    
     var women_p   = (women_num * 100) / total_num ;
     var women_per = women_p.toFixed(1);
 
@@ -1606,3 +1607,110 @@ function graph_bar_domains(title, dominios, cantidad, titlepral, subtitulopral){
         }
     });
 }
+
+// SECCION DE HOTSPOT
+
+$("#hotspot_select_data").on('change', () => get_chart_hotspots() );
+function get_chart_hotspots() {
+    const panelCarga = $("#panelHotspotLogin");
+    const chart = echarts.init(document.querySelector("#maingraphicHotspot")); 
+    
+    const request = {
+        datepickerWeek: $('#generate_graphs').find('#datepickerWeek').val(),
+        datepickerWeek2: $('#generate_graphs').find('#datepickerWeek2').val(),
+        select_scope: $('#generate_graphs').find('#select_scope').val(),
+        select_hotspots: $('#generate_graphs').find('#select_hotspots').val(),
+        option: $("#hotspot_select_data").val(),
+        _token: $("meta[name='csrf-token']").attr("content")
+    };
+    //console.log(request);
+    const chartOptions = {
+        legend: {
+            data: []
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis: {
+            type: 'category',
+            data: []
+        },
+        yAxis: {
+            type: 'value',
+            name: 'Megabytes'
+        },
+        series: []
+    };
+    panelCarga.css({ display: 'block' });
+    $.post(`/get_grap_hotspot`, request, response => {
+               
+        
+        const processResult = getDataChartBySelection( response, chartOptions, $("#hotspot_select_data").val() );
+
+        chart.setOption( processResult );
+
+        //console.log("Response", response);
+        panelCarga.css({ display: 'none' });
+        $(window).on('resize', function(){
+            if(myChart != null && myChart != undefined){
+                myChart.resize();
+            }
+        });
+    });
+}
+
+function getDataChartBySelection( response, chartOptions, option ) {
+    const labels = [];
+    const dataset = [];
+    let filterCamp = "";
+    //console.log("Option selected", option);
+    
+    switch(Number(option)) {
+        case 0:
+            filterCamp = "Logins";
+            chartOptions.yAxis.name = "Número de usuarios logeados";
+        break;
+        case 1: 
+            filterCamp = "Usuarios_Unicos";
+            chartOptions.yAxis.name = "Número de usuarios únicos";
+        break;
+        case 2: 
+            filterCamp = "Nuevos_Usuarios";
+            chartOptions.yAxis.name = "Número de nuevos usuarios";
+        break;
+        case 3: 
+            filterCamp = "valor";
+            chartOptions.yAxis.name = "Cantidad de MB";
+        break;
+        case 4: 
+            filterCamp = "valor";
+            chartOptions.yAxis.name = "Cantidad de MB";
+        break;
+        case 5: 
+            filterCamp = "valor";
+            chartOptions.yAxis.name = "Minútos";
+        break;
+        case 6: 
+            filterCamp = "Revenue_dls";
+            chartOptions.yAxis.name = "Dolares";
+        break;
+    }
+
+    for( let data of response ) {
+        dataset.push(data[filterCamp]);
+        labels.push(data.fecha2);
+    }
+
+    chartOptions.xAxis.data = labels;
+    chartOptions.series = [
+        {
+            data: dataset,
+            type: 'line'
+        }
+    ];
+    
+    return chartOptions;
+
+}
+
+
