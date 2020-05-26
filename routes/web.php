@@ -41,6 +41,8 @@ Route::post('get_graph_genders', 'DashboardFreeWifiController@get_genders');
 Route::post('get_graph_languages', 'DashboardFreeWifiController@get_languages');
 Route::post('get_graph_sessions', 'DashboardFreeWifiController@get_sessions');
 
+Route::post('get_grap_hotspot', 'DashboardFreeWifiController@hotspotGraphicData');
+
 
 Route::get('/test_user/{room}/{site}', 'TestController@test_xml');
 Route::get('/testing', 'TestController@testing');

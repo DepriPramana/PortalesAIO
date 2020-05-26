@@ -307,12 +307,32 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!--Panel Graphs hotspots-->
                 <div id="panelHotspot" class="row mb-3" style="opacity: 0 !important;">
                     <div class="col-md-12">
+                        <!--<div class="container text-right">
+                            <span class="badge badge-pill badge-success">Total: <span id="hotspot_total"></span></span>
+                            <span class="badge badge-pill badge-warning">Promedio: <span id="hotspot_promedio"></span></span>
+                        </div>-->
+                        <div class="col-md-12">
+                            <select id="hotspot_select_data" class="form-control">
+                                <option value="0">Usuarios Logueados</option>
+                                <option value="1">Usuarios Unicos</option>
+                                <option value="2">Nuevos Usuarios</option>
+                                <option value="3">Bytes Descargados</option>
+                                <option value="4">Bytes Subidos</option>
+                                <option value="5">Duración media de la sesión</option>
+                                <option value="6">Ingresos diarios estimados</option>
+                            </select>
+                        </div>
+                        <div id="panelHotspotLogin" class="text-center mt-3" style="width: 100%; display: none;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
                         <div id="maingraphicHotspot" class="mt-4" style="width: 100%; min-height: 300px;">
-                            graficas de reportes hotspots
+    
                         </div>
                     </div>
                 </div>
