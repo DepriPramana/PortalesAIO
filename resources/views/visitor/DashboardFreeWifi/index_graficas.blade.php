@@ -93,11 +93,11 @@
                 <!--Panel Graphs devices-->
                 <div class="row" >
                     <div class="col-md-6" style="border-right: solid 1px #d1d1d1;">
-                        <div id="maingraphicDevices" class="mt-4" style="width: 100%; min-height: 300px;"></div>
+                        <div id="maingraphicDevices" class="mt-4" style="width: 100%; min-height: 500px;"></div>
                     </div>
                     <!--Panel Graphs languages-->
                     <div class="col-md-6" >
-                        <div id="maingraphicLanguages" class="mt-4" style="width: 100%; min-height: 300px;"></div>
+                        <div id="maingraphicLanguages" class="mt-4" style="width: 100%; min-height: 500px;"></div>
                     </div>
 
                 </div>
