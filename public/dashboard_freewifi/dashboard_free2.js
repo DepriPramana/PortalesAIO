@@ -468,7 +468,7 @@ function table_devices()
                 total += objdata.Cantidad;
             });
 
-            $('#device_total').text(total);
+            $('#device_total').text(new Intl.NumberFormat('en-MX').format(total));
 
             var device_total = [];
             var device_cat = [];
@@ -513,7 +513,7 @@ function table_devices()
             $('#devices_minimo').empty();
             $('#devices_maximo').empty();
 
-            $('#devices_total').text(total);
+            $('#devices_total').text(new Intl.NumberFormat('en-MX').format(total));
             $('#devices_minimo').text(min);
             $('#devices_maximo').text(max);
 
@@ -598,7 +598,7 @@ function table_browsers() {
             $('#browser_minimo').empty();
             $('#browser_maximo').empty();
 
-            $('#browsers_total').text(total);
+            $('#browsers_total').text(new Intl.NumberFormat('en-MX').format(total));
             $('#browser_minimo').text(min);
             $('#browser_maximo').text(max);
 
@@ -684,7 +684,7 @@ function table_platforms() {
             $('#platform_maximo').empty();
             $('#platforms_total').empty();
 
-            $('#platforms_total').text(total);
+            $('#platforms_total').text(new Intl.NumberFormat('en-MX').format(total));
             $('#platform_minimo').text(min);
             $('#platform_maximo').text(max);
 
@@ -783,8 +783,8 @@ function table_languages() {
             $('#language_minimo').empty();
             $('#language_maximo').empty();
 
-            $('#language_total').text(total);
-            $('#languages_total').text(total);
+            $('#language_total').text(new Intl.NumberFormat('en-MX').format(total));
+            $('#languages_total').text(new Intl.NumberFormat('en-MX').format(total));
             $('#language_minimo').text(min);
             $('#language_maximo').text(max);
 
@@ -893,7 +893,7 @@ function graph_ages() {
             $('#ages_minimo').empty();
             $('#ages_maximo').empty();
 
-            $('#ages_total').text(total);
+            $('#ages_total').text(new Intl.NumberFormat('en-MX').format(total));
             $('#ages_promedio').text(promedio);
             $('#ages_minimo').text(min);
             $('#ages_maximo').text(max);
@@ -1041,7 +1041,7 @@ function graph_languagues() {
         $('#language_minimo').empty();
         $('#language_maximo').empty();
 
-        $('#language_total').text(total);
+        $('#language_total').text(new Intl.NumberFormat('en-MX').format(total));
         $('#language_minimo').text(min);
         $('#language_maximo').text(max);
 
@@ -1123,7 +1123,7 @@ function graph_domains() {
             $('#domain_minimo').empty();
             $('#domain_maximo').empty();
 
-            $('#domain_total').text(total_num);
+            $('#domain_total').text(new Intl.NumberFormat('en-MX').format(total_num));
             $('#domain_minimo').text(min);
             $('#domain_maximo').text(max);
 
@@ -1195,7 +1195,7 @@ function get_sessions() {
         $('#session_minimo').empty();
         $('#session_maximo').empty();
 
-        $('#session_total').text(total);
+        $('#session_total').text(new Intl.NumberFormat('en-MX').format(total));
         $('#session_prom').text(promedio);
         $('#session_minimo').text(min);
         $('#session_maximo').text(max);
@@ -1220,7 +1220,7 @@ function graph_table_gender(femenino, masculino, no_definido)
     var nod_num   = nod.Cantidad;
 
     var total_num = women_num + men_num + nod_num;
-    
+
     var women_p   = (women_num * 100) / total_num ;
     var women_per = women_p.toFixed(1);
 
@@ -1234,10 +1234,10 @@ function graph_table_gender(femenino, masculino, no_definido)
 
     $('#total_men').text(men_per);
     $('#total_women').text(women_per);
-    $('#total_people').text(total_num);
+    $('#total_people').text(new Intl.NumberFormat('en-MX').format(total_num));
 
-    $('#panel_men').attr('title', 'Total Hombres: '+men_num);
-    $('#panel_women').attr('title', 'Total Mujeres: '+women_num);
+    $('#panel_men').attr('title', 'Total Hombres: '+new Intl.NumberFormat('en-MX').format(men_num));
+    $('#panel_women').attr('title', 'Total Mujeres: '+new Intl.NumberFormat('en-MX').format(women_num));
 
 
 }
@@ -1613,8 +1613,8 @@ function graph_bar_domains(title, dominios, cantidad, titlepral, subtitulopral){
 $("#hotspot_select_data").on('change', () => get_chart_hotspots() );
 function get_chart_hotspots() {
     const panelCarga = $("#panelHotspotLogin");
-    const chart = echarts.init(document.querySelector("#maingraphicHotspot")); 
-    
+    const chart = echarts.init(document.querySelector("#maingraphicHotspot"));
+
     const request = {
         datepickerWeek: $('#generate_graphs').find('#datepickerWeek').val(),
         datepickerWeek2: $('#generate_graphs').find('#datepickerWeek2').val(),
@@ -1643,8 +1643,8 @@ function get_chart_hotspots() {
     };
     panelCarga.css({ display: 'block' });
     $.post(`/get_grap_hotspot`, request, response => {
-               
-        
+
+
         const processResult = getDataChartBySelection( response, chartOptions, $("#hotspot_select_data").val() );
 
         chart.setOption( processResult );
@@ -1672,27 +1672,27 @@ function getDataChartBySelection( response, chartOptions, option ) {
             filterCamp = "Logins";
             chartOptions.yAxis.name = "Número de usuarios logeados";
         break;
-        case 1: 
+        case 1:
             filterCamp = "Usuarios_Unicos";
             chartOptions.yAxis.name = "Número de usuarios únicos";
         break;
-        case 2: 
+        case 2:
             filterCamp = "Nuevos_Usuarios";
             chartOptions.yAxis.name = "Número de nuevos usuarios";
         break;
-        case 3: 
+        case 3:
             filterCamp = "valor";
             chartOptions.yAxis.name = "Cantidad de MB";
         break;
-        case 4: 
+        case 4:
             filterCamp = "valor";
             chartOptions.yAxis.name = "Cantidad de MB";
         break;
-        case 5: 
+        case 5:
             filterCamp = "valor";
             chartOptions.yAxis.name = "Minútos";
         break;
-        case 6: 
+        case 6:
             filterCamp = "Revenue_dls";
             chartOptions.yAxis.name = "Dolares";
         break;
@@ -1716,7 +1716,7 @@ function getDataChartBySelection( response, chartOptions, option ) {
     $("#hotspot_promedio").text(new Intl.NumberFormat('en-MX').format(promedio.toFixed(2)));
     /*console.log("Total", total);
     console.log("Promedio", promedio);*/
-    
+
     return chartOptions;
 
 }
