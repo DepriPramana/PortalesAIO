@@ -283,7 +283,7 @@ class DashboardFreeWifiController extends Controller
       }
 
       $res = DB::connection('freewifi_data')->select('CALL get_gender_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
-      
+
       $result['Masculino']  = [];
       $result['Femenino']   = [];
       $result['NoDefinido'] = [];
