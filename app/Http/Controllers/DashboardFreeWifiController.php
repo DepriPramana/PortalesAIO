@@ -76,6 +76,17 @@ class DashboardFreeWifiController extends Controller
 
       $res = DB::connection('freewifi_data')->select('CALL get_browser_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
+        $result = [];
+
+        foreach ($res as $key => $value)
+        {
+            $result[$key] = $value->Cantidad;
+        }
+
+        array_multisort($result, SORT_DESC, $res);
+
+        return $res;
+
       return $res;
 
       /*for ($i=0; $i < count($venue); $i++) {
@@ -103,6 +114,15 @@ class DashboardFreeWifiController extends Controller
 
       $res = DB::connection('freewifi_data')->select('CALL get_platform_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
+        $result = [];
+
+        foreach ($res as $key => $value)
+        {
+            $result[$key] = $value->Cantidad;
+        }
+
+        array_multisort($result, SORT_DESC, $res);
+
       return $res;
 
       /*for ($i=0; $i < count($venue); $i++) {
@@ -128,6 +148,16 @@ class DashboardFreeWifiController extends Controller
       }
 
       $res = DB::connection('freewifi_data')->select('CALL get_device_chain(?,?,?)', array($chain, $fecha_ini,$fecha_fin));
+
+
+      $result = [];
+
+        foreach ($res as $key => $value)
+        {
+            $result[$key] = $value->Cantidad;
+        }
+
+        array_multisort($result, SORT_DESC, $res);
 
       return $res;
 
@@ -166,8 +196,7 @@ class DashboardFreeWifiController extends Controller
               ["label" => "40 - 49 años", "total" => 0, "min" => 40, "max" => 49],
               ["label" => "50 - 59 años", "total" => 0, "min" => 50, "max" => 59],
               ["label" => "60 - 69 años", "total" => 0, "min" => 60, "max" => 69],
-              ["label" => "70 - 79 años", "total" => 0, "min" => 70, "max" => 79],
-              ["label" => "80 - 89 años", "total" => 0, "min" => 80, "max" => 89]
+              ["label" => "70 y más", "total" => 0, "min" => 70, "max" => 110]
           ];
 
 
@@ -341,6 +370,15 @@ class DashboardFreeWifiController extends Controller
       }
 
       $res = DB::connection('freewifi_data')->select('CALL get_language_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+
+        $result = [];
+
+        foreach ($res as $key => $value)
+        {
+            $result[$key] = $value->Cantidad;
+        }
+
+        array_multisort($result, SORT_DESC, $res);
 
       return $res;
     }
