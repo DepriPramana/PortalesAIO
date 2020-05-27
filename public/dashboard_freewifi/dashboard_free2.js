@@ -894,7 +894,7 @@ function graph_ages() {
             $('#ages_maximo').empty();
 
             $('#ages_total').text(new Intl.NumberFormat('en-MX').format(total));
-            $('#ages_promedio').text(promedio);
+            $('#ages_promedio').text(new Intl.NumberFormat('en-MX').format(promedio));
             $('#ages_minimo').text(min);
             $('#ages_maximo').text(max);
 
@@ -1196,7 +1196,7 @@ function get_sessions() {
         $('#session_maximo').empty();
 
         $('#session_total').text(new Intl.NumberFormat('en-MX').format(total));
-        $('#session_prom').text(promedio);
+        $('#session_prom').text(new Intl.NumberFormat('en-MX').format(promedio));
         $('#session_minimo').text(min);
         $('#session_maximo').text(max);
 
