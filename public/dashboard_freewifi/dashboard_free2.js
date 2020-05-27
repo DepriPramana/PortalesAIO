@@ -638,18 +638,12 @@ function table_platforms() {
 
             $("#table_platforms").empty();
 
-            $.each(data,function(index, objdata){
-
-                 total += objdata.Cantidad;
-            });
-
-            $('#platform_totals').text(total);
-
             var platform_total = [];
             var platform_cat   = [];
 
             $.each(data, function(index, objdata)
             {
+                total += objdata.Cantidad;
                 var percent = 0;
                 var porcentaje = 0;
 
@@ -661,6 +655,9 @@ function table_platforms() {
                 platform_cat.push(objdata.platform);
 
             });
+
+            $('#platform_total').empty();
+            $('#platform_total').text(new Intl.NumberFormat('en-MX').format(total));
 
             max_cantidad = Math.max.apply(null, platform_total);
             min_cantidad = Math.min.apply(null, platform_total);
@@ -683,6 +680,7 @@ function table_platforms() {
             $('#platform_minimo').empty();
             $('#platform_maximo').empty();
             $('#platforms_total').empty();
+
 
             $('#platforms_total').text(new Intl.NumberFormat('en-MX').format(total));
             $('#platform_minimo').text(min);
@@ -815,6 +813,8 @@ function graph_ages() {
     var total = 0;
     var totaldata = 0;
     var promedio = 0;
+
+    var valor_suma = 0;
     // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
     // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
     $.ajax({
@@ -833,10 +833,15 @@ function graph_ages() {
             $.each(data[0],function(index, objdata){
                 //console.log(parseInt(objdata.age));
 
-                if (parseInt(objdata.age) > 89 || parseInt(objdata.age) < 10) {
+                if (parseInt(objdata.age) > 75 || parseInt(objdata.age) < 10) {
                   division = division - 1;
                 }else{
-                  totaldata = totaldata + parseInt(objdata.age);
+                  if (objdata.age == null) {
+                    totaldata = totaldata + valor_suma;
+                  }else{
+                    totaldata = totaldata + parseInt(objdata.age);
+                  }
+                  //console.log(objdata.age);
                   //console.log('entre al if: ' + parseInt(objdata.age));
                   //console.log(totaldata);
                 }
@@ -1720,5 +1725,3 @@ function getDataChartBySelection( response, chartOptions, option ) {
     return chartOptions;
 
 }
-
-
