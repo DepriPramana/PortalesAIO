@@ -127,4 +127,5 @@
 
 @section('aditional-scripts')
     <script src="{{ asset('dashboard_freewifi/dashboard_free2.js')}}"></script>
+    <script src="{{ asset('dashboard_freewifi/concentrado.js')}}"></script>
 @endsection
