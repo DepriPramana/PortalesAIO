@@ -332,6 +332,8 @@ function graph_browsers() {
   //var formData = new FormData(form);
   var data_count1 = [];
   var data_name1 = [];
+
+  var total = 0; 
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -341,18 +343,73 @@ function graph_browsers() {
       //contentType: false,
       //processData: false,
       success: function (data){
-        //console.log(data);
+      //console.log(data);
         //console.log(data[0][0].Cantidad);
         //Cantidad
         //browser
         $.each(data,function(index, objdata){
           //console.log(objdata);
-          data_name1.push(objdata.browser + ' = ' + objdata.Cantidad);
-          data_count1.push({ value: objdata.Cantidad, name: objdata.browser + ' = ' + objdata.Cantidad},);
+          /*data_name1.push(objdata.browser + ' = ' + objdata.Cantidad);
+          data_count1.push({ value: objdata.Cantidad, name: objdata.browser + ' = ' + objdata.Cantidad},);*/
 
+          total += objdata.Cantidad;
           //$.each(objdata, function(index, objdata1){
             //console.log(objdata1);
           //});
+        });
+
+        var browser_list  = [];
+        var browser_total = [];
+        var browser_cat   = [];
+
+        // get percent values 
+        $.each(data, function(index, objdata)
+        { 
+          var percent = 0;
+          var porcentaje = 0;
+
+          percent = objdata.Cantidad * 100 / total;
+          porcentaje = percent.toFixed(2);
+
+          browser_list.push({browser: objdata.browser, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+        });
+
+        // group others elements
+         var others_value        = 1;
+         var others_total        = 0;
+         var others_percent      = 0;
+         var others_list         = []; 
+         var browser_list_final  = [];
+
+         // create others element
+         $.each(browser_list, function(index, objdata)
+         {
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {browser : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+          });
+        $.each(browser_list, function(index, objdata)
+        {
+              if(objdata.porcentaje >= others_value)
+              {
+                browser_list_final.push({browser: objdata.browser, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+        });
+
+        if(others_list.cantidad > 0)
+        {
+                browser_list_final.push(others_list);
+        }
+
+        $.each(browser_list_final, function(index, objdata)
+        {
+            data_name1.push(objdata.browser + ' = ' + objdata.cantidad);
+            data_count1.push({ value: objdata.cantidad, name: objdata.browser + ' = ' + objdata.cantidad},);
         });
 
         graph_pie_default_four_with_porcent('maingraphicBrowser', data_name1, data_count1, 'Navegadores', 'Browsers');
@@ -371,6 +428,8 @@ function graph_platforms() {
   //var formData = new FormData(form);
   var data_count1 = [];
   var data_name1 = [];
+
+  var total = 0; 
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -386,13 +445,69 @@ function graph_platforms() {
         //browser
         $.each(data,function(index, objdata){
           //console.log(objdata);
-          data_name1.push(objdata.platform + ' = ' + objdata.Cantidad);
-          data_count1.push({ value: objdata.Cantidad, name: objdata.platform + ' = ' + objdata.Cantidad},);
+          /*data_name1.push(objdata.platform + ' = ' + objdata.Cantidad);
+          data_count1.push({ value: objdata.Cantidad, name: objdata.platform + ' = ' + objdata.Cantidad},);*/
 
+          total += objdata.Cantidad;
           //$.each(objdata, function(index, objdata1){
             //console.log(objdata1);
           //});
         });
+
+        var platform_list  = [];
+        var platform_total = [];
+        var platform_cat   = [];
+
+        // get percent values 
+        $.each(data, function(index, objdata)
+        { 
+          var percent = 0;
+          var porcentaje = 0;
+
+          percent = objdata.Cantidad * 100 / total;
+          porcentaje = percent.toFixed(2);
+
+          platform_list.push({platform: objdata.platform, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+        });
+
+                // group others elements
+         var others_value        = 1;
+         var others_total        = 0;
+         var others_percent      = 0;
+         var others_list         = []; 
+         var platform_list_final  = [];
+
+         $.each(platform_list, function(index, objdata)
+         {
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {platform : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+          });
+
+        $.each(platform_list, function(index, objdata)
+        {
+              if(objdata.porcentaje >= others_value)
+              {
+                platform_list_final.push({platform: objdata.platform, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+        });
+
+        if(others_list.cantidad > 0)
+        {
+                platform_list_final.push(others_list);
+        }
+
+        $.each(platform_list_final, function(index, objdata)
+        {
+            data_name1.push(objdata.platform + ' = ' + objdata.cantidad);
+            data_count1.push({ value: objdata.cantidad, name: objdata.platform + ' = ' + objdata.cantidad},);
+        });
+
 
         graph_pie_default_four_with_porcent('maingraphicPlatform', data_name1, data_count1, 'Plataformas', 'OS');
 
@@ -410,6 +525,8 @@ function graph_devices() {
   //var formData = new FormData(form);
   var data_count1 = [];
   var data_name1 = [];
+
+  var total = 0; 
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -425,12 +542,69 @@ function graph_devices() {
         //browser
         $.each(data,function(index, objdata){
           //console.log(objdata);
-          data_name1.push(objdata.device + ' = ' + objdata.Cantidad);
-          data_count1.push({ value: objdata.Cantidad, name: objdata.device + ' = ' + objdata.Cantidad},);
+          /*data_name1.push(objdata.device + ' = ' + objdata.Cantidad);
+          data_count1.push({ value: objdata.Cantidad, name: objdata.device + ' = ' + objdata.Cantidad},);*/
+
+          total += objdata.Cantidad;
 
           //$.each(objdata, function(index, objdata1){
             //console.log(objdata1);
           //});
+        });
+
+        var device_list  = [];
+        var device_total = [];
+        var device_cat   = [];
+
+        // get percent values 
+        $.each(data, function(index, objdata)
+        { 
+          var percent = 0;
+          var porcentaje = 0;
+
+          percent = objdata.Cantidad * 100 / total;
+          porcentaje = percent.toFixed(2);
+
+          device_list.push({device: objdata.device, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+        });
+
+
+         var others_value        = 1;
+         var others_total        = 0;
+         var others_percent      = 0;
+         var others_list         = []; 
+         var device_list_final  = [];
+
+         // create others element
+         $.each(device_list, function(index, objdata)
+         {
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {device : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+          });
+
+        $.each(device_list, function(index, objdata)
+        {
+              if(objdata.porcentaje >= others_value)
+              {
+                device_list_final.push({device: objdata.device, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+        });
+
+        if(others_list.cantidad > 0)
+        {
+                device_list_final.push(others_list);
+        }
+
+        $.each(device_list_final, function(index, objdata)
+        {
+            data_name1.push(objdata.device + ' = ' + objdata.cantidad);
+            data_count1.push({ value: objdata.cantidad, name: objdata.device + ' = ' + objdata.cantidad},);
         });
 
 
@@ -508,7 +682,6 @@ function table_devices()
 
             var min = min_percent+"% - "+device_cat[min_age];
             var max = max_percent+"% - "+device_cat[max_age];
-
 
 
             $('#devices_total').empty();
@@ -1099,13 +1272,6 @@ function graph_languagues() {
 
   var total = 0;
 
-  var language_list = [];
-
-  var language_total = [];
-  var language_cat   = [];
-
-  var max_cantidad = 0;
-  var min_cantidad = 0;
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -1121,45 +1287,71 @@ function graph_languagues() {
         //browser
         $.each(data,function(index, objdata){
           //console.log(objdata);
-          data_name1.push(objdata.language + ' = ' + objdata.Cantidad);
-          data_count1.push({ value: objdata.Cantidad, name: objdata.language + ' = ' + objdata.Cantidad},);
+          /*data_name1.push(objdata.language + ' = ' + objdata.Cantidad);
+          data_count1.push({ value: objdata.Cantidad, name: objdata.language + ' = ' + objdata.Cantidad},);*/
 
           total += objdata.Cantidad;
 
-          language_list.push({language: objdata.language, cantidad : objdata.Cantidad});
-
-          language_total.push(objdata.Cantidad);
-          language_cat.push(objdata.language);
 
         });
 
-        max_cantidad = Math.max.apply(null, language_total);
-        min_cantidad = Math.min.apply(null, language_total);
 
-        let max_percent = 0;
-        let min_percent = 0;
-
-        var min_per = min_cantidad * 100 / total;
-        var max_per = max_cantidad * 100 / total;
-
-        min_percent = min_per.toFixed(1);
-        max_percent = max_per.toFixed(1);
-
-        let min_lan = language_total.indexOf(Math.min(...language_total));
-        let max_lan = language_total.indexOf(Math.max(...language_total));
-
-        var min = min_percent+"% - "+language_cat[min_lan];
-        var max = max_percent+"% - "+language_cat[max_lan];
+        var language_list  = [];
+        var language_total = [];
+        var language_cat   = [];
 
 
-        $('#language_total').empty();
-        $('#language_minimo').empty();
-        $('#language_maximo').empty();
+        // get percent values 
+        $.each(data, function(index, objdata)
+        { 
+          var percent = 0;
+          var porcentaje = 0;
 
-        $('#language_total').text(new Intl.NumberFormat('en-MX').format(total));
-        $('#language_minimo').text(min);
-        $('#language_maximo').text(max);
+          percent = objdata.Cantidad * 100 / total;
+          porcentaje = percent.toFixed(2);
 
+          language_list.push({language: objdata.language, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+        });
+
+
+          // group others elements
+         var others_value        = 1;
+         var others_total        = 0;
+         var others_percent      = 0;
+         var others_list         = []; 
+         var language_list_final  = [];
+
+         // create others element
+         $.each(language_list, function(index, objdata)
+         {
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {language : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+          });
+
+        $.each(language_list, function(index, objdata)
+        {
+              if(objdata.porcentaje >= others_value)
+              {
+                language_list_final.push({language: objdata.language, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+        });
+
+        if(others_list.cantidad > 0)
+        {
+                language_list_final.push(others_list);
+        }
+
+        $.each(language_list_final, function(index, objdata)
+        {
+            data_name1.push(objdata.language + ' = ' + objdata.cantidad);
+            data_count1.push({ value: objdata.cantidad, name: objdata.language + ' = ' + objdata.cantidad},);
+        });
 
         graph_pie_default_four_with_porcent('maingraphicLanguages', data_name1, data_count1, 'Idiomas', 'registrados');
 
