@@ -2152,6 +2152,8 @@ function getDataChartBySelection( response, chartOptions, option ) {
     }
     promedio = (response.length > 0) ? total / response.length : 0;
 
+    promedio = ( Number(option) == 0 || Number(option) == 1 || Number(option) == 2 ) ? parseInt(promedio) : new Intl.NumberFormat('en-MX').format(promedio.toFixed(2));
+
     chartOptions.xAxis.data = labels;
     chartOptions.series = [
         {
@@ -2160,7 +2162,7 @@ function getDataChartBySelection( response, chartOptions, option ) {
         }
     ];
     $("#hotspot_total").text(new Intl.NumberFormat('en-MX').format(total));
-    $("#hotspot_promedio").text(new Intl.NumberFormat('en-MX').format(promedio.toFixed(2)));
+    $("#hotspot_promedio").text(promedio);
     /*console.log("Total", total);
     console.log("Promedio", promedio);*/
 
