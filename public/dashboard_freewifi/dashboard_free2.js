@@ -15,6 +15,7 @@ var endofmonth = moment(startofmonth).endOf('month').format("YYYY-MM-DD");
 $(function() {
   moment.locale('es');
 
+
   $('#datepickerWeek').datepicker({
     language: 'es',
     format: "yyyy-mm-dd",
@@ -480,7 +481,7 @@ function table_devices()
                 var porcentaje = 0;
 
                 percent = objdata.Cantidad * 100 / total;
-                porcentaje = percent.toFixed(1);
+                porcentaje = percent.toFixed(2);
                 device_list.push({device: objdata.device, cantidad : objdata.Cantidad, porcentaje : porcentaje});
 
                 device_total.push(objdata.Cantidad);
@@ -518,8 +519,41 @@ function table_devices()
             $('#devices_minimo').text(min);
             $('#devices_maximo').text(max);
 
+            var others_value = 1; 
+
+            var others_list = [];
+            var device_list_final = [];
+
+            var others_total   = 0;
+            var others_percent = 0;
 
             $.each(device_list,function(index, objdata){
+
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {device : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+            });
+
+            $.each(device_list, function(index, objdata)
+            {
+              if(objdata.porcentaje >= others_value)
+              {
+                device_list_final.push({device: objdata.device, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+            });
+
+            if(others_list.cantidad > 0)
+            {
+                device_list_final.push(others_list);
+            }
+
+
+            $.each(device_list_final,function(index, objdata){
 
                 $("#table_devices").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.device+"</td><td>"+objdata.porcentaje+"</td></tr>");
             });
@@ -568,7 +602,7 @@ function table_browsers() {
                 var porcentaje = 0;
 
                 percent = objdata.Cantidad * 100 / total;
-                porcentaje = percent.toFixed(1);
+                porcentaje = percent.toFixed(2);
                 browser_list.push({browser: objdata.browser, cantidad : objdata.Cantidad, porcentaje : porcentaje});
 
                 browser_total.push(objdata.Cantidad);
@@ -603,8 +637,42 @@ function table_browsers() {
             $('#browser_minimo').text(min);
             $('#browser_maximo').text(max);
 
+            var others_value = 1;
+
+            var others_list = [];
+            var browser_list_final = [];
+
+            var others_total   = 0;
+            var others_percent = 0;
+
+            $.each(browser_list,function(index, objdata){
+
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {browser : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+            });
 
             $.each(browser_list, function(index, objdata)
+            {
+              if(objdata.porcentaje >= others_value)
+              {
+                browser_list_final.push({browser: objdata.browser, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+            });
+
+
+            if(others_list.cantidad > 0)
+            {
+              browser_list_final.push(others_list);
+            }
+
+
+            $.each(browser_list_final, function(index, objdata)
             {
                 $("#table_browsers").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.browser+"</td><td>"+objdata.porcentaje+"</td></tr>");
             });
@@ -647,14 +715,15 @@ function table_platforms() {
             var platform_total = [];
             var platform_cat   = [];
 
+
             $.each(data, function(index, objdata)
             {
-                total += objdata.Cantidad;
+           
                 var percent = 0;
                 var porcentaje = 0;
 
                 percent = objdata.Cantidad * 100 / total;
-                porcentaje = percent.toFixed(1);
+                porcentaje = percent.toFixed(2);
                 platform_list.push({platform: objdata.platform, cantidad : objdata.Cantidad, porcentaje : porcentaje});
 
                 platform_total.push(objdata.Cantidad);
@@ -753,7 +822,7 @@ function table_languages() {
                 var porcentaje = 0;
 
                 percent = objdata.Cantidad * 100 / total;
-                porcentaje = percent.toFixed(1);
+                porcentaje = percent.toFixed(2);
 
                 language_list.push({language: objdata.language, cantidad : objdata.Cantidad, porcentaje : porcentaje});
 
@@ -792,7 +861,42 @@ function table_languages() {
             $('#language_minimo').text(min);
             $('#language_maximo').text(max);
 
+
+            var others_value = 1; 
+
+            var others_list = [];
+            var language_list_final = [];
+
+            var others_total   = 0;
+            var others_percent = 0;
+
+            $.each(language_list,function(index, objdata){
+
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {language : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+            });
+
             $.each(language_list, function(index, objdata)
+            {
+              if(objdata.porcentaje >= others_value)
+              {
+                language_list_final.push({language: objdata.language, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+            });
+
+
+            if(others_list.cantidad > 0)
+            {
+                language_list_final.push(others_list);
+            }
+
+            $.each(language_list_final, function(index, objdata)
             {
                 $("#table_languages").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.language+"</td><td>"+objdata.porcentaje+"</td></tr>");
             });
@@ -1081,7 +1185,6 @@ function graph_domains() {
         //contentType: false,
         //processData: false,
         success: function (data){
-            //console.log('kkkkkk');
             //console.log(data);
             //console.log(data[0][0].Cantidad);
             //Cantidad
