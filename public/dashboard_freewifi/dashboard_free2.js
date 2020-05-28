@@ -35,6 +35,7 @@ $(function() {
   $('#datepickerWeek2').val(endofmonth);
 
   $('.panel_results').hide();
+  $('#btn_concentrado').trigger('click');
 
 });
 
@@ -556,7 +557,7 @@ function table_browsers() {
 
             });
 
-            $('#browser_total').text(total);
+            $('#browser_total').text(new Intl.NumberFormat('en-MX').format(total));
 
             var browser_total = [];
             var browser_cat = [];
@@ -638,6 +639,11 @@ function table_platforms() {
 
             $("#table_platforms").empty();
 
+            $.each(data, function(index, objdata)
+            {
+                total += objdata.Cantidad;
+            }); 
+
             var platform_total = [];
             var platform_cat   = [];
 
@@ -649,7 +655,7 @@ function table_platforms() {
 
                 percent = objdata.Cantidad * 100 / total;
                 porcentaje = percent.toFixed(1);
-                platform_list.push({platform: objdata.platform, cantidad : objdata.Cantidad, porcentraje : porcentaje});
+                platform_list.push({platform: objdata.platform, cantidad : objdata.Cantidad, porcentaje : porcentaje});
 
                 platform_total.push(objdata.Cantidad);
                 platform_cat.push(objdata.platform);
@@ -688,7 +694,7 @@ function table_platforms() {
 
             $.each(platform_list, function(index, objdata)
             {
-                $("#table_platforms").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.platform+"</td><td>"+objdata.porcentraje+"</td></tr>");
+                $("#table_platforms").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.platform+"</td><td>"+objdata.porcentaje+"</td></tr>");
             });
 
 

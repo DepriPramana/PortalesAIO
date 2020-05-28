@@ -65,7 +65,7 @@
                         </div>
 
                         <div class=" mt-1 float-right">
-                            <button type="button" class="btn btn-primary mr-2 btn_search"> <i class="fas fa-search"></i> Buscar</button>
+                            <button id="btn_concentrado" type="button" class="btn btn-primary mr-2 btn_search"> <i class="fas fa-search"></i> Buscar</button>
                             <button id="reset-form" type="button" class="btn btn-info" ><i class="fas fa-redo-alt"></i> Limpiar</button>
                         </div>
 
