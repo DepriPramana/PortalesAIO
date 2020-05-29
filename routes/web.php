@@ -32,6 +32,7 @@ Route::prefix('dashboard_freewifi')->group(function() {
 Route::post('hotels_by_cadena', 'DashboardFreeWifiController@get_hotelsbycadena');
 Route::post('get_graph_browsers', 'DashboardFreeWifiController@get_browsers');
 Route::post('get_graph_platforms', 'DashboardFreeWifiController@get_platforms');
+Route::post('get_graph_countries', 'DashboardFreeWifiController@get_countries');
 Route::post('get_graph_devices', 'DashboardFreeWifiController@get_devices');
 
 Route::post('get_graph_ages', 'DashboardFreeWifiController@get_ages');

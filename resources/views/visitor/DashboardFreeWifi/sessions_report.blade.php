@@ -89,6 +89,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link panel_users" data-toggle="tab" href="#country" id="rep_countries" role="tab">Pa&iacute;s</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link panel_devices" data-toggle="tab" href="#device" id="rep_device"  aria-selected="true" role="tab">Dispositivos</a>
                         </li>
                         <li class="nav-item">
@@ -177,6 +181,38 @@
                                                    </div>
                         <div id="maingraphicDomains" class="mt-4" style="width: 100%; min-height: 300px;">
 
+                        </div>
+                    </div>
+                </div>
+
+                <!--Panel Graphs Country-->
+                <div id="panelCountries" class="row mb-3" style="opacity: 0 !important;">
+                    <div class="col-md-12">
+                        <div class="container text-right">
+                            <h5>
+                                <span class="badge badge-pill badge-primary">Min: <span id="country_minimo"></span></span>
+                                <span class="badge badge-pill badge-danger">Max: <span id="country_maximo"></span></span>
+                                <span class="badge badge-pill badge-success">Total: <span id="country_total"></span></span>
+                            </h5>
+                        </div>
+                        <div id="maingraphicCountries" class="mt-4" style="width: 100%; min-height: 300px;">
+                            <div class="col-md-4 offset-md-4">
+                                <table class="table table-bordered">
+                                    <thead class="bg-info">
+                                    <tr>
+                                        <th>Total</th>
+                                        <th id="countries_total"></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Pa&iacute;s</th>
+                                        <th>%</th>
+                                    </tr>
+                                    </thead>
+                                    <thead id="table_countries">
+                                    <!-- filling data -->
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

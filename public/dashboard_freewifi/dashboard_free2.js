@@ -100,6 +100,7 @@ $('#rep_session').click(function(){
     $('#panelAges').addClass("d-none");
     $('#panelGenders').addClass("d-none");
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -114,6 +115,7 @@ $('#rep_age').click(function(){
     $('#panelAges').css("opacity", 1).removeClass("d-none");
     $('#panelGenders').addClass("d-none");
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -129,6 +131,7 @@ $('#rep_gender').click(function(){
     $('#panelAges').addClass("d-none")
     $('#panelGenders').css("opacity", 1).removeClass("d-none");
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -143,6 +146,22 @@ $('#rep_domains').click(function(){
     $('#panelAges').addClass("d-none")
     $('#panelGenders').addClass("d-none")
     $('#panelDomains').css("opacity", 1).removeClass("d-none");
+    $('#panelCountries').addClass("d-none");
+    $('#panelDevices').addClass("d-none");
+    $('#panelBrowsers').addClass("d-none");
+    $('#panelPlataform').addClass("d-none");
+    $('#panelLanguages').addClass("d-none");
+    $('#panelHotspot').addClass("d-none");
+
+});
+
+$('#rep_countries').click(function(){
+
+    $('#panelSession').addClass("d-none");
+    $('#panelAges').addClass("d-none")
+    $('#panelGenders').addClass("d-none");
+    $('#panelDomains').addClass("d-none");
+    $('#panelCountries').css("opacity", 1).removeClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -157,6 +176,7 @@ $('#rep_device').click(function(){
     $('#panelAges').addClass("d-none")
     $('#panelGenders').addClass("d-none")
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').css("opacity", 1).removeClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -172,6 +192,7 @@ $('#rep_browser').click(function(){
     $('#panelAges').addClass("d-none")
     $('#panelGenders').addClass("d-none")
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').css("opacity", 1).removeClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -187,6 +208,7 @@ $('#rep_plataform').click(function(){
     $('#panelAges').addClass("d-none")
     $('#panelGenders').addClass("d-none")
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').css("opacity", 1).removeClass("d-none");
@@ -202,6 +224,7 @@ $('#rep_language').click(function(){
     $('#panelAges').addClass("d-none")
     $('#panelGenders').addClass("d-none")
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -217,6 +240,7 @@ $('#rep_hotspot').click(function(){
     $('#panelAges').addClass("d-none")
     $('#panelGenders').addClass("d-none")
     $('#panelDomains').addClass("d-none");
+    $('#panelCountries').addClass("d-none");
     $('#panelDevices').addClass("d-none");
     $('#panelBrowsers').addClass("d-none");
     $('#panelPlataform').addClass("d-none");
@@ -317,6 +341,7 @@ $('#btn_search_sessions_report').on('click', function()
     graph_genders();
     graph_ages();
     graph_domains();
+    table_countries();
     table_devices();
     table_browsers();
     table_platforms();
@@ -1081,6 +1106,128 @@ function table_languages() {
     });
 }
 
+function table_countries()
+{
+    var objData = $('#generate_graphs').find("select,textarea, input").serialize();
+    var total = 0;
+
+    var country_list = [];
+
+    var max_cantidad = 0;
+    var min_cantidad = 0;
+
+        $.ajax({
+        type: "POST",
+        url: "/get_graph_countries",
+        data: objData,
+        success: function (data){
+
+            console.log('paises');
+            console.log(data);
+
+            $("#table_countries").empty();
+
+            $.each(data, function(index, objdata)
+            {
+                total += objdata.Cantidad;
+            }); 
+
+            var country_total = [];
+            var country_cat   = [];
+
+            $.each(data, function(index, objdata)
+            {
+           
+                var percent = 0;
+                var porcentaje = 0;
+
+                percent = objdata.Cantidad * 100 / total;
+                porcentaje = percent.toFixed(2);
+                country_list.push({country: objdata.country, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+
+                country_total.push(objdata.Cantidad);
+                country_cat.push(objdata.country);
+
+            });
+
+            $('#country_total').empty();
+            $('#country_total').text(new Intl.NumberFormat('en-MX').format(total));
+
+            max_cantidad = Math.max.apply(null, country_total);
+            min_cantidad = Math.min.apply(null, country_total);
+
+            let max_percent = 0;
+            let min_percent = 0;
+
+            var min_per = min_cantidad * 100 / total;
+            var max_per = max_cantidad * 100 / total;
+
+            min_percent = min_per.toFixed(1);
+            max_percent = max_per.toFixed(1);
+
+            let min_plat = country_total.indexOf(Math.min(...country_total));
+            let max_plat = country_total.indexOf(Math.max(...country_total));
+
+            var min = min_percent+"% - "+country_cat[min_plat];
+            var max = max_percent+"% - "+country_cat[max_plat];
+
+            $('#country_minimo').empty();
+            $('#country_maximo').empty();
+            $('#countries_total').empty();
+
+
+            $('#countries_total').text(new Intl.NumberFormat('en-MX').format(total));
+            $('#country_minimo').text(min);
+            $('#country_maximo').text(max);
+
+
+
+            var others_value = 1; 
+
+            var others_list = [];
+            var country_list_final = [];
+
+            var others_total   = 0;
+            var others_percent = 0;
+
+            $.each(country_list,function(index, objdata){
+
+              if(objdata.porcentaje <= others_value)
+              {
+                toFloatPercent = objdata.porcentaje * 1; 
+                others_total   += objdata.cantidad;
+                others_percent += toFloatPercent;
+
+                others_list = {country : "Otros", cantidad : others_total, porcentaje : others_percent};
+              }
+            });
+
+            $.each(country_list, function(index, objdata)
+            {
+              if(objdata.porcentaje >= others_value)
+              {
+                country_list_final.push({country: objdata.country, cantidad : objdata.cantidad, porcentaje : objdata.porcentaje});
+              }
+            });
+
+
+            if(others_list.cantidad > 0)
+            {
+                country_list_final.push(others_list);
+            }
+
+            $.each(country_list_final, function(index, objdata)
+            {
+                $("#table_countries").append("<tr title='Total: "+objdata.cantidad+"'><td>"+objdata.country+"</td><td>"+objdata.porcentaje+"</td></tr>");
+            });
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+
+}
+
 function graph_ages() {
     var objData = $('#generate_graphs').find("select,textarea, input").serialize();
     //var form = $('#generate_graphs')[0];
@@ -1515,8 +1662,7 @@ function get_sessions() {
   });
 }
 
-function graph_table_gender(femenino, masculino, no_definido)
-{
+function graph_table_gender(femenino, masculino, no_definido){
     var fem = femenino[0];
     var mas = masculino[0];
     var nod = no_definido[0];
@@ -1544,8 +1690,6 @@ function graph_table_gender(femenino, masculino, no_definido)
 
     $('#panel_men').attr('title', 'Total Hombres: '+new Intl.NumberFormat('en-MX').format(men_num));
     $('#panel_women').attr('title', 'Total Mujeres: '+new Intl.NumberFormat('en-MX').format(women_num));
-
-
 }
 
 function graph_pie_default_four_with_porcent(title, campoa, campob, titlepral, subtitulopral){
@@ -1763,9 +1907,7 @@ function graph_barras_ocho_b_zendesk(title, dataHorario, dataTickets, titlepral)
   });
 }
 
-
-function graph_barras_horizontal(title, data)
-{
+function graph_barras_horizontal(title, data){
     //console.log(data);
     var myChart = echarts.init(document.getElementById(title));
 
@@ -1835,7 +1977,6 @@ function graph_barras_horizontal(title, data)
             myChart.resize();
         }
     });
-
 }
 
 function graph_bar_domains(title, dominios, cantidad, titlepral, subtitulopral){
