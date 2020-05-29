@@ -267,7 +267,7 @@ class DashboardFreeWifiController extends Controller
 
     public function get_countries(Request $request)
     {
-      /*$chain = $request->select_scope;
+      $chain = $request->select_scope;
       $venue = $request->select_hotspots;
       $fecha_ini = $request->datepickerWeek;
       $fecha_fin = $request->datepickerWeek2;
@@ -281,49 +281,6 @@ class DashboardFreeWifiController extends Controller
       }
 
       $res = DB::connection('freewifi_data')->select('CALL get_country_chain(?,?,?)', array($chain, $fecha_ini,$fecha_fin));
-
-
-      $result = [];
-
-        foreach ($res as $key => $value)
-        {
-            $result[$key] = $value->Cantidad;
-        }
-
-        array_multisort($result, SORT_DESC, $res);
-
-      return $res;*/
-
-      $res[0]['country']  = "Mexico"; 
-      $res[0]['Cantidad'] = 15; 
-
-      $res[1]['country']  = "Argentina"; 
-      $res[1]['Cantidad'] = 56; 
-
-      $res[2]['country']  = "España"; 
-      $res[2]['Cantidad'] = 27; 
-
-      $res[3]['country']  = "Estados Unidos"; 
-      $res[3]['Cantidad'] = 45; 
-
-      $res[4]['country']  = "Cuba"; 
-      $res[4]['Cantidad'] = 9; 
-
-      $res[5]['country']  = "Francia"; 
-      $res[5]['Cantidad'] = 20; 
-
-      $res[6]['country']  = "Republica Dominicana"; 
-      $res[6]['Cantidad'] = 3; 
-
-      $res[6]['country']  = "Chile"; 
-      $res[6]['Cantidad'] = 1; 
-
-      $res[7]['country']  = "Italia"; 
-      $res[7]['Cantidad'] = 1; 
-
-      //print_r($res);
-
-      $res = [];
 
       return $res;
     }
