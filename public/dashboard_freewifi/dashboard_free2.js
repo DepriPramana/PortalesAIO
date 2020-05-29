@@ -2211,3 +2211,4 @@ function getDataChartBySelection( response, chartOptions, option ) {
     return chartOptions;
 
 }
+
