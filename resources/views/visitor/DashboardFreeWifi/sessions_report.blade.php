@@ -118,7 +118,7 @@
                             <h5>
                                 <span class="badge badge-pill badge-primary">Min: <span id="session_minimo"></span></span>
                                 <span class="badge badge-pill badge-danger">Max: <span id="session_maximo"></span></span>
-                                <span class="badge badge-pill badge-warning">Promedio: <span id="session_prom"></span></span>
+                                <span class="badge badge-pill badge-warning">Prom: <span id="session_prom"></span></span>
                                 <span class="badge badge-pill badge-success">Total: <span id="session_total"></span></span>
                             </h5>                        </div>
                         <div id="maingraphicSessions" class="mt-4" style="width: 100%; min-height: 300px;"></div>
@@ -132,7 +132,7 @@
                             <h5>
                                 <span class="badge badge-pill badge-primary">Min: <span id="ages_minimo"></span></span>
                                 <span class="badge badge-pill badge-danger">Max: <span id="ages_maximo"></span></span>
-                                <span class="badge badge-pill badge-warning">Promedio: <span id="ages_promedio"></span></span>
+                                <span class="badge badge-pill badge-warning">Prom: <span id="ages_Prom"></span></span>
                                 <span class="badge badge-pill badge-success">Total: <span id="ages_total"></span></span>
                             </h5>
                         </div>
@@ -343,7 +343,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!--Panel Graphs hotspots-->
                 <div id="panelHotspot" class="row" style="opacity: 0 !important; margin-top: -60px">
                     <div class="col-md-12">
@@ -360,7 +360,7 @@
                         </div>
                         <div class="container text-right panel_results">
                             <span class="badge badge-pill badge-primary" style="font-size: 15px;">Total: <span id="hotspot_total"></span></span>
-                            <span class="badge badge-pill badge-warning" style="font-size: 15px;">Promedio: <span id="hotspot_promedio"></span></span>
+                            <span class="badge badge-pill badge-warning" style="font-size: 15px;">Prom: <span id="hotspot_Prom"></span></span>
                         </div>
                         <div id="panelHotspotLogin" class="text-center mt-3" style="width: 100%; display: none;">
                             <div class="spinner-border text-primary" role="status">
@@ -368,7 +368,7 @@
                             </div>
                         </div>
                         <div id="maingraphicHotspot" class="mt-4" style="width: 100%; min-height: 300px;">
-    
+
                         </div>
                     </div>
                 </div>
