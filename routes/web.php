@@ -25,6 +25,7 @@ Route::prefix('dashboard_freewifi')->group(function() {
     Route::get('devices','DashboardFreeWifiController@devices');
 
     Route::get('test_echart','DashboardFreeWifiController@index2');
+    Route::get('Metrorrey', 'DashboardFreeWifiController@index3');
 
     Route::get('sessions_report','DashboardFreeWifiController@sessions_report');
 });
