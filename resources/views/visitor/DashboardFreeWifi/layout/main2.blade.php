@@ -9,12 +9,12 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('aditional-styles')
 <body>
-    @include('visitor.DashboardFreeWifi.layout.navbar')
+    @include('visitor.DashboardFreeWifi.layout.navbar2')
 
     <div class="main" style="position: absolute; left: 0px;" >
 
     </div>
-    <div class="right" style="  margin-left:19%; margin-top: 2%;padding-right: 5%; ">
+    <div class="right" style="margin-top: 2%;padding-right: 5%; ">
         <br><br><br>
         @yield('content')
     </div>

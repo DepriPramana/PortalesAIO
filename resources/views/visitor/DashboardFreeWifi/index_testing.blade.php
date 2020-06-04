@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="col-12">
-            <h1 id="main-title"> <i class="fas fa-wifi"></i> Registro de Sesiones</h1>
+            <h1 id="main-title"> <i class="fas fa-wifi"></i> Registro de Sesiones Metrorrey</h1>
         </div>
 
         <div class="panel-hs" >
