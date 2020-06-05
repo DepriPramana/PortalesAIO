@@ -66,7 +66,7 @@
         <h3>Bienvenido a free wifi</h3> -->
 
         <div class="inputs">
-          <label>Nombre</label>
+          <!--<label>Nombre</label>
           <input type="text" id="name" name="name" value="" placeholder="Nombre completo" required>
           <br>
           <label>País</label>
@@ -83,8 +83,8 @@
             <option value="1">Masculino</option>
             <option value="2">Femenino</option>
           </select>
-          <br>
-          <label>Correo</label>
+          <br>-->
+          <label>Correo electrónico</label>
           <input type="email" id="email" name="email" value="" placeholder="Correo" required>
 
           <div id="div_check">
