@@ -117,15 +117,22 @@
 
 <script>
 
-  var imagen = Math.random();
+  //var imagen = Math.random();
+  var imagen = Math.random() < 0.5;
+  console.log(imagen);
+  if (imagen) {
+    document.getElementById("portal_img").src = "{{asset('free_wifi/pub/test/viva/viva_slogan.jpg')}}";
+  }else{
+    document.getElementById("portal_img").src = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
+  }
 
-  if(imagen < 0.33) {
+  /*if(imagen < 0.33) {
     document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal1.jpeg')}}';
   } else if(imagen < 0.66) {
     document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal2.jpeg')}}';
   } else {
     document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal3.jpeg')}}';
-  }
+  }*/
 
   var currentURL = window.location.href;
   var currentHost = window.location.hostname;

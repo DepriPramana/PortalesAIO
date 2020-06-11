@@ -157,6 +157,9 @@ Route::get('/FreeWifi', function(){
 Route::get('/Metrorrey',function(){
   return view('visitor.SitwifiFree.metrorrey');
 });
+Route::get('/FreeWifi_Test',function(){
+  return view('visitor.SitwifiFree.publicidad_test');
+});
 Route::get('/FreeWifi2/{site_code}', function($site_code){
   $site = $site_code;
   return view('visitor.SitwifiFree.free_wifi', compact('site'));
