@@ -25,7 +25,23 @@
 		width: 70vw;
 		height: 7vh;
 	}
+	.btn_spinner {
+		display: block;
+		border: solid 0px white;
+		color: white;
+		font-weight: bold;
+		margin: auto;
+		width: 70vw;
+		height: 7vh;
 
+	}
+	.parrafo {
+		display: block;
+		margin: auto;
+		width: 70vw;
+		
+		padding-left: 20%;
+	}
 	#div_check {
 		display: block;
 		margin: 5% 15%;
@@ -72,6 +88,26 @@
 		width: 30vw;
 		height: 7vh;
 		font-size: 100%;
+	}
+
+	.btn_spinner {
+		display: block;
+		border: solid 0px white;
+		color: white;
+		font-weight: bold;
+		margin: auto;
+		width: 30vw;
+		height: 7vh;
+		font-size: 100%;
+	}
+
+	.parrafo {
+		display: block;
+		margin: auto;
+		width: 30vw;
+
+		font-size: 100%;
+		padding-left: 11%;
 	}
 
 	#div_check {

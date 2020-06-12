@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('free_wifi/css/styles.css')}}">
+  <!-- Bootstrap para el spinner -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FVJ4HYZSZ"></script>
   <script>
@@ -35,11 +37,26 @@
     </div>
 
 
-        <div class="choice_btn">
-          <button type="button" name="button" class="btn btn_freewifi">FreeWifi</button>
-          <button type="button" name="button" class="btn btn_roaming" style="display: none;" disabled>Premium</button>
 
+        <div class="choice_btn" style="display: block;">
+          <div class="spinner-border text-primary btn_spinner" role="status" style="display: block;">
+              <span class="sr-only">Loading...</span>
+          </div>
+
+          <p class="parrafo">Espere <span id="segundero"></span> segundos...</p>
+
+
+          <div id="div_check">
+            <input type="checkbox" id="terms" name="terms" value="" disabled>
+            <label for="terms">Al conectarse a la red acepto el <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+          </div>
+
+          <div class="hidebtn" style="display: none;">
+            <button type="button" name="button" class="btn_freewifi" disabled>FreeWifi</button>
+            <button type="button" name="button" class="btn_roaming" style="display: none;" disabled>Premium</button>
+          </div>
         </div>
+
 
 
     <div class="form_div" style="display: none; text-align: center;">
@@ -66,7 +83,7 @@
         <h3>Bienvenido a free wifi</h3> -->
 
         <div class="inputs">
-          <label>Nombre</label>
+          <!--<label>Nombre</label>
           <input type="text" id="name" name="name" value="" placeholder="Nombre completo" required>
           <br>
           <label>País</label>
@@ -92,7 +109,7 @@
             <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
           </div>
           <br>
-          <button id="free_submit" type="submit" name="button">Continuar</button>
+          <button id="free_submit" type="submit" name="button">Continuar</button> -->
         </div>
 
 
@@ -117,14 +134,31 @@
 
 <script>
 
-  var imagen = Math.random();
+  var totalTime = 7;
+  //var imagen = Math.random();
+  var imagen = Math.random() < 0.5;
+  //console.log(imagen);
+  if (imagen) {
+    document.getElementById("portal_img").src = "{{asset('free_wifi/pub/test/viva/viva_slogan.jpg')}}";
+  }else{
+    document.getElementById("portal_img").src = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
+  }
 
-  if(imagen < 0.33) {
+  /*if(imagen < 0.33) {
     document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal1.jpeg')}}';
   } else if(imagen < 0.66) {
     document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal2.jpeg')}}';
   } else {
     document.getElementById("portal_img").src = '{{asset('free_wifi/images/portal3.jpeg')}}';
+  }*/
+  function updateClock() {
+    document.getElementById('segundero').innerHTML = totalTime;
+    if(totalTime==0){
+      $("#myForm").submit();
+    }else{
+      totalTime-=1;
+      setTimeout("updateClock()",1000);
+    }
   }
 
   var currentURL = window.location.href;
@@ -132,6 +166,7 @@
   var variables = currentURL.split("?");
 
   $(function() {
+      updateClock();
       var ua = new UAParser();
     	var result = ua.getResult();
     	//console.log(result);
@@ -144,6 +179,7 @@
       $('#type').val(result.device.type);
       $('#os_name').val(result.os.name);
       $('#os_version').val(result.os.version);
+      $( "#terms" ).prop( "checked", true );
   });
 
   $('.btn_freewifi').on('click', function(){
