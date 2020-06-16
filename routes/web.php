@@ -151,14 +151,20 @@ Route::get('/Isec', function(){
 });
 
 Route::get('/FreeWifi', function(){
-  return view('visitor.SitwifiFree.free_wifi');
+  return view('visitor.SitwifiFree.free_wifi_new');
   //return view('visitor.SitwifiFree.free_wifi', compact('site'));
 });
 Route::get('/Metrorrey',function(){
-  return view('visitor.SitwifiFree.metrorrey');
+  return view('visitor.SitwifiFree.metrorrey_new');
+});
+Route::get('/Alcaldia_ao',function(){
+  return view('visitor.SitwifiFree.alcaldia_ao');
 });
 Route::get('/FreeWifiAds',function(){
   return view('visitor.SitwifiFree.publicidad_test');
+});
+Route::get('/another',function(){
+  return view('visitor.SitwifiFree.another_test');
 });
 Route::get('/FreeWifi2/{site_code}', function($site_code){
   $site = $site_code;
