@@ -143,8 +143,8 @@
 
           <div class="col-4">
             <div class="row">
-              <div class="col-12"style="padding-left:5px;">
-                <img class="logos_extra" class="" src="{{asset('free_wifi/alcaldia_ao-min.png')}}" alt="logo_isa_corporativo" width="100px" height="47px" style="">
+              <div class="col-12 mt-2"style="padding-left:5px;">
+                <img class="logos_extra" class="" src="{{asset('free_wifi/metrobus_mexico.png')}}" alt="logo_isa_corporativo" width="70px" height="30px" style="">
               </div>
             </div>
           </div>
