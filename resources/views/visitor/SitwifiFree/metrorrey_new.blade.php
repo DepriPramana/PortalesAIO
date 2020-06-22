@@ -92,33 +92,36 @@
               <h3>Bienvenido a free wifi</h3> -->
 
               <div class="inputs">
-                <label>Nombre</label>
-                <input type="text" id="name" name="name" value="Metrorrey" placeholder="Nombre completo" required>
-                <br>
-                <label>País</label>
-                <select id="select_pais" name="select_pais" class="select2" required>
-                  <option value="">Seleccione una opcion</option>
-                </select>
-                <br>
-                <label>Edad</label>
-                <input type="number" id="edad" name="edad" placeholder="Edad" required>
-                <br>
-                <label>Género</label>
-                <select id="genero" name="genero" class="select2" required>
-                  <option value="">Seleccione una opcion</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>
-                </select>
-                <br>
-                <label>Correo electrónico</label>
-                <input type="email" id="email" name="email" value="" placeholder="Correo" required>
 
-                <div id="div_check">
+                  <!--<label>Nombre</label>
+                  <input type="text" id="name" name="name" value="Metrorrey" placeholder="Nombre completo" required>
+                  <br>
+                  <label>País</label>
+                  <select id="select_pais" name="select_pais" class="select2" required>
+                    <option value="">Seleccione una opcion</option>
+                  </select>
+                  <br>
+                  <label>Edad</label>
+                  <input type="number" id="edad" name="edad" placeholder="Edad" required>
+                  <br>
+                  <label>Género</label>
+                  <select id="genero" name="genero" class="select2" required>
+                    <option value="">Seleccione una opcion</option>
+                    <option value="1">Masculino</option>
+                    <option value="2">Femenino</option>
+                  </select>
+                  <br>-->
+
+                <p class="lead" style="padding-top: 10px;" id="text_cortesia">Regístrate para obtener WiFi de cortesía.</p>
+                <label>Correo electrónico</label>
+                <input type="email" id="email" name="email" value="" placeholder="tu@correo.com" required>
+
+                <div id="div_check" style="display:none;">
                   <input type="checkbox" id="terms" name="terms" value="">
                   <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
                 </div>
                 <br>
-                <button id="free_submit" type="submit" name="button">Continuar</button>
+                <button id="free_submit" type="submit" name="button">Conectar</button>
               </div>
 
 
@@ -154,7 +157,7 @@
 
           <div class="col-2"></div>
         </div>
-        <div id="div_check">
+        <div id="div_check" class="mt-2">
           <p class="footer_p" for="terms">Proveedor de Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad.</a></p>
           <p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>
         </div>
@@ -219,13 +222,12 @@
             $('#div_img2').css("display", "none"); // solo para el logo de primera
             $('#div_img').css("display", "block");
             $('#text_cortesia').css("display", "none");
-
             //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
             url = ""; // primeraplus redirrecion.
             document.getElementById("portal_img").src = order_2;
           }
-          updateClock_submit()
+          updateClock_submit();
         }else{
           totalTime_one-=1;
           setTimeout("updateClock_2ndimg()",1000);
@@ -235,7 +237,19 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          console.log('submitted');
+          if (imagen) {
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            document.getElementById("portal_img").src = order_1;
+            $('#p_segundero').css("display", "none");
+          }else{
+            $('#div_img2').css("display", "block"); // solo para el logo de primera
+            $('#div_img').css("display", "none");
+            document.getElementById("logo_primera").src = order_1;
+            $('#p_segundero').css("display", "none");
+          }
+          $('.form_div').css("display", "block");
+          //console.log('submitted');
           //$("#myForm").submit();
         }else{
           totalTime_two-=1;
