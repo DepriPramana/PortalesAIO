@@ -41,17 +41,32 @@
           <!-- background: #1f410d; -->
 
           <section class="bienvenida">
+
             <div class="container">
 
 
               <div id="div_img" style="text-align: center; display: none;">
-                <p class="lead" style="padding-top: 10px;" id="text_cortesia">WiFi cortesía de: </p>
-                <img id="portal_img" alt="pub">
+                <p class="lead p-lg-4 p-md-4" id="text_cortesia">WiFi cortesía de: </p>
+                  <div class="col-md-12 h-100">
+                      <div class="col-md-12 col-xs-12 my-auto" >
+                          <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
+                      </div>
+                  </div>
+
 
               </div>
+
+
               <div id="div_img2" style="text-align: center; display: none;">
-                <p class="lead" style="padding-top: 10px;" id="text_cortesia">WiFi cortesía de: </p>
-                <img id="logo_primera" alt="pub2">
+                <p class="lead p-lg-4 p-md-4"  id="text_cortesia">WiFi cortesía de: </p>
+
+                  <div class="col-md-12 h-100">
+                      <div class="col-md-12 col-xs-12 my-auto" >
+                          <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="logo_primera" alt="pub2">
+                      </div>
+                  </div>
+
+
               </div>
             </div>
 
@@ -208,11 +223,16 @@
       }
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
+          let height = $('#text_cortesia').height();
+          let cort_height =  height > 0 ? height : 30;
+
+
         if(totalTime_one==0){
           if (imagen) {
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             $('#text_cortesia').css("display", "none");
+            $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
             //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
@@ -222,6 +242,7 @@
             $('#div_img2').css("display", "none"); // solo para el logo de primera
             $('#div_img').css("display", "block");
             $('#text_cortesia').css("display", "none");
+            $('#portal_img').css('margin-top', '-'+cort_height+'px');
             //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
             url = ""; // primeraplus redirrecion.
