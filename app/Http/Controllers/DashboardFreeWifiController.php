@@ -19,7 +19,11 @@ class DashboardFreeWifiController extends Controller
         return view('visitor.DashboardFreeWifi.index');
 
     }
-
+    public function index3()
+    {
+      //$chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
+      return view('visitor.DashboardFreeWifi.index_testing');
+    }
     public function sessions()
     {
         return view('visitor.DashboardFreeWifi.sessions')->with("chains", $this->chains);

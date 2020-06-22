@@ -25,6 +25,7 @@ Route::prefix('dashboard_freewifi')->group(function() {
     Route::get('devices','DashboardFreeWifiController@devices');
 
     Route::get('test_echart','DashboardFreeWifiController@index2');
+    Route::get('metrorrey', 'DashboardFreeWifiController@index3');
 
     Route::get('sessions_report','DashboardFreeWifiController@sessions_report');
 });
@@ -153,6 +154,35 @@ Route::get('/FreeWifi', function(){
   return view('visitor.SitwifiFree.free_wifi');
   //return view('visitor.SitwifiFree.free_wifi', compact('site'));
 });
+Route::get('/Metrorrey',function(){
+  return view('visitor.SitwifiFree.metrorrey');
+});
+Route::get('/Alcaldia_ao',function(){
+  return view('visitor.SitwifiFree.alcaldia_ao');
+});
+Route::get('/FreeWifiAds',function(){
+  return view('visitor.SitwifiFree.publicidad_test');
+});
+
+
+Route::get('/test1',function(){
+  return view('visitor.SitwifiFree.free_wifi_new');
+});
+Route::get('/test2',function(){
+  return view('visitor.SitwifiFree.metrorrey_new');
+});
+Route::get('/test3',function(){
+  return view('visitor.SitwifiFree.alcaldia_ao');
+});
+Route::get('/test4',function(){
+  return view('visitor.SitwifiFree.ado');
+});
+Route::get('/test5',function(){
+  return view('visitor.SitwifiFree.metrobus');
+});
+
+
+
 Route::get('/FreeWifi2/{site_code}', function($site_code){
   $site = $site_code;
   return view('visitor.SitwifiFree.free_wifi', compact('site'));

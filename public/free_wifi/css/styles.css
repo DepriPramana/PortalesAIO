@@ -25,7 +25,23 @@
 		width: 70vw;
 		height: 7vh;
 	}
+	.btn_spinner {
+		display: block;
+		border: solid 0px white;
+		color: white;
+		font-weight: bold;
+		margin: auto;
+		width: 70vw;
+		height: 7vh;
 
+	}
+	.parrafo {
+		display: block;
+		margin: auto;
+		width: 70vw;
+		
+		padding-left: 20%;
+	}
 	#div_check {
 		display: block;
 		margin: 5% 15%;
@@ -74,6 +90,26 @@
 		font-size: 100%;
 	}
 
+	.btn_spinner {
+		display: block;
+		border: solid 0px white;
+		color: white;
+		font-weight: bold;
+		margin: auto;
+		width: 30vw;
+		height: 7vh;
+		font-size: 100%;
+	}
+
+	.parrafo {
+		display: block;
+		margin: auto;
+		width: 30vw;
+
+		font-size: 100%;
+		padding-left: 11%;
+	}
+
 	#div_check {
 		display: block;
 		margin: 30px;
@@ -89,16 +125,24 @@
 		font-size: 16px;
 	}
 
+	.logos_footer {
+		position:relative;
+		display: inline-block;
+		padding:15px;
+		vertical-align: top; /* if required */
+	}
+
 	#free_submit {
 		background-color: orange;
 		border: solid 0px white;
 		color: white;
 		font-weight: bold;
 		margin-bottom: 15px;
-		width: 15vw;
+		width: 20vw;
 		height: 5vh;
 		font-size: 100%;
 	}
+
 
 }
 
