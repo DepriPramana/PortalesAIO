@@ -46,7 +46,7 @@
 
 
               <div id="div_img" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4" id="text_cortesia">WiFi cortesía de: </p>
+                <p class="lead p-lg-4 p-md-4 p-xs-0" id="text_cortesia">WiFi cortesía de: </p>
                   <div class="col-md-12 h-100">
                       <div class="col-md-12 col-xs-12 my-auto" >
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
@@ -58,12 +58,10 @@
 
 
               <div id="div_img2" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4"  id="text_cortesia">WiFi cortesía de: </p>
+                <p class="lead p-lg-4 p-md-4 p-xs-0"  id="text_cortesia">WiFi cortesía de: </p>
 
-                  <div class="col-md-12 h-100">
-                      <div class="col-md-12 col-xs-12 my-auto" >
+                  <div class="col-md-12  col-xs-12  h-100">
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="logo_primera" alt="pub2">
-                      </div>
                   </div>
 
 
@@ -127,17 +125,17 @@
                   </select>
                   <br>-->
 
-                <p class="lead" style="padding-top: 10px;" id="text_cortesia">Regístrate para obtener WiFi de cortesía.</p>
-                <label>Correo electrónico</label>
-                <input type="email" id="email" name="email" value="" placeholder="tu@correo.com" required>
+                  <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
+                      <p class="lead large" style="padding-top: 10px;" id="text_cortesia">Regístrate para obtener <br>WiFi de cortesía</p>
+                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="tu@correo.com" required style="border-radius: 0 !important;">
+                      <div class="mb-4" id="div_check" style="display:none;">
+                          <input type="checkbox" id="terms" name="terms" value="">
+                          <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+                      </div>
+                      <button id="btn-connect" class="btn form-control" id="free_submit" type="submit" name="button" style="border-radius: 0 !important;" >Conectar</button>
+                  </div>
 
-                <div id="div_check" style="display:none;">
-                  <input type="checkbox" id="terms" name="terms" value="">
-                  <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
-                </div>
-                <br>
-                <button id="free_submit" type="submit" name="button">Conectar</button>
-              </div>
+             </div>
 
 
             </form>
@@ -263,11 +261,13 @@
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-success");
           }else{
             $('#div_img2').css("display", "block"); // solo para el logo de primera
             $('#div_img').css("display", "none");
             document.getElementById("logo_primera").src = order_1;
             $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-danger");
           }
           $('.form_div').css("display", "block");
           //console.log('submitted');
