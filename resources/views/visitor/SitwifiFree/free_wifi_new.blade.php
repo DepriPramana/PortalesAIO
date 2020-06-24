@@ -42,21 +42,23 @@
 
           <section class="bienvenida">
             <div class="container">
-
-
               <div id="div_img" style="text-align: center; display: none;">
-                <p class="lead" style="padding-top: 10px;" id="text_cortesia">WiFi cortesía de: </p>
-                <img id="portal_img" alt="pub">
-
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia" id="text_cortesia">WiFi cortesía de: </p>
+                  <div class="col-md-12 h-100">
+                      <div class="col-md-12 col-xs-12 my-auto" >
+                          <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
+                      </div>
+                  </div>
               </div>
               <div id="div_img2" style="text-align: center; display: none;">
-                <p class="lead" style="padding-top: 10px;" id="text_cortesia">WiFi cortesía de: </p>
-                <img id="logo_primera" alt="pub2">
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia2">WiFi cortesía de: </p>
+                  <div class="col-md-12  col-xs-12  h-100">
+                          <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="logo_primera" alt="pub2">
+                  </div>
               </div>
             </div>
-
-
           </section>
+
 
           <!--<div class="spinner-border text-primary btn_spinner" role="status" style="display: block;">
               <span class="sr-only">Loading...</span>
@@ -92,33 +94,48 @@
               <h3>Bienvenido a free wifi</h3> -->
 
               <div class="inputs">
-                <label>Nombre</label>
-                <input type="text" id="name" name="name" value="" placeholder="Nombre completo" required>
-                <br>
-                <label>País</label>
-                <select id="select_pais" name="select_pais" class="select2" required>
-                  <option value="">Seleccione una opcion</option>
-                </select>
-                <br>
-                <label>Edad</label>
-                <input type="number" id="edad" name="edad" placeholder="Edad" required>
-                <br>
-                <label>Género</label>
-                <select id="genero" name="genero" class="select2" required>
-                  <option value="">Seleccione una opcion</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>
-                </select>
-                <br>
-                <label>Correo electrónico</label>
-                <input type="email" id="email" name="email" value="" placeholder="Correo" required>
-                <br>
-                <div id="div_check_2" style="display: none;">
-                  <input type="checkbox" id="terms" name="terms" value="">
-                  <label for="terms">He leído y acepto <a class="a_section" href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
-                </div>
-                <br>
-                <button class="mb-2" id="free_submit" type="submit" name="button">Continuar</button>
+                  <!--<label>Nombre</label>
+                  <input type="text" id="name" name="name" value="Metrorrey" placeholder="Nombre completo" required>
+                  <br>
+                  <label>País</label>
+                  <select id="select_pais" name="select_pais" class="select2" required>
+                    <option value="">Seleccione una opcion</option>
+                  </select>
+                  <br>
+                  <label>Edad</label>
+                  <input type="number" id="edad" name="edad" placeholder="Edad" required>
+                  <br>
+                  <label>Género</label>
+                  <select id="genero" name="genero" class="select2" required>
+                    <option value="">Seleccione una opcion</option>
+                    <option value="1">Masculino</option>
+                    <option value="2">Femenino</option>
+                  </select>
+                  <br>-->
+                  <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
+                      <p class="lead large" style="padding-top: 10px;">Regístrate para obtener <br>WiFi de cortesía</p>
+
+                      <input class="form-control" type="text" id="name" name="name" value="" placeholder="Nombre completo" required>
+
+                      <select class="form-control" id="select_pais" name="select_pais" class="select2" required>
+                        <option value="">Seleccione país</option>
+                      </select>
+
+                      <input class="form-control" type="number" id="edad" name="edad" placeholder="Edad" required>
+
+                      <select class="form-control" id="genero" name="genero" class="select2" required>
+                        <option value="">Seleccione género</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Femenino</option>
+                      </select>
+                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="tu@correo.com" required style="border-radius: 0 !important;">
+                      <div class="mb-4" id="div_check" style="display:none;">
+                          <input type="checkbox" id="terms" name="terms" value="">
+                          <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+                      </div>
+                      <button id="btn-connect" class="btn form-control" id="free_submit" type="submit" name="button" style="border-radius: 0 !important;" >Conectar</button>
+                  </div>
+
               </div>
 
 
@@ -204,27 +221,36 @@
       }
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
+          let height = $('#text_cortesia').height();
+          //let height = $('#text_cortesia2').height();
+          let cort_height =  height > 0 ? height : 30;
+
+
         if(totalTime_one==0){
           if (imagen) {
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
-            $('#text_cortesia').css("display", "none");
-            $('.form_div').css("display", "block");
-            //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.jpg')}}";
+            $('.text_cortesia').css("display", "none");
+            $('#portal_img').css('margin-top', '-'+cort_height+'px');
+
+            //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
-            url = "";
+            url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
+            $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
           }else{
             $('#div_img2').css("display", "none"); // solo para el logo de primera
             $('#div_img').css("display", "block");
-            $('#text_cortesia').css("display", "none");
-            $('.form_div').css("display", "block");
+            $('.text_cortesia').css("display", "none");
+            $('#logo_primera').css('margin-top', '-'+cort_height+'px');
+            $('#portal_img').css('margin-top', '-'+cort_height+'px');
             //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
-            url = "";
+            url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
+            $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
           }
-          //updateClock_submit()
+          updateClock_submit();
         }else{
           totalTime_one-=1;
           setTimeout("updateClock_2ndimg()",1000);
@@ -234,21 +260,37 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          console.log('submitted');
+          if (imagen) {
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            document.getElementById("portal_img").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-success");
+          }else{
+            $('#div_img2').css("display", "block"); // solo para el logo de primera
+            $('#div_img').css("display", "none");
+            document.getElementById("logo_primera").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-danger");
+          }
+          $('.form_div').css("display", "block");
+          //console.log('submitted');
           //$("#myForm").submit();
         }else{
           totalTime_two-=1;
           setTimeout("updateClock_submit()",1000);
         }
       }
+      function hide(){
+        $('#select_pais').next(".select2-container").hide();
+        $('#genero').next(".select2-container").hide();
+      }
       $(function() {
+          //hide();
           updateClock_2ndimg()
           var ua = new UAParser();
           var result = ua.getResult();
-          //console.log(result);
-          //console.log(result.browser);
-          //console.log(result.device);
-          //console.log(result.os);
+
           $('#vendor').val(result.device.vendor);
           $('#model').val(result.device.model);
           $('#type').val(result.device.type);
@@ -257,14 +299,14 @@
           $( "#terms" ).prop( "checked", true );
       });
 
-      $('#myForm').submit(function() {
+      /*$('#myForm').submit(function() {
         if(!$('#terms').is(':checked')){
             swal({title: "Error!", text:"Acepte los términos y condiciones para conectarse a la red.", type:"error", confirmButtonText: "Continuar" });
             return false;
         }else{
           return true;
         }
-      });
+      });*/
     </script>
   </body>
 </html>

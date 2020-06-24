@@ -41,34 +41,22 @@
           <!-- background: #1f410d; -->
 
           <section class="bienvenida">
-
             <div class="container">
-
-
               <div id="div_img" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4 p-xs-0" id="text_cortesia">WiFi cortesía de: </p>
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia" id="text_cortesia">WiFi cortesía de: </p>
                   <div class="col-md-12 h-100">
                       <div class="col-md-12 col-xs-12 my-auto" >
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
                       </div>
                   </div>
-
-
               </div>
-
-
               <div id="div_img2" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4 p-xs-0"  id="text_cortesia">WiFi cortesía de: </p>
-
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia2">WiFi cortesía de: </p>
                   <div class="col-md-12  col-xs-12  h-100">
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="logo_primera" alt="pub2">
                   </div>
-
-
               </div>
             </div>
-
-
           </section>
 
           <!--<div class="spinner-border text-primary btn_spinner" role="status" style="display: block;">
@@ -103,9 +91,17 @@
 
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
-
+              <input type="hidden" id="name" name="name" value="Metrorrey" placeholder="Nombre completo">
+              <select id="select_pais" name="select_pais" class="select2" hidden>
+                <option value="">Seleccione una opcion</option>
+              </select>
+              <input type="hidden" id="edad" name="edad" placeholder="Edad" hidden>
+              <select id="genero" name="genero" class="select2">
+                <option value="">Seleccione una opcion</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+              </select>
               <div class="inputs">
-
                   <!--<label>Nombre</label>
                   <input type="text" id="name" name="name" value="Metrorrey" placeholder="Nombre completo" required>
                   <br>
@@ -124,9 +120,8 @@
                     <option value="2">Femenino</option>
                   </select>
                   <br>-->
-
                   <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
-                      <p class="lead large" style="padding-top: 10px;" id="text_cortesia">Regístrate para obtener <br>WiFi de cortesía</p>
+                      <p class="lead large" style="padding-top: 10px;">Regístrate para obtener <br>WiFi de cortesía</p>
                       <input class="form-control" type="email" id="email" name="email" value="" placeholder="tu@correo.com" required style="border-radius: 0 !important;">
                       <div class="mb-4" id="div_check" style="display:none;">
                           <input type="checkbox" id="terms" name="terms" value="">
@@ -222,6 +217,7 @@
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
           let height = $('#text_cortesia').height();
+          //let height = $('#text_cortesia2').height();
           let cort_height =  height > 0 ? height : 30;
 
 
@@ -229,21 +225,24 @@
           if (imagen) {
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
-            $('#text_cortesia').css("display", "none");
+            $('.text_cortesia').css("display", "none");
             $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
             //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
-            url = ""; //vivaaerobus redireccion.
+            url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
+            $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
           }else{
             $('#div_img2').css("display", "none"); // solo para el logo de primera
             $('#div_img').css("display", "block");
-            $('#text_cortesia').css("display", "none");
+            $('.text_cortesia').css("display", "none");
+            $('#logo_primera').css('margin-top', '-'+cort_height+'px');
             $('#portal_img').css('margin-top', '-'+cort_height+'px');
             //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
-            url = ""; // primeraplus redirrecion.
+            url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
+            $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
           }
           updateClock_submit();
@@ -277,7 +276,12 @@
           setTimeout("updateClock_submit()",1000);
         }
       }
+      function hide(){
+        $('#select_pais').next(".select2-container").hide();
+        $('#genero').next(".select2-container").hide();
+      }
       $(function() {
+          hide();
           updateClock_2ndimg()
           var ua = new UAParser();
           var result = ua.getResult();
@@ -290,14 +294,14 @@
           $( "#terms" ).prop( "checked", true );
       });
 
-      $('#myForm').submit(function() {
+      /*$('#myForm').submit(function() {
         if(!$('#terms').is(':checked')){
             swal({title: "Error!", text:"Acepte los términos y condiciones para conectarse a la red.", type:"error", confirmButtonText: "Continuar" });
             return false;
         }else{
           return true;
         }
-      });
+      });*/
     </script>
   </body>
 </html>

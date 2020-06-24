@@ -20,6 +20,7 @@
 		<input class="form-control" type="hidden" id="ssid" name="ssid" value="{{ $ssid }}" />
 		<input class="form-control" type="hidden" id="url" name="url" value="{{ $url }}" />
 		<input class="form-control" type="hidden" id="vlan" name="vlan" value="{{ $vlan }}" />
+		<input class="form-control" type="hidden" id="url" name="url" value="{{ $url }}" />
 		<!--  <button type="button" id="btn_logeo" name="btn_logeo">submit</button> -->
 	</form>
 </body>

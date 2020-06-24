@@ -41,7 +41,6 @@
           <!-- background: #1f410d; -->
 
           <section class="bienvenida">
-
             <div class="container">
               <div id="div_img" style="text-align: center; display: none;">
                 <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia" id="text_cortesia">WiFi cortesía de: </p>
@@ -52,7 +51,7 @@
                   </div>
               </div>
               <div id="div_img2" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia">WiFi cortesía de: </p>
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia2">WiFi cortesía de: </p>
                   <div class="col-md-12  col-xs-12  h-100">
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="logo_primera" alt="pub2">
                   </div>
@@ -92,7 +91,7 @@
 
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
-              <input type="hidden" id="name" name="name" value="Metrobus" placeholder="Nombre completo" >
+              <input type="hidden" id="name" name="name" value="Aryba" placeholder="Nombre completo" >
               <select id="select_pais" name="select_pais" class="select2" hidden >
                 <option value="">Seleccione una opcion</option>
               </select>
@@ -103,8 +102,9 @@
                 <option value="2">Femenino</option>
               </select>
               <div class="inputs">
+
                   <!--<label>Nombre</label>
-                  <input type="text" id="name" name="name" value="Metrobus" placeholder="Nombre completo" required>
+                  <input type="text" id="name" name="name" value="Aryba" placeholder="Nombre completo" required>
                   <br>
                   <label>País</label>
                   <select id="select_pais" name="select_pais" class="select2" required>
@@ -142,7 +142,8 @@
       </div>
 
 
-      <p class="lead" id="p_segundero" style="display: none;">Espere <span id="segundero"></span> segundos...</p>      <!--<footer class="mastfoot mt-auto">-->
+      <p class="lead" id="p_segundero" style="display: none;">Espere <span id="segundero"></span> segundos...</p>
+      <!--<footer class="mastfoot mt-auto">-->
       <footer class="mastfoot mt-2">
         <!--<p>Ayuda telefónica <strong>800 112 1122</strong></p>-->
 
@@ -155,15 +156,16 @@
 
           <div class="col-4">
             <div class="row">
-              <div class="col-12 mt-2"style="padding-left:5px;">
-                <img class="logos_extra" class="" src="{{asset('free_wifi/metrobus_mexico.png')}}" alt="logo_isa_corporativo" width="70px" height="30px" style="">
+              <div class="col-12"style="padding-left:5px;">
+                <img class="logos_extra" class="" src="{{asset('free_wifi/aryba.jpg')}}" alt="logo_isa_corporativo" width="70px" height="58px" style="">
               </div>
+
             </div>
           </div>
 
           <div class="col-2"></div>
         </div>
-        <div id="div_check">
+        <div id="div_check" class="mt-2">
           <p class="footer_p" for="terms">Proveedor de Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad.</a></p>
           <p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>
         </div>

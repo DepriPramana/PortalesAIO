@@ -132,7 +132,7 @@ class FreeWifiController extends Controller
 
       //DB::table('FreeWifiTest')->insert(['name' => $name,'country' => $pais,'email' => $email,'mac_address' => $client_mac]);
 
-      return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'site_name'));
+      return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'url', 'site_name'));
       //return $request;
     }
     public function insertRadCloudFreeWifi($user, $name,$fechaout, $site_code)
