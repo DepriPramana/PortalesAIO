@@ -121,7 +121,7 @@
                         <option value="">Seleccione país</option>
                       </select>
 
-                      <input class="form-control" type="number" id="edad" name="edad" placeholder="Edad" required>
+                      <input class="form-control" type="number" id="edad" name="edad" min="10" max="80" placeholder="Edad" required>
 
                       <select class="form-control" id="genero" name="genero" class="select2" required>
                         <option value="">Seleccione género</option>
@@ -173,7 +173,7 @@
         </div>
         <div class="mt-2">
           <p class="footer_p" for="terms">Proveedor de Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad.</a></p>
-          <p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>
+          <!--<p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>-->
         </div>
       </footer>
     </div>

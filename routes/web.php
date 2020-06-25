@@ -155,15 +155,12 @@ Route::get('/FreeWifi', function(){
   //return view('visitor.SitwifiFree.free_wifi', compact('site'));
 });
 Route::get('/Metrorrey',function(){
-  return view('visitor.SitwifiFree.metrorrey');
-});
-Route::get('/Metrorrey2',function(){
   return view('visitor.SitwifiFree.metrorrey_new');
 });
 Route::get('/Alcaldia_ao',function(){
   return view('visitor.SitwifiFree.alcaldia_ao');
 });
-Route::get('/Galerias',function(){
+Route::get('/Aryba',function(){
   return view('visitor.SitwifiFree.grupo_aryba');
 });
 Route::get('/ADO',function(){
@@ -172,9 +169,12 @@ Route::get('/ADO',function(){
 Route::get('/Metrobus',function(){
   return view('visitor.SitwifiFree.metrobus');
 });
+/*Route::get('/Metrorrey2',function(){
+  return view('visitor.SitwifiFree.metrorrey_new');
+});
 Route::get('/FreeWifi2', function(){
   return view('visitor.SitwifiFree.free_wifi_new');
-});
+});*/
 Route::get('/Aeris_CR', function(){
   return view('visitor.Aeris.aeris');
 });
