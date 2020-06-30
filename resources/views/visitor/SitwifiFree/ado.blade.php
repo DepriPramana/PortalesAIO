@@ -198,29 +198,29 @@
     <script src="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.min.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.css')}}">
     <script>
-      var totalTime_one = 2;
-      var totalTime_two = 2;
+      var totalTime_one = 5;
+      var totalTime_two = 20;
       var url = ""; // redirrecion
       var imagen = Math.random() < 0.5;
 
       if (imagen) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
-        $('.bg_container').css("background-color", "#1f410d");
-
-        var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
+        $('.bg_container').css("background-color", "#C5EEEC"); // C5EEEC
+        // color para el boton 7B9796
+        var order_1 = "{{asset('free_wifi/pub/test/ado/ado_logo_pub.png')}}";
+        var order_2 = "{{asset('free_wifi/pub/test/ado/banner1.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
       }else{
-        $('#div_img2').css("display", "block"); // solo para el logo de primera
-        $('#div_img').css("display", "none");
-        $('.bg_container').css("background-color", "#6ec8db");
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none"); // solo para el logo de primera
+        $('.bg_container').css("background-color", "#C5EEEC");
 
-        var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
+        var order_1 = "{{asset('free_wifi/pub/test/ado/ado_logo_pub.png')}}";
+        var order_2 = "{{asset('free_wifi/pub/test/ado/banner2.gif')}}";
 
-        document.getElementById("logo_primera").src = order_1;
+        document.getElementById("portal_img").src = order_1;
       }
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
@@ -237,18 +237,18 @@
 
             //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
-            url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
+            url = "https://www.ado.com.mx/"; //vivaaerobus redireccion.
             $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
           }else{
-            $('#div_img2').css("display", "none"); // solo para el logo de primera
             $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none"); // solo para el logo de primera
             $('.text_cortesia').css("display", "none");
-            $('#logo_primera').css('margin-top', '-'+cort_height+'px');
             $('#portal_img').css('margin-top', '-'+cort_height+'px');
+            //$('#logo_primera').css('margin-top', '-'+cort_height+'px');
             //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
             //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
-            url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
+            url = "https://www.ado.com.mx/"; // primeraplus redirrecion.
             $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
           }
@@ -267,11 +267,11 @@
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-success");
+            $('#btn-connect').addClass("btn-danger");
           }else{
-            $('#div_img2').css("display", "block"); // solo para el logo de primera
-            $('#div_img').css("display", "none");
-            document.getElementById("logo_primera").src = order_1;
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none"); // solo para el logo de primera
+            document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-danger");
           }

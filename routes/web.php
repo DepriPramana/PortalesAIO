@@ -171,12 +171,12 @@ Route::get('/Metrobus',function(){
 Route::get('/Asur',function(){
   return view('visitor.SitwifiFree.asur');
 });
-/*Route::get('/Metrorrey2',function(){
-  return view('visitor.SitwifiFree.metrorrey_new');
-});
+//Route::get('/Metrorrey2',function(){
+//  return view('visitor.SitwifiFree.metrorrey_new');
+//});
 Route::get('/FreeWifi2', function(){
-  return view('visitor.SitwifiFree.free_wifi_new');
-});*/
+  return view('visitor.SitwifiFree.free_wifi');
+});
 Route::get('/Aeris_CR', function(){
   return view('visitor.Aeris.aeris');
 });
