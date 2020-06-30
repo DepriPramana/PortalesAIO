@@ -153,7 +153,7 @@
           <div class="col-2"></div>
         </div>
         <div id="div_check">
-          <p class="footer_p" for="terms">Proveedor de Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad.</a></p>
+          <p class="footer_p" for="terms">Al hacer clic en el botón, estás de acuerdo y aceptas el - <a href="{{asset('free_wifi/aviso_privacidad.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad</a> y <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Términos y condiciones.</a></p>
           <!--<p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>-->
         </div>
       </footer>
@@ -248,7 +248,7 @@
           $('#type').val(result.device.type);
           $('#os_name').val(result.os.name);
           $('#os_version').val(result.os.version);
-          $( "#terms" ).prop( "checked", true );
+          //$( "#terms" ).prop( "checked", true );
       });
 
       /*$('#myForm').submit(function() {

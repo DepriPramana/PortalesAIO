@@ -123,10 +123,10 @@
                   <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
                       <p class="lead large" style="padding-top: 10px;">Regístrate para obtener <br>WiFi de cortesía</p>
                       <input class="form-control" type="email" id="email" name="email" value="" placeholder="tu@correo.com" required style="border-radius: 0 !important;">
-                      <div class="mb-4" id="div_check" style="display:none;">
-                          <input type="checkbox" id="terms" name="terms" value="">
-                          <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
-                      </div>
+                      <!--<div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
+                        <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+                      </div>-->
                       <button id="btn-connect" class="btn form-control" id="free_submit" type="submit" name="button" style="border-radius: 0 !important;" >Conectar</button>
                   </div>
 
@@ -166,7 +166,7 @@
           <div class="col-2"></div>
         </div>
         <div id="div_check" class="mt-2">
-          <p class="footer_p" for="terms">Proveedor de Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad.</a></p>
+          <p class="footer_p" for="terms">Al hacer clic en el botón, estás de acuerdo y aceptas el - <a href="{{asset('free_wifi/aviso_privacidad.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad</a> y <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Términos y condiciones.</a></p>
           <!--<p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>-->
         </div>
       </footer>
@@ -291,7 +291,7 @@
           $('#type').val(result.device.type);
           $('#os_name').val(result.os.name);
           $('#os_version').val(result.os.version);
-          $( "#terms" ).prop( "checked", true );
+          //$( "#terms" ).prop( "checked", true );
       });
 
       /*$('#myForm').submit(function() {

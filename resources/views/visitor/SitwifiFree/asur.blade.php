@@ -91,48 +91,36 @@
 
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
-              <input type="hidden" id="name" name="name" value="Aryba" placeholder="Nombre completo" >
-              <select id="select_pais" name="select_pais" class="select2" hidden >
-                <option value="">Seleccione una opcion</option>
-              </select>
-              <input type="hidden" id="edad" name="edad" placeholder="Edad" hidden >
-              <select id="genero" name="genero" class="select2" >
-                <option value="">Seleccione una opcion</option>
-                <option value="1">Masculino</option>
-                <option value="2">Femenino</option>
-              </select>
+
               <div class="inputs">
+                <label>Nombre</label>
+                <input type="text" id="name" name="name" value="Alcaldia" placeholder="Nombre completo">
+                <br>
+                <label>País</label>
+                <select id="select_pais" name="select_pais" class="select2">
+                  <option value="">Seleccione una opcion</option>
+                </select>
+                <br>
+                <label>Edad</label>
+                <input type="number" id="edad" name="edad" placeholder="Edad">
+                <br>
+                <label>Género</label>
+                <select id="genero" name="genero" class="select2">
+                  <option value="">Seleccione una opcion</option>
+                  <option value="1">Masculino</option>
+                  <option value="2">Femenino</option>
+                </select>
+                <br>
+                <label>Correo electrónico</label>
+                <input type="email" id="email" name="email" value="" placeholder="Correo">
 
-                  <!--<label>Nombre</label>
-                  <input type="text" id="name" name="name" value="Aryba" placeholder="Nombre completo" required>
-                  <br>
-                  <label>País</label>
-                  <select id="select_pais" name="select_pais" class="select2" required>
-                    <option value="">Seleccione una opcion</option>
-                  </select>
-                  <br>
-                  <label>Edad</label>
-                  <input type="number" id="edad" name="edad" placeholder="Edad" required>
-                  <br>
-                  <label>Género</label>
-                  <select id="genero" name="genero" class="select2" required>
-                    <option value="">Seleccione una opcion</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
-                  </select>
-                  <br>-->
-
-                  <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
-                      <p class="lead large" style="padding-top: 10px;">Regístrate para obtener <br>WiFi de cortesía</p>
-                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="tu@correo.com" required style="border-radius: 0 !important;">
-                      <!--<div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
-                        <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
-                      </div>-->
-                      <button id="btn-connect" class="btn form-control" id="free_submit" type="submit" name="button" style="border-radius: 0 !important;" >Conectar</button>
-                  </div>
-
-             </div>
+                <div id="div_check">
+                  <input type="checkbox" id="terms" name="terms" value="">
+                  <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+                </div>
+                <br>
+                <button id="free_submit" type="submit" name="button">Continuar</button>
+              </div>
 
 
             </form>
@@ -157,15 +145,14 @@
           <div class="col-4">
             <div class="row">
               <div class="col-12"style="padding-left:5px;">
-                <img class="logos_extra" class="" src="{{asset('free_wifi/aryba.jpg')}}" alt="logo_isa_corporativo" width="70px" height="58px" style="">
+                <!--<img class="logos_extra" class="" src="" alt="logo_isa_corporativo" width="100px" height="47px" style="">-->
               </div>
-
             </div>
           </div>
 
           <div class="col-2"></div>
         </div>
-        <div id="div_check" class="mt-2">
+        <div id="div_check">
           <p class="footer_p" for="terms">Al hacer clic en el botón, estás de acuerdo y aceptas el - <a href="{{asset('free_wifi/aviso_privacidad.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad</a> y <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Términos y condiciones.</a></p>
           <!--<p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>-->
         </div>
@@ -216,19 +203,12 @@
       }
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
-          let height = $('#text_cortesia').height();
-          let cort_height =  height > 0 ? height : 30;
-
-
         if(totalTime_one==0){
           if (imagen) {
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             $('.text_cortesia').css("display", "none");
-            $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-            //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
-            //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
             url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
             $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
@@ -236,15 +216,12 @@
             $('#div_img2').css("display", "none"); // solo para el logo de primera
             $('#div_img').css("display", "block");
             $('.text_cortesia').css("display", "none");
-            $('#logo_primera').css('margin-top', '-'+cort_height+'px');
-            $('#portal_img').css('margin-top', '-'+cort_height+'px');
-            //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
-            //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
+
             url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
             $('#url').val(url);
             document.getElementById("portal_img").src = order_2;
           }
-          updateClock_submit();
+          updateClock_submit()
         }else{
           totalTime_one-=1;
           setTimeout("updateClock_2ndimg()",1000);
@@ -254,33 +231,14 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          if (imagen) {
-            $('#div_img').css("display", "block");
-            $('#div_img2').css("display", "none");
-            document.getElementById("portal_img").src = order_1;
-            $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-success");
-          }else{
-            $('#div_img2').css("display", "block"); // solo para el logo de primera
-            $('#div_img').css("display", "none");
-            document.getElementById("logo_primera").src = order_1;
-            $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-danger");
-          }
-          $('.form_div').css("display", "block");
           //console.log('submitted');
-          //$("#myForm").submit();
+          $("#myForm").submit();
         }else{
           totalTime_two-=1;
           setTimeout("updateClock_submit()",1000);
         }
       }
-      function hide(){
-        $('#select_pais').next(".select2-container").hide();
-        $('#genero').next(".select2-container").hide();
-      }
       $(function() {
-          hide();
           updateClock_2ndimg()
           var ua = new UAParser();
           var result = ua.getResult();
@@ -290,7 +248,7 @@
           $('#type').val(result.device.type);
           $('#os_name').val(result.os.name);
           $('#os_version').val(result.os.version);
-          //$( "#terms" ).prop( "checked", true );
+          $( "#terms" ).prop( "checked", true );
       });
 
       /*$('#myForm').submit(function() {
