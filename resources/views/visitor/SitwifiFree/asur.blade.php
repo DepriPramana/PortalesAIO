@@ -177,12 +177,19 @@
     <script src="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.min.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{asset('bluebay/js/sweetalert-master/dist/sweetalert.css')}}">
     <script>
+      function p(probability) {
+        return Math.random() < probability;
+      }
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
       var totalTime_one = 5;
       var totalTime_two = 20;
       var url = ""; // redirrecion
-      var imagen = Math.random() < 0.5;
+      var imagen = getRandomInt(4);
 
-      if (imagen) {
+
+      if (imagen == 1) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#1f410d");
@@ -191,7 +198,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }else{
+      }else if(imagen == 2){
         $('#div_img2').css("display", "block"); // solo para el logo de primera
         $('#div_img').css("display", "none");
         $('.bg_container').css("background-color", "#6ec8db");
@@ -200,32 +207,83 @@
         var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
 
         document.getElementById("logo_primera").src = order_1;
+      }else if (imagen == 3) {
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        $('.bg_container').css("background-color", "#C5EEEC");
+
+        var order_1 = "{{asset('free_wifi/pub/test/ado/ado_logo_pub.png')}}";
+        var order_2 = "{{asset('free_wifi/pub/test/ado/banner1.jpg')}}";
+
+        document.getElementById("portal_img").src = order_1;
+      }else{
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        $('.bg_container').css("background-color", "#C5EEEC");
+
+        var order_1 = "{{asset('free_wifi/pub/test/ado/ado_logo_pub.png')}}";
+        var order_2 = "{{asset('free_wifi/pub/test/ado/banner2.gif')}}";
+
+        document.getElementById("portal_img").src = order_1;
       }
+
+
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
-        if(totalTime_one==0){
-          if (imagen) {
-            $('#div_img').css("display", "block");
-            $('#div_img2').css("display", "none");
-            $('.text_cortesia').css("display", "none");
+          let height = $('#text_cortesia').height();
+          //let height = $('#text_cortesia2').height();
+          let cort_height =  height > 0 ? height : 30;
+          if(totalTime_one==0){
+            if (imagen == 1) {
+              $('#div_img').css("display", "block");
+              $('#div_img2').css("display", "none");
+              $('.text_cortesia').css("display", "none");
+              $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-            url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
-            $('#url').val(url);
-            document.getElementById("portal_img").src = order_2;
+              //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
+              //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
+              url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
+              $('#url').val(url);
+              document.getElementById("portal_img").src = order_2;
+            }else if(imagen == 2){
+              $('#div_img2').css("display", "none"); // solo para el logo de primera
+              $('#div_img').css("display", "block");
+              $('.text_cortesia').css("display", "none");
+              $('#logo_primera').css('margin-top', '-'+cort_height+'px');
+              $('#portal_img').css('margin-top', '-'+cort_height+'px');
+              //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
+              //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
+              url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
+              $('#url').val(url);
+              document.getElementById("portal_img").src = order_2;
+            }else if(imagen == 3){
+              $('#div_img').css("display", "block");
+              $('#div_img2').css("display", "none");
+              $('.text_cortesia').css("display", "none");
+              $('#portal_img').css('margin-top', '-'+cort_height+'px');
+
+              //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
+              //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
+              url = "https://www.ado.com.mx/"; //ado1 redireccion.
+              $('#url').val(url);
+              document.getElementById("portal_img").src = order_2;
+            }else{
+              $('#div_img').css("display", "block");
+              $('#div_img2').css("display", "none");
+              $('.text_cortesia').css("display", "none");
+              $('#portal_img').css('margin-top', '-'+cort_height+'px');
+
+              //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
+              //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
+              url = "https://www.ado.com.mx/"; //ado2 redireccion.
+              $('#url').val(url);
+              document.getElementById("portal_img").src = order_2;
+            }
+            updateClock_submit();
           }else{
-            $('#div_img2').css("display", "none"); // solo para el logo de primera
-            $('#div_img').css("display", "block");
-            $('.text_cortesia').css("display", "none");
-
-            url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
-            $('#url').val(url);
-            document.getElementById("portal_img").src = order_2;
+            totalTime_one-=1;
+            setTimeout("updateClock_2ndimg()",1000);
           }
-          updateClock_submit()
-        }else{
-          totalTime_one-=1;
-          setTimeout("updateClock_2ndimg()",1000);
-        }
       }
       function updateClock_submit() {
         $('#p_segundero').css("display", "block");
@@ -238,7 +296,12 @@
           setTimeout("updateClock_submit()",1000);
         }
       }
+      function hide(){
+        $('#select_pais').next(".select2-container").hide();
+        $('#genero').next(".select2-container").hide();
+      }
       $(function() {
+          //hide();
           updateClock_2ndimg()
           var ua = new UAParser();
           var result = ua.getResult();
@@ -248,7 +311,7 @@
           $('#type').val(result.device.type);
           $('#os_name').val(result.os.name);
           $('#os_version').val(result.os.version);
-          $( "#terms" ).prop( "checked", true );
+          //$( "#terms" ).prop( "checked", true );
       });
 
       /*$('#myForm').submit(function() {
