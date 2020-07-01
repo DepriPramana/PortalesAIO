@@ -157,7 +157,7 @@
           <div class="col-4">
             <div class="row">
               <div class="col-12"style="padding-left:5px;">
-                <img class="logos_extra" class="" src="{{asset('free_wifi/aryba.jpg')}}" alt="logo_isa_corporativo" width="70px" height="58px" style="">
+                <img class="logos_extra" class="" src="{{asset('free_wifi/altaria_aryba.png')}}" alt="logo_aryba" width="100px" height="60px" style="">
               </div>
 
             </div>
