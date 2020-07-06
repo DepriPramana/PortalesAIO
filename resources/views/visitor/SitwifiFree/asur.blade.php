@@ -36,7 +36,7 @@
         </div>
       </header>
 
-      <div id="main-container" class="mt-2 bg_container" role="main" style="height:700px;">
+      <div id="main-container" class="mt-2 bg_container" role="main" style="height:750px;">
         <main  class="inner cover mb-auto mt-auto">
           <!-- background: #1f410d; -->
 
@@ -130,12 +130,13 @@
                       <button id="btn-connect" class="btn form-control" type="submit" name="button" style="border-radius: 0 !important;" >Conectar</button>
                   </div>
                   <div class="col-md-8 offset-md-2 mb-5">
+                      <img id="logo_sct" src="{{asset('free_wifi/sct.png')}}" width="100px" height="40px" alt="logo">
                       <p class="lead large" style="padding-top: 10px; color:black;"><b>!Cuida tu salud!</b> <br>Resuelve este cuestionario de identificación de factores de riesgo de viajeros.</p>
                       <!--<div class="form-check">
                         <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
                         <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
                       </div>-->
-                      <button id="btn-connect-asur" class="btn form-control" type="submit" name="button" style="border-radius: 0 !important;" >Cuestionario</button>
+                      <button id="btn-connect-asur" onclick="query_sct()" class="btn form-control" type="button" name="button" style="border-radius: 0 !important;" >Cuestionario</button>
                   </div>
              </div>
 
@@ -314,24 +315,28 @@
             document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-success");
+            $('#btn-connect-asur').addClass("btn-success");
           }else if(imagen == 2){
             $('#div_img2').css("display", "block"); // solo para el logo de primera
             $('#div_img').css("display", "none");
             document.getElementById("logo_primera").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-danger");
+            $('#btn-connect-asur').addClass("btn-danger");
           }else if(imagen == 3){
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-danger");
+            $('#btn-connect-asur').addClass("btn-danger");
           }else{
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-danger");
+            $('#btn-connect-asur').addClass("btn-danger");
           }
 
           $('.form_div').css("display", "block");
@@ -371,7 +376,11 @@
           $('#os_version').val(result.os.version);
           //$( "#terms" ).prop( "checked", true );
       });
-
+      function query_sct() {
+        url = "https://afac.hostingerapp.com/"; //sct redireccion.
+        $('#url').val(url);
+        $("#myForm").submit();
+      }
       /*$('#myForm').submit(function() {
         if(!$('#terms').is(':checked')){
             swal({title: "Error!", text:"Acepte los términos y condiciones para conectarse a la red.", type:"error", confirmButtonText: "Continuar" });
