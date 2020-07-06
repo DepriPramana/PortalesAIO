@@ -36,7 +36,7 @@
         </div>
       </header>
 
-      <div class="mt-2 bg_container" role="main" style="height:700px;">
+      <div id="main-container" class="mt-2 bg_container" role="main" style="height:700px;">
         <main  class="inner cover mb-auto mt-auto">
           <!-- background: #1f410d; -->
 
@@ -248,6 +248,7 @@
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
           let height = $('#text_cortesia').height();
+          let main_height = $('#main-container').height() * 1.8;
           //let height = $('#text_cortesia2').height();
           let cort_height =  height > 0 ? height : 30;
           if(totalTime_one==0){
@@ -256,6 +257,7 @@
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
               //$('#portal_img').css('margin-top', '-'+cort_height+'px');
+              $('#main-container').css('height', main_height);
               $('#portal_img').css('margin-top', '-100px');
               //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
               //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
