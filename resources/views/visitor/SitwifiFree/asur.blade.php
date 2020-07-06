@@ -91,36 +91,53 @@
 
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
-
+              <input type="hidden" id="name" name="name" value="Metrorrey" placeholder="Nombre completo">
+              <select id="select_pais" name="select_pais" class="select2" hidden>
+                <option value="">Seleccione una opcion</option>
+              </select>
+              <input type="hidden" id="edad" name="edad" placeholder="Edad" hidden>
+              <select id="genero" name="genero" class="select2">
+                <option value="">Seleccione una opcion</option>
+                <option value="1">Masculino</option>
+                <option value="2">Femenino</option>
+              </select>
               <div class="inputs">
-                <label>Nombre</label>
-                <input type="text" id="name" name="name" value="Alcaldia" placeholder="Nombre completo">
-                <br>
-                <label>País</label>
-                <select id="select_pais" name="select_pais" class="select2">
-                  <option value="">Seleccione una opcion</option>
-                </select>
-                <br>
-                <label>Edad</label>
-                <input type="number" id="edad" name="edad" placeholder="Edad">
-                <br>
-                <label>Género</label>
-                <select id="genero" name="genero" class="select2">
-                  <option value="">Seleccione una opcion</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>
-                </select>
-                <br>
-                <label>Correo electrónico</label>
-                <input type="email" id="email" name="email" value="" placeholder="Correo">
-
-                <div id="div_check">
-                  <input type="checkbox" id="terms" name="terms" value="">
-                  <label for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
-                </div>
-                <br>
-                <button id="free_submit" type="submit" name="button">Continuar</button>
-              </div>
+                  <!--<label>Nombre</label>
+                  <input type="text" id="name" name="name" value="Metrorrey" placeholder="Nombre completo" required>
+                  <br>
+                  <label>País</label>
+                  <select id="select_pais" name="select_pais" class="select2" required>
+                    <option value="">Seleccione una opcion</option>
+                  </select>
+                  <br>
+                  <label>Edad</label>
+                  <input type="number" id="edad" name="edad" placeholder="Edad" required>
+                  <br>
+                  <label>Género</label>
+                  <select id="genero" name="genero" class="select2" required>
+                    <option value="">Seleccione una opcion</option>
+                    <option value="1">Masculino</option>
+                    <option value="2">Femenino</option>
+                  </select>
+                  <br>-->
+                  <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
+                      <p class="lead large" style="padding-top: 10px; color:black;">Regístrate para obtener <br>WiFi de cortesía</p>
+                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="tu@correo.com" required style="border-radius: 0 !important;">
+                      <!--<div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
+                        <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+                      </div>-->
+                      <button id="btn-connect" class="btn form-control" type="submit" name="button" style="border-radius: 0 !important;" >Conectar</button>
+                  </div>
+                  <div class="col-md-8 offset-md-2 mb-5">
+                      <p class="lead large" style="padding-top: 10px; color:black;"><b>!Cuida tu salud!</b> <br>Resuelve este cuestionario de identificación de factores de riesgo de viajeros.</p>
+                      <!--<div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
+                        <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
+                      </div>-->
+                      <button id="btn-connect-asur" class="btn form-control" type="submit" name="button" style="border-radius: 0 !important;" >Cuestionario</button>
+                  </div>
+             </div>
 
 
             </form>
@@ -183,8 +200,8 @@
       function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
       }
-      var totalTime_one = 5;
-      var totalTime_two = 20;
+      var totalTime_one = 2;
+      var totalTime_two = 2;
       var url = ""; // redirrecion
       var imagen = getRandomInt(4);
 
@@ -194,7 +211,7 @@
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#1f410d");
 
-        var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
+        var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan_new.png')}}";
         var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
@@ -238,8 +255,8 @@
               $('#div_img').css("display", "block");
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
-              $('#portal_img').css('margin-top', '-'+cort_height+'px');
-
+              //$('#portal_img').css('margin-top', '-'+cort_height+'px');
+              $('#portal_img').css('margin-top', '-100px');
               //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
               //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
               url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
@@ -289,8 +306,47 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
+          if (imagen == 1) {
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            document.getElementById("portal_img").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-success");
+          }else if(imagen == 2){
+            $('#div_img2').css("display", "block"); // solo para el logo de primera
+            $('#div_img').css("display", "none");
+            document.getElementById("logo_primera").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-danger");
+          }else if(imagen == 3){
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            document.getElementById("portal_img").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-danger");
+          }else{
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            document.getElementById("portal_img").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-danger");
+          }
+
+          $('.form_div').css("display", "block");
           //console.log('submitted');
-          $("#myForm").submit();
+          //$("#myForm").submit();
+        }else{
+          totalTime_two-=1;
+          setTimeout("updateClock_submit()",1000);
+        }
+      }
+
+      function updateClock_submit_noform() {
+        $('#p_segundero').css("display", "block");
+        document.getElementById('segundero').innerHTML = totalTime_two;
+        if(totalTime_two==0){
+          //console.log('submitted');
+          // $("#myForm").submit();
         }else{
           totalTime_two-=1;
           setTimeout("updateClock_submit()",1000);
@@ -301,7 +357,7 @@
         $('#genero').next(".select2-container").hide();
       }
       $(function() {
-          //hide();
+          hide();
           updateClock_2ndimg()
           var ua = new UAParser();
           var result = ua.getResult();
