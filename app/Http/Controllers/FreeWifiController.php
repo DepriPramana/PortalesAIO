@@ -97,6 +97,7 @@ class FreeWifiController extends Controller
       // get_venue_id_with_MAC('MAC')
       // grafica de download get_mb_download_chain_venue(?,?,?,?) (cadena,venue, fechaini, fechafin) //FreeWifi DB
       // grafica de upload  get_mb_upload_chain_venue(?,?,?,?) (cadena,venue, fechaini, fechafin) // FreeWifiDB
+      \DB::beginTransaction();
 
       $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info[0]->ID_VENUE);
 
@@ -130,6 +131,7 @@ class FreeWifiController extends Controller
         'expiration' => $fechaout
       ]);
 
+      DB::commit();
       //DB::table('FreeWifiTest')->insert(['name' => $name,'country' => $pais,'email' => $email,'mac_address' => $client_mac]);
 
       return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'url', 'site_name'));

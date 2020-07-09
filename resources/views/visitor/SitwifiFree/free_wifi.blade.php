@@ -47,6 +47,7 @@
                   <div class="col-md-12 h-100">
                       <div class="col-md-12 col-xs-12 my-auto" >
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
+                          <iframe id="ilink" width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;"></iframe>
                       </div>
                   </div>
               </div>
@@ -201,22 +202,23 @@
       function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
       }
-      var totalTime_one = 2;
-      var totalTime_two = 7;
+      var totalTime_one = 5;
+      var totalTime_two = 20;
       var url = ""; // redirrecion
-      var imagen = getRandomInt(4);
+      var imagen = getRandomInt(5);
+      //console.log(imagen)
+      imagen = 4;
 
-
-      if (imagen == 1) {
+      if (imagen == 0) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#1f410d");
 
-        var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
+        var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan_new.png')}}";
         var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }else if(imagen == 2){
+      }else if(imagen == 1){
         $('#div_img2').css("display", "block"); // solo para el logo de primera
         $('#div_img').css("display", "none");
         $('.bg_container').css("background-color", "#6ec8db");
@@ -225,7 +227,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
 
         document.getElementById("logo_primera").src = order_1;
-      }else if (imagen == 3) {
+      }else if (imagen == 2) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#C5EEEC");
@@ -234,7 +236,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/ado/banner1.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }else{
+      }else if(imagen == 3){
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#C5EEEC");
@@ -243,35 +245,52 @@
         var order_2 = "{{asset('free_wifi/pub/test/ado/banner2.gif')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }
+      }else{
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/h10/bg.jpg")', 'background-repeat': 'no-repeat'});
 
+        var order_1 = "{{asset('free_wifi/pub/test/h10/logoh10.png')}}";
+        var order_2 = "{{asset('free_wifi/pub/test/h10/logoh10.png')}}"; // aqui va el video
+
+        document.getElementById("portal_img").src = order_1;
+      }
 
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
           let height = $('#text_cortesia').height();
+          let main_height = $('#main-container').height() * 1.8;
           //let height = $('#text_cortesia2').height();
           let cort_height =  height > 0 ? height : 30;
           if(totalTime_one==0){
-            if (imagen == 1) {
+            if (imagen == 0) {
               $('#div_img').css("display", "block");
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
-              $('#portal_img').css('margin-top', '-'+cort_height+'px');
+              //$('#portal_img').css('margin-top', '-'+cort_height+'px');
+              $('#main-container').css('height', main_height);
+              $('#portal_img').css('margin-top', '-100px');
 
-              //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
-              //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
               url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
               $('#url').val(url);
               document.getElementById("portal_img").src = order_2;
-            }else if(imagen == 2){
+            }else if(imagen == 1){
               $('#div_img2').css("display", "none"); // solo para el logo de primera
               $('#div_img').css("display", "block");
               $('.text_cortesia').css("display", "none");
               $('#logo_primera').css('margin-top', '-'+cort_height+'px');
               $('#portal_img').css('margin-top', '-'+cort_height+'px');
-              //var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
-              //var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
+
               url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
+              $('#url').val(url);
+              document.getElementById("portal_img").src = order_2;
+            }else if(imagen == 2){
+              $('#div_img').css("display", "block");
+              $('#div_img2').css("display", "none");
+              $('.text_cortesia').css("display", "none");
+              $('#portal_img').css('margin-top', '-'+cort_height+'px');
+
+              url = "https://www.ado.com.mx/"; //ado1 redireccion.
               $('#url').val(url);
               document.getElementById("portal_img").src = order_2;
             }else if(imagen == 3){
@@ -280,9 +299,7 @@
               $('.text_cortesia').css("display", "none");
               $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
-              //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
-              url = "https://www.ado.com.mx/"; //ado1 redireccion.
+              url = "https://www.ado.com.mx/"; //ado2 redireccion.
               $('#url').val(url);
               document.getElementById("portal_img").src = order_2;
             }else{
@@ -291,11 +308,10 @@
               $('.text_cortesia').css("display", "none");
               $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              //var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan.png')}}";
-              //var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
-              url = "https://www.ado.com.mx/"; //ado2 redireccion.
+              url = "https://www.oceanhotels.net/"; //ado2 redireccion.
               $('#url').val(url);
-              document.getElementById("portal_img").src = order_2;
+              $('#ilink').attr("src", 'https://www.youtube.com/embed/BVsHmwFwt4M?mute=1&autoplay=1');
+              //document.getElementById("portal_img").src = order_2;
             }
             updateClock_submit();
           }else{
@@ -307,30 +323,46 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          if (imagen == 1) {
+          if (imagen == 0) {
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-success");
-          }else if(imagen == 2){
+            $('#btn-connect-asur').addClass("btn-success");
+            $('#ilink').css("display", "none");
+          }else if(imagen == 1){
             $('#div_img2').css("display", "block"); // solo para el logo de primera
             $('#div_img').css("display", "none");
             document.getElementById("logo_primera").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-danger");
+            $('#btn-connect-asur').addClass("btn-danger");
+            $('#ilink').css("display", "none");
+          }else if(imagen == 2){
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            document.getElementById("portal_img").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-danger");
+            $('#btn-connect-asur').addClass("btn-danger");
+            $('#ilink').css("display", "none");
           }else if(imagen == 3){
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-danger");
+            $('#btn-connect-asur').addClass("btn-danger");
+            $('#ilink').css("display", "none");
           }else{
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
+            $('#ilink').css("display", "none");
             $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-danger");
+            $('#btn-connect').addClass("btn-info");
+            $('#btn-connect-asur').addClass("btn-info");
           }
 
           $('.form_div').css("display", "block");
@@ -341,12 +373,24 @@
           setTimeout("updateClock_submit()",1000);
         }
       }
+
+      function updateClock_submit_noform() {
+        $('#p_segundero').css("display", "block");
+        document.getElementById('segundero').innerHTML = totalTime_two;
+        if(totalTime_two==0){
+          //console.log('submitted');
+          // $("#myForm").submit();
+        }else{
+          totalTime_two-=1;
+          setTimeout("updateClock_submit()",1000);
+        }
+      }
       function hide(){
         $('#select_pais').next(".select2-container").hide();
         $('#genero').next(".select2-container").hide();
       }
       $(function() {
-          //hide();
+          hide();
           updateClock_2ndimg()
           var ua = new UAParser();
           var result = ua.getResult();
@@ -358,7 +402,11 @@
           $('#os_version').val(result.os.version);
           //$( "#terms" ).prop( "checked", true );
       });
-
+      function query_sct() {
+        url = "https://afac.hostingerapp.com/"; //sct redireccion.
+        $('#url').val(url);
+        $("#myForm").submit();
+      }
       /*$('#myForm').submit(function() {
         if(!$('#terms').is(':checked')){
             swal({title: "Error!", text:"Acepte los términos y condiciones para conectarse a la red.", type:"error", confirmButtonText: "Continuar" });
