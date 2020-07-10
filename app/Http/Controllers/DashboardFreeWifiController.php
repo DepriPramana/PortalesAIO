@@ -16,19 +16,27 @@ class DashboardFreeWifiController extends Controller
 
     public function index()
     {
-        return view('visitor.DashboardFreeWifi.index');
+        //return view('visitor.DashboardFreeWifi.index');
+        abort(503,'Modulo en mantenimiento');
 
     }
     public function index3()
     {
       //$chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
-      return view('visitor.DashboardFreeWifi.index_testing');
+      //return view('visitor.DashboardFreeWifi.index_testing');
+      abort(503,'Modulo en mantenimiento');
     }
     public function sessions()
     {
-        return view('visitor.DashboardFreeWifi.sessions')->with("chains", $this->chains);
+        //return view('visitor.DashboardFreeWifi.sessions')->with("chains", $this->chains);
+        abort(503,'Modulo en mantenimiento');
     }
-
+    public function sessions_report()
+    {
+      //$chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
+      //return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $chains);
+      abort(503,'Modulo en mantenimiento');
+    }
     public function users()
     {
         return view('visitor.DashboardFreeWifi.users')->with("chains", $this->chains);
@@ -46,14 +54,6 @@ class DashboardFreeWifiController extends Controller
         //$chains = 0;
         return view('visitor.DashboardFreeWifi.index_graficas', compact('chains'));
     }
-
-    public function sessions_report()
-    {
-      $chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
-
-      return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $chains);
-    }
-
 
     public function get_hotelsbycadena(Request $request)
     {

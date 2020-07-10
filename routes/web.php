@@ -20,7 +20,7 @@ Route::prefix('dashboard_freewifi')->group(function() {
     Route::get('hotspot/realm_sites','DashboardFreeWifi\GoogleStationController@getRealmSites');
     Route::get('hotspot/chartsInfo', 'DashboardFreeWifi\GoogleStationController@getChartsInfo');
 
-    Route::get('sessions','DashboardFreeWifiController@sessions');
+    Route::get('sessions','DashboardFreeWifiController@sessions'); // borrar???
     Route::get('users','DashboardFreeWifiController@users');
     Route::get('devices','DashboardFreeWifiController@devices');
 
@@ -41,7 +41,7 @@ Route::post('get_graph_domains', 'DashboardFreeWifiController@get_domains');
 Route::post('get_graph_genders', 'DashboardFreeWifiController@get_genders');
 //Route::post('get_graph_mobiles', 'DashboardFreeWifiController@get_mobiles');
 Route::post('get_graph_languages', 'DashboardFreeWifiController@get_languages');
-Route::post('get_graph_sessions', 'DashboardFreeWifiController@get_sessions');
+Route::post('get_graph_sessions', 'DashboardFreeWifiController@get_sessions');  // 1. primer procedure
 
 Route::post('get_grap_hotspot', 'DashboardFreeWifiController@hotspotGraphicData');
 
