@@ -28,6 +28,7 @@ Route::prefix('dashboard_freewifi')->group(function() {
     Route::get('metrorrey', 'DashboardFreeWifiController@index3');
 
     Route::get('sessions_report','DashboardFreeWifiController@sessions_report');
+    Route::get('testing_px','DashboardFreeWifiController@testing');
 });
 //Route::get('test_echart','DashboardFreeWifiController@index2');
 Route::post('hotels_by_cadena', 'DashboardFreeWifiController@get_hotelsbycadena');

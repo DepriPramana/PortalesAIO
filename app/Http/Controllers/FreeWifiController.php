@@ -123,13 +123,13 @@ class FreeWifiController extends Controller
         'expiration' => $fechaout,
         'success' => 1
       ]);
-      DB::connection('freewifi_data')->table('data_sites')->insert([
+      /*DB::connection('freewifi_data')->table('data_sites')->insert([
         'lastname' => $name,
         'email' => $email,
         'wificode' => $uuid,
         'site_id' => $site_info[0]->ID_VENUE,
         'expiration' => $fechaout
-      ]);
+      ]);*/
 
       DB::commit();
       //DB::table('FreeWifiTest')->insert(['name' => $name,'country' => $pais,'email' => $email,'mac_address' => $client_mac]);

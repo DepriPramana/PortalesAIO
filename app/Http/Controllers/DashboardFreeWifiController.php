@@ -13,7 +13,17 @@ class DashboardFreeWifiController extends Controller
     {
         $this->chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
     }*/
+    public function testing()
+    {
+      $res = DB::connection('freewifi_data')->select('CALL px_get_sessions24h_chain(?,?,?)', array(26,'2020-07-01','2020-07-09'));
+      //procedure de sumarizacion de datos por dia, px_get_sessions24h_acumula(fecha)
+      //$res = DB::connection('freewifi_data')->select('CALL get_sessions24h_chain(?,?,?)', array(26,'2020-07-01','2020-07-09'));
 
+      $res2 = DB::connection('freewifi_data')->select('CALL px_get_age_chain(?,?,?)', array(26,'2020-07-01','2020-07-09'));
+      //procedure px_get_age_acumula(fecha)
+      //$res3 = DB::connection('freewifi_data')->select('CALL get_age_chain(?,?,?)', array(26,'2020-07-01','2020-07-09'));
+      dd($res,$res2,$res3);
+    }
     public function index()
     {
         //return view('visitor.DashboardFreeWifi.index');
@@ -33,9 +43,9 @@ class DashboardFreeWifiController extends Controller
     }
     public function sessions_report()
     {
-      //$chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
-      //return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $chains);
-      abort(503,'Modulo en mantenimiento');
+      $chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
+      return view('visitor.DashboardFreeWifi.sessions_report')->with("chains", $chains);
+      //abort(503,'Modulo en mantenimiento');
     }
     public function users()
     {
@@ -420,7 +430,8 @@ class DashboardFreeWifiController extends Controller
         }
       }
 
-      $res = DB::connection('freewifi_data')->select('CALL get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      //$res = DB::connection('freewifi_data')->select('CALL get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      $res = DB::connection('freewifi_data')->select('CALL px_get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       return $res;
     }
