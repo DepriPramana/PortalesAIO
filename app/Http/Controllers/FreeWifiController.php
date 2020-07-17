@@ -6,10 +6,49 @@ use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 use Carbon\Carbon;
 use DB;
+use App;
 
 
 class FreeWifiController extends Controller
 {
+
+    private $lang_code;
+
+    public function __construct()
+    {
+      $agent = new Agent();
+      $languages = $agent->languages();
+
+      if (empty($languages[0])) {
+        $this->lang_code = 'es';
+      }else{
+          $first_option = $languages[0];
+          $lang = explode('-', $first_option);
+          if ($lang != 'es') {
+            $this->lang_code = 'en';
+          }else{
+            $this->lang_code = 'es';
+          }
+      }
+    }
+
+    public function get_freewifi_blade()
+    {
+      App::setLocale($this->lang_code);
+      return view('visitor.SitwifiFree.free_wifi_new');
+    }
+    public function get_metrorrey_blade()
+    {
+      App::setLocale($this->lang_code);
+      return view('visitor.SitwifiFree.metrorrey_new');
+
+    }
+    public function get_asur_blade()
+    {
+      App::setLocale($this->lang_code);
+      return view('visitor.SitwifiFree.asur');
+    }
+
     public function login_freewifi(Request $request)
     {
       // Agent
@@ -132,6 +171,7 @@ class FreeWifiController extends Controller
       ]);*/
 
       DB::commit();
+      DB::disconnect('freewifi_data');
       //DB::table('FreeWifiTest')->insert(['name' => $name,'country' => $pais,'email' => $email,'mac_address' => $client_mac]);
 
       return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'url', 'site_name'));
@@ -161,5 +201,6 @@ class FreeWifiController extends Controller
             ['username' => $user, 'attribute' => $atr3, 'op' => $op, 'value' => $fechamod]]);
           DB::connection('rad_freewifi')->table('radusergroup')->insert(
             ['username' => $user, 'groupname' => $group]);
+          DB::disconnect('rad_freewifi');
     }
 }

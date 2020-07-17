@@ -151,12 +151,10 @@ Route::get('/Isec', function(){
    return view('visitor.Isec.isec');
 });
 
-Route::get('/FreeWifi', function(){
-  return view('visitor.SitwifiFree.free_wifi_new');
-});
-Route::get('/Metrorrey',function(){
-  return view('visitor.SitwifiFree.metrorrey_new');
-});
+
+Route::get('/FreeWifi','FreeWifiController@get_freewifi_blade');
+Route::get('/Metrorrey','FreeWifiController@get_metrorrey_blade');
+
 Route::get('/Alcaldia_ao',function(){
   return view('visitor.SitwifiFree.alcaldia_ao');
 });
@@ -169,9 +167,8 @@ Route::get('/ADO',function(){
 Route::get('/Metrobus',function(){
   return view('visitor.SitwifiFree.metrobus');
 });
-Route::get('/Asur',function(){
-  return view('visitor.SitwifiFree.asur');
-});
+
+Route::get('/Asur','FreeWifiController@get_asur_blade');
 //Route::get('/Metrorrey2',function(){
 //  return view('visitor.SitwifiFree.metrorrey_new');
 //});

@@ -59,6 +59,20 @@ return [
             ]) : [],
         ],
 
+        'cloudport_freewifi' => [
+            'driver' => 'mysql',
+            'host' => '35.243.154.192',
+            'port' => '3306',
+            'database' => 'FreeWifi_res',
+            'username' => 'administrador',
+            'password' => 'S1tc@N15',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'cloudrad' => [
             'driver' => 'mysql',
             'host' => '35.243.154.192',
