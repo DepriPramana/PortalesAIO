@@ -48,7 +48,26 @@ class FreeWifiController extends Controller
       App::setLocale($this->lang_code);
       return view('visitor.SitwifiFree.asur');
     }
-
+    public function get_metrobus_blade()
+    {
+      App::setLocale($this->lang_code);
+      return view('visitor.SitwifiFree.metrobus');
+    }
+    public function get_ado_blade()
+    {
+      App::setLocale($this->lang_code);
+      return view('visitor.SitwifiFree.ado');
+    }
+    public function get_aryba_blade()
+    {
+      App::setLocale($this->lang_code);
+      return view('visitor.SitwifiFree.grupo_aryba');
+    }
+    public function get_alcaldia_blade()
+    {
+      App::setLocale($this->lang_code);
+      return view('visitor.SitwifiFree.alcaldia_ao');
+    }
     public function login_freewifi(Request $request)
     {
       // Agent

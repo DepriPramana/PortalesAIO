@@ -197,8 +197,8 @@
       function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
       }
-      var totalTime_one = 2;
-      var totalTime_two = 2;
+      var totalTime_one = 5;
+      var totalTime_two = 20;
       var url = ""; // redirrecion
       var imagen = getRandomInt(5);
       //console.log(imagen)

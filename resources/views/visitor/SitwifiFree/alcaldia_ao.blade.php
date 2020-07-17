@@ -43,7 +43,7 @@
           <section class="bienvenida">
             <div class="container">
               <div id="div_img" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia" id="text_cortesia">WiFi cortesía de: </p>
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia" id="text_cortesia">{{ __('station_msg.text_content_title')}}</p>
                   <div class="col-md-12 h-100">
                       <div class="col-md-12 col-xs-12 my-auto" >
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
@@ -52,7 +52,7 @@
                   </div>
               </div>
               <div id="div_img2" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia2">WiFi cortesía de: </p>
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia2">{{ __('station_msg.text_content_title')}} </p>
                   <div class="col-md-12  col-xs-12  h-100">
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="logo_primera" alt="pub2">
                   </div>
@@ -131,7 +131,7 @@
       </div>
 
 
-      <p class="lead" id="p_segundero" style="display: none;">Espere <span id="segundero"></span> segundos...</p>
+      <p class="lead" id="p_segundero" style="display: none;">{{ __('station_msg.wait_text')}} <span id="segundero"></span> {{ __('station_msg.seconds_text')}}</p>
       <!--<footer class="mastfoot mt-auto">-->
       <footer class="mastfoot mt-2">
         <!--<p>Ayuda telefónica <strong>800 112 1122</strong></p>-->
@@ -154,7 +154,7 @@
           <div class="col-2"></div>
         </div>
         <div id="div_check">
-          <p class="footer_p" for="terms">Al hacer clic en el botón, estás de acuerdo y aceptas el - <a href="{{asset('free_wifi/aviso_privacidad.pdf')}}" target='_blank'style="text-decoration: underline;" >Aviso de privacidad</a> y <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Términos y condiciones.</a></p>
+          <p class="footer_p" for="terms">{{ __('station_msg.terms_text_1')}} - <a href="{{asset('free_wifi/aviso_privacidad.pdf')}}" target='_blank'style="text-decoration: underline;" >{{ __('station_msg.terms_text_1_2')}}</a>{{ __('station_msg.terms_text_1_3')}}<a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >{{ __('station_msg.terms_text_1_4')}}</a></p>
           <!--<p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>-->
         </div>
       </footer>

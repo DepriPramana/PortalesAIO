@@ -154,21 +154,13 @@ Route::get('/Isec', function(){
 
 Route::get('/FreeWifi','FreeWifiController@get_freewifi_blade');
 Route::get('/Metrorrey','FreeWifiController@get_metrorrey_blade');
+Route::get('/Metrobus','FreeWifiController@get_metrobus_blade');
+Route::get('/ADO','FreeWifiController@get_ado_blade');
+Route::get('/Aryba','FreeWifiController@get_aryba_blade');
 
-Route::get('/Alcaldia_ao',function(){
-  return view('visitor.SitwifiFree.alcaldia_ao');
-});
-Route::get('/Aryba',function(){
-  return view('visitor.SitwifiFree.grupo_aryba');
-});
-Route::get('/ADO',function(){
-  return view('visitor.SitwifiFree.ado');
-});
-Route::get('/Metrobus',function(){
-  return view('visitor.SitwifiFree.metrobus');
-});
-
+Route::get('/Alcaldia_ao','FreeWifiController@get_alcaldia_blade');
 Route::get('/Asur','FreeWifiController@get_asur_blade');
+
 //Route::get('/Metrorrey2',function(){
 //  return view('visitor.SitwifiFree.metrorrey_new');
 //});
