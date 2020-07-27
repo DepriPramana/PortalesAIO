@@ -72,36 +72,36 @@ class FreeWifiController extends Controller
     {
       // Agent
 
-    		$agent = new Agent(); // datos del usuario.
+        $agent = new Agent(); // datos del usuario.
 
-    		$bool = $agent->isDesktop();
-    		if($bool){
-    		  $mobile = 0;
-    		}else{
-    		  $mobile = 1;
-    		}
-    		$device = $agent->device();
-    		$robot = $agent->isRobot();
-    		if ($robot) {
-    		  $robot_name = $agent->robot();
-    		}else{
-    		  $robot_name = '';
-    		}
-    		// $robot = $agent->robot();
-    		$languages = $agent->languages();
-    		if (count($languages) > 0) {
-    			$lang = $languages[0];
-    		}else{
-    			$lang = '';
-    		}
-    		$browser = $agent->browser();
-    		$browser_version = $agent->version($browser);
-    		$platform = $agent->platform();
-    		if ($agent->version($platform)) {
-    		  $platform_version = $agent->version($platform);
-    		}else{
-    		  $platform_version = '';
-    		}
+        $bool = $agent->isDesktop();
+        if($bool){
+          $mobile = 0;
+        }else{
+          $mobile = 1;
+        }
+        $device = $agent->device();
+        $robot = $agent->isRobot();
+        if ($robot) {
+          $robot_name = $agent->robot();
+        }else{
+          $robot_name = '';
+        }
+        // $robot = $agent->robot();
+        $languages = $agent->languages();
+        if (count($languages) > 0) {
+          $lang = $languages[0];
+        }else{
+          $lang = '';
+        }
+        $browser = $agent->browser();
+        $browser_version = $agent->version($browser);
+        $platform = $agent->platform();
+        if ($agent->version($platform)) {
+          $platform_version = $agent->version($platform);
+        }else{
+          $platform_version = '';
+        }
 
         $vendor = $request->vendor;
         $model = $request->model;
@@ -110,7 +110,7 @@ class FreeWifiController extends Controller
         $os_version = $request->os_version;
 
         //dd($device, $browser, $browser_version, $platform, $platform_version, $vendor, $model, $type, $os_name, $os_version);
-  		// Fin Agent
+      // Fin Agent
       // Parametros de logeo
         $url = $request->url;
         $proxy = $request->proxy;
@@ -156,42 +156,56 @@ class FreeWifiController extends Controller
       // grafica de download get_mb_download_chain_venue(?,?,?,?) (cadena,venue, fechaini, fechafin) //FreeWifi DB
       // grafica de upload  get_mb_upload_chain_venue(?,?,?,?) (cadena,venue, fechaini, fechafin) // FreeWifiDB
       \DB::beginTransaction();
+      try {
+        $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info[0]->ID_VENUE);
+        //validacion de newuser e insertar en tabla newusers
+        $validar_insert = DB::connection('freewifi_data')->table('data_agents')->select()->where('mac_address', $client_mac)->where('site_id', $site_info[0]->ID_VENUE)->count();
 
-      $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info[0]->ID_VENUE);
+        if ($validar_insert == 0) {
+          DB::connection('freewifi_data')->table('new_users')->insert([
+            'MAC' => $client_mac,
+            'fecha' => Carbon::now(),
+            'site_id' => $site_info[0]->ID_VENUE,
+            'venue_id' => $site_info[0]->ID_CHAIN,
+          ]);
+        }
+        DB::connection('freewifi_data')->table('data_agents')->insert([
+          'mac_address' => $client_mac,
+          'station_mac' => $mac,
+          'browser' => $browser,
+          'browser_version' => $browser_version,
+          'platform' => $platform,
+          'platform_version' => $platform_version,
+          'wificode' => $uuid,
+          'device' => $device,
+          'language' => $lang,
+          'robot' => $robot_name,
+          'site_id' => $site_info[0]->ID_VENUE,
+          'cadena_id' => $site_info[0]->ID_CHAIN,
+          'mobile' => $mobile,
+          'name' => $name,
+          'country_code' => $pais,
+          'email' => $email,
+          'age' => $edad,
+          'gender' => $genero,
+          'expiration' => $fechaout,
+          'success' => 1
+        ]);
+        /*DB::connection('freewifi_data')->table('data_sites')->insert([
+          'lastname' => $name,
+          'email' => $email,
+          'wificode' => $uuid,
+          'site_id' => $site_info[0]->ID_VENUE,
+          'expiration' => $fechaout
+        ]);*/
+        DB::commit();
+      } catch (\Exception $e) {
+        DB::rollback();
 
-      DB::connection('freewifi_data')->table('data_agents')->insert([
-        'mac_address' => $client_mac,
-        'station_mac' => $mac,
-        'browser' => $browser,
-        'browser_version' => $browser_version,
-        'platform' => $platform,
-        'platform_version' => $platform_version,
-        'wificode' => $uuid,
-        'device' => $device,
-        'language' => $lang,
-        'robot' => $robot_name,
-        'site_id' => $site_info[0]->ID_VENUE,
-        'cadena_id' => $site_info[0]->ID_CHAIN,
-        'mobile' => $mobile,
-        'name' => $name,
-        'country_code' => $pais,
-        'email' => $email,
-        'age' => $edad,
-        'gender' => $genero,
-        'expiration' => $fechaout,
-        'success' => 1
-      ]);
-      /*DB::connection('freewifi_data')->table('data_sites')->insert([
-        'lastname' => $name,
-        'email' => $email,
-        'wificode' => $uuid,
-        'site_id' => $site_info[0]->ID_VENUE,
-        'expiration' => $fechaout
-      ]);*/
-
-      DB::commit();
-      DB::disconnect('freewifi_data');
-      //DB::table('FreeWifiTest')->insert(['name' => $name,'country' => $pais,'email' => $email,'mac_address' => $client_mac]);
+      } finally {
+        DB::disconnect('rad_freewifi');
+        DB::disconnect('freewifi_data');
+      }
 
       return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'url', 'site_name'));
       //return $request;
