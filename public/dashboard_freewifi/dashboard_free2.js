@@ -358,7 +358,7 @@ function graph_browsers() {
   var data_count1 = [];
   var data_name1 = [];
 
-  var total = 0; 
+  var total = 0;
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -387,9 +387,9 @@ function graph_browsers() {
         var browser_total = [];
         var browser_cat   = [];
 
-        // get percent values 
+        // get percent values
         $.each(data, function(index, objdata)
-        { 
+        {
           var percent = 0;
           var porcentaje = 0;
 
@@ -403,7 +403,7 @@ function graph_browsers() {
          var others_value        = 1;
          var others_total        = 0;
          var others_percent      = 0;
-         var others_list         = []; 
+         var others_list         = [];
          var browser_list_final  = [];
 
          // create others element
@@ -411,7 +411,7 @@ function graph_browsers() {
          {
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -456,7 +456,7 @@ function graph_platforms() {
   var data_count1 = [];
   var data_name1 = [];
 
-  var total = 0; 
+  var total = 0;
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -485,9 +485,9 @@ function graph_platforms() {
         var platform_total = [];
         var platform_cat   = [];
 
-        // get percent values 
+        // get percent values
         $.each(data, function(index, objdata)
-        { 
+        {
           var percent = 0;
           var porcentaje = 0;
 
@@ -501,14 +501,14 @@ function graph_platforms() {
          var others_value        = 1;
          var others_total        = 0;
          var others_percent      = 0;
-         var others_list         = []; 
+         var others_list         = [];
          var platform_list_final  = [];
 
          $.each(platform_list, function(index, objdata)
          {
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -553,7 +553,7 @@ function graph_devices() {
   var data_count1 = [];
   var data_name1 = [];
 
-  var total = 0; 
+  var total = 0;
   // var data_count1 = [{value:98, name:'Promotores = 98'},{value:62, name:'Pasivos = 62'},{value:21, name:'Detractores = 21'}];
   // var data_name1 = ["Promotores = 98","Pasivos = 62","Detractores = 21"];
   $.ajax({
@@ -583,9 +583,9 @@ function graph_devices() {
         var device_total = [];
         var device_cat   = [];
 
-        // get percent values 
+        // get percent values
         $.each(data, function(index, objdata)
-        { 
+        {
           var percent = 0;
           var porcentaje = 0;
 
@@ -599,7 +599,7 @@ function graph_devices() {
          var others_value        = 1;
          var others_total        = 0;
          var others_percent      = 0;
-         var others_list         = []; 
+         var others_list         = [];
          var device_list_final  = [];
 
          // create others element
@@ -607,7 +607,7 @@ function graph_devices() {
          {
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -688,7 +688,7 @@ function table_devices()
             });
 
 
-            var others_value = 1; 
+            var others_value = 1;
 
             var others_list = [];
             var device_list_final = [];
@@ -700,7 +700,7 @@ function table_devices()
 
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -725,7 +725,7 @@ function table_devices()
             }
 
 
-            // max mins 
+            // max mins
             $.each(device_list_final, function(index, objdata)
             {
                 device_total.push(objdata.cantidad);
@@ -828,7 +828,7 @@ function table_browsers() {
 
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -851,7 +851,7 @@ function table_browsers() {
               browser_list_final.push(others_list);
             }
 
-            // min and max 
+            // min and max
 
             $.each(browser_list_final, function(index, objdata)
             {
@@ -926,7 +926,7 @@ function table_platforms() {
             $.each(data, function(index, objdata)
             {
                 total += objdata.Cantidad;
-            }); 
+            });
 
             var platform_total = [];
             var platform_cat   = [];
@@ -934,13 +934,13 @@ function table_platforms() {
 
             $.each(data, function(index, objdata)
             {
-           
+
                 var percent = 0;
                 var porcentaje = 0;
 
                 percent = objdata.Cantidad * 100 / total;
                 //porcentaje = percent.toFixed(2);
-                porcentaje = percent; 
+                porcentaje = percent;
 
                 if(objdata.platform === "0")
                 {
@@ -1054,7 +1054,7 @@ function table_languages() {
             });
 
 
-            var others_value = 1; 
+            var others_value = 1;
 
             var others_list = [];
             var language_list_final = [];
@@ -1066,7 +1066,7 @@ function table_languages() {
 
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -1090,13 +1090,13 @@ function table_languages() {
                 language_list_final.push(others_list);
             }
 
-            // max and mins 
+            // max and mins
 
             $.each(language_list_final, function(index, objdata)
             {
                 language_total.push(objdata.cantidad);
                 language_cat.push(objdata.language);
-            }); 
+            });
 
 
             max_cantidad = Math.max.apply(null, language_total);
@@ -1163,14 +1163,14 @@ function table_countries()
             $.each(data, function(index, objdata)
             {
                 total += objdata.Cantidad;
-            }); 
+            });
 
             var country_total = [];
             var country_cat   = [];
 
             $.each(data, function(index, objdata)
             {
-           
+
                 var percent = 0;
                 var porcentaje = 0;
 
@@ -1185,7 +1185,7 @@ function table_countries()
             $('#country_total').text(new Intl.NumberFormat('en-MX').format(total));
 
 
-            var others_value = 1; 
+            var others_value = 1;
 
             var others_list = [];
             var country_list_final = [];
@@ -1197,7 +1197,7 @@ function table_countries()
 
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -1222,7 +1222,7 @@ function table_countries()
                 country_list_final.push(others_list);
             }
 
-            // min and max 
+            // min and max
 
             $.each(country_list_final, function(index, objdata){
 
@@ -1490,9 +1490,9 @@ function graph_languagues() {
         var language_cat   = [];
 
 
-        // get percent values 
+        // get percent values
         $.each(data, function(index, objdata)
-        { 
+        {
           var percent = 0;
           var porcentaje = 0;
 
@@ -1507,7 +1507,7 @@ function graph_languagues() {
          var others_value        = 1;
          var others_total        = 0;
          var others_percent      = 0;
-         var others_list         = []; 
+         var others_list         = [];
          var language_list_final  = [];
 
          // create others element
@@ -1515,7 +1515,7 @@ function graph_languagues() {
          {
               if(objdata.porcentaje <= others_value)
               {
-                toFloatPercent = objdata.porcentaje * 1; 
+                toFloatPercent = objdata.porcentaje * 1;
                 others_total   += objdata.cantidad;
                 others_percent += toFloatPercent;
 
@@ -1657,10 +1657,10 @@ function get_sessions() {
         dataHorario.push(dataHor2.hora);
         dataTickets.push(dataHor2.cantidad);
 
-        total += dataHor2.Cantidad;
+        total += parseInt(dataHor2.cantidad);
 
       });
-
+      
       max_cantidad = Math.max.apply(null, dataTickets)
       min_cantidad = Math.min.apply(null, dataTickets);
 
@@ -2211,4 +2211,3 @@ function getDataChartBySelection( response, chartOptions, option ) {
     return chartOptions;
 
 }
-
