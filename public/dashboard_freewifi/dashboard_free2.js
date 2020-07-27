@@ -1654,8 +1654,8 @@ function get_sessions() {
         // console.log(data);
       //console.log(data)
       $.each(data, function(index, dataHor2){
-        dataHorario.push(dataHor2.horario);
-        dataTickets.push(dataHor2.Cantidad);
+        dataHorario.push(dataHor2.hora);
+        dataTickets.push(dataHor2.cantidad);
 
         total += dataHor2.Cantidad;
 
