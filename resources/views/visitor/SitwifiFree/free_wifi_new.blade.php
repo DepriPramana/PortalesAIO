@@ -205,7 +205,7 @@
       var totalTime_one = 5;
       var totalTime_two = 20;
       var url = ""; // redirrecion
-      var imagen = getRandomInt(5);
+      var imagen = getRandomInt(3);
       //console.log(imagen)
       //imagen = 4;
 
