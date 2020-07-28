@@ -209,7 +209,7 @@
       //console.log(imagen)
       //imagen = 4;
 
-      if (imagen == 0) {
+      if (imagen == 4) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#1f410d");
@@ -218,7 +218,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }else if(imagen == 1){
+      }else if(imagen == 3){
         $('#div_img2').css("display", "block"); // solo para el logo de primera
         $('#div_img').css("display", "none");
         $('.bg_container').css("background-color", "#6ec8db");
@@ -236,7 +236,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/ado/banner1.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }else if(imagen == 3){
+      }else if(imagen == 1){
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#C5EEEC");
