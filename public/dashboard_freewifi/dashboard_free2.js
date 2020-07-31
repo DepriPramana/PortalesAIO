@@ -377,7 +377,7 @@ function graph_browsers() {
           /*data_name1.push(objdata.browser + ' = ' + objdata.Cantidad);
           data_count1.push({ value: objdata.Cantidad, name: objdata.browser + ' = ' + objdata.Cantidad},);*/
 
-          total += objdata.Cantidad;
+          total += objdata.cantidad;
           //$.each(objdata, function(index, objdata1){
             //console.log(objdata1);
           //});
@@ -393,10 +393,10 @@ function graph_browsers() {
           var percent = 0;
           var porcentaje = 0;
 
-          percent = objdata.Cantidad * 100 / total;
+          percent = objdata.cantidad * 100 / total;
           porcentaje = percent.toFixed(2);
 
-          browser_list.push({browser: objdata.browser, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+          browser_list.push({browser: objdata.browser, cantidad : objdata.cantidad, porcentaje : porcentaje});
         });
 
         // group others elements
@@ -795,7 +795,7 @@ function table_browsers() {
             $("#table_browsers").empty();
             $.each(data,function(index, objdata){
 
-                total += objdata.Cantidad;
+                total += parseInt(objdata.cantidad);
 
             });
 
@@ -809,9 +809,9 @@ function table_browsers() {
                 var percent = 0;
                 var porcentaje = 0;
 
-                percent = objdata.Cantidad * 100 / total;
+                percent = parseInt(objdata.cantidad) * 100 / total;
                 porcentaje = percent.toFixed(2);
-                browser_list.push({browser: objdata.browser, cantidad : objdata.Cantidad, porcentaje : porcentaje});
+                browser_list.push({browser: objdata.browser, cantidad : parseInt(objdata.cantidad), porcentaje : porcentaje});
 
             });
 
@@ -1658,9 +1658,8 @@ function get_sessions() {
         dataTickets.push(dataHor2.cantidad);
 
         total += parseInt(dataHor2.cantidad);
-
       });
-      
+
       max_cantidad = Math.max.apply(null, dataTickets)
       min_cantidad = Math.min.apply(null, dataTickets);
 

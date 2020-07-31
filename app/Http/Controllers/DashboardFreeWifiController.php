@@ -72,6 +72,26 @@ class DashboardFreeWifiController extends Controller
 
       return $hotels;
     }
+    public function get_sessions(Request $request)
+    {
+      $chain = $request->select_scope;
+      $venue = $request->select_hotspots;
+      $fecha_ini = $request->datepickerWeek;
+      $fecha_fin = $request->datepickerWeek2;
+
+      if (!empty($venue)) {
+        for ($i=0; $i < count($venue); $i++) {
+          DB::connection('cloudport_freewifi')->table('venues_aux')->insert([
+            'venue_id'=> $venue[$i]
+          ]);
+        }
+      }
+
+      //$res = DB::connection('freewifi_data')->select('CALL get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      $res = DB::connection('cloudport_freewifi')->select('CALL px_get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+
+      return $res;
+    }
     public function get_browsers(Request $request)
     {
 
@@ -82,19 +102,20 @@ class DashboardFreeWifiController extends Controller
 
       if (!empty($venue)) {
         for ($i=0; $i < count($venue); $i++) {
-          DB::connection('freewifi_data')->table('venues_aux')->insert([
+          DB::connection('cloudport_freewifi')->table('venues_aux')->insert([
             'venue_id'=> $venue[$i]
           ]);
         }
       }
 
-      $res = DB::connection('freewifi_data')->select('CALL get_browser_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      //$res = DB::connection('freewifi_data')->select('CALL get_browser_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      $res = DB::connection('cloudport_freewifi')->select('CALL px_get_browser_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
         $result = [];
 
         foreach ($res as $key => $value)
         {
-            $result[$key] = $value->Cantidad;
+            $result[$key] = $value->cantidad;
         }
 
         array_multisort($result, SORT_DESC, $res);
@@ -192,7 +213,7 @@ class DashboardFreeWifiController extends Controller
 
       if (!empty($venue)) {
         for ($i=0; $i < count($venue); $i++) {
-          DB::connection('freewifi_data')->table('venues_aux')->insert([
+          DB::connection('cloudport_freewifi')->table('venues_aux')->insert([
             'venue_id'=> $venue[$i]
           ]);
         }
@@ -200,7 +221,9 @@ class DashboardFreeWifiController extends Controller
 
       $todos= [];
 
-      $res = DB::connection('freewifi_data')->select('CALL get_age_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      //$res = DB::connection('freewifi_data')->select('CALL get_age_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+      $res = DB::connection('cloudport_freewifi')->select('CALL px_get_age_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
+
 
       $categories =
           [
@@ -221,7 +244,7 @@ class DashboardFreeWifiController extends Controller
 
               if(( $categories[$key]["min"] <= $val->age ) && ($val->age <= $categories[$key]["max"]))
               {
-                  $categories[$key]["total"] = $categories[$key]["total"] + $val->Cantidad;
+                  $categories[$key]["total"] = $categories[$key]["total"] + $val->cantidad;
                   //$categories[$key]["total"] ++ ;
               }
           }
@@ -412,26 +435,6 @@ class DashboardFreeWifiController extends Controller
         }
 
         array_multisort($result, SORT_DESC, $res);
-
-      return $res;
-    }
-    public function get_sessions(Request $request)
-    {
-      $chain = $request->select_scope;
-      $venue = $request->select_hotspots;
-      $fecha_ini = $request->datepickerWeek;
-      $fecha_fin = $request->datepickerWeek2;
-
-      if (!empty($venue)) {
-        for ($i=0; $i < count($venue); $i++) {
-          DB::connection('freewifi_data')->table('venues_aux')->insert([
-            'venue_id'=> $venue[$i]
-          ]);
-        }
-      }
-
-      //$res = DB::connection('freewifi_data')->select('CALL get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
-      $res = DB::connection('freewifi_data')->select('CALL px_get_sessions24h_chain(?,?,?)', array($chain,$fecha_ini,$fecha_fin));
 
       return $res;
     }
