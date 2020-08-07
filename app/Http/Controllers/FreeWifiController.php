@@ -207,6 +207,7 @@ class FreeWifiController extends Controller
         DB::disconnect('freewifi_data');
       }
 
+      $site_name = "";
       return view('visitor.submitx_freewifi', compact('user', 'password','url','proxy','sip','mac','client_mac','uip','ssid','vlan', 'url', 'site_name'));
       //return $request;
     }
