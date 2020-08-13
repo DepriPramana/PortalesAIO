@@ -208,7 +208,7 @@
       var totalTime_one = 5;
       var totalTime_two = 20;
       var url = ""; // redirrecion
-      var imagen = getRandomInt(3);
+      var imagen = getRandomInt(2);
       console.log(imagen)
       //imagen = 4;
 
@@ -230,7 +230,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
 
         document.getElementById("logo_primera").src = order_1;
-      }else if (imagen == 2) {
+      }else if (imagen == 1) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#C5EEEC");
@@ -239,7 +239,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/ado/banner1.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }else if(imagen == 1){
+      }else{
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#C5EEEC");
@@ -248,7 +248,8 @@
         var order_2 = "{{asset('free_wifi/pub/test/ado/banner2.gif')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }else{
+      }
+      /*else{
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/h10/bg.jpg")', 'background-repeat': 'no-repeat'});
@@ -257,7 +258,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/h10/logoh10.png')}}"; // aqui va el video
 
         document.getElementById("portal_img").src = order_1;
-      }
+      }*/
 
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
