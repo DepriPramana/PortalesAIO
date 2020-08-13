@@ -41,7 +41,6 @@
           <!-- background: #1f410d; -->
 
           <section class="bienvenida">
-
             <div class="container">
               <div id="div_img" style="text-align: center; display: none;">
                 <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia" id="text_cortesia">{{ __('station_msg.text_content_title')}}</p>
@@ -53,7 +52,7 @@
                   </div>
               </div>
               <div id="div_img2" style="text-align: center; display: none;">
-                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia">{{ __('station_msg.text_content_title')}}</p>
+                <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia"  id="text_cortesia2">{{ __('station_msg.text_content_title')}}</p>
                   <div class="col-md-12  col-xs-12  h-100">
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="logo_primera" alt="pub2">
                   </div>
@@ -93,19 +92,19 @@
 
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
-              <input type="hidden" id="name" name="name" value="Metrobus" placeholder="Nombre completo" >
-              <select id="select_pais" name="select_pais" class="select2" hidden >
+              <input type="hidden" id="name" name="name" value="Metrorrey" placeholder="Nombre completo">
+              <select id="select_pais" name="select_pais" class="select2" hidden>
                 <option value="">Seleccione una opcion</option>
               </select>
-              <input type="hidden" id="edad" name="edad" placeholder="Edad" hidden >
-              <select id="genero" name="genero" class="select2" >
+              <input type="hidden" id="edad" name="edad" placeholder="Edad" hidden>
+              <select id="genero" name="genero" class="select2">
                 <option value="">Seleccione una opcion</option>
                 <option value="1">Masculino</option>
                 <option value="2">Femenino</option>
               </select>
               <div class="inputs">
                   <!--<label>Nombre</label>
-                  <input type="text" id="name" name="name" value="Metrobus" placeholder="Nombre completo" required>
+                  <input type="text" id="name" name="name" value="Metrorrey" placeholder="Nombre completo" required>
                   <br>
                   <label>País</label>
                   <select id="select_pais" name="select_pais" class="select2" required>
@@ -122,10 +121,9 @@
                     <option value="2">Femenino</option>
                   </select>
                   <br>-->
-
                   <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
                       <p class="lead large" style="padding-top: 10px;">{{ __('station_msg.text_form_title_1')}} <br>{{ __('station_msg.text_form_title_1_2')}}</p>
-                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="t{{ __('station_msg.input_email_placeholder')}}" required style="border-radius: 0 !important;">
+                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="{{ __('station_msg.input_email_placeholder')}}" required style="border-radius: 0 !important;">
                       <!--<div class="form-check">
                         <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
                         <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
@@ -143,8 +141,9 @@
       </div>
 
 
-      <p class="lead" id="p_segundero" style="display: none;">{{ __('station_msg.wait_text')}}<span id="segundero"></span> {{ __('station_msg.seconds_text')}}</p>      <!--<footer class="mastfoot mt-auto">-->
-      <footer class="mastfoot mt-3">
+      <p class="lead" id="p_segundero" style="display: none;">{{ __('station_msg.wait_text')}}<span id="segundero"></span> {{ __('station_msg.seconds_text')}}</p>
+      <!--<footer class="mastfoot mt-auto">-->
+      <footer class="mastfoot mt-2">
         <!--<p>Ayuda telefónica <strong>800 112 1122</strong></p>-->
 
         <div class="row">
@@ -156,15 +155,18 @@
 
           <div class="col-4">
             <div class="row">
-              <div class="col-12 mt-2"style="padding-left:5px;">
-                <img class="logos_extra" class="" src="{{asset('free_wifi/metrobus_mexico.png')}}" alt="logo_isa_corporativo" width="70px" height="30px" style="">
+              <div class="col-6"style="padding-left:5px;">
+                <img class="logos_extra" class="" src="{{asset('free_wifi/logo_isa.png')}}" alt="logo_isa_corporativo" width="40px" height="40px" style="">
+              </div>
+              <div class="col-6" style="padding-left:5px;">
+                <img class="logos_extra" class="mt-2" src="{{asset('free_wifi/logo_metrorrey.png')}}" alt="logo_isa_corporativo" width="60px" height="30px" style="">
               </div>
             </div>
           </div>
 
           <div class="col-2"></div>
         </div>
-        <div id="div_check">
+        <div id="div_check" class="mt-2">
           <p class="footer_p" for="terms">{{ __('station_msg.terms_text_1')}} - <a href="{{asset('free_wifi/aviso_privacidad.pdf')}}" target='_blank'style="text-decoration: underline;" >{{ __('station_msg.terms_text_1_2')}}</a>{{ __('station_msg.terms_text_1_3')}}<a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >{{ __('station_msg.terms_text_1_4')}}</a></p>
           <!--<p class="footer_p" for="terms">Anuncios WiFi por Sitwifi Station - <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'style="text-decoration: underline;" >Anunciate aquí.</a></p>-->
         </div>
@@ -198,38 +200,11 @@
       var totalTime_one = 5;
       var totalTime_two = 20;
       var url = ""; // redirrecion
-      var imagen = getRandomInt(3);
+      var imagen = getRandomInt(2);
       //console.log(imagen)
       //imagen = 4;
-      if (imagen == 2) {
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        //$('.bg_container').css("background-color", "#1f410d");
 
-        var order_1 = "{{asset('free_wifi/images/portal1.jpeg')}}";
-        var order_2 = "{{asset('free_wifi/images/portal2.jpeg')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else if(imagen == 1){
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        //$('.bg_container').css("background-color", "#C5EEEC");
-
-        var order_1 = "{{asset('free_wifi/images/portal2.jpeg')}}";
-        var order_2 = "{{asset('free_wifi/images/portal1.jpeg')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else {
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        //$('.bg_container').css("background-color", "#C5EEEC");
-
-        var order_1 = "{{asset('free_wifi/images/portal2.jpeg')}}";
-        var order_2 = "{{asset('free_wifi/images/portal3.jpeg')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }
-      /*if (imagen == 4) {
+      if (imagen == 4) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#1f410d");
@@ -265,7 +240,7 @@
         var order_2 = "{{asset('free_wifi/pub/test/ado/banner2.gif')}}";
 
         document.getElementById("portal_img").src = order_1;
-      }*/
+      }
       /*else{
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
@@ -284,17 +259,7 @@
           //let height = $('#text_cortesia2').height();
           let cort_height =  height > 0 ? height : 30;
           if(totalTime_one==0){
-            $('#div_img').css("display", "block");
-            $('#div_img2').css("display", "none");
-            $('.text_cortesia').css("display", "none");
-
-            //$('#portal_img').css('margin-top', '-'+cort_height+'px');
-            $('#main-container').css('height', main_height);
-            $('#portal_img').css('margin-top', '-100px');
-
-            document.getElementById("portal_img").src = order_2;
-
-            /*if (imagen == 0) {
+            if (imagen == 0) {
               $('#div_img').css("display", "block");
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
@@ -343,7 +308,7 @@
               $('#url').val(url);
               $('#ilink').attr("src", 'https://www.youtube.com/embed/BVsHmwFwt4M?autoplay=1&mute=1');
               //document.getElementById("portal_img").src = order_2;
-            }*/
+            }
             updateClock_submit();
           }else{
             totalTime_one-=1;
@@ -354,15 +319,7 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          $('#div_img').css("display", "block");
-          $('#div_img2').css("display", "none");
-          document.getElementById("portal_img").src = order_1;
-          $('#p_segundero').css("display", "none");
-          $('#btn-connect').addClass("btn-success");
-          $('#btn-connect-asur').addClass("btn-success");
-          $('#ilink').css("display", "none");
-
-          /*if (imagen == 0) {
+          if (imagen == 0) {
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
@@ -402,7 +359,7 @@
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-info");
             $('#btn-connect-asur').addClass("btn-info");
-          }*/
+          }
 
           $('.form_div').css("display", "block");
           //console.log('submitted');

@@ -165,9 +165,9 @@ Route::get('/Aryba','FreeWifiController@get_aryba_blade');
 Route::get('/Alcaldia_ao','FreeWifiController@get_alcaldia_blade');
 Route::get('/Asur','FreeWifiController@get_asur_blade');
 
-//Route::get('/Metrorrey2',function(){
-//  return view('visitor.SitwifiFree.metrorrey_new');
-//});
+Route::get('/test_pub',function(){
+  return view('visitor.SitwifiFree.free_wifi_old');
+});
 Route::get('/FreeWifi2', function(){
   return view('visitor.SitwifiFree.free_wifi');
 });

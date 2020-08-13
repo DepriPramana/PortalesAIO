@@ -143,7 +143,7 @@
 
       <p class="lead" id="p_segundero" style="display: none;">{{ __('station_msg.wait_text')}}<span id="segundero"></span> {{ __('station_msg.seconds_text')}}</p>
       <!--<footer class="mastfoot mt-auto">-->
-      <footer class="mastfoot mt-2">
+      <footer class="mastfoot mt-3">
         <!--<p>Ayuda telefónica <strong>800 112 1122</strong></p>-->
 
         <div class="row">
@@ -200,11 +200,38 @@
       var totalTime_one = 5;
       var totalTime_two = 20;
       var url = ""; // redirrecion
-      var imagen = getRandomInt(2);
+      var imagen = getRandomInt(3);
       //console.log(imagen)
       //imagen = 4;
+      if (imagen == 2) {
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        //$('.bg_container').css("background-color", "#1f410d");
 
-      if (imagen == 4) {
+        var order_1 = "{{asset('free_wifi/images/portal1.jpeg')}}";
+        var order_2 = "{{asset('free_wifi/images/portal2.jpeg')}}";
+
+        document.getElementById("portal_img").src = order_1;
+      }else if(imagen == 1){
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        //$('.bg_container').css("background-color", "#C5EEEC");
+
+        var order_1 = "{{asset('free_wifi/images/portal2.jpeg')}}";
+        var order_2 = "{{asset('free_wifi/images/portal1.jpeg')}}";
+
+        document.getElementById("portal_img").src = order_1;
+      }else {
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        //$('.bg_container').css("background-color", "#C5EEEC");
+
+        var order_1 = "{{asset('free_wifi/images/portal2.jpeg')}}";
+        var order_2 = "{{asset('free_wifi/images/portal3.jpeg')}}";
+
+        document.getElementById("portal_img").src = order_1;
+      }
+      /*if (imagen == 4) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#1f410d");
@@ -241,7 +268,7 @@
 
         document.getElementById("portal_img").src = order_1;
       }
-      /*else{
+      else{
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/h10/bg.jpg")', 'background-repeat': 'no-repeat'});
@@ -259,7 +286,17 @@
           //let height = $('#text_cortesia2').height();
           let cort_height =  height > 0 ? height : 30;
           if(totalTime_one==0){
-            if (imagen == 0) {
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            $('.text_cortesia').css("display", "none");
+
+            //$('#portal_img').css('margin-top', '-'+cort_height+'px');
+            $('#main-container').css('height', main_height);
+            $('#portal_img').css('margin-top', '-100px');
+
+
+            document.getElementById("portal_img").src = order_2;
+            /*if (imagen == 0) {
               $('#div_img').css("display", "block");
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
@@ -308,7 +345,7 @@
               $('#url').val(url);
               $('#ilink').attr("src", 'https://www.youtube.com/embed/BVsHmwFwt4M?autoplay=1&mute=1');
               //document.getElementById("portal_img").src = order_2;
-            }
+            }*/
             updateClock_submit();
           }else{
             totalTime_one-=1;
@@ -319,7 +356,14 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          if (imagen == 0) {
+          $('#div_img').css("display", "block");
+          $('#div_img2').css("display", "none");
+          document.getElementById("portal_img").src = order_1;
+          $('#p_segundero').css("display", "none");
+          $('#btn-connect').addClass("btn-success");
+          $('#btn-connect-asur').addClass("btn-success");
+          $('#ilink').css("display", "none");
+          /*if (imagen == 0) {
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
@@ -359,7 +403,7 @@
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-info");
             $('#btn-connect-asur').addClass("btn-info");
-          }
+          }*/
 
           $('.form_div').css("display", "block");
           //console.log('submitted');
