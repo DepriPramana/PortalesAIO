@@ -30,6 +30,7 @@ Route::prefix('dashboard_freewifi')->group(function() {
     Route::get('sessions_report','DashboardFreeWifiController@sessions_report');
     Route::get('testing_px','DashboardFreeWifiController@testing');
 });
+
 //Route::get('test_echart','DashboardFreeWifiController@index2');
 Route::post('hotels_by_cadena', 'DashboardFreeWifiController@get_hotelsbycadena');
 Route::post('get_graph_browsers', 'DashboardFreeWifiController@get_browsers');
@@ -142,6 +143,9 @@ Route::get('/HaciendaPremium/{lang}', function($lang){
     $id_site = '1';
     return view('visitor.Hacienda.hacienda_pay', compact('site','id_site', 'html_title'));
 });
+Route::get('hacienda_paquetes', 'HaciendaController@index');
+Route::post('/get_paquetes_month','HaciendaController@getPaquetesMonth');
+Route::post('/get_paquetes_all','HaciendaController@getPaquetesAll');
 
 Route::get('/fidelis', function(){
     return view('visitor.Demo.xtech');

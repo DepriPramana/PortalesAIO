@@ -11,7 +11,7 @@ class HaciendaController extends Controller
 {
     public function index()
     {
-    	# code...
+    	return view('visitor.Hacienda.hacienda_paquetes');
     }
 
     public function query_example()
@@ -19,6 +19,24 @@ class HaciendaController extends Controller
     	// $sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where('lastname', 'BREWER')->where('room', 405)->orderBy('id', 'desc')->get()->first();
 
 		$sql = DB::connection('hacienda_sqlsrv_practice')->table('imm_register')->select()->where('room', $room_numba)->orderBy('id', 'desc')->get()->first();
+    }
+    public function getPaquetesMonth(Request $request)
+    {
+      $input_date_i= $request->get('date_to_search');
+      if ($input_date_i != '') {
+        $date = $input_date_i.'-01';
+      }
+      else {
+        $date_current = date('Y-m');
+        $date = $date_current.'-01';
+      }
+      $result = DB::select('CALL px_paquetes_comprados_mes (?)', array($date));
+      return $result;
+    }
+    public function getPaquetesAll(Request $request)
+    {
+      $result = DB::select('CALL px_paquetes_comprados ()');
+      return $result;
     }
 
     public function try_login_hacienda(Request $request)
@@ -517,7 +535,7 @@ class HaciendaController extends Controller
 			if (empty($sql_good_checkout)) {
 				if (empty($sql_good)) {
 					return response()->json(['status' => 2, 'msg' => 'No match with that lastname or room number']);
-				}else{ 
+				}else{
 					if ($sql_good->owner == 'N') {
 						$check_pay_reservation = DB::connection('hacienda_sqlsrv')->table('imm_accounts')->where('reservation_id', $sql_good->reservation_id)->orderBy('activation_datetime', 'desc')->get()->first();
 						if (empty($check_pay_reservation)) {
@@ -1208,7 +1226,7 @@ class HaciendaController extends Controller
 		$fechain = Carbon::now();
 		$fechaout = $fechain->addDays($exp)->format('Y-m-d H:i:s');
 		$fechamod = Carbon::parse($fechaout)->format('d M Y H:i:s');
-		
+
 		/*$fechain = date("Y-m-d H:i:s");
         $fechaout = strtotime ( '+1 day' , strtotime ( $fechain ) ) ;
         $fechaout = date ( 'Y-m-d H:i:s' , $fechaout );

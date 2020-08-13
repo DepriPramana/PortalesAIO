@@ -33,8 +33,8 @@ class DashboardFreeWifiController extends Controller
     public function index3()
     {
       //$chains = DB::connection('cloudalice')->table('cadenas')->where('hotspot', 1)->get();
-      //return view('visitor.DashboardFreeWifi.index_testing');
-      abort(503,'Modulo en mantenimiento');
+      return view('visitor.DashboardFreeWifi.index_testing');
+      //abort(503,'Modulo en mantenimiento');
     }
     public function sessions()
     {
