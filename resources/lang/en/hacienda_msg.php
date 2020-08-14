@@ -13,6 +13,26 @@ return [
     |
     */
 
+    /*
+    |--------------------------------------------------------------------------
+    |Logout hacienda
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'title_logout' => 'LOG OUT',
+    'subtitle_logout' => 'Click the button below to log out of the network.',
+    'btn_logout' => 'Log out',
+
+    /*
+    |--------------------------------------------------------------------------
+    |Logout hacienda
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    // Hacienda Pay
+
     'title' => 'SIGN IN',
     'subtitle' => 'insert the information below',
     

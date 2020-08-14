@@ -105,6 +105,15 @@ Route::get('/CentralNorte', function () {
     $site = 'Central';
     return view('visitor.CentralNorte.intro_central', compact('site'));
 });
+
+Route::get('/test_pub',function(){
+    $html_title = 'Hacienda Encantada';
+    $site = 'HE'; // Variable para extraer id de base de datos.
+    $id_site = '1'; // Variable para cambio de imagenes.
+
+    return view('visitor.Hacienda.hacienda_logout', compact('site', 'id_site', 'html_title'));
+});
+
 Route::get('/HaciendaEncantada/{lang}', function($lang){
     $html_title = 'Hacienda Encantada';
     App::setLocale($lang);
@@ -165,9 +174,6 @@ Route::get('/Aryba','FreeWifiController@get_aryba_blade');
 Route::get('/Alcaldia_ao','FreeWifiController@get_alcaldia_blade');
 Route::get('/Asur','FreeWifiController@get_asur_blade');
 
-Route::get('/test_pub',function(){
-  return view('visitor.SitwifiFree.free_wifi_old');
-});
 Route::get('/FreeWifi2', function(){
   return view('visitor.SitwifiFree.free_wifi');
 });

@@ -13,6 +13,25 @@ return [
     |
     */
 
+    /*
+    |--------------------------------------------------------------------------
+    |Logout hacienda
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'title_logout' => 'LOG OUT',
+    'subtitle_logout' => 'Haga click en el boton de abajo para salir de la red.',
+    'btn_logout' => 'Log out',
+    /*
+    |--------------------------------------------------------------------------
+    |Logout hacienda
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    // Hacienda Pay
+
     'title' => 'REGISTRO',
     'subtitle' => 'inserta la información debajo.',
     
