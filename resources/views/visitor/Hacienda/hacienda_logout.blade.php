@@ -58,7 +58,7 @@
                 <div class="well well-sm"> Service features <b>Premium Daily Member.</b></div>
                 <div class="well well-sm"> Service features <b>Premium Weekly Member.</b></div> -->
                 <!-- Botones de servicios. -->
-                <div id="opcion-free" style="cursor: pointer;" class="form-group text-center m-t-20">
+                <div id="opcion-logout" style="cursor: pointer;" class="form-group text-center m-t-20">
                   <div class="col-xs-12">
                     <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="button">{{ __('hacienda_msg.btn_logout')}}</button>
                   </div>
@@ -90,7 +90,7 @@
                   </div>
                 </form>
 
-                <form id="form-free" method="POST" action="{{url('/submit_hacienda_free')}}" style="display: none;">
+                <form id="form-free" method="POST" action="http://{{isset($_GET['sip']) ? $_GET['sip'] : '172.20.0.2'}}:9997/logout" style="display: none;">
                   {{ csrf_field() }}
                   <div class="well well-sm">
                     <b>{{ __('hacienda_msg.boxfree_txt_title')}}</b>
@@ -154,7 +154,7 @@
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                               <h4 class="modal-title">{{ __('hacienda_msg.title_term') }}</h4> </div>
                           <div class="modal-body">
-                            @if ($id_site == 1)
+                            @if ($id_site == 1 || $id_site == 0)
                               <ul class="list-unstyled">
                                 <li><b>{{ __('hacienda_msg.term_paragraph1') }}</b>
                                   <ul>

@@ -106,14 +106,6 @@ Route::get('/CentralNorte', function () {
     return view('visitor.CentralNorte.intro_central', compact('site'));
 });
 
-Route::get('/test_pub',function(){
-    $html_title = 'Hacienda Encantada';
-    $site = 'HE'; // Variable para extraer id de base de datos.
-    $id_site = '1'; // Variable para cambio de imagenes.
-
-    return view('visitor.Hacienda.hacienda_logout', compact('site', 'id_site', 'html_title'));
-});
-
 Route::get('/HaciendaEncantada/{lang}', function($lang){
     $html_title = 'Hacienda Encantada';
     App::setLocale($lang);
@@ -156,6 +148,14 @@ Route::get('hacienda_paquetes', 'HaciendaController@index');
 Route::post('/get_paquetes_month','HaciendaController@getPaquetesMonth');
 Route::post('/get_paquetes_all','HaciendaController@getPaquetesAll');
 
+Route::get('/hacienda_logout/{lang}', function($lang){
+    $html_title = 'Hacienda Logout';
+    App::setLocale($lang);
+    $site = 'HE_L'; // Variable para extraer id de base de datos.
+    $id_site = '0'; // Variable para cambio de imagenes.
+
+    return view('visitor.Hacienda.hacienda_logout', compact('site', 'id_site', 'html_title'));
+});
 Route::get('/fidelis', function(){
     return view('visitor.Demo.xtech');
 });
