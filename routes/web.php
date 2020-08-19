@@ -165,7 +165,7 @@ Route::get('/Isec', function(){
 });
 
 Route::get('/freewifi_test', function(){
-   return view('visitor.SitwifiFree.old_pub.free_wifi_new');
+   return view('visitor.SitwifiFree.cambios.metrorrey_new');
 });
 
 Route::get('/FreeWifi','FreeWifiController@get_freewifi_blade');
