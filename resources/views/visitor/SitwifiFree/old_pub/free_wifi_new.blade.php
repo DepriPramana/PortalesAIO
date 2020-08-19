@@ -47,7 +47,7 @@
                   <div class="col-md-12 h-100">
                       <div class="col-md-12 col-xs-12 my-auto" >
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
-                          <iframe id="ilink" width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                          <iframe class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" id="ilink" width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
                       </div>
                   </div>
               </div>
@@ -114,7 +114,7 @@
                   </select>
                   <br>-->
                   <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
-                      <p class="lead large" style="padding-top: 10px;">{{ __('station_msg.text_form_title_1')}}<br>{{ __('station_msg.text_form_title_1_2')}}</p>
+                      <p class="lead large text_formulario" style="padding-top: 10px;">{{ __('station_msg.text_form_title_1')}}<br>{{ __('station_msg.text_form_title_1_2')}}</p>
 
                       <input class="form-control" type="text" id="name" name="name" value="" placeholder="{{ __('station_msg.input_name_placeholder')}}" required>
 
@@ -205,83 +205,32 @@
       var totalTime_one = 2;
       var totalTime_two = 2;
       var url = ""; // redirrecion
-      var imagen = getRandomInt(3);
-      //console.log(imagen)
+      var imagen = getRandomInt(1);
+      console.log(imagen)
       //imagen = 4;
-      if (imagen == 2) {
+
+      if (imagen == 0) {
+        $('.text_cortesia').css('color', 'black');
+        $('.text_formulario').css('color', 'black');
+
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
-        //$('.bg_container').css("background-color", "#1f410d");
+        $('.bg_container').css("background-color", "#C5EEEC");
 
-        var order_1 = "{{asset('free_wifi/images/portal1.jpeg')}}";
-        var order_2 = "{{asset('free_wifi/images/portal2.jpeg')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else if(imagen == 1){
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        //$('.bg_container').css("background-color", "#C5EEEC");
-
-        var order_1 = "{{asset('free_wifi/images/portal2.jpeg')}}";
-        var order_2 = "{{asset('free_wifi/images/portal1.jpeg')}}";
+        var order_1 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
+        var order_2 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
 
         document.getElementById("portal_img").src = order_1;
       }else {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
-        //$('.bg_container').css("background-color", "#C5EEEC");
+        $('.bg_container').css("background-color", "#C5EEEC");
 
-        var order_1 = "{{asset('free_wifi/images/portal2.jpeg')}}";
-        var order_2 = "{{asset('free_wifi/images/portal3.jpeg')}}";
+        var order_1 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
+        var order_2 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
 
         document.getElementById("portal_img").src = order_1;
       }
-      /*if (imagen == 4) {
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        $('.bg_container').css("background-color", "#1f410d");
-
-        var order_1 = "{{asset('free_wifi/pub/test/viva/viva_slogan_new.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/viva/viva_pu.jpg')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else if(imagen == 3){
-        $('#div_img2').css("display", "block"); // solo para el logo de primera
-        $('#div_img').css("display", "none");
-        $('.bg_container').css("background-color", "#6ec8db");
-
-        var order_1 = "{{asset('free_wifi/pub/test/flecha_amarilla/logo_primeraplus.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/flecha_amarilla/plus_img01.jpg')}}";
-
-        document.getElementById("logo_primera").src = order_1;
-      }else if (imagen == 1) {
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        $('.bg_container').css("background-color", "#C5EEEC");
-
-        var order_1 = "{{asset('free_wifi/pub/test/ado/ado_logo_pub.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/ado/banner1.jpg')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else {
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        $('.bg_container').css("background-color", "#C5EEEC");
-
-        var order_1 = "{{asset('free_wifi/pub/test/ado/ado_logo_pub.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/ado/banner2.gif')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else{
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/h10/bg.jpg")', 'background-repeat': 'no-repeat'});
-
-        var order_1 = "{{asset('free_wifi/pub/test/h10/logoh10.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/h10/logoh10.png')}}"; // aqui va el video
-
-        document.getElementById("portal_img").src = order_1;
-      }*/
 
       function updateClock_2ndimg() {
         //document.getElementById('segundero').innerHTML = totalTime;
@@ -289,61 +238,34 @@
           let main_height = $('#main-container').height() * 1.8;
           //let height = $('#text_cortesia2').height();
           let cort_height =  height > 0 ? height : 30;
+
           if(totalTime_one==0){
-            $('#div_img').css("display", "block");
-            $('#div_img2').css("display", "none");
-            $('.text_cortesia').css("display", "none");
-            document.getElementById("portal_img").src = order_2;
-            /*if (imagen == 0) {
-              $('#div_img').css("display", "block");
-              $('#div_img2').css("display", "none");
-              $('.text_cortesia').css("display", "none");
-              //$('#portal_img').css('margin-top', '-'+cort_height+'px');
-              $('#main-container').css('height', main_height);
-              $('#portal_img').css('margin-top', '-100px');
-
-              url = "https://www.vivaaerobus.com/"; //vivaaerobus redireccion.
-              $('#url').val(url);
-              document.getElementById("portal_img").src = order_2;
-            }else if(imagen == 1){
-              $('#div_img2').css("display", "none"); // solo para el logo de primera
-              $('#div_img').css("display", "block");
-              $('.text_cortesia').css("display", "none");
-              $('#logo_primera').css('margin-top', '-'+cort_height+'px');
-              $('#portal_img').css('margin-top', '-'+cort_height+'px');
-
-              url = "https://wl.primeraplus.com.mx/"; // primeraplus redirrecion.
-              $('#url').val(url);
-              document.getElementById("portal_img").src = order_2;
-            }else if(imagen == 2){
+            if(imagen == 0){
               $('#div_img').css("display", "block");
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
               $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              url = "https://www.ado.com.mx/"; //ado1 redireccion.
-              $('#url').val(url);
-              document.getElementById("portal_img").src = order_2;
-            }else if(imagen == 3){
-              $('#div_img').css("display", "block");
-              $('#div_img2').css("display", "none");
-              $('.text_cortesia').css("display", "none");
-              $('#portal_img').css('margin-top', '-'+cort_height+'px');
+              //$('#portal_img').css("display", "none");
 
-              url = "https://www.ado.com.mx/"; //ado2 redireccion.
+              url = "https://www.pagofon.net/"; //ado1 redireccion.
               $('#url').val(url);
-              document.getElementById("portal_img").src = order_2;
+              $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
+              //document.getElementById("portal_img").src = order_2;
             }else{
               $('#div_img').css("display", "block");
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
               $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              url = "https://www.oceanhotels.net/"; //ado2 redireccion.
+              //$('#portal_img').css("display", "none");
+
+              url = "https://www.pagofon.net/"; //ado2 redireccion.
               $('#url').val(url);
-              $('#ilink').attr("src", 'https://www.youtube.com/embed/BVsHmwFwt4M?autoplay=1&mute=1');
+
+              $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
               //document.getElementById("portal_img").src = order_2;
-            }*/
+            }
             updateClock_submit();
           }else{
             totalTime_one-=1;
@@ -354,55 +276,27 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          $('#div_img').css("display", "none");
-          $('#div_img2').css("display", "none");
-          document.getElementById("portal_img").src = order_1;
-          $('#p_segundero').css("display", "none");
-          $('#btn-connect').addClass("btn-success");
-          $('#btn-connect-asur').addClass("btn-success");
-          $('#ilink').css("display", "none");
-
-          /*if (imagen == 0) {
+          if (imagen == 0) {
+            $('#portal_img').css("display", "block");
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
             document.getElementById("portal_img").src = order_1;
-            $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-success");
-            $('#btn-connect-asur').addClass("btn-success");
-            $('#ilink').css("display", "none");
-          }else if(imagen == 1){
-            $('#div_img2').css("display", "block"); // solo para el logo de primera
-            $('#div_img').css("display", "none");
-            document.getElementById("logo_primera").src = order_1;
-            $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-danger");
-            $('#btn-connect-asur').addClass("btn-danger");
-            $('#ilink').css("display", "none");
-          }else if(imagen == 2){
-            $('#div_img').css("display", "block");
-            $('#div_img2').css("display", "none");
-            document.getElementById("portal_img").src = order_1;
-            $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-danger");
-            $('#btn-connect-asur').addClass("btn-danger");
-            $('#ilink').css("display", "none");
-          }else if(imagen == 3){
-            $('#div_img').css("display", "block");
-            $('#div_img2').css("display", "none");
-            document.getElementById("portal_img").src = order_1;
-            $('#p_segundero').css("display", "none");
-            $('#btn-connect').addClass("btn-danger");
-            $('#btn-connect-asur').addClass("btn-danger");
-            $('#ilink').css("display", "none");
-          }else{
-            $('#div_img').css("display", "block");
-            $('#div_img2').css("display", "none");
-            document.getElementById("portal_img").src = order_1;
-            $('#ilink').css("display", "none");
             $('#p_segundero').css("display", "none");
             $('#btn-connect').addClass("btn-info");
             $('#btn-connect-asur').addClass("btn-info");
-          }*/
+            $('#ilink').css("display", "none");
+
+          }else{
+            $('#portal_img').css("display", "block");
+            $('#div_img').css("display", "block");
+            $('#div_img2').css("display", "none");
+            document.getElementById("portal_img").src = order_1;
+            $('#p_segundero').css("display", "none");
+            $('#btn-connect').addClass("btn-info");
+            $('#btn-connect-asur').addClass("btn-info");
+            $('#ilink').css("display", "none");
+
+          }
 
           $('.form_div').css("display", "block");
           //console.log('submitted');
