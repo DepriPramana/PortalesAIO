@@ -129,6 +129,7 @@ class FreeWifiController extends Controller
         $email = $request->email;
         $edad = $request->edad;
         $genero = $request->genero;
+        $publicidad = $request->publicidad;
       //
       //user test radius
       // procedure para obtener site_id
@@ -189,7 +190,8 @@ class FreeWifiController extends Controller
           'age' => $edad,
           'gender' => $genero,
           'expiration' => $fechaout,
-          'success' => 1
+          'success' => 1,
+          'publicidad' => $publicidad
         ]);
         /*DB::connection('freewifi_data')->table('data_sites')->insert([
           'lastname' => $name,

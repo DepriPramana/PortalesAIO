@@ -90,6 +90,7 @@
               <input class="form-control" type="hidden" id="res" name="res" value="{{ isset($_GET['res']) ? $_GET['res'] : '' }}" />
               <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
               <input class="form-control" type="hidden" id="url" name="url" value="">
+              <input class="form-control" type="hidden" id="publicidad" name="publicidad" value="">
 
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
@@ -205,6 +206,7 @@
       var totalTime_one = 5;
       var totalTime_two = 20;
       var url = ""; // redirrecion
+      var publicidad = 0;
       var imagen = getRandomInt(1);
       //console.log(imagen)
       //imagen = 4;
@@ -248,8 +250,11 @@
 
               //$('#portal_img').css("display", "none");
 
-              url = "https://www.pagofon.net/"; //ado1 redireccion.
+              url = "https://www.pagofon.net/"; // redireccion.
+              publicidad = 1;
               $('#url').val(url);
+              $('#publicidad').val(publicidad);
+
               $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
               //document.getElementById("portal_img").src = order_2;
             }else{
@@ -260,8 +265,10 @@
 
               //$('#portal_img').css("display", "none");
 
-              url = "https://www.pagofon.net/"; //ado2 redireccion.
+              url = "https://www.pagofon.net/"; // redireccion.
+              publicidad = 1;
               $('#url').val(url);
+              $('#publicidad').val(publicidad);
 
               $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
               //document.getElementById("portal_img").src = order_2;
