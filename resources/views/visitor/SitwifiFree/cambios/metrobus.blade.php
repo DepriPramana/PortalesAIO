@@ -91,7 +91,7 @@
               <input class="form-control" type="hidden" id="auth" name="auth" value="{{ isset($_GET['auth']) ? $_GET['auth'] : '' }}">
               <input class="form-control" type="hidden" id="url" name="url" value="">
               <input class="form-control" type="hidden" id="publicidad" name="publicidad" value="">
-              
+
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
               <input type="hidden" id="name" name="name" value="Metrobus" placeholder="Nombre completo" >
@@ -126,7 +126,7 @@
 
                   <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
                       <p class="lead large text_formulario" style="padding-top: 10px;">{{ __('station_msg.text_form_title_1')}} <br>{{ __('station_msg.text_form_title_1_2')}}</p>
-                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="t{{ __('station_msg.input_email_placeholder')}}" required style="border-radius: 0 !important;">
+                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="{{ __('station_msg.input_email_placeholder')}}" required style="border-radius: 0 !important;">
                       <!--<div class="form-check">
                         <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
                         <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
