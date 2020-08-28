@@ -36,7 +36,7 @@
         </div>
       </header>
 
-      <div class="mt-2 bg_container" role="main" style="height:700px;">
+      <div class="mt-2 bg_container" role="main" style="height:800px;">
         <main  class="inner cover mb-auto mt-auto">
           <!-- background: #1f410d; -->
 
@@ -189,11 +189,11 @@
       var totalTime_two = 20;
       var url = ""; // redirrecion
       var publicidad = 0;
-      var imagen = getRandomInt(2);
-      //console.log(imagen)
+      var imagen = getRandomInt(1);
+      console.log(imagen)
       //imagen = 4;
 
-      if (imagen == 0) {
+      if (imagen == 1) {
         $('.text_cortesia').css('color', 'black');
         $('.text_formulario').css('color', 'black');
 
@@ -208,10 +208,14 @@
       }else {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
-        $('.bg_container').css("background-color", "#C5EEEC");
+        $('.bg_container').css("background-color", "#F6A42F");
+        $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/sitwifi/prueba2.png")', 'background-repeat': 'no-repeat', 'background-size': '100%', 'background-position': 'center'});
+        //$('.bg_container').css({'min-width' : '100%'});
+        $('.text_cortesia').css("display", "none");
+        $('#portal_img').css("display", "none");
 
-        var order_1 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
+        var order_1 = "{{asset('free_wifi/transparency2.png')}}";
+        //var order_2 = "{{asset('free_wifi/pub/test/sitwifi/11438.jpg')}}";
 
         document.getElementById("portal_img").src = order_1;
       }
@@ -222,8 +226,9 @@
           let main_height = $('#main-container').height() * 1.8;
           //let height = $('#text_cortesia2').height();
           let cort_height =  height > 0 ? height : 30;
+
           if(totalTime_one==0){
-            if(imagen == 0){
+            if(imagen == 1){
               $('#div_img').css("display", "block");
               $('#div_img2').css("display", "none");
               $('.text_cortesia').css("display", "none");
@@ -232,29 +237,28 @@
               //$('#portal_img').css("display", "none");
 
               url = "https://www.pagofon.net/"; // redireccion.
-              publicidad = 1;
+              publicidad = 1; // 0 sitwifi 1 pagofon
               $('#url').val(url);
               $('#publicidad').val(publicidad);
 
               $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
               //document.getElementById("portal_img").src = order_2;
             }else{
+              $('.bg_container').css({'background-image' : 'none'});
+
               $('#div_img').css("display", "block");
-              $('#div_img2').css("display", "none");
-              $('.text_cortesia').css("display", "none");
-              $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              //$('#portal_img').css("display", "none");
+              $('#portal_img').css("display", "block");
 
-              url = "https://www.pagofon.net/"; // redireccion.
-              publicidad = 1;
+              url = "http://www.sitwifi.com"; // redireccion.
+              publicidad = 0; // 0 sitwifi 1 pagofon
               $('#url').val(url);
               $('#publicidad').val(publicidad);
 
-              $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
+              $('#ilink').attr("src", 'free_wifi/pub/test/sitwifi/sitwifi_video.mp4');
               //document.getElementById("portal_img").src = order_2;
             }
-            updateClock_submit_noform();
+            updateClock_submit();
           }else{
             totalTime_one-=1;
             setTimeout("updateClock_2ndimg()",1000);
@@ -264,7 +268,7 @@
         $('#p_segundero').css("display", "block");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
-          if (imagen == 0) {
+          /*if (imagen == 0) {
             $('#portal_img').css("display", "block");
             $('#div_img').css("display", "block");
             $('#div_img2').css("display", "none");
@@ -282,10 +286,10 @@
             $('#btn-connect').addClass("btn-info");
             $('#btn-connect-asur').addClass("btn-info");
             $('#ilink').css("display", "none");
-          }
+          }*/
           //$('.form_div').css("display", "block");
           //console.log('submitted');
-          //$("#myForm").submit();
+          $("#myForm").submit();
         }else{
           totalTime_two-=1;
           setTimeout("updateClock_submit()",1000);
@@ -297,10 +301,10 @@
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
           //console.log('submitted');
-          $("#myForm").submit();
+          // $("#myForm").submit();
         }else{
           totalTime_two-=1;
-          setTimeout("updateClock_submit_noform()",1000);
+          setTimeout("updateClock_submit()",1000);
         }
       }
       function hide(){
