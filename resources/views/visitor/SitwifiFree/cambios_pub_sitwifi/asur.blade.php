@@ -18,6 +18,15 @@
     -->
     <!-- Custom styles for this template -->
     <link href="{{asset('free_wifi/css/cover_test.css')}}" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FVJ4HYZSZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5FVJ4HYZSZ');
+    </script>
   </head>
 
   <body class="text-center">
@@ -125,8 +134,8 @@
                   <br>-->
                   <div class="col-md-8 offset-md-2 mb-5 mt-md-n2">
                       <p class="lead large text_formulario" style="padding-top: 10px; color:black;">{{ __('station_msg.text_form_title_1')}}<br>{{ __('station_msg.text_form_title_1_2')}}</p>
-                      <input class="form-control" type="email" id="email" name="email" value="" placeholder="{{ __('station_msg.input_email_placeholder')}}" required style="border-radius: 0 !important;">
-                      <!--<div class="form-check">
+                      <!--<input class="form-control" type="email" id="email" name="email" value="" placeholder="{{ __('station_msg.input_email_placeholder')}}" required style="border-radius: 0 !important;">
+                      <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="terms" name="terms" value="">
                         <label class="form-check-label" for="terms">He leído y acepto <a href="{{asset('free_wifi/terminos_condiciones.pdf')}}" target='_blank'>aviso de privacidad, términos y condiciones.</a></label>
                       </div>-->
@@ -205,26 +214,14 @@
         return Math.floor(Math.random() * Math.floor(max));
       }
       var totalTime_one = 5;
-      var totalTime_two = 20;
+      var totalTime_two = 2;
       var url = ""; // redirrecion
       var publicidad = 0;
       var imagen = getRandomInt(1);
       console.log(imagen)
       //imagen = 4;
 
-      if (imagen == 1) {
-        $('.text_cortesia').css('color', 'black');
-        $('.text_formulario').css('color', 'black');
-
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        $('.bg_container').css("background-color", "#C5EEEC");
-
-        var order_1 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else {
+      if (imagen == 0)  {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#F6A42F");
@@ -247,22 +244,7 @@
           let cort_height =  height > 0 ? height : 30;
 
           if(totalTime_one==0){
-            if(imagen == 1){
-              $('#div_img').css("display", "block");
-              $('#div_img2').css("display", "none");
-              $('.text_cortesia').css("display", "none");
-              $('#portal_img').css('margin-top', '-'+cort_height+'px');
-
-              //$('#portal_img').css("display", "none");
-
-              url = "https://www.pagofon.net/"; // redireccion.
-              publicidad = 1; // 0 sitwifi 1 pagofon
-              $('#url').val(url);
-              $('#publicidad').val(publicidad);
-
-              $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
-              //document.getElementById("portal_img").src = order_2;
-            }else{
+            if(imagen == 0){
               $('.bg_container').css({'background-image' : 'none'});
 
               $('#div_img').css("display", "block");
@@ -274,7 +256,7 @@
               $('#url').val(url);
               $('#publicidad').val(publicidad);
 
-              $('#ilink').attr("src", 'free_wifi/pub/test/sitwifi/sitwifi_video.mp4');
+              //$('#ilink').attr("src", 'free_wifi/pub/test/sitwifi/sitwifi_video.mp4');
               //document.getElementById("portal_img").src = order_2;
             }
             updateClock_submit();
@@ -284,7 +266,8 @@
           }
       }
       function updateClock_submit() {
-        $('#p_segundero').css("display", "block");
+        //$('#p_segundero').css("display", "block");
+        $('#ilink').css("display", "none");
         document.getElementById('segundero').innerHTML = totalTime_two;
         if(totalTime_two==0){
           /*if (imagen == 0) {
@@ -306,9 +289,9 @@
             $('#btn-connect-asur').addClass("btn-info");
             $('#ilink').css("display", "none");
           }*/
-          //$('.form_div').css("display", "block");
+          $('.form_div').css("display", "block");
           //console.log('submitted');
-          $("#myForm").submit();
+          //$("#myForm").submit();
         }else{
           totalTime_two-=1;
           setTimeout("updateClock_submit()",1000);

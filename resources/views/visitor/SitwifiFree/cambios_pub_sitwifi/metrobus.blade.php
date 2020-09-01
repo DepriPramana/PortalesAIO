@@ -18,6 +18,15 @@
     -->
     <!-- Custom styles for this template -->
     <link href="{{asset('free_wifi/css/cover_test.css')}}" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FVJ4HYZSZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5FVJ4HYZSZ');
+    </script>
   </head>
 
   <body class="text-center">
@@ -200,27 +209,54 @@
       var totalTime_two = 20;
       var url = ""; // redirrecion
       var publicidad = 0;
-      var imagen = getRandomInt(1);
+      var imagen = getRandomInt(4);
       console.log(imagen)
       //imagen = 4;
 
-      if (imagen == 1) {
-        $('.text_cortesia').css('color', 'black');
-        $('.text_formulario').css('color', 'black');
-
-        $('#div_img').css("display", "block");
-        $('#div_img2').css("display", "none");
-        $('.bg_container').css("background-color", "#C5EEEC");
-
-        var order_1 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
-        var order_2 = "{{asset('free_wifi/pub/test/pagofon/logo_pagofon.png')}}";
-
-        document.getElementById("portal_img").src = order_1;
-      }else {
+      if (imagen == 0) {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
         $('.bg_container').css("background-color", "#F6A42F");
         $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/sitwifi/prueba2.png")', 'background-repeat': 'no-repeat', 'background-size': '100%', 'background-position': 'center'});
+        //$('.bg_container').css({'min-width' : '100%'});
+        $('.text_cortesia').css("display", "none");
+        $('#portal_img').css("display", "none");
+
+        var order_1 = "{{asset('free_wifi/transparency2.png')}}";
+        //var order_2 = "{{asset('free_wifi/pub/test/sitwifi/11438.jpg')}}";
+
+        document.getElementById("portal_img").src = order_1;
+      }else if(imagen == 1){
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        $('.bg_container').css("background-color", "#7CE2E2");
+        $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/sitwifi/foto2.png")', 'background-repeat': 'no-repeat', 'background-size': '100%', 'background-position': 'center'});
+        //$('.bg_container').css({'min-width' : '100%'});
+        $('.text_cortesia').css("display", "none");
+        $('#portal_img').css("display", "none");
+
+        var order_1 = "{{asset('free_wifi/transparency2.png')}}";
+        //var order_2 = "{{asset('free_wifi/pub/test/sitwifi/11438.jpg')}}";
+
+        document.getElementById("portal_img").src = order_1;
+      }else if(imagen == 2){
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        $('.bg_container').css("background-color", "#EFEFEF");
+        $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/sitwifi/foto5.png")', 'background-repeat': 'no-repeat', 'background-size': '100%', 'background-position': 'center'});
+        //$('.bg_container').css({'min-width' : '100%'});
+        $('.text_cortesia').css("display", "none");
+        $('#portal_img').css("display", "none");
+
+        var order_1 = "{{asset('free_wifi/transparency2.png')}}";
+        //var order_2 = "{{asset('free_wifi/pub/test/sitwifi/11438.jpg')}}";
+
+        document.getElementById("portal_img").src = order_1;
+      }else{
+        $('#div_img').css("display", "block");
+        $('#div_img2').css("display", "none");
+        $('.bg_container').css("background-color", "#DBDCE0");
+        $('.bg_container').css({'background-image' : 'url("free_wifi/pub/test/sitwifi/foto3.png")', 'background-repeat': 'no-repeat', 'background-size': '100%', 'background-position': 'center'});
         //$('.bg_container').css({'min-width' : '100%'});
         $('.text_cortesia').css("display", "none");
         $('#portal_img').css("display", "none");
@@ -239,20 +275,47 @@
           let cort_height =  height > 0 ? height : 30;
 
           if(totalTime_one==0){
-            if(imagen == 1){
+            if(imagen == 0){
+              $('.bg_container').css({'background-image' : 'none'});
+
               $('#div_img').css("display", "block");
-              $('#div_img2').css("display", "none");
-              $('.text_cortesia').css("display", "none");
-              $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              //$('#portal_img').css("display", "none");
+              $('#portal_img').css("display", "block");
 
-              url = "https://www.pagofon.net/"; // redireccion.
-              publicidad = 1; // 0 sitwifi 1 pagofon
+              url = "http://www.sitwifi.com"; // redireccion.
+              publicidad = 0; // 0 sitwifi 1 pagofon
               $('#url').val(url);
               $('#publicidad').val(publicidad);
 
-              $('#ilink').attr("src", 'free_wifi/pub/test/pagofon/pagofon_sitwifi.mp4');
+              $('#ilink').attr("src", 'free_wifi/pub/test/sitwifi/sitwifi_video.mp4');
+              //document.getElementById("portal_img").src = order_2;
+            }else if(imagen == 1){
+              $('.bg_container').css({'background-image' : 'none'});
+
+              $('#div_img').css("display", "block");
+
+              $('#portal_img').css("display", "block");
+
+              url = "http://www.sitwifi.com"; // redireccion.
+              publicidad = 0; // 0 sitwifi 1 pagofon
+              $('#url').val(url);
+              $('#publicidad').val(publicidad);
+
+              $('#ilink').attr("src", 'free_wifi/pub/test/sitwifi/sitwifi_video.mp4');
+              //document.getElementById("portal_img").src = order_2;
+            }else if(imagen == 2){
+              $('.bg_container').css({'background-image' : 'none'});
+
+              $('#div_img').css("display", "block");
+
+              $('#portal_img').css("display", "block");
+
+              url = "http://www.sitwifi.com"; // redireccion.
+              publicidad = 0; // 0 sitwifi 1 pagofon
+              $('#url').val(url);
+              $('#publicidad').val(publicidad);
+
+              $('#ilink').attr("src", 'free_wifi/pub/test/sitwifi/sitwifi_video.mp4');
               //document.getElementById("portal_img").src = order_2;
             }else{
               $('.bg_container').css({'background-image' : 'none'});
