@@ -164,8 +164,12 @@ Route::get('/Isec', function(){
    return view('visitor.Isec.isec');
 });
 
-Route::get('/freewifi_test', function(){
-   return view('visitor.SitwifiFree.cambios_pub_sitwifi.free_wifi_new');
+Route::get('/Nyx_test', function(){
+  $html_title = 'NYX Hotel';
+  //App::setLocale($lang);
+  $site = 'HE';
+  $id_site = '1';
+  return view('visitor.Nyx.nyx', compact('site','id_site', 'html_title'));
 });
 
 Route::get('/FreeWifi','FreeWifiController@get_freewifi_blade');
