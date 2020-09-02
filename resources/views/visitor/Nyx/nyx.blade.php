@@ -652,23 +652,9 @@
         var id_site = "{{$id_site}}";
         if (id_site == 1) {
           var images_supersized = [
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada2.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada3.jpg') }}"},
-          ];
-        }else if (id_site == 2){
-          var images_supersized = [
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta2.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta3.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta4.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/marinafiesta5.jpg') }}"},
-          ];
-        }else{
-          var images_supersized = [
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada2.jpg') }}"},
-            {image: "{{ asset('hacienda/socialite/images/backgrounds/haciendaencantada3.jpg') }}"},
+            {image: "{{ asset('Nyx/img/nyx1.jpg') }}"},
+            {image: "{{ asset('Nyx/img/nyx2.jpg') }}"},
+            {image: "{{ asset('Nyx/img/nyx3.jpg') }}"},
           ];
         }
       </script>
