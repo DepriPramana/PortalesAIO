@@ -217,7 +217,7 @@
       var url = ""; // redirrecion
       var publicidad = 0;
       var imagen = getRandomInt(4);
-      console.log(imagen)
+      //console.log(imagen)
       //imagen = 4;
 
       if (imagen == 0) {
