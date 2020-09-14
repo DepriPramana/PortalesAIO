@@ -216,7 +216,7 @@
         return Math.floor(Math.random() * Math.floor(max));
       }
       var totalTime_one = 5;
-      var totalTime_two = 20;
+      var totalTime_two = 10;
       var url = ""; // redirrecion
       var publicidad = 0;
       var imagen = getRandomInt(4);
@@ -292,7 +292,7 @@
 
               $('#portal_img').css("display", "block");
 
-              url = "http://www.sitwifi.com"; // redireccion.
+              url = "https://www.google.com"; // redireccion.
               publicidad = 0; // 0 sitwifi 1 pagofon
               $('#url').val(url);
               $('#publicidad').val(publicidad);
@@ -306,7 +306,7 @@
 
               $('#portal_img').css("display", "block");
 
-              url = "http://www.sitwifi.com"; // redireccion.
+              url = "https://www.google.com"; // redireccion.
               publicidad = 0; // 0 sitwifi 1 pagofon
               $('#url').val(url);
               $('#publicidad').val(publicidad);
@@ -320,7 +320,7 @@
 
               $('#portal_img').css("display", "block");
 
-              url = "http://www.sitwifi.com"; // redireccion.
+              url = "https://www.google.com"; // redireccion.
               publicidad = 0; // 0 sitwifi 1 pagofon
               $('#url').val(url);
               $('#publicidad').val(publicidad);
@@ -334,7 +334,7 @@
 
               $('#portal_img').css("display", "block");
 
-              url = "http://www.sitwifi.com"; // redireccion.
+              url = "https://www.google.com"; // redireccion.
               publicidad = 0; // 0 sitwifi 1 pagofon
               $('#url').val(url);
               $('#publicidad').val(publicidad);
