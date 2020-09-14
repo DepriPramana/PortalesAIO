@@ -165,7 +165,7 @@ Route::get('/Isec', function(){
 });
 
 Route::get('/freewifi_test', function(){
-  return view('visitor.SitwifiFree.cambios_pub_sitwifi.asur');
+  return view('visitor.SitwifiFree.suavel_pub.metrobus');
 });
 Route::get('/Nyx_test', function(){
   $html_title = 'NYX Hotel';
