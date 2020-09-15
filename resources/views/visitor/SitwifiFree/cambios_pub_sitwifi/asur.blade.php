@@ -103,7 +103,7 @@
 
               <!-- <h1>Free wifi</h1>
               <h3>Bienvenido a free wifi</h3> -->
-              <input type="hidden" id="name" name="name" value="Metrorrey" placeholder="Nombre completo">
+              <input type="hidden" id="name" name="name" value="Asur" placeholder="Nombre completo">
               <select id="select_pais" name="select_pais" class="select2" hidden>
                 <option value="">Seleccione una opcion</option>
               </select>

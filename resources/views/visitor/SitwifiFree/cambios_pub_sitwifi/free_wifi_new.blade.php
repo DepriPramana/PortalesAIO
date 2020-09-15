@@ -126,7 +126,7 @@
                   <div class="col-md-8 offset-md-2 mb-5 mt-md-n2" style="display: block;">
                       <p class="lead large text_formulario" style="padding-top: 10px;">{{ __('station_msg.text_form_title_1')}}<br>{{ __('station_msg.text_form_title_1_2')}}</p>
 
-                      <input class="form-control" type="text" id="name" name="name" value="" placeholder="{{ __('station_msg.input_name_placeholder')}}" required>
+                      <input class="form-control" type="text" id="name" name="name" value="FreeWifi" placeholder="{{ __('station_msg.input_name_placeholder')}}" required>
 
                       <select class="form-control" id="select_pais" name="select_pais" required>
                         <option value="">{{ __('station_msg.select_country_placeholder')}}</option>
