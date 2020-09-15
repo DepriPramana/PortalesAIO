@@ -260,7 +260,9 @@
               //$('#portal_img').css("display", "none");
 
               url = "https://www.suavel.com.mx/"; // redireccion.
-              publicidad = 1;
+              // 1 Sitwifi
+              // 2 Suavel
+              publicidad = 2;
               $('#url').val(url);
               $('#publicidad').val(publicidad);
 
@@ -275,7 +277,9 @@
               //$('#portal_img').css("display", "none");
 
               url = "https://www.suavel.com.mx/"; // redireccion.
-              publicidad = 1;
+              // 1 Sitwifi
+              // 2 Suavel
+              publicidad = 2;
               $('#url').val(url);
               $('#publicidad').val(publicidad);
 

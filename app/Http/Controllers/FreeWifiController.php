@@ -158,7 +158,7 @@ class FreeWifiController extends Controller
       // grafica de upload  get_mb_upload_chain_venue(?,?,?,?) (cadena,venue, fechaini, fechafin) // FreeWifiDB
       \DB::beginTransaction();
       try {
-        $this->insertRadCloudFreeWifi($uuid, $name, $fechaout, $site_info[0]->ID_VENUE);
+        $this->insertRadCloudFreeWifi($uuid, 'default', $fechaout, $site_info[0]->ID_VENUE);
         //validacion de newuser e insertar en tabla newusers
         $validar_insert = DB::connection('freewifi_data')->table('data_agents')->select()->where('mac_address', $client_mac)->where('site_id', $site_info[0]->ID_VENUE)->count();
 
@@ -166,8 +166,8 @@ class FreeWifiController extends Controller
           DB::connection('freewifi_data')->table('new_users')->insert([
             'MAC' => $client_mac,
             'fecha' => Carbon::now(),
-            'site_id' => $site_info[0]->ID_VENUE,
-            'venue_id' => $site_info[0]->ID_CHAIN,
+            'venue_id' => $site_info[0]->ID_VENUE,
+            'chain_id' => $site_info[0]->ID_CHAIN,
           ]);
         }
         DB::connection('freewifi_data')->table('data_agents')->insert([
