@@ -50,14 +50,15 @@
           <!-- background: #1f410d; -->
 
           <section class="bienvenida">
-
             <div class="container">
               <div id="div_img" style="text-align: center; display: none;">
                 <p class="lead p-lg-4 p-md-4 p-xs-0 text_cortesia" id="text_cortesia">{{ __('station_msg.text_content_title')}}</p>
                   <div class="col-md-12 h-100">
                       <div class="col-md-12 col-xs-12 my-auto" >
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
-                          <iframe id="ilink" width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                      </div>
+                      <div class="col-md-12 col-xs-12" class="div_video">
+                          <video id="ilink" class="iframe_video" src="" frameborder="0"></video>
                       </div>
                   </div>
               </div>
@@ -266,6 +267,9 @@
               $('#publicidad').val(publicidad);
 
               $('#ilink').attr("src", 'free_wifi/pub/test/suavel/video_suavel.mp4');
+              $('#ilink').attr("controls", "controls");
+              $('#ilink').get(0).play();
+
               //document.getElementById("portal_img").src = order_2;
             }else{
               $('#div_img').css("display", "block");
@@ -283,6 +287,8 @@
               $('#publicidad').val(publicidad);
 
               $('#ilink').attr("src", 'free_wifi/pub/test/suavel/video_suavel.mp4');
+              $('#ilink').attr("controls", "controls");
+              $('#ilink').get(0).play();
               //document.getElementById("portal_img").src = order_2;
             }
             updateClock_submit();
