@@ -160,8 +160,8 @@ class FreeWifiController extends Controller
       try {
         $this->insertRadCloudFreeWifi($uuid, 'default', $fechaout, $site_info[0]->ID_VENUE);
         //validacion de newuser e insertar en tabla newusers
-        $validar_insert = DB::connection('freewifi_data')->table('data_agents')->select()->where('mac_address', $client_mac)->where('site_id', $site_info[0]->ID_VENUE)->count();
-
+        //$validar_insert = DB::connection('freewifi_data')->table('data_agents')->select()->where('mac_address', $client_mac)->where('site_id', $site_info[0]->ID_VENUE)->count();
+        $validar_insert = 1;
         if ($validar_insert == 0) {
           DB::connection('freewifi_data')->table('new_users')->insert([
             'MAC' => $client_mac,

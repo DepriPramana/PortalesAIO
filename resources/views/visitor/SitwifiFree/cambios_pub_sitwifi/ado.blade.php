@@ -216,7 +216,7 @@
         return Math.floor(Math.random() * Math.floor(max));
       }
       var totalTime_one = 5;
-      var totalTime_two = 10;
+      var totalTime_two = 20;
       var url = ""; // redirrecion
       var publicidad = 0;
       var imagen = getRandomInt(4);
