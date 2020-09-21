@@ -57,7 +57,7 @@
                       <div class="col-md-12 col-xs-12 my-auto" >
                           <img class="image-fluid mt-lg-4 mt-md-4 mb-lg-4 mb-md-4" style="width: 100% !important;" id="portal_img" alt="pub">
                       </div>
-                      <div class="col-md-12 col-xs-12" class="div_video">
+                      <div class="col-md-12 col-xs-12" class="div_video" id="div_video">
                           <video id="ilink" class="iframe_video" src="" frameborder="0"></video>
                       </div>
                   </div>
@@ -213,7 +213,7 @@
         return Math.floor(Math.random() * Math.floor(max));
       }
       var totalTime_one = 5;
-      var totalTime_two = 20;
+      var totalTime_two = 15;
       var url = ""; // redirrecion
       var publicidad = 0;
       var imagen = getRandomInt(1);
@@ -226,6 +226,8 @@
 
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
+        $('#div_video').css("display", "none");
+
         $('.bg_container').css("background-color", "#FFFFFF");
 
         var order_1 = "{{asset('free_wifi/pub/test/suavel/logo.png')}}";
@@ -236,6 +238,8 @@
       }else {
         $('#div_img').css("display", "block");
         $('#div_img2').css("display", "none");
+        $('#div_video').css("display", "none");
+
         $('.bg_container').css("background-color", "#FFFFFF");
 
         var order_1 = "{{asset('free_wifi/pub/test/suavel/logo.png')}}";
@@ -259,7 +263,7 @@
               $('.text_cortesia').css("display", "none");
               $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              //$('#portal_img').css("display", "none");
+              $('#div_video').css("display", "block");
 
               url = "https://www.suavel.com.mx/"; // redireccion.
               // 1 Sitwifi
@@ -279,7 +283,7 @@
               $('.text_cortesia').css("display", "none");
               $('#portal_img').css('margin-top', '-'+cort_height+'px');
 
-              //$('#portal_img').css("display", "none");
+              $('#div_video').css("display", "block");
 
               url = "https://www.suavel.com.mx/"; // redireccion.
               // 1 Sitwifi
