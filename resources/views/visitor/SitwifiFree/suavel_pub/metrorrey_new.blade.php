@@ -265,7 +265,7 @@
 
               $('#div_video').css("display", "block");
 
-              url = "https://www.suavel.com.mx/"; // redireccion.
+              url = "https://www.facebook.com/watch/?v=316173803140941&extid=4mK1UU6PylgQabir"; // redireccion.
               // 1 Sitwifi
               // 2 Suavel
               publicidad = 2;
@@ -285,7 +285,7 @@
 
               $('#div_video').css("display", "block");
 
-              url = "https://www.suavel.com.mx/"; // redireccion.
+              url = "https://www.facebook.com/watch/?v=316173803140941&extid=4mK1UU6PylgQabir"; // redireccion.
               // 1 Sitwifi
               // 2 Suavel
               publicidad = 2;
